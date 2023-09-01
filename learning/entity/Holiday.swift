@@ -1,0 +1,37 @@
+//
+//  Holiday.swift
+//  learning
+//
+//  Created by Andrzej Chmiel on 28/08/2023.
+//
+
+import Foundation
+
+struct Holiday: Identifiable, Decodable {
+    let id: Int
+    let usual: Bool
+    let name: String
+    let description: String
+    let url: String
+    
+    enum CodingKeys: CodingKey {
+        case id, usual, name, description, url
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = try container.decode(Int.self, forKey: .id)
+        self.usual = try container.decode(Bool.self, forKey: .usual)
+        self.name = try container.decode(String.self, forKey: .name)
+        self.description = try container.decode(String.self, forKey: .description)
+        self.url = try container.decode(String.self, forKey: .url)
+    }
+    
+    init(id: Int, usual: Bool, name: String, description: String, url: String) {
+        self.id = id
+        self.usual = usual
+        self.name = name
+        self.description = description
+        self.url = url
+    }
+}
