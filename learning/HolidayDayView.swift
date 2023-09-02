@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct HolidayDayView: View {
+    let day: Int
     let holidayDay: HolidayDay
     var body: some View {
         let count = holidayDay.holidays.count
         NavigationLink {
             DayScreenView(holidayDay: holidayDay)
         } label: {
-            Text(count == 0 ? "SAD" : String(count))
-                    .background(.random)
+            Text(count == 0 ? "SAD" : String(day))
+//                    .background(.random)
                     .cornerRadius(15)
         }
     }
@@ -23,7 +24,7 @@ struct HolidayDayView: View {
 
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        HolidayDayView(holidayDay: HolidayDay(id: "1", day: 1, month: 1, holidays: [Holiday(id: 1, usual: true, name: "Text", description: "Text", url: "")]))
+        HolidayDayView(day: 1, holidayDay: HolidayDay(id: "1", day: 1, month: 1, holidays: [Holiday(id: 1, usual: true, name: "Text", description: "Text", url: "")]))
     }
 }
 

@@ -16,8 +16,7 @@ struct MonthScreenView: View {
                                 day.month == i
                             }
                             ZStack {
-                                MonthView(days: days)
-                                        .navigationBarTitle(Text(String(i)))
+                                MonthView(month: i, days: days)
                             }
                         }
                     }
@@ -30,21 +29,29 @@ struct MonthScreenView: View {
 }
 
 struct MonthView: View {
+    let month: Int
     let days: [HolidayDay]
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
                 VStack(alignment: .leading, spacing: 8) {
                     let rows: [[HolidayDay]] = days.chunked(into: 7)
-                    ForEach(0..<rows.endIndex, id: \.self) { index in
-                        WeekView(
-                                holidayDays: rows[index],
-                                width: getWidth(geometry: geometry),
-                                height: getHeight(geometry: geometry),
-                                horizontalSpacing: 16)
+                    ForEach(0..<rows.endIndex, id: \.self) { weekIndex in
+                        HStack(spacing: 16) {
+                            ForEach(0..<rows[weekIndex].endIndex, id: \.self) { dayIndex in
+                                HolidayDayView(
+                                        day: weekIndex * 7 + dayIndex + 1,
+                                        holidayDay: rows[weekIndex][dayIndex]
+                                )
+                                        .frame(width: getWidth(geometry: geometry), height: getHeight(geometry: geometry))
+                                        .background(.red)
+                            }
+                        }
+                                .padding()
                     }
                 }
             }
+                .navigationBarTitle(Text(DateFormatter().standaloneMonthSymbols[month - 1].capitalized))
         }
     }
 

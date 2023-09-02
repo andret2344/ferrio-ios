@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A8B115287AA64CB3B43E1B4 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1D0EF7B9EC81598B8820 /* WeekView.swift */; };
 		1A8B177C8C3CC75160CB4C8D /* MonthScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B15614443AA77518E4AEC /* MonthScreenView.swift */; };
 		1A8B1A06626B989A98292C3B /* DayScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B16E993ABFE71E2648A2D /* DayScreenView.swift */; };
 		71715D942AA1F6490072B9B8 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71715D932AA1F6490072B9B8 /* ArrayExtension.swift */; };
@@ -44,7 +43,6 @@
 /* Begin PBXFileReference section */
 		1A8B15614443AA77518E4AEC /* MonthScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthScreenView.swift; sourceTree = "<group>"; };
 		1A8B16E993ABFE71E2648A2D /* DayScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayScreenView.swift; sourceTree = "<group>"; };
-		1A8B1D0EF7B9EC81598B8820 /* WeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		71715D932AA1F6490072B9B8 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		71715D952AA203160072B9B8 /* URLSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
 		71F2A7A92A9CFA99005D4D2A /* learning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = learning.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,7 +142,6 @@
 				71F2A7B02A9CFA9D005D4D2A /* Assets.xcassets */,
 				71F2A7B22A9CFA9D005D4D2A /* Preview Content */,
 				71F2A7D62A9CFF07005D4D2A /* HolidayDayView.swift */,
-				1A8B1D0EF7B9EC81598B8820 /* WeekView.swift */,
 				1A8B17E7858CCBD497A0ED7A /* screen */,
 			);
 			path = learning;
@@ -312,7 +309,6 @@
 				71F2A7D72A9CFF07005D4D2A /* HolidayDayView.swift in Sources */,
 				71715D942AA1F6490072B9B8 /* ArrayExtension.swift in Sources */,
 				71F2A7AD2A9CFA99005D4D2A /* learningApp.swift in Sources */,
-				1A8B115287AA64CB3B43E1B4 /* WeekView.swift in Sources */,
 				1A8B1A06626B989A98292C3B /* DayScreenView.swift in Sources */,
 				1A8B177C8C3CC75160CB4C8D /* MonthScreenView.swift in Sources */,
 			);
