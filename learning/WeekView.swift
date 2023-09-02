@@ -16,15 +16,35 @@ struct WeekView: View {
         HStack(spacing: horizontalSpacing) {
             ForEach(holidayDays, id: \.id) { holidayDay in
                 HolidayDayView(holidayDay: holidayDay)
-                    .frame(width: width, height: height)
+                        .frame(width: width, height: height)
             }
         }
-        .padding()
+                .padding()
     }
 }
 
 struct WeekView_Previews: PreviewProvider {
     static var previews: some View {
-        WeekView(holidayDays: [HolidayDay(id: "1", day: 1, month: 1, holidays: [Holiday(id: 1, usual: true, name: "Test", description: "Test", url: "")]), HolidayDay(id: "2", day: 1, month: 2, holidays: [])], width: 40, height: 70, horizontalSpacing: 10)
+        WeekView(
+                holidayDays: [
+                    HolidayDay(
+                            id: "1",
+                            day: 1,
+                            month: 1,
+                            holidays: [
+                                Holiday(
+                                        id: 1,
+                                        usual: true,
+                                        name: "Test",
+                                        description: "Test",
+                                        url: "")]),
+                    HolidayDay(
+                            id: "2",
+                            day: 1,
+                            month: 2,
+                            holidays: [])],
+                width: 40,
+                height: 70,
+                horizontalSpacing: 10)
     }
 }

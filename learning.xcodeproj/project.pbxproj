@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A8B115287AA64CB3B43E1B4 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1D0EF7B9EC81598B8820 /* WeekView.swift */; };
+		1A8B177C8C3CC75160CB4C8D /* MonthScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B15614443AA77518E4AEC /* MonthScreenView.swift */; };
+		1A8B1A06626B989A98292C3B /* DayScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B16E993ABFE71E2648A2D /* DayScreenView.swift */; };
 		71715D942AA1F6490072B9B8 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71715D932AA1F6490072B9B8 /* ArrayExtension.swift */; };
 		71715D962AA203160072B9B8 /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71715D952AA203160072B9B8 /* URLSessionExtension.swift */; };
 		71F2A7AD2A9CFA99005D4D2A /* learningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2A7AC2A9CFA99005D4D2A /* learningApp.swift */; };
@@ -17,7 +20,6 @@
 		71F2A7C82A9CFA9E005D4D2A /* learningUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2A7C72A9CFA9E005D4D2A /* learningUITests.swift */; };
 		71F2A7CA2A9CFA9E005D4D2A /* learningUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2A7C92A9CFA9E005D4D2A /* learningUITestsLaunchTests.swift */; };
 		71F2A7D72A9CFF07005D4D2A /* HolidayDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2A7D62A9CFF07005D4D2A /* HolidayDayView.swift */; };
-		71F2A7D92A9D0178005D4D2A /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2A7D82A9D0178005D4D2A /* WeekView.swift */; };
 		71F2A7DD2A9D03CD005D4D2A /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2A7DC2A9D03CD005D4D2A /* Holiday.swift */; };
 		71F2A7DF2A9D0C02005D4D2A /* HolidayDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F2A7DE2A9D0C02005D4D2A /* HolidayDay.swift */; };
 /* End PBXBuildFile section */
@@ -40,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A8B15614443AA77518E4AEC /* MonthScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthScreenView.swift; sourceTree = "<group>"; };
+		1A8B16E993ABFE71E2648A2D /* DayScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayScreenView.swift; sourceTree = "<group>"; };
+		1A8B1D0EF7B9EC81598B8820 /* WeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		71715D932AA1F6490072B9B8 /* ArrayExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		71715D952AA203160072B9B8 /* URLSessionExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
 		71F2A7A92A9CFA99005D4D2A /* learning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = learning.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,7 +58,6 @@
 		71F2A7C72A9CFA9E005D4D2A /* learningUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = learningUITests.swift; sourceTree = "<group>"; };
 		71F2A7C92A9CFA9E005D4D2A /* learningUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = learningUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		71F2A7D62A9CFF07005D4D2A /* HolidayDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayDayView.swift; sourceTree = "<group>"; };
-		71F2A7D82A9D0178005D4D2A /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = WeekView.swift; path = ../WeekView.swift; sourceTree = "<group>"; };
 		71F2A7DC2A9D03CD005D4D2A /* Holiday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Holiday.swift; sourceTree = "<group>"; };
 		71F2A7DE2A9D0C02005D4D2A /* HolidayDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayDay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,10 +87,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1A8B17E7858CCBD497A0ED7A /* screen */ = {
+			isa = PBXGroup;
+			children = (
+				1A8B16E993ABFE71E2648A2D /* DayScreenView.swift */,
+				1A8B15614443AA77518E4AEC /* MonthScreenView.swift */,
+			);
+			path = screen;
+			sourceTree = "<group>";
+		};
 		71715D992AA214AF0072B9B8 /* entity */ = {
 			isa = PBXGroup;
 			children = (
-				71F2A7D82A9D0178005D4D2A /* WeekView.swift */,
 				71F2A7DC2A9D03CD005D4D2A /* Holiday.swift */,
 				71F2A7DE2A9D0C02005D4D2A /* HolidayDay.swift */,
 			);
@@ -132,6 +144,8 @@
 				71F2A7B02A9CFA9D005D4D2A /* Assets.xcassets */,
 				71F2A7B22A9CFA9D005D4D2A /* Preview Content */,
 				71F2A7D62A9CFF07005D4D2A /* HolidayDayView.swift */,
+				1A8B1D0EF7B9EC81598B8820 /* WeekView.swift */,
+				1A8B17E7858CCBD497A0ED7A /* screen */,
 			);
 			path = learning;
 			sourceTree = "<group>";
@@ -298,7 +312,9 @@
 				71F2A7D72A9CFF07005D4D2A /* HolidayDayView.swift in Sources */,
 				71715D942AA1F6490072B9B8 /* ArrayExtension.swift in Sources */,
 				71F2A7AD2A9CFA99005D4D2A /* learningApp.swift in Sources */,
-				71F2A7D92A9D0178005D4D2A /* WeekView.swift in Sources */,
+				1A8B115287AA64CB3B43E1B4 /* WeekView.swift in Sources */,
+				1A8B1A06626B989A98292C3B /* DayScreenView.swift in Sources */,
+				1A8B177C8C3CC75160CB4C8D /* MonthScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

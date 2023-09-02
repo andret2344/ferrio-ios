@@ -11,11 +11,13 @@ struct HolidayDayView: View {
     let holidayDay: HolidayDay
     var body: some View {
         let count = holidayDay.holidays.count
-        RoundedRectangle(cornerRadius: 12)
-            .foregroundColor(.random)
-            .overlay(
-                count == 0 ? Text("SAD") : Text(String(count))
-            )
+        NavigationLink {
+            DayScreenView(holidayDay: holidayDay)
+        } label: {
+            Text(count == 0 ? "SAD" : String(count))
+                    .background(.random)
+                    .cornerRadius(15)
+        }
     }
 }
 
@@ -25,12 +27,12 @@ struct CardView_Previews: PreviewProvider {
     }
 }
 
-extension Color {
+extension ShapeStyle where Self == Color {
     static var random: Color {
-        return Color(
-            red: .random(in: 0...1),
-            green: .random(in: 0...1),
-            blue: .random(in: 0...1)
+        Color(
+                red: .random(in: 0...1),
+                green: .random(in: 0...1),
+                blue: .random(in: 0...1)
         )
     }
 }
