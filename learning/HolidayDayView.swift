@@ -15,7 +15,7 @@ struct HolidayDayView: View {
         NavigationLink {
             DayScreenView(holidayDay: holidayDay)
         } label: {
-            Text(count == 0 ? "SAD" : String(day))
+            Text(count == 0 ? "SAD" : String(day + 1))
 //                    .background(.random)
                     .cornerRadius(15)
         }
