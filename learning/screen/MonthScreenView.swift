@@ -28,6 +28,8 @@ struct MonthScreenView: View {
 }
 
 struct MonthView: View {
+    @StateObject
+    var observableConfig = ObservableConfig()
     let month: Int
     let days: [HolidayDay]
     var body: some View {
@@ -79,13 +81,15 @@ struct MonthView: View {
 
     func getAfter(date: Date) -> Date {
         let endOfMonth: Date = Calendar.current.date(byAdding: .day, value: -1, to: date.endOfMonth())!
-        let remainingDays: Int = (8 - Calendar.current.component(.weekday, from: endOfMonth)) % 7
+        let weekday: Int = Calendar.current.component(.weekday, from: endOfMonth)
+        let remainingDays: Int = (13 + observableConfig.firstDayOfWeek - weekday) % 7
         return Calendar.current.date(byAdding: .day, value: remainingDays, to: endOfMonth)!
     }
 
     func getBefore(date: Date) -> Date {
         let startOfMonth: Date = date.startOfMonth()
-        let remainingDays: Int = (Calendar.current.component(.weekday, from: startOfMonth) + 5) % 7
+        let weekday: Int = Calendar.current.component(.weekday, from: startOfMonth)
+        let remainingDays: Int = (7 - observableConfig.firstDayOfWeek + weekday) % 7
         return Calendar.current.date(byAdding: .day, value: -remainingDays, to: date)!
     }
 

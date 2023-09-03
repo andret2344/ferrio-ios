@@ -1,7 +1,4 @@
 //
-//  URLSessionExtension.swift
-//  learning
-//
 //  Created by Andrzej Chmiel on 01/09/2023.
 //
 

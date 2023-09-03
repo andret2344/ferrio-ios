@@ -1,7 +1,4 @@
 //
-//  learningApp.swift
-//  learning
-//
 //  Created by Andrzej Chmiel on 28/08/2023.
 //
 

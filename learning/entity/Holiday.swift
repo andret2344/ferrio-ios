@@ -1,7 +1,4 @@
 //
-//  Holiday.swift
-//  learning
-//
 //  Created by Andrzej Chmiel on 28/08/2023.
 //
 
@@ -13,11 +10,11 @@ struct Holiday: Identifiable, Decodable {
     let name: String
     let description: String
     let url: String
-    
+
     enum CodingKeys: CodingKey {
         case id, usual, name, description, url
     }
-    
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(Int.self, forKey: .id)
@@ -26,7 +23,7 @@ struct Holiday: Identifiable, Decodable {
         self.description = try container.decode(String.self, forKey: .description)
         self.url = try container.decode(String.self, forKey: .url)
     }
-    
+
     init(id: Int, usual: Bool, name: String, description: String, url: String) {
         self.id = id
         self.usual = usual
