@@ -14,11 +14,8 @@ struct MonthScreenView: View {
                 NavigationView {
                     TabView(selection: $selection) {
                         ForEach(1..<13) { i in
-                            let days = holidayDays.filter { day in
-                                day.month == i
-                            }
                             ZStack {
-                                MonthView(month: i, days: days)
+                                MonthView(month: i, days: holidayDays)
                             }
                         }
                     }
@@ -46,10 +43,12 @@ struct MonthView: View {
                                 let holidayDay: HolidayDay = holidayDays[day]
                                 NavigationLink {
                                     DayScreenView(holidayDay: holidayDay)
-                                } label : {
-                                    Text(holidayDay.holidays.count == 0 ? "SAD" : String(day + 1))
+                                } label: {
+                                    let text = holidayDay.holidays.count == 0 ? "SAD" : String(holidayDay.day)
+                                    Text(text)
                                             .frame(width: getWidth(geometry: geometry), height: getHeight(geometry: geometry))
-                                            .background(.red)
+                                            .background(Color(holidayDay.month == month ? .systemFill : .systemGray6))
+                                            .foregroundColor(Color(.label))
                                             .cornerRadius(5)
                                 }
                             }
@@ -73,7 +72,21 @@ struct MonthView: View {
     func getHolidayDays() -> [HolidayDay] {
         let year: Int = Calendar.current.component(.year, from: Date())
         let date: Date = Date.from(year: year, month: month, day: 1)
-        return getDays(from: date.startOfMonth(), to: date.endOfMonth())
+        let before = getBefore(date: date)
+        let after = getAfter(date: date)
+        return getDays(from: before, to: after)
+    }
+
+    func getAfter(date: Date) -> Date {
+        let endOfMonth: Date = Calendar.current.date(byAdding: .day, value: -1, to: date.endOfMonth())!
+        let remainingDays: Int = (8 - Calendar.current.component(.weekday, from: endOfMonth)) % 7
+        return Calendar.current.date(byAdding: .day, value: remainingDays, to: endOfMonth)!
+    }
+
+    func getBefore(date: Date) -> Date {
+        let startOfMonth: Date = date.startOfMonth()
+        let remainingDays: Int = (Calendar.current.component(.weekday, from: startOfMonth) + 5) % 7
+        return Calendar.current.date(byAdding: .day, value: -remainingDays, to: date)!
     }
 
     func getDays(from: Date, to: Date) -> [HolidayDay] {
