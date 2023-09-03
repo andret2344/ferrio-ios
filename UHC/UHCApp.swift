@@ -1,11 +1,14 @@
 //
-//  Created by Andrzej Chmiel on 28/08/2023.
+//  UHCApp.swift
+//  UHC
+//
+//  Created by Andrzej Chmiel on 04/09/2023.
 //
 
 import SwiftUI
 
 @main
-struct learningApp: App {
+struct UHCApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()

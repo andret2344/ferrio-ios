@@ -1,14 +1,14 @@
 //
-//  learningTests.swift
-//  learningTests
+//  UHCTests.swift
+//  UHCTests
 //
-//  Created by Andrzej Chmiel on 28/08/2023.
+//  Created by Andrzej Chmiel on 04/09/2023.
 //
 
 import XCTest
-@testable import learning
+@testable import UHC
 
-final class learningTests: XCTestCase {
+final class UHCTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
