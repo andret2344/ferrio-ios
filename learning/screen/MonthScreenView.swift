@@ -24,7 +24,7 @@ struct MonthScreenView: View {
                     }
                 }
                         .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-                        .tabViewStyle(.page)
+                        .tabViewStyle(.page(indexDisplayMode: .never))
             }
         }
     }
@@ -36,16 +36,22 @@ struct MonthView: View {
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
-                VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading) {
                     let holidayDays: [HolidayDay] = getHolidayDays();
                     let rows: [[HolidayDay]] = holidayDays.chunked(into: 7)
                     ForEach(0..<rows.endIndex, id: \.self) { weekIndex in
-                        HStack(spacing: 16) {
+                        HStack(spacing: 6) {
                             ForEach(0..<rows[weekIndex].endIndex, id: \.self) { dayIndex in
-                                let day: Int = weekIndex * 7 + dayIndex;
-                                HolidayDayView(day: day, holidayDay: holidayDays[day])
-                                        .frame(width: getWidth(geometry: geometry), height: getHeight(geometry: geometry))
-                                        .background(.red)
+                                let day: Int = weekIndex * 7 + dayIndex
+                                let holidayDay: HolidayDay = holidayDays[day]
+                                NavigationLink {
+                                    DayScreenView(holidayDay: holidayDay)
+                                } label : {
+                                    Text(holidayDay.holidays.count == 0 ? "SAD" : String(day + 1))
+                                            .frame(width: getWidth(geometry: geometry), height: getHeight(geometry: geometry))
+                                            .background(.red)
+                                            .cornerRadius(5)
+                                }
                             }
                         }
                                 .padding()
@@ -57,11 +63,11 @@ struct MonthView: View {
     }
 
     func getWidth(geometry: GeometryProxy) -> CGFloat {
-        (geometry.size.width - 16 * 8) / 7
+        (geometry.size.width - 8 * 8) / 7
     }
 
     func getHeight(geometry: GeometryProxy) -> CGFloat {
-        (geometry.size.height - 16 * 7) / 6
+        (geometry.size.height - 24 * 7) / 6
     }
 
     func getHolidayDays() -> [HolidayDay] {
