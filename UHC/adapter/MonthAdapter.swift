@@ -5,8 +5,8 @@
 import SwiftUI
 
 struct MonthAdapter: View {
-    @StateObject
-    var observableConfig = ObservableConfig()
+    @Environment(\.calendar)
+    var calendar
     let month: Int
     let days: [HolidayDay]
     var body: some View {
@@ -37,7 +37,8 @@ struct MonthAdapter: View {
                     }
                 }
                         .padding()
-                        .navigationBarTitle(Text(DateFormatter().standaloneMonthSymbols[month - 1].capitalized))
+                        .navigationBarTitleDisplayMode(.large)
+                        .navigationBarTitle(Text(DateFormatter().standaloneMonthSymbols[month - 1].capitalized), displayMode: .large)
             }
         }
     }
@@ -61,14 +62,14 @@ struct MonthAdapter: View {
     func getAfter(date: Date) -> Date {
         let endOfMonth: Date = Calendar.current.date(byAdding: .day, value: -1, to: date.endOfMonth())!
         let weekday: Int = Calendar.current.component(.weekday, from: endOfMonth)
-        let remainingDays: Int = (13 + observableConfig.firstDayOfWeek - weekday) % 7
+        let remainingDays: Int = (13 + calendar.firstWeekday - weekday) % 7
         return Calendar.current.date(byAdding: .day, value: remainingDays, to: endOfMonth)!
     }
 
     func getBefore(date: Date) -> Date {
         let startOfMonth: Date = date.startOfMonth()
         let weekday: Int = Calendar.current.component(.weekday, from: startOfMonth)
-        let remainingDays: Int = (7 - observableConfig.firstDayOfWeek + weekday) % 7
+        let remainingDays: Int = (7 - calendar.firstWeekday + weekday) % 7
         return Calendar.current.date(byAdding: .day, value: -remainingDays, to: date)!
     }
 

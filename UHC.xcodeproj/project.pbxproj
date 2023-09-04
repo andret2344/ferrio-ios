@@ -7,28 +7,46 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A8B1005527B84B1F9A704F8 /* ObservableConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1DE6E9EE678EC4C472C5 /* ObservableConfig.swift */; };
 		1A8B10790965E9FA883073F5 /* DayScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B11FC25FF622BF8103CA4 /* DayScreenView.swift */; };
 		1A8B12DCBD209A62D97052F5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B10F20ACAAC22CFF240FA /* DateExtension.swift */; };
 		1A8B1300D25F3DF37014DB4E /* MonthScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1CAFE49FB33A63415436 /* MonthScreenView.swift */; };
 		1A8B16B55B81D47B30A8FEB6 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B188A9D4440C41E27E9E9 /* ArrayExtension.swift */; };
 		1A8B193C13A479F68307A24A /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B176D3CDAB3162E902569 /* Holiday.swift */; };
-		1A8B1A63634F9664967777E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B13F720E088D89326E51A /* AppDelegate.swift */; };
 		1A8B1AEA03E60FDB045A3F6D /* MonthAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1D27889C5E839E12D607 /* MonthAdapter.swift */; };
 		1A8B1DF78BB062853E4ADA84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B12214F0DD9E8499ECE57 /* ContentView.swift */; };
 		1A8B1E96C93116A2D02E6335 /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B131C071B4025F6354DC3 /* URLSessionExtension.swift */; };
 		1A8B1F7FF4C4565DF161C065 /* HolidayDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1218DD3EF5D07BF92C36 /* HolidayDay.swift */; };
 		7137D6EB2AA5D6FD00CE239B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7137D6ED2AA5D6FD00CE239B /* Localizable.strings */; };
+		7137D6F52AA600D500CE239B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7137D6F42AA600D500CE239B /* WidgetKit.framework */; };
+		7137D6F72AA600D500CE239B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7137D6F62AA600D500CE239B /* SwiftUI.framework */; };
+		7137D6FA2AA600D500CE239B /* UHCWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7137D6F92AA600D500CE239B /* UHCWidgetBundle.swift */; };
+		7137D6FC2AA600D500CE239B /* UHCWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7137D6FB2AA600D500CE239B /* UHCWidgetLiveActivity.swift */; };
+		7137D6FE2AA600D500CE239B /* UHCWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7137D6FD2AA600D500CE239B /* UHCWidget.swift */; };
+		7137D7012AA600DB00CE239B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7137D7002AA600DB00CE239B /* Assets.xcassets */; };
+		7137D7032AA600DB00CE239B /* UHCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7137D6FF2AA600D500CE239B /* UHCWidget.intentdefinition */; };
+		7137D7042AA600DB00CE239B /* UHCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7137D6FF2AA600D500CE239B /* UHCWidget.intentdefinition */; };
+		7137D7072AA600DB00CE239B /* UHCWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7137D6F22AA600D500CE239B /* UHCWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		7137D70C2AA6601200CE239B /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B131C071B4025F6354DC3 /* URLSessionExtension.swift */; };
+		7137D70D2AA6602D00CE239B /* HolidayDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1218DD3EF5D07BF92C36 /* HolidayDay.swift */; };
+		7137D70E2AA67A2300CE239B /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B176D3CDAB3162E902569 /* Holiday.swift */; };
+		7137D70F2AA6818000CE239B /* DayScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B11FC25FF622BF8103CA4 /* DayScreenView.swift */; };
+		7137D7132AA6830200CE239B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7137D7152AA6830200CE239B /* Localizable.strings */; };
 		71FA8AFF2AA54A00000E2831 /* UHCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA8AFE2AA54A00000E2831 /* UHCApp.swift */; };
 		71FA8B032AA54A03000E2831 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71FA8B022AA54A03000E2831 /* Assets.xcassets */; };
 		71FA8B062AA54A03000E2831 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71FA8B052AA54A03000E2831 /* Preview Assets.xcassets */; };
 		71FA8B102AA54A03000E2831 /* UHCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA8B0F2AA54A03000E2831 /* UHCTests.swift */; };
 		71FA8B1A2AA54A03000E2831 /* UHCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA8B192AA54A03000E2831 /* UHCUITests.swift */; };
 		71FA8B1C2AA54A03000E2831 /* UHCUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA8B1B2AA54A03000E2831 /* UHCUITestsLaunchTests.swift */; };
-		71FA8B292AA54FE9000E2831 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 71FA8B282AA54FE9000E2831 /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		7137D7052AA600DB00CE239B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 71FA8AF32AA54A00000E2831 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7137D6F12AA600D500CE239B;
+			remoteInfo = UHCWidgetExtension;
+		};
 		71FA8B0C2AA54A03000E2831 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 71FA8AF32AA54A00000E2831 /* Project object */;
@@ -45,20 +63,43 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		7137D7082AA600DB00CE239B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				7137D7072AA600DB00CE239B /* UHCWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1A8B10F20ACAAC22CFF240FA /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		1A8B11FC25FF622BF8103CA4 /* DayScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayScreenView.swift; sourceTree = "<group>"; };
 		1A8B1218DD3EF5D07BF92C36 /* HolidayDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidayDay.swift; sourceTree = "<group>"; };
 		1A8B12214F0DD9E8499ECE57 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1A8B131C071B4025F6354DC3 /* URLSessionExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
-		1A8B13F720E088D89326E51A /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A8B176D3CDAB3162E902569 /* Holiday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Holiday.swift; sourceTree = "<group>"; };
 		1A8B188A9D4440C41E27E9E9 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		1A8B1AC23FE5563DD8D09062 /* pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1A8B1CAFE49FB33A63415436 /* MonthScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthScreenView.swift; sourceTree = "<group>"; };
 		1A8B1D27889C5E839E12D607 /* MonthAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthAdapter.swift; sourceTree = "<group>"; };
-		1A8B1DE6E9EE678EC4C472C5 /* ObservableConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableConfig.swift; sourceTree = "<group>"; };
 		7137D6EC2AA5D6FD00CE239B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7137D6F22AA600D500CE239B /* UHCWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = UHCWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		7137D6F42AA600D500CE239B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		7137D6F62AA600D500CE239B /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		7137D6F92AA600D500CE239B /* UHCWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UHCWidgetBundle.swift; sourceTree = "<group>"; };
+		7137D6FB2AA600D500CE239B /* UHCWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UHCWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		7137D6FD2AA600D500CE239B /* UHCWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UHCWidget.swift; sourceTree = "<group>"; };
+		7137D6FF2AA600D500CE239B /* UHCWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = UHCWidget.intentdefinition; sourceTree = "<group>"; };
+		7137D7002AA600DB00CE239B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7137D7022AA600DB00CE239B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7137D7142AA6830200CE239B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7137D7162AA6830400CE239B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		71FA8AFB2AA54A00000E2831 /* UHC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UHC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FA8AFE2AA54A00000E2831 /* UHCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UHCApp.swift; sourceTree = "<group>"; };
 		71FA8B022AA54A03000E2831 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,10 +109,18 @@
 		71FA8B152AA54A03000E2831 /* UHCUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UHCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FA8B192AA54A03000E2831 /* UHCUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UHCUITests.swift; sourceTree = "<group>"; };
 		71FA8B1B2AA54A03000E2831 /* UHCUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UHCUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		71FA8B282AA54FE9000E2831 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		7137D6EF2AA600D500CE239B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7137D6F72AA600D500CE239B /* SwiftUI.framework in Frameworks */,
+				7137D6F52AA600D500CE239B /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		71FA8AF82AA54A00000E2831 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -132,12 +181,37 @@
 			path = adapter;
 			sourceTree = "<group>";
 		};
+		7137D6F32AA600D500CE239B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7137D6F42AA600D500CE239B /* WidgetKit.framework */,
+				7137D6F62AA600D500CE239B /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7137D6F82AA600D500CE239B /* UHCWidget */ = {
+			isa = PBXGroup;
+			children = (
+				7137D6F92AA600D500CE239B /* UHCWidgetBundle.swift */,
+				7137D6FB2AA600D500CE239B /* UHCWidgetLiveActivity.swift */,
+				7137D6FD2AA600D500CE239B /* UHCWidget.swift */,
+				7137D6FF2AA600D500CE239B /* UHCWidget.intentdefinition */,
+				7137D7002AA600DB00CE239B /* Assets.xcassets */,
+				7137D7022AA600DB00CE239B /* Info.plist */,
+				7137D7152AA6830200CE239B /* Localizable.strings */,
+			);
+			path = UHCWidget;
+			sourceTree = "<group>";
+		};
 		71FA8AF22AA54A00000E2831 = {
 			isa = PBXGroup;
 			children = (
 				71FA8AFD2AA54A00000E2831 /* UHC */,
 				71FA8B0E2AA54A03000E2831 /* UHCTests */,
 				71FA8B182AA54A03000E2831 /* UHCUITests */,
+				7137D6F82AA600D500CE239B /* UHCWidget */,
+				7137D6F32AA600D500CE239B /* Frameworks */,
 				71FA8AFC2AA54A00000E2831 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -148,6 +222,7 @@
 				71FA8AFB2AA54A00000E2831 /* UHC.app */,
 				71FA8B0B2AA54A03000E2831 /* UHCTests.xctest */,
 				71FA8B152AA54A03000E2831 /* UHCUITests.xctest */,
+				7137D6F22AA600D500CE239B /* UHCWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -161,11 +236,8 @@
 				71FA8B042AA54A03000E2831 /* Preview Content */,
 				1A8B19EB18EAA233F4C46C74 /* screen */,
 				1A8B1D95E86FB026BB08C7F4 /* entity */,
-				1A8B1DE6E9EE678EC4C472C5 /* ObservableConfig.swift */,
 				1A8B17913731C424284FDCF0 /* extension */,
-				1A8B13F720E088D89326E51A /* AppDelegate.swift */,
 				1A8B12214F0DD9E8499ECE57 /* ContentView.swift */,
-				71FA8B282AA54FE9000E2831 /* Settings.bundle */,
 				1A8B1E13DE135A778D47FA41 /* adapter */,
 			);
 			path = UHC;
@@ -199,6 +271,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7137D6F12AA600D500CE239B /* UHCWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7137D70B2AA600DB00CE239B /* Build configuration list for PBXNativeTarget "UHCWidgetExtension" */;
+			buildPhases = (
+				7137D6EE2AA600D500CE239B /* Sources */,
+				7137D6EF2AA600D500CE239B /* Frameworks */,
+				7137D6F02AA600D500CE239B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = UHCWidgetExtension;
+			productName = UHCWidgetExtension;
+			productReference = 7137D6F22AA600D500CE239B /* UHCWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		71FA8AFA2AA54A00000E2831 /* UHC */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 71FA8B1F2AA54A03000E2831 /* Build configuration list for PBXNativeTarget "UHC" */;
@@ -206,10 +295,12 @@
 				71FA8AF72AA54A00000E2831 /* Sources */,
 				71FA8AF82AA54A00000E2831 /* Frameworks */,
 				71FA8AF92AA54A00000E2831 /* Resources */,
+				7137D7082AA600DB00CE239B /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				7137D7062AA600DB00CE239B /* PBXTargetDependency */,
 			);
 			name = UHC;
 			productName = UHC;
@@ -262,6 +353,9 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					7137D6F12AA600D500CE239B = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
 					71FA8AFA2AA54A00000E2831 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
@@ -292,18 +386,27 @@
 				71FA8AFA2AA54A00000E2831 /* UHC */,
 				71FA8B0A2AA54A03000E2831 /* UHCTests */,
 				71FA8B142AA54A03000E2831 /* UHCUITests */,
+				7137D6F12AA600D500CE239B /* UHCWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7137D6F02AA600D500CE239B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7137D7012AA600DB00CE239B /* Assets.xcassets in Resources */,
+				7137D7132AA6830200CE239B /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		71FA8AF92AA54A00000E2831 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				71FA8B062AA54A03000E2831 /* Preview Assets.xcassets in Resources */,
 				7137D6EB2AA5D6FD00CE239B /* Localizable.strings in Resources */,
-				71FA8B292AA54FE9000E2831 /* Settings.bundle in Resources */,
 				71FA8B032AA54A03000E2831 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +428,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		7137D6EE2AA600D500CE239B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7137D70C2AA6601200CE239B /* URLSessionExtension.swift in Sources */,
+				7137D70D2AA6602D00CE239B /* HolidayDay.swift in Sources */,
+				7137D70E2AA67A2300CE239B /* Holiday.swift in Sources */,
+				7137D6FE2AA600D500CE239B /* UHCWidget.swift in Sources */,
+				7137D6FA2AA600D500CE239B /* UHCWidgetBundle.swift in Sources */,
+				7137D6FC2AA600D500CE239B /* UHCWidgetLiveActivity.swift in Sources */,
+				7137D7032AA600DB00CE239B /* UHCWidget.intentdefinition in Sources */,
+				7137D70F2AA6818000CE239B /* DayScreenView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		71FA8AF72AA54A00000E2831 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -334,11 +452,10 @@
 				1A8B1300D25F3DF37014DB4E /* MonthScreenView.swift in Sources */,
 				1A8B193C13A479F68307A24A /* Holiday.swift in Sources */,
 				1A8B1F7FF4C4565DF161C065 /* HolidayDay.swift in Sources */,
-				1A8B1005527B84B1F9A704F8 /* ObservableConfig.swift in Sources */,
 				1A8B12DCBD209A62D97052F5 /* DateExtension.swift in Sources */,
+				7137D7042AA600DB00CE239B /* UHCWidget.intentdefinition in Sources */,
 				1A8B16B55B81D47B30A8FEB6 /* ArrayExtension.swift in Sources */,
 				1A8B1E96C93116A2D02E6335 /* URLSessionExtension.swift in Sources */,
-				1A8B1A63634F9664967777E0 /* AppDelegate.swift in Sources */,
 				1A8B1DF78BB062853E4ADA84 /* ContentView.swift in Sources */,
 				1A8B1AEA03E60FDB045A3F6D /* MonthAdapter.swift in Sources */,
 			);
@@ -364,6 +481,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		7137D7062AA600DB00CE239B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7137D6F12AA600D500CE239B /* UHCWidgetExtension */;
+			targetProxy = 7137D7052AA600DB00CE239B /* PBXContainerItemProxy */;
+		};
 		71FA8B0D2AA54A03000E2831 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 71FA8AFA2AA54A00000E2831 /* UHC */;
@@ -386,13 +508,75 @@
 			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
+		7137D7152AA6830200CE239B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7137D7142AA6830200CE239B /* en */,
+				7137D7162AA6830400CE239B /* pl */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		7137D7092AA600DB00CE239B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = UHCWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = UHCWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.andret.UHC.UHCWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7137D70A2AA600DB00CE239B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = UHCWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = UHCWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = eu.andret.UHC.UHCWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		71FA8B1D2AA54A03000E2831 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -453,6 +637,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -506,6 +691,7 @@
 		71FA8B202AA54A03000E2831 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -534,6 +720,7 @@
 		71FA8B212AA54A03000E2831 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -634,6 +821,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		7137D70B2AA600DB00CE239B /* Build configuration list for PBXNativeTarget "UHCWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7137D7092AA600DB00CE239B /* Debug */,
+				7137D70A2AA600DB00CE239B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		71FA8AF62AA54A00000E2831 /* Build configuration list for PBXProject "UHC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

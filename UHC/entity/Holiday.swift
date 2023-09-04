@@ -17,11 +17,11 @@ struct Holiday: Identifiable, Decodable {
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(Int.self, forKey: .id)
-        self.usual = try container.decode(Bool.self, forKey: .usual)
-        self.name = try container.decode(String.self, forKey: .name)
-        self.description = try container.decode(String.self, forKey: .description)
-        self.url = try container.decode(String.self, forKey: .url)
+        id = try container.decode(Int.self, forKey: .id)
+        usual = try container.decode(Bool.self, forKey: .usual)
+        name = try container.decode(String.self, forKey: .name)
+        description = try container.decode(String.self, forKey: .description)
+        url = try container.decode(String.self, forKey: .url)
     }
 
     init(id: Int, usual: Bool, name: String, description: String, url: String) {

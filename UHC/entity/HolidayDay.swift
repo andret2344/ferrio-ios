@@ -4,8 +4,8 @@
 
 import Foundation
 
-struct HolidayDay: Identifiable, Decodable {
-    let id: String;
+public struct HolidayDay: Identifiable, Decodable {
+    public let id: String;
     let day: Int
     let month: Int
     let holidays: [Holiday]
@@ -14,7 +14,7 @@ struct HolidayDay: Identifiable, Decodable {
         case id, day, month, holidays
     }
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(String.self, forKey: .id)
         day = try values.decode(Int.self, forKey: .day)
