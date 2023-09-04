@@ -7,32 +7,32 @@ import SwiftUI
 import Intents
 
 struct Provider: TimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        // Tworzenie przykładowego wpisu na potrzeby podglądu
-        SimpleEntry(date: Date(), holidayDay: HolidayDay(id: "-1", day: 1, month: 1, holidays: [Holiday(id: 1, usual: true, name: "Perfect day!", description: "", url: "")]))
+    @Environment(\.locale)
+    var locale: Locale
+
+    func placeholder(in context: Context) -> WidgetEntry {
+        let holiday: Holiday = Holiday(id: 1, usual: true, name: "Perfect day!", description: "", url: "")
+        return WidgetEntry(date: Date(), holidayDay: HolidayDay(id: "-1", day: 1, month: 1, holidays: [holiday]))
     }
 
-    func getSnapshot(in context: Context, completion: @escaping (SimpleEntry) -> ()) {
+    func getSnapshot(in context: Context, completion: @escaping (WidgetEntry) -> ()) -> Void {
         Task {
-            let url = URL(string: "https://api.unusualcalendar.net/holiday/pl/today")!
-            guard let holidayDay = try? await URLSession.shared.decode(HolidayDay.self, from: url) else {
+            guard let holidayDay = try? await URLSession.shared.decode(HolidayDay.self, from: getUrl()) else {
                 return
             }
-            let entry = SimpleEntry(date: Date(), holidayDay: holidayDay)
+            let entry = WidgetEntry(date: Date(), holidayDay: holidayDay)
             completion(entry)
         }
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) -> Void {
         Task {
-            let url = URL(string: "https://api.unusualcalendar.net/holiday/pl/today")!
-            guard let holidayDay = try? await URLSession.shared.decode(HolidayDay.self, from: url) else {
+            guard let holidayDay = try? await URLSession.shared.decode(HolidayDay.self, from: getUrl()) else {
                 return
             }
-            let currentDate: Date = Date()
-            let targetDate: Date = Calendar.current.date(bySettingHour: 0, minute: 30, second: 0, of: currentDate)!
-            let entry: SimpleEntry = SimpleEntry(date: getProperDate(targetDate: targetDate), holidayDay: holidayDay)
-            completion(Timeline(entries: [entry], policy: .after(targetDate)))
+            let target: Date = Calendar.current.date(bySettingHour: 0, minute: 30, second: 0, of: Date())!
+            let entry: WidgetEntry = WidgetEntry(date: getProperDate(targetDate: target), holidayDay: holidayDay)
+            completion(Timeline(entries: [entry], policy: .after(target)))
         }
     }
 
@@ -43,9 +43,16 @@ struct Provider: TimelineProvider {
         }
         return Calendar.current.date(byAdding: .day, value: 1, to: targetDate)!
     }
+
+    func getUrl() -> URL {
+        let components: DateComponents = Calendar.current.dateComponents([.day, .month], from: Date())
+        let code: String? = locale.language.languageCode?.identifier
+        let lang: String = ["pl"].contains(code!) ? code! : "en"
+        return URL(string: "https://api.unusualcalendar.net/holiday/\(lang)/day/\(components.month!)/\(components.day!)")!
+    }
 }
 
-struct SimpleEntry: TimelineEntry {
+struct WidgetEntry: TimelineEntry {
     let date: Date
     let holidayDay: HolidayDay
 }

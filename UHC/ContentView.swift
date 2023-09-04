@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.locale)
+    var locale: Locale
     @State
     private var days = [HolidayDay]()
 
@@ -15,8 +17,7 @@ struct ContentView: View {
         MonthScreenView(holidayDays: days)
                 .task {
                     do {
-                        let url = URL(string: "https://api.unusualcalendar.net/holiday/pl")!
-                        days = try await URLSession.shared.decode([HolidayDay].self, from: url)
+                        days = try await URLSession.shared.decode([HolidayDay].self, from: getUrl())
                     } catch let DecodingError.dataCorrupted(context) {
                         print(context)
                     } catch let DecodingError.keyNotFound(key, context) {
@@ -33,6 +34,12 @@ struct ContentView: View {
                     }
                 }
 
+    }
+
+    func getUrl() -> URL {
+        let code: String? = locale.language.languageCode?.identifier
+        let lang: String = ["pl"].contains(code!) ? code! : "en"
+        return URL(string: "https://api.unusualcalendar.net/holiday/\(lang)")!
     }
 }
 
