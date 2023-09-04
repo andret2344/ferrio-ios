@@ -46,8 +46,10 @@ struct MonthView: View {
                                 NavigationLink {
                                     DayScreenView(holidayDay: holidayDay)
                                 } label: {
-                                    let text = holidayDay.holidays.count == 0 ? "SAD" : String(holidayDay.day)
-                                    Text(text)
+                                    let content = holidayDay.holidays.count == 0
+                                            ? AnyView(Image("SadIcon"))
+                                            : AnyView(Text(String(holidayDay.day)))
+                                    content
                                             .frame(width: getWidth(geometry: geometry), height: getHeight(geometry: geometry))
                                             .background(Color(holidayDay.month == month ? .systemFill : .systemGray6))
                                             .foregroundColor(Color(.label))
