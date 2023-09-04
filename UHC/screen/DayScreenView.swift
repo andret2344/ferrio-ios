@@ -6,6 +6,7 @@ import SwiftUI
 
 struct DayScreenView: View {
     let holidayDay: HolidayDay
+    let link = URL(string: "https://www.admin.ch")!
 
     var body: some View {
         NavigationView {
@@ -26,5 +27,15 @@ struct DayScreenView: View {
             }
         }
                 .navigationBarTitle(holidayDay.getDate())
+                .toolbar {
+                    ToolbarItem(placement: .primaryAction) {
+                        let holidays = holidayDay.holidays.map { holiday in
+                            "-" + holiday.name
+                        }.joined(separator: "\n")
+                        let text = "\(holidayDay.day).\(holidayDay.month):\n\n\(holidays)\n\n\(NSLocalizedString("Check it yourself!", comment: ""))"
+                        ShareLink(item: text, preview: SharePreview(text))
+                                .labelStyle(.iconOnly)
+                    }
+                }
     }
 }

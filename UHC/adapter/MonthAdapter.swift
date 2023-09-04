@@ -34,11 +34,11 @@ struct MonthAdapter: View {
                                 }
                             }
                         }
-                                .padding()
                     }
                 }
+                        .padding()
+                        .navigationBarTitle(Text(DateFormatter().standaloneMonthSymbols[month - 1].capitalized))
             }
-                    .navigationBarTitle(Text(DateFormatter().standaloneMonthSymbols[month - 1].capitalized))
         }
     }
 

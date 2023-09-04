@@ -18,6 +18,18 @@ struct MonthScreenView: View {
                         }
                     }
                 }
+                        .toolbar {
+                            ToolbarItem(placement: .primaryAction) {
+                                Button {
+                                    withAnimation {
+                                        selection = Calendar.current.component(.month, from: Date()) - 1
+                                    }
+                                } label: {
+                                    Image(systemName: "calendar.badge.clock")
+                                            .accessibilityLabel("Today")
+                                }
+                            }
+                        }
             }
                     .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                     .tabViewStyle(.page(indexDisplayMode: .never))
