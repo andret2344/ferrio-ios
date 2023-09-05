@@ -28,11 +28,17 @@ struct MonthAdapter: View {
                                     let content = holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays).count == 0
                                             ? AnyView(Image("SadIcon"))
                                             : AnyView(Text(String(holidayDay.day)))
-                                    content
+                                    let components: DateComponents = Calendar.current.dateComponents([.day, .month], from: Date())
+                                    let view: some View = content
                                             .frame(width: getWidth(geometry: geometry), height: getHeight(geometry: geometry))
                                             .background(Color(holidayDay.month == month ? .systemFill : .systemGray6))
                                             .foregroundColor(Color(.label))
                                             .cornerRadius(5)
+                                    if components.day == holidayDay.day && components.month == holidayDay.month {
+                                        view.overlay(RoundedRectangle(cornerRadius: 5).stroke(.red))
+                                    } else {
+                                        view
+                                    }
                                 }
                             }
                         }
