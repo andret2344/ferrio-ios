@@ -32,4 +32,13 @@ public struct HolidayDay: Identifiable, Decodable {
     func getDate() -> String {
         String(format: "%02d", day) + "." + String(format: "%02d", month)
     }
+
+    func getHolidays(includeUsualHolidays: Bool) -> [Holiday] {
+        if includeUsualHolidays {
+            return holidays
+        }
+        return holidays.filter { holiday in
+            !holiday.usual
+        }
+    }
 }

@@ -5,11 +5,14 @@
 import SwiftUI
 
 struct DayScreenView: View {
+    @StateObject
+    var observableConfig = ObservableConfig()
     let holidayDay: HolidayDay
 
     var body: some View {
         NavigationView {
-            if holidayDay.holidays.count == 0 {
+            let holidays: [Holiday] = holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays);
+            if holidays.count == 0 {
                 VStack {
                     Image("SadIcon")
                             .resizable()
@@ -19,7 +22,7 @@ struct DayScreenView: View {
                 }
             } else {
                 List {
-                    ForEach(holidayDay.holidays, id: \.id) { holiday in
+                    ForEach(holidays, id: \.id) { holiday in
                         Text(holiday.name)
                     }
                 }

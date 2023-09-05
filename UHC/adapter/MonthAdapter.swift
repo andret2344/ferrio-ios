@@ -7,6 +7,8 @@ import SwiftUI
 struct MonthAdapter: View {
     @Environment(\.calendar)
     var calendar
+    @StateObject
+    var observableConfig = ObservableConfig()
     let month: Int
     let days: [HolidayDay]
     var body: some View {
@@ -23,7 +25,7 @@ struct MonthAdapter: View {
                                 NavigationLink {
                                     DayScreenView(holidayDay: holidayDay)
                                 } label: {
-                                    let content = holidayDay.holidays.count == 0
+                                    let content = holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays).count == 0
                                             ? AnyView(Image("SadIcon"))
                                             : AnyView(Text(String(holidayDay.day)))
                                     content
