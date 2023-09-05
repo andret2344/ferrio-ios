@@ -10,8 +10,8 @@ import SwiftUI
 
 @main
 struct UHCWidgetBundle: WidgetBundle {
-    var body: some Widget {
-        UHCWidget()
-        UHCWidgetLiveActivity()
-    }
+	var body: some Widget {
+		UHCWidget()
+		UHCWidgetLiveActivity()
+	}
 }
