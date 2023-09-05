@@ -30,7 +30,7 @@ struct Provider: TimelineProvider {
             guard let holidayDay = try? await URLSession.shared.decode(HolidayDay.self, from: getUrl()) else {
                 return
             }
-            let target: Date = Calendar.current.date(bySettingHour: 0, minute: 30, second: 0, of: Date())!
+            let target: Date = Calendar.current.date(bySettingHour: 0, minute: .random(in: 0..<3), second: .random(in: 0..<59), of: Date())!
             let entry: WidgetEntry = WidgetEntry(date: getProperDate(targetDate: target), holidayDay: holidayDay)
             completion(Timeline(entries: [entry], policy: .after(target)))
         }
