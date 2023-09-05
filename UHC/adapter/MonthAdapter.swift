@@ -45,8 +45,7 @@ struct MonthAdapter: View {
 					}
 				}
 						.padding()
-						.navigationBarTitleDisplayMode(.large)
-						.navigationBarTitle(Text(DateFormatter().standaloneMonthSymbols[month - 1].capitalized), displayMode: .large)
+						.navigationTitle(Text(DateFormatter().standaloneMonthSymbols[month - 1].capitalized))
 			}
 		}
 	}

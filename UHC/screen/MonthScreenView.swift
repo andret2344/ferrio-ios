@@ -18,6 +18,7 @@ struct MonthScreenView: View {
 						}
 					}
 				}
+						.navigationBarTitleDisplayMode(.large)
 						.toolbar {
 							ToolbarItem(placement: .primaryAction) {
 								Button {
