@@ -32,6 +32,7 @@ struct MonthScreenView: View {
 							}
 						}
 			}
+					.navigationViewStyle(.stack)
 					.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 					.tabViewStyle(.page(indexDisplayMode: .never))
 		}

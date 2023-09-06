@@ -9,7 +9,7 @@ struct DayScreenView: View {
 	var observableConfig = ObservableConfig()
 	let holidayDay: HolidayDay
 	var body: some View {
-		NavigationView {
+		VStack {
 			let holidays: [Holiday] = holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays);
 			if holidays.count == 0 {
 				VStack {
