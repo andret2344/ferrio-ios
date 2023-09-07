@@ -9,6 +9,8 @@ struct MonthAdapter: View {
 	var calendar
 	@StateObject
 	var observableConfig = ObservableConfig()
+	@State
+	private var selectedDay: HolidayDay? = nil
 	let month: Int
 	let days: [HolidayDay]
 	var body: some View {
@@ -22,23 +24,30 @@ struct MonthAdapter: View {
 							ForEach(0..<rows[weekIndex].endIndex, id: \.self) { dayIndex in
 								let day: Int = weekIndex * 7 + dayIndex
 								let holidayDay: HolidayDay = holidayDays[day]
-								NavigationLink {
-									DayScreenView(holidayDay: holidayDay)
+								let button: Button = Button {
+									selectedDay = holidayDay
 								} label: {
-									let content = holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays).count == 0
-											? AnyView(Image("SadIcon"))
-											: AnyView(Text(String(holidayDay.day)))
-									let components: DateComponents = Calendar.current.dateComponents([.day, .month], from: Date())
-									let view: some View = content
-											.frame(width: getWidth(geometry: geometry), height: getHeight(geometry: geometry))
-											.background(Color(holidayDay.month == month ? .systemFill : .systemGray6))
-											.foregroundColor(Color(.label))
-											.cornerRadius(5)
-									if components.day == holidayDay.day && components.month == holidayDay.month {
-										view.overlay(RoundedRectangle(cornerRadius: 5).stroke(.red))
+									if holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays).count == 0 {
+										Image("SadIcon")
 									} else {
-										view
+										Text(String(holidayDay.day))
+												.font(.system(size: 25))
 									}
+								}
+								let components: DateComponents = Calendar.current.dateComponents([.day, .month], from: Date())
+								let view: some View = button
+										.frame(width: getWidth(geometry: geometry), height: getHeight(geometry: geometry))
+										.background(Color(holidayDay.month == month ? .systemFill : .systemGray6))
+										.foregroundColor(Color(.label))
+										.cornerRadius(5)
+										.sheet(item: $selectedDay) { item in
+											SheetView(holidayDay: item)
+													.presentationDetents([.fraction(0.5), .fraction(0.9)])
+										}
+								if components.day == holidayDay.day && components.month == holidayDay.month {
+									view.overlay(RoundedRectangle(cornerRadius: 5).stroke(.red))
+								} else {
+									view
 								}
 							}
 						}
