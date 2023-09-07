@@ -31,6 +31,7 @@ struct MonthAdapter: View {
 										Image("SadIcon")
 									} else {
 										Text(String(holidayDay.day))
+												.font(.system(size: 25))
 									}
 								}
 								let components: DateComponents = Calendar.current.dateComponents([.day, .month], from: Date())

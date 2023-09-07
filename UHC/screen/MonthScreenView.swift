@@ -10,7 +10,7 @@ struct MonthScreenView: View {
 	private var selection = Calendar.current.component(.month, from: Date()) - 1
 	var body: some View {
 		LazyHStack {
-			NavigationView {
+			NavigationStack {
 				TabView(selection: $selection) {
 					ForEach(1..<13) { i in
 						ZStack {
@@ -32,7 +32,6 @@ struct MonthScreenView: View {
 							}
 						}
 			}
-					.navigationViewStyle(.stack)
 					.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 					.tabViewStyle(.page(indexDisplayMode: .never))
 		}
