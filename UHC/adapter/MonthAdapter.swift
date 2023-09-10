@@ -9,8 +9,8 @@ struct MonthAdapter: View {
 	var calendar
 	@StateObject
 	var observableConfig = ObservableConfig()
-	@State
-	private var selectedDay: HolidayDay? = nil
+	@Binding
+	var selectedDay: HolidayDay?
 	let month: Int
 	let days: [HolidayDay]
 	var body: some View {
@@ -29,6 +29,8 @@ struct MonthAdapter: View {
 								} label: {
 									if holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays).count == 0 {
 										Image("SadIcon")
+												.resizable()
+												.aspectRatio(contentMode: .fit)
 									} else {
 										Text(String(holidayDay.day))
 												.font(.system(size: 25))
