@@ -39,7 +39,7 @@ struct MonthAdapter: View {
 								let components: DateComponents = Calendar.current.dateComponents([.day, .month], from: Date())
 								let view: some View = button
 										.frame(width: getWidth(geometry: geometry), height: getHeight(geometry: geometry))
-										.background(Color(holidayDay.month == month ? .systemFill : .systemGray6))
+										.background(Color(getColor(currentMonth: holidayDay.month == month, holidayDay: holidayDay)))
 										.foregroundColor(Color(.label))
 										.cornerRadius(5)
 										.sheet(item: $selectedDay) { item in
@@ -47,7 +47,7 @@ struct MonthAdapter: View {
 													.presentationDetents([.fraction(0.5), .fraction(0.9)])
 										}
 								if components.day == holidayDay.day && components.month == holidayDay.month {
-									view.overlay(RoundedRectangle(cornerRadius: 5).stroke(.red))
+									view.overlay(RoundedRectangle(cornerRadius: 5).stroke(.red, lineWidth: 3))
 								} else {
 									view
 								}
@@ -59,6 +59,16 @@ struct MonthAdapter: View {
 						.navigationTitle(Text(DateFormatter().standaloneMonthSymbols[month - 1].capitalized))
 			}
 		}
+	}
+
+	func getColor(currentMonth: Bool, holidayDay: HolidayDay) -> UIColor {
+		if !currentMonth {
+			return .systemGray6
+		}
+		if observableConfig.colorizedDays {
+			return UIColor.random(seed: Int(holidayDay.id)!)
+		}
+		return .systemFill
 	}
 
 	func getWidth(geometry: GeometryProxy) -> CGFloat {
@@ -96,16 +106,15 @@ struct MonthAdapter: View {
 		var date = from
 		while date <= to {
 			let calendarDate = Calendar.current.dateComponents([.day, .month], from: date)
-			holidayDays.append(getDay(month: calendarDate.month!, day: calendarDate.day!))
+			if let day: HolidayDay = getDay(month: calendarDate.month!, day: calendarDate.day!) {
+				holidayDays.append(day)
+			}
 			date = Calendar.current.date(byAdding: .day, value: 1, to: date)!
 		}
 		return holidayDays
 	}
 
-	func getDay(month: Int, day: Int) -> HolidayDay {
-		days.filter { holiday in
-					holiday.month == month && holiday.day == day
-				}
-				.first ?? HolidayDay(id: "\(day).\(month)", day: day, month: month, holidays: [])
+	func getDay(month: Int, day: Int) -> HolidayDay? {
+		days.first(where: { $0.month == month && $0.day == day })
 	}
 }
