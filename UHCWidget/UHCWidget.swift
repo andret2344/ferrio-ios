@@ -64,8 +64,7 @@ struct UHCWidgetEntryView: View {
 					"- \(holiday.name)"
 				}
 				.joined(separator: "\n");
-		Text(text)
-				.multilineTextAlignment(.center)
+		Text(text).font(.caption)
 	}
 }
 

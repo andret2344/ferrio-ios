@@ -7,4 +7,6 @@ import SwiftUI
 class ObservableConfig: ObservableObject {
 	@AppStorage("includeUsualHolidays")
 	var includeUsualHolidays: Bool = true
+	@AppStorage("colorizedDays")
+	var colorizedDays: Bool = false
 }
