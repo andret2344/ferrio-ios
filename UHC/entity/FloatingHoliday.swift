@@ -1,18 +1,19 @@
 //
-//  Created by Andrzej Chmiel on 28/08/2023.
+// Created by Andrzej Chmiel on 14/09/2023.
 //
 
 import Foundation
 
-struct Holiday: Identifiable, Decodable, Equatable {
+struct FloatingHoliday: Identifiable, Decodable {
 	let id: Int
 	let usual: Bool
 	let name: String
 	let description: String
 	let url: String
+	let script: String
 
 	enum CodingKeys: CodingKey {
-		case id, usual, name, description, url
+		case id, usual, name, description, url, script
 	}
 
 	init(from decoder: Decoder) throws {
@@ -22,29 +23,15 @@ struct Holiday: Identifiable, Decodable, Equatable {
 		name = try container.decode(String.self, forKey: .name)
 		description = try container.decode(String.self, forKey: .description)
 		url = try container.decode(String.self, forKey: .url)
+		script = try container.decode(String.self, forKey: .script)
 	}
 
-	init(id: Int, usual: Bool, name: String, description: String, url: String) {
+	init(id: Int, usual: Bool, name: String, description: String, url: String, script: String) {
 		self.id = id
 		self.usual = usual
 		self.name = name
 		self.description = description
 		self.url = url
-	}
-
-	init(floatingHoliday: FloatingHoliday) {
-		id = -floatingHoliday.id
-		usual = floatingHoliday.usual
-		name = floatingHoliday.name
-		description = floatingHoliday.description
-		url = floatingHoliday.url
-	}
-
-	static func ==(lhs: Holiday, rhs: Holiday) -> Bool {
-		lhs.id == rhs.id &&
-				lhs.usual == rhs.usual &&
-				lhs.name == rhs.name &&
-				lhs.description == rhs.description &&
-				lhs.url == rhs.url
+		self.script = script
 	}
 }
