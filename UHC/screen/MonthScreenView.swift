@@ -10,40 +10,44 @@ struct MonthScreenView: View {
 	private var selection = Calendar.current.component(.month, from: Date()) - 1
 	@State
 	private var selectedDay: HolidayDay? = nil
+	@Binding
+	var loading: Bool
 	var body: some View {
-		LazyHStack {
-			NavigationStack {
-				TabView(selection: $selection) {
-					ForEach(1..<13) { i in
-						ZStack {
-							MonthAdapter(selectedDay: $selectedDay, month: i, days: holidayDays)
+		if loading == false {
+			LazyHStack {
+				NavigationStack {
+					TabView(selection: $selection) {
+						ForEach(1..<13) { i in
+							ZStack {
+								MonthAdapter(selectedDay: $selectedDay, month: i, days: holidayDays)
+							}
 						}
 					}
-				}
-						.navigationBarTitleDisplayMode(.large)
-						.toolbar {
-							ToolbarItem(placement: .primaryAction) {
-								Button {
-									withAnimation {
-										selection = Calendar.current.component(.month, from: Date()) - 1
+							.navigationBarTitleDisplayMode(.large)
+							.toolbar {
+								ToolbarItem(placement: .primaryAction) {
+									Button {
+										withAnimation {
+											selection = Calendar.current.component(.month, from: Date()) - 1
+										}
+									} label: {
+										Image(systemName: "calendar.badge.clock")
+												.accessibilityLabel("Today")
 									}
-								} label: {
-									Image(systemName: "calendar.badge.clock")
-											.accessibilityLabel("Today")
+								}
+								ToolbarItem(placement: .primaryAction) {
+									Button {
+										selectedDay = getRandomHolidayDay()
+									} label: {
+										Image(systemName: "shuffle")
+												.accessibilityLabel("Random")
+									}
 								}
 							}
-							ToolbarItem(placement: .primaryAction) {
-								Button {
-									selectedDay = getRandomHolidayDay()
-								} label: {
-									Image(systemName: "shuffle")
-											.accessibilityLabel("Random")
-								}
-							}
-						}
+				}
+						.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+						.tabViewStyle(.page(indexDisplayMode: .never))
 			}
-					.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-					.tabViewStyle(.page(indexDisplayMode: .never))
 		}
 	}
 

@@ -11,7 +11,7 @@ struct ContentView: View {
 	@State
 	private var days = [HolidayDay]()
 	var body: some View {
-		MonthScreenView(holidayDays: days)
+		MonthScreenView(holidayDays: days, loading: $fetching)
 				.overlay {
 					if fetching {
 						ProgressView().progressViewStyle(CircularProgressViewStyle())
