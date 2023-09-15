@@ -26,8 +26,7 @@ struct UnusualCalendar: Decodable {
 	mutating func add(day: Int, month: Int, holiday: Holiday) {
 		let index: Int? = fixed.firstIndex(where: { $0.day == day && $0.month == month })
 		if index == nil {
-			let id: String = String(format: "%02d", day) + "." + String(format: "%02d", month)
-			fixed.append(HolidayDay(id: id, day: day, month: month, holidays: [holiday]))
+			fixed.append(HolidayDay(day: day, month: month, holidays: [holiday]))
 		} else {
 			fixed[index!].holidays.append(holiday)
 		}
