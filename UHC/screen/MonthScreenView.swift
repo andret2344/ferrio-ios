@@ -12,6 +12,8 @@ struct MonthScreenView: View {
 	private var selectedDay: HolidayDay? = nil
 	@Binding
 	var loading: Bool
+	@State
+	private var searchText = ""
 	var body: some View {
 		if loading == false {
 			LazyHStack {
@@ -41,6 +43,16 @@ struct MonthScreenView: View {
 									} label: {
 										Image(systemName: "shuffle")
 												.accessibilityLabel("Random")
+									}
+								}
+							}
+							.searchable(text: $searchText, prompt: "Type name of a holiday") {
+								ForEach(holidayDays, id: \.id) { holidayDay in
+									let holidays = holidayDay.holidays.filter { holiday in
+										holiday.name.contains(searchText)
+									}
+									if holidays.count > 0 {
+										Text("\(holidayDay.getDate()): \(holidays[0].name)")
 									}
 								}
 							}
