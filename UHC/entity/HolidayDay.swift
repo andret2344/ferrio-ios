@@ -4,11 +4,11 @@
 
 import Foundation
 
-struct HolidayDay: Identifiable, Decodable {
+struct HolidayDay: Identifiable, Decodable, Equatable {
 	let id: String;
 	let day: Int
 	let month: Int
-	let holidays: [Holiday]
+	var holidays: [Holiday]
 
 	enum CodingKeys: String, CodingKey {
 		case id, day, month, holidays
@@ -27,6 +27,13 @@ struct HolidayDay: Identifiable, Decodable {
 		self.day = day
 		self.month = month
 		self.holidays = holidays
+	}
+
+	static func ==(lhs: HolidayDay, rhs: HolidayDay) -> Bool {
+		lhs.id == rhs.id &&
+				lhs.day == rhs.day &&
+				lhs.month == rhs.month &&
+				lhs.holidays == rhs.holidays
 	}
 
 	func getDate() -> String {
