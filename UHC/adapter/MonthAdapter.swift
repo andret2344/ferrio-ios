@@ -106,15 +106,13 @@ struct MonthAdapter: View {
 		var date = from
 		while date <= to {
 			let calendarDate = Calendar.current.dateComponents([.day, .month], from: date)
-			if let day: HolidayDay = getDay(month: calendarDate.month!, day: calendarDate.day!) {
-				holidayDays.append(day)
-			}
+			holidayDays.append(getDay(month: calendarDate.month!, day: calendarDate.day!))
 			date = Calendar.current.date(byAdding: .day, value: 1, to: date)!
 		}
 		return holidayDays
 	}
 
-	func getDay(month: Int, day: Int) -> HolidayDay? {
-		days.first(where: { $0.month == month && $0.day == day })
+	func getDay(month: Int, day: Int) -> HolidayDay {
+		days.first(where: { $0.month == month && $0.day == day }) ?? HolidayDay(day: day, month: month, holidays: [])
 	}
 }

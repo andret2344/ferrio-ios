@@ -29,6 +29,10 @@ struct HolidayDay: Identifiable, Decodable, Equatable {
 		self.holidays = holidays
 	}
 
+	init(day: Int, month: Int, holidays: [Holiday]) {
+		self.init(id: String(format: "%02d", month) + String(format: "%02d", day), day: day, month: month, holidays: holidays)
+	}
+
 	static func ==(lhs: HolidayDay, rhs: HolidayDay) -> Bool {
 		lhs.id == rhs.id &&
 				lhs.day == rhs.day &&
