@@ -14,7 +14,7 @@ struct ContentView: View {
 		MonthScreenView(holidayDays: days, loading: $fetching)
 				.overlay {
 					if fetching {
-						ProgressView().progressViewStyle(CircularProgressViewStyle())
+						ProgressView().progressViewStyle(.circular)
 					}
 				}
 				.animation(.easeIn, value: days)
