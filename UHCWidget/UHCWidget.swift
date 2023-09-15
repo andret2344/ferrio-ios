@@ -7,9 +7,6 @@ import SwiftUI
 import Intents
 
 struct Provider: TimelineProvider {
-	@Environment(\.locale)
-	var locale: Locale
-
 	func placeholder(in context: Context) -> WidgetEntry {
 		let holiday: Holiday = Holiday(id: 1, usual: true, name: "Perfect day!", description: "", url: "")
 		return WidgetEntry(date: Date(), holidayDay: HolidayDay(id: "-1", day: 1, month: 1, holidays: [holiday]))
@@ -46,7 +43,7 @@ struct Provider: TimelineProvider {
 
 	func getUrl() -> URL {
 		let components: DateComponents = Calendar.current.dateComponents([.day, .month], from: Date())
-		let code: String? = locale.language.languageCode?.identifier
+		let code: String? = Locale.current.language.languageCode?.identifier
 		let lang: String = ["pl"].contains(code!) ? code! : "en"
 		return URL(string: "https://api.unusualcalendar.net/holiday/\(lang)/day/\(components.month!)/\(components.day!)")!
 	}

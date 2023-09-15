@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1A8B10790965E9FA883073F5 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B11FC25FF622BF8103CA4 /* SheetView.swift */; };
+		1A8B112B631A5308FA97FA6B /* UnusualCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B18120DC8F1B2DCC45BDA /* UnusualCalendar.swift */; };
 		1A8B12DCBD209A62D97052F5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B10F20ACAAC22CFF240FA /* DateExtension.swift */; };
 		1A8B1300D25F3DF37014DB4E /* MonthScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1CAFE49FB33A63415436 /* MonthScreenView.swift */; };
 		1A8B13A5961A9CF307EAE195 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B167F98CAD8D4CF11EE60 /* AppDelegate.swift */; };
@@ -16,6 +17,7 @@
 		1A8B16B55B81D47B30A8FEB6 /* ArrayExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B188A9D4440C41E27E9E9 /* ArrayExtension.swift */; };
 		1A8B193C13A479F68307A24A /* Holiday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B176D3CDAB3162E902569 /* Holiday.swift */; };
 		1A8B1AEA03E60FDB045A3F6D /* MonthAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1D27889C5E839E12D607 /* MonthAdapter.swift */; };
+		1A8B1CE5273716CC84621F94 /* FloatingHoliday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1C09241000093713F0DF /* FloatingHoliday.swift */; };
 		1A8B1DF78BB062853E4ADA84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B12214F0DD9E8499ECE57 /* ContentView.swift */; };
 		1A8B1E96C93116A2D02E6335 /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B131C071B4025F6354DC3 /* URLSessionExtension.swift */; };
 		1A8B1F7FF4C4565DF161C065 /* HolidayDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1218DD3EF5D07BF92C36 /* HolidayDay.swift */; };
@@ -34,6 +36,7 @@
 		7137D71B2AA7147E00CE239B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7137D71A2AA7147E00CE239B /* Settings.bundle */; };
 		718743A22AAFB8F500A6EFC0 /* UHCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 718743A52AAFB8F500A6EFC0 /* UHCWidget.intentdefinition */; };
 		718743A32AAFB8F500A6EFC0 /* UHCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 718743A52AAFB8F500A6EFC0 /* UHCWidget.intentdefinition */; };
+		718743AA2AB3B7FC00A6EFC0 /* FloatingHoliday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1C09241000093713F0DF /* FloatingHoliday.swift */; };
 		71FA8AFF2AA54A00000E2831 /* UHCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA8AFE2AA54A00000E2831 /* UHCApp.swift */; };
 		71FA8B032AA54A03000E2831 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71FA8B022AA54A03000E2831 /* Assets.xcassets */; };
 		71FA8B062AA54A03000E2831 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71FA8B052AA54A03000E2831 /* Preview Assets.xcassets */; };
@@ -89,8 +92,10 @@
 		1A8B15593B806217A51802A1 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		1A8B167F98CAD8D4CF11EE60 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A8B176D3CDAB3162E902569 /* Holiday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Holiday.swift; sourceTree = "<group>"; };
+		1A8B18120DC8F1B2DCC45BDA /* UnusualCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnusualCalendar.swift; sourceTree = "<group>"; };
 		1A8B188A9D4440C41E27E9E9 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		1A8B1AC23FE5563DD8D09062 /* pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1A8B1C09241000093713F0DF /* FloatingHoliday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingHoliday.swift; sourceTree = "<group>"; };
 		1A8B1CAFE49FB33A63415436 /* MonthScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthScreenView.swift; sourceTree = "<group>"; };
 		1A8B1D27889C5E839E12D607 /* MonthAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthAdapter.swift; sourceTree = "<group>"; };
 		1A8B1FA259D1D09B4119D61E /* ObservableConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableConfig.swift; sourceTree = "<group>"; };
@@ -179,6 +184,8 @@
 			children = (
 				1A8B176D3CDAB3162E902569 /* Holiday.swift */,
 				1A8B1218DD3EF5D07BF92C36 /* HolidayDay.swift */,
+				1A8B1C09241000093713F0DF /* FloatingHoliday.swift */,
+				1A8B18120DC8F1B2DCC45BDA /* UnusualCalendar.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -452,6 +459,7 @@
 				7137D6FE2AA600D500CE239B /* UHCWidget.swift in Sources */,
 				7137D6FA2AA600D500CE239B /* UHCWidgetBundle.swift in Sources */,
 				7137D6FC2AA600D500CE239B /* UHCWidgetLiveActivity.swift in Sources */,
+				718743AA2AB3B7FC00A6EFC0 /* FloatingHoliday.swift in Sources */,
 				718743A32AAFB8F500A6EFC0 /* UHCWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -474,6 +482,8 @@
 				1A8B13A5961A9CF307EAE195 /* AppDelegate.swift in Sources */,
 				1A8B13FBBE820C88F7AD2481 /* ObservableConfig.swift in Sources */,
 				1A8B15612F5FA0A8B3DB25CF /* UIColorExtension.swift in Sources */,
+				1A8B1CE5273716CC84621F94 /* FloatingHoliday.swift in Sources */,
+				1A8B112B631A5308FA97FA6B /* UnusualCalendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,7 +733,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UHC/Preview Content\"";
 				DEVELOPMENT_TEAM = 5A8327DV4D;
 				ENABLE_PREVIEWS = YES;
@@ -740,7 +750,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.andret.uhc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -756,7 +766,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UHC/Preview Content\"";
 				DEVELOPMENT_TEAM = 5A8327DV4D;
 				ENABLE_PREVIEWS = YES;
@@ -773,7 +783,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.andret.uhc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
