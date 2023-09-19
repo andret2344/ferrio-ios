@@ -61,7 +61,18 @@ struct UHCWidgetEntryView: View {
 					"- \(holiday.name)"
 				}
 				.joined(separator: "\n");
-		Text(text).font(.caption)
+		HStack {
+			if text == "" {
+				VStack {
+					Text("No unusual holidays today.")
+							.font(.body)
+							.multilineTextAlignment(.center)
+					Image("SadIcon")
+				}
+			} else {
+				Text(text).font(.caption)
+			}
+		}
 	}
 }
 
