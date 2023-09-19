@@ -38,6 +38,7 @@
 		718743A22AAFB8F500A6EFC0 /* UHCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 718743A52AAFB8F500A6EFC0 /* UHCWidget.intentdefinition */; };
 		718743A32AAFB8F500A6EFC0 /* UHCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 718743A52AAFB8F500A6EFC0 /* UHCWidget.intentdefinition */; };
 		718743AA2AB3B7FC00A6EFC0 /* FloatingHoliday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1C09241000093713F0DF /* FloatingHoliday.swift */; };
+		718743AB2ABA5A8000A6EFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71FA8B022AA54A03000E2831 /* Assets.xcassets */; };
 		71FA8AFF2AA54A00000E2831 /* UHCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA8AFE2AA54A00000E2831 /* UHCApp.swift */; };
 		71FA8B032AA54A03000E2831 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71FA8B022AA54A03000E2831 /* Assets.xcassets */; };
 		71FA8B062AA54A03000E2831 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71FA8B052AA54A03000E2831 /* Preview Assets.xcassets */; };
@@ -420,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7137D7012AA600DB00CE239B /* Assets.xcassets in Resources */,
+				718743AB2ABA5A8000A6EFC0 /* Assets.xcassets in Resources */,
 				7137D7132AA6830200CE239B /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,7 +579,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.andret.uhc.UHCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -604,7 +606,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.andret.uhc.UHCWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -754,7 +756,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.andret.uhc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -787,7 +789,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.andret.uhc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
