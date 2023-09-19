@@ -41,10 +41,6 @@ struct MonthAdapter: View {
 									.background(Color(getColor(currentMonth: holidayDay.month == month, holidayDay: holidayDay)))
 									.foregroundColor(Color(.label))
 									.cornerRadius(5)
-									.sheet(item: $selectedDay) { item in
-										SheetView(holidayDay: item)
-												.presentationDetents([.fraction(0.5), .fraction(0.9)])
-									}
 							if components.day == holidayDay.day && components.month == holidayDay.month {
 								view.overlay(RoundedRectangle(cornerRadius: 5).stroke(.red, lineWidth: 3))
 							} else {

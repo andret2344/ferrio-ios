@@ -24,33 +24,7 @@ struct MonthScreenView: View {
 						}
 					}
 							.overlay {
-								if searchText != "" {
-									List {
-										ForEach(holidayDays, id: \.id) { holidayDay in
-											let holidays = holidayDay.holidays.filter { holiday in
-												holiday.name.contains(searchText)
-											}
-											if holidays.count > 0 {
-												HStack {
-													Text("\(holidayDay.getDate()):")
-													Divider()
-													VStack(alignment: .leading) {
-														ForEach(holidays, id: \.id) { holiday in
-															Text("- \(holiday.name)")
-														}
-													}
-												}
-														.onTapGesture {
-															selectedDay = holidayDay
-														}
-											}
-										}
-									}
-											.sheet(item: $selectedDay) { item in
-												SheetView(holidayDay: item)
-														.presentationDetents([.fraction(0.5), .fraction(0.9)])
-											}
-								}
+								SearchView(searchText: searchText, holidayDays: holidayDays, selectedDay: $selectedDay)
 							}
 							.navigationBarTitleDisplayMode(.large)
 							.toolbar {
@@ -77,6 +51,11 @@ struct MonthScreenView: View {
 									placement: .navigationBarDrawer(displayMode: .always),
 									prompt: "Type name of a holiday")
 				}
+
+						.sheet(item: $selectedDay) { item in
+							SheetView(holidayDay: item)
+									.presentationDetents([.fraction(0.5), .fraction(0.9)])
+						}
 						.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 						.tabViewStyle(.page(indexDisplayMode: .never))
 			}
