@@ -20,11 +20,38 @@ struct MonthScreenView: View {
 				NavigationStack {
 					TabView(selection: $selection) {
 						ForEach(1..<13) { i in
-							ZStack {
-								MonthAdapter(selectedDay: $selectedDay, month: i, days: holidayDays)
-							}
+							MonthAdapter(selectedDay: $selectedDay, month: i, days: holidayDays)
 						}
 					}
+							.overlay {
+								if searchText != "" {
+									List {
+										ForEach(holidayDays, id: \.id) { holidayDay in
+											let holidays = holidayDay.holidays.filter { holiday in
+												holiday.name.contains(searchText)
+											}
+											if holidays.count > 0 {
+												HStack {
+													Text("\(holidayDay.getDate()):")
+													Divider()
+													VStack(alignment: .leading) {
+														ForEach(holidays, id: \.id) { holiday in
+															Text("- \(holiday.name)")
+														}
+													}
+												}
+														.onTapGesture {
+															selectedDay = holidayDay
+														}
+											}
+										}
+									}
+											.sheet(item: $selectedDay) { item in
+												SheetView(holidayDay: item)
+														.presentationDetents([.fraction(0.5), .fraction(0.9)])
+											}
+								}
+							}
 							.navigationBarTitleDisplayMode(.large)
 							.toolbar {
 								ToolbarItem(placement: .primaryAction) {
@@ -46,16 +73,9 @@ struct MonthScreenView: View {
 									}
 								}
 							}
-							.searchable(text: $searchText, prompt: "Type name of a holiday") {
-								ForEach(holidayDays, id: \.id) { holidayDay in
-									let holidays = holidayDay.holidays.filter { holiday in
-										holiday.name.contains(searchText)
-									}
-									if holidays.count > 0 {
-										Text("\(holidayDay.getDate()): \(holidays[0].name)")
-									}
-								}
-							}
+							.searchable(text: $searchText,
+									placement: .navigationBarDrawer(displayMode: .always),
+									prompt: "Type name of a holiday")
 				}
 						.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 						.tabViewStyle(.page(indexDisplayMode: .never))
