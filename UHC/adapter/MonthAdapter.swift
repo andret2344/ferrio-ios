@@ -14,45 +14,44 @@ struct MonthAdapter: View {
 	let month: Int
 	let days: [HolidayDay]
 	var body: some View {
-		GeometryReader { geometry in
-			VStack(alignment: .leading) {
-				let holidayDays: [HolidayDay] = getHolidayDays();
-				let rows: [[HolidayDay]] = holidayDays.chunked(into: 7)
-				ForEach(0..<rows.endIndex, id: \.self) { weekIndex in
-					HStack(spacing: 6) {
-						ForEach(0..<rows[weekIndex].endIndex, id: \.self) { dayIndex in
-							let day: Int = weekIndex * 7 + dayIndex
-							let holidayDay: HolidayDay = holidayDays[day]
-							let button: Button = Button {
-								selectedDay = holidayDay
-							} label: {
-								if holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays).count == 0 {
-									Image("SadIcon")
-											.resizable()
-											.aspectRatio(contentMode: .fit)
-								} else {
-									Text(String(holidayDay.day))
-											.font(.system(size: 25))
-								}
-							}
-							let components: DateComponents = Calendar.current.dateComponents([.day, .month], from: Date())
-							let view: some View = button
-									.frame(width: getWidth(geometry: geometry), height: getHeight(geometry: geometry))
-									.background(Color(getColor(currentMonth: holidayDay.month == month, holidayDay: holidayDay)))
-									.foregroundColor(Color(.label))
-									.cornerRadius(5)
-							if components.day == holidayDay.day && components.month == holidayDay.month {
-								view.overlay(RoundedRectangle(cornerRadius: 5).stroke(.red, lineWidth: 3))
+		VStack(alignment: .leading) {
+			let holidayDays: [HolidayDay] = getHolidayDays();
+			let rows: [[HolidayDay]] = holidayDays.chunked(into: 7)
+			ForEach(0..<rows.endIndex, id: \.self) { weekIndex in
+				HStack(spacing: 6) {
+					ForEach(0..<rows[weekIndex].endIndex, id: \.self) { dayIndex in
+						let day: Int = weekIndex * 7 + dayIndex
+						let holidayDay: HolidayDay = holidayDays[day]
+						let button: Button = Button {
+							selectedDay = holidayDay
+						} label: {
+							if holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays).count == 0 {
+								Image("SadIcon")
+										.resizable()
+										.aspectRatio(contentMode: .fit)
 							} else {
-								view
+								Text(String(holidayDay.day))
+										.font(.system(size: 25))
 							}
+						}
+						let components: DateComponents = Calendar.current.dateComponents([.day, .month], from: Date())
+						let view: some View = button
+								.frame(width: getWidth(), height: getHeight())
+								.background(Color(getColor(currentMonth: holidayDay.month == month, holidayDay: holidayDay)))
+								.foregroundColor(Color(.label))
+								.cornerRadius(5)
+						if components.day == holidayDay.day && components.month == holidayDay.month {
+							view.overlay(RoundedRectangle(cornerRadius: 5).stroke(.red, lineWidth: 3))
+						} else {
+							view
 						}
 					}
 				}
 			}
-					.padding()
-					.navigationTitle(Text(DateFormatter().standaloneMonthSymbols[month - 1].capitalized))
+			Spacer()
 		}
+				.padding()
+				.navigationTitle(Text(DateFormatter().standaloneMonthSymbols[month - 1].capitalized))
 	}
 
 	func getColor(currentMonth: Bool, holidayDay: HolidayDay) -> UIColor {
@@ -65,12 +64,12 @@ struct MonthAdapter: View {
 		return .systemFill
 	}
 
-	func getWidth(geometry: GeometryProxy) -> CGFloat {
-		(geometry.size.width - 8 * 8) / 7
+	func getWidth() -> CGFloat {
+		(UIScreen.main.bounds.width - 63) / 7
 	}
 
-	func getHeight(geometry: GeometryProxy) -> CGFloat {
-		(geometry.size.height - 24 * 7) / 6
+	func getHeight() -> CGFloat {
+		(UIScreen.main.bounds.height - 161) / 7
 	}
 
 	func getHolidayDays() -> [HolidayDay] {
