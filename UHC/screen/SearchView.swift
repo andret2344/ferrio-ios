@@ -18,7 +18,8 @@ struct SearchView: View {
 					}
 					if holidays.count > 0 {
 						HStack {
-							Text("\(holidayDay.getDate()):")
+							Text("\(holidayDay.getDate())")
+									.frame(width: 50, alignment: .leading)
 							Divider()
 							VStack(alignment: .leading) {
 								ForEach(holidays, id: \.id) { holiday in

@@ -50,6 +50,7 @@ struct MonthScreenView: View {
 							.searchable(text: $searchText,
 									placement: .navigationBarDrawer(displayMode: .always),
 									prompt: "Type name of a holiday")
+							.ignoresSafeArea(.keyboard)
 				}
 
 						.sheet(item: $selectedDay) { item in
@@ -59,6 +60,7 @@ struct MonthScreenView: View {
 						.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
 						.tabViewStyle(.page(indexDisplayMode: .never))
 			}
+					.ignoresSafeArea(.keyboard)
 		}
 	}
 
