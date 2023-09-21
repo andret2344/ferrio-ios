@@ -12,6 +12,5 @@ import SwiftUI
 struct UHCWidgetBundle: WidgetBundle {
 	var body: some Widget {
 		UHCWidget()
-		UHCWidgetLiveActivity()
 	}
 }
