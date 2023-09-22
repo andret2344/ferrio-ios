@@ -81,7 +81,7 @@ struct UHCWidgetEntryView: View {
 			} else {
 				ForEach(holidays) { holiday in
 					HStack(alignment: .top) {
-						Text("-")
+						Text("\u{2022}")
 								.padding(.leading, 6)
 						Text(holiday.name)
 					}
