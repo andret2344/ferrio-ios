@@ -11,6 +11,7 @@ struct SheetView: View {
 	var dismiss
 	let holidayDay: HolidayDay
 	var body: some View {
+		let date: Date? = Date.from(month: holidayDay.month, day: holidayDay.day)
 		NavigationView {
 			VStack {
 				let holidays: [Holiday] = holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays);
@@ -30,7 +31,7 @@ struct SheetView: View {
 					}
 				}
 			}
-					.navigationBarTitle(getDateString(month: holidayDay.month, day: holidayDay.day), displayMode: .large)
+					.navigationBarTitle(date!.formatted(.dateTime.day().month(.wide)), displayMode: .large)
 					.navigationBarItems(leading: Button {
 						dismiss()
 					} label: {
@@ -50,14 +51,5 @@ struct SheetView: View {
 						}
 					})
 		}
-	}
-
-	func getDateString(month: Int, day: Int) -> String {
-		let df = DateFormatter()
-		df.setLocalizedDateFormatFromTemplate("dd MMM")
-		var components = DateComponents()
-		components.day = day
-		components.month = month
-		return df.string(from: Calendar.current.date(from: components)!)
 	}
 }
