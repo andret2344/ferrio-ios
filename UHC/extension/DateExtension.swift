@@ -6,12 +6,24 @@ import Foundation
 
 extension Date {
 	static func from(year: Int, month: Int, day: Int) -> Date {
-		let calendar = Calendar(identifier: .gregorian)
 		var dateComponents = DateComponents()
 		dateComponents.year = year
 		dateComponents.month = month
 		dateComponents.day = day
-		return calendar.date(from: dateComponents)!
+        return Calendar.current.date(from: dateComponents)!
+	}
+
+	static func from(month: Int, day: Int) -> Date? {
+		var components = DateComponents()
+		components.day = day
+		components.month = month
+		return Calendar.current.date(from: components)
+	}
+
+	static func getDateString(month: Int, day: Int) -> String {
+		let df = DateFormatter()
+		df.setLocalizedDateFormatFromTemplate("dd MMM")
+		return df.string(from: from(month: month, day: day)!)
 	}
 
 	func startOfMonth() -> Date {

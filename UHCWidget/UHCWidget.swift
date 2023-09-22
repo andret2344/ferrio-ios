@@ -62,33 +62,44 @@ struct WidgetEntry: TimelineEntry {
 }
 
 struct UHCWidgetEntryView: View {
+	@StateObject
+	var observableConfig = ObservableConfig()
 	var entry: Provider.Entry
 	var body: some View {
-		let text: String = entry.holidayDay.holidays.map { holiday in
-					"- \(holiday.name)"
-				}
-				.joined(separator: "\n");
 		VStack {
-			Text("\(entry.holidayDay.getDate()):")
+			let date: Date? = Date.from(month: entry.holidayDay.month, day: entry.holidayDay.day)
+			Text(date!.formatted(.dateTime.day().month(.wide)))
 					.bold()
-					.padding(10)
+					.padding(8)
 					.frame(maxWidth: .infinity)
-			if text == "" {
+			let holidays: [Holiday] = entry.holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays)
+			if holidays.isEmpty {
 				Text("No unusual holidays today.")
 						.font(.body)
 						.multilineTextAlignment(.center)
 				Image("SadIcon")
 			} else {
-				Text(text)
-						.font(.caption)
-						.padding(5)
-						.frame(maxWidth: .infinity, alignment: .topLeading)
+				ForEach(holidays) { holiday in
+					HStack(alignment: .top) {
+						Text("-")
+								.padding(.leading, 6)
+						Text(holiday.name)
+					}
+							.font(.caption)
+							.padding(.horizontal, 6)
+							.frame(maxWidth: .infinity, alignment: .topLeading)
+				}
 			}
 		}
 				.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-				.background(entry.colorized ? Color(UIColor.random(seed: Int(entry.holidayDay.id)!)) : nil)
-				.overlay(RoundedRectangle(cornerRadius: 23)
-						.stroke(.black, lineWidth: 4))
+				.background(getColor(colorized: entry.colorized).gradient)
+	}
+
+	func getColor(colorized: Bool) -> Color {
+		if !entry.colorized {
+			return Color(UIColor.systemBackground)
+		}
+		return Color(UIColor.random(seed: Int(entry.holidayDay.id)!))
 	}
 }
 
