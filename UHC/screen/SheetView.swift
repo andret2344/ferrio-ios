@@ -16,13 +16,11 @@ struct SheetView: View {
 			VStack {
 				let holidays: [Holiday] = holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays);
 				if holidays.count == 0 {
-					VStack {
-						Image("SadIcon")
-								.resizable()
-								.aspectRatio(contentMode: .fit)
-								.frame(width: 128, height: 128)
-						Text("No unusual holidays.")
-					}
+					Image("SadIcon")
+							.resizable()
+							.aspectRatio(contentMode: .fit)
+							.frame(width: 128, height: 128)
+					Text("No unusual holidays.")
 				} else {
 					List {
 						ForEach(holidays, id: \.id) { holiday in
@@ -31,7 +29,8 @@ struct SheetView: View {
 					}
 				}
 			}
-					.navigationBarTitle(date!.formatted(.dateTime.day().month(.wide)), displayMode: .large)
+					.navigationBarTitle(date!.formatted(.dateTime.day().month(.wide)))
+					.navigationBarTitleDisplayMode(.large)
 					.navigationBarItems(leading: Button {
 						dismiss()
 					} label: {
