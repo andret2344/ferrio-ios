@@ -24,13 +24,37 @@ struct SheetView: View {
 				} else {
 					List {
 						ForEach(holidays, id: \.id) { holiday in
-							Text(holiday.name)
+							if holiday.description != "" {
+								NavigationLink {
+									VStack(alignment: .leading) {
+										Text(holiday.description)
+										Spacer()
+									}
+											.navigationTitle(holiday.name)
+											.navigationBarTitleDisplayMode(.large)
+											.navigationViewStyle(.stack)
+											.navigationBarItems(trailing: Button {
+											} label: {
+												let name: String = "[\(holidayDay.getDate())] \(holiday.name)"
+												let text: String = "\(name) - \(holiday.description)"
+												ShareLink(item: text, preview: SharePreview(name))
+														.labelStyle(.iconOnly)
+											})
+											.padding()
+											.frame(maxWidth: .infinity, alignment: .leading)
+								} label: {
+									Text(holiday.name)
+								}
+							} else {
+								Text(holiday.name)
+							}
 						}
 					}
 				}
 			}
-					.navigationBarTitle(date!.formatted(.dateTime.day().month(.wide)))
+					.navigationTitle(date!.formatted(.dateTime.day().month(.wide)))
 					.navigationBarTitleDisplayMode(.large)
+					.navigationViewStyle(.stack)
 					.navigationBarItems(leading: Button {
 						dismiss()
 					} label: {
