@@ -25,7 +25,6 @@ struct MonthAdapter: View {
 						let button = renderButton(holidayDay: holidayDay)
 						let components: DateComponents = Calendar.current.dateComponents([.day, .month], from: Date())
 						let color = getColor(currentMonth: holidayDay.month == month, holidayDay: holidayDay)
-//						let _ = fightWithColors(color: color, holidayDay: holidayDay)
 						let view: some View = button
 								.frame(width: getWidth(), height: getHeight())
 								.background(Color(color))
@@ -59,14 +58,6 @@ struct MonthAdapter: View {
 			}
 		}
 		return button
-	}
-
-	func fightWithColors(color: UIColor, holidayDay: HolidayDay) -> Void {
-		let components: [CGFloat] = color.cgColor.components?.dropLast(1) ?? []
-		let mid: CGFloat = components.reduce(0.0) {
-			$0 + $1 * 1.0
-		} / Double(components.count)
-		print("\(holidayDay.getDate()) -> \(mid)")
 	}
 
 	func getColor(currentMonth: Bool, holidayDay: HolidayDay) -> UIColor {
