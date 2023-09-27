@@ -11,8 +11,6 @@
 		1A8B112B631A5308FA97FA6B /* UnusualCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B18120DC8F1B2DCC45BDA /* UnusualCalendar.swift */; };
 		1A8B12DCBD209A62D97052F5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B10F20ACAAC22CFF240FA /* DateExtension.swift */; };
 		1A8B1300D25F3DF37014DB4E /* MonthScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1CAFE49FB33A63415436 /* MonthScreenView.swift */; };
-		1A8B13111C231D1614505D5F /* UHCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1BF61DA7EF11AA5A2E1A /* UHCWidget.intentdefinition */; };
-		1A8B131B1DC2D3A38F9FD729 /* UHCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1BF61DA7EF11AA5A2E1A /* UHCWidget.intentdefinition */; };
 		1A8B13A5961A9CF307EAE195 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B167F98CAD8D4CF11EE60 /* AppDelegate.swift */; };
 		1A8B13F836D3BECA852C2A7B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1099EB8290D954AD1CA0 /* SearchView.swift */; };
 		1A8B13FBBE820C88F7AD2481 /* ObservableConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1FA259D1D09B4119D61E /* ObservableConfig.swift */; };
@@ -24,6 +22,7 @@
 		1A8B1DF78BB062853E4ADA84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B12214F0DD9E8499ECE57 /* ContentView.swift */; };
 		1A8B1E96C93116A2D02E6335 /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B131C071B4025F6354DC3 /* URLSessionExtension.swift */; };
 		1A8B1F7FF4C4565DF161C065 /* HolidayDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1218DD3EF5D07BF92C36 /* HolidayDay.swift */; };
+		7123B09A2AC4B9CB00295E71 /* UHCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7123B09C2AC4B9CB00295E71 /* UHCWidget.intentdefinition */; };
 		7137D6EB2AA5D6FD00CE239B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7137D6ED2AA5D6FD00CE239B /* Localizable.strings */; };
 		7137D6F52AA600D500CE239B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7137D6F42AA600D500CE239B /* WidgetKit.framework */; };
 		7137D6F72AA600D500CE239B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7137D6F62AA600D500CE239B /* SwiftUI.framework */; };
@@ -104,11 +103,11 @@
 		1A8B18120DC8F1B2DCC45BDA /* UnusualCalendar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnusualCalendar.swift; sourceTree = "<group>"; };
 		1A8B188A9D4440C41E27E9E9 /* ArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayExtension.swift; sourceTree = "<group>"; };
 		1A8B1AC23FE5563DD8D09062 /* pl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
-		1A8B1BF61DA7EF11AA5A2E1A /* UHCWidget.intentdefinition */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.intentdefinition; path = UHCWidget.intentdefinition; sourceTree = "<group>"; };
 		1A8B1C09241000093713F0DF /* FloatingHoliday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingHoliday.swift; sourceTree = "<group>"; };
 		1A8B1CAFE49FB33A63415436 /* MonthScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthScreenView.swift; sourceTree = "<group>"; };
 		1A8B1D27889C5E839E12D607 /* MonthAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthAdapter.swift; sourceTree = "<group>"; };
 		1A8B1FA259D1D09B4119D61E /* ObservableConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableConfig.swift; sourceTree = "<group>"; };
+		7123B09B2AC4B9CB00295E71 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = en; path = en.lproj/UHCWidget.intentdefinition; sourceTree = "<group>"; };
 		7137D6EC2AA5D6FD00CE239B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7137D6F22AA600D500CE239B /* UHCWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = UHCWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7137D6F42AA600D500CE239B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -225,7 +224,7 @@
 				7137D6F92AA600D500CE239B /* UHCWidgetBundle.swift */,
 				7137D6FD2AA600D500CE239B /* UHCWidget.swift */,
 				718743A52AAFB8F500A6EFC0 /* UHCWidget.intentdefinition */,
-				1A8B1BF61DA7EF11AA5A2E1A /* UHCWidget.intentdefinition */,
+				7123B09C2AC4B9CB00295E71 /* UHCWidget.intentdefinition */,
 				7137D7002AA600DB00CE239B /* Assets.xcassets */,
 				7137D7022AA600DB00CE239B /* Info.plist */,
 				7137D7152AA6830200CE239B /* Localizable.strings */,
@@ -480,7 +479,7 @@
 				718743AA2AB3B7FC00A6EFC0 /* FloatingHoliday.swift in Sources */,
 				71D16D152ABDB59600BE9B3A /* ObservableConfig.swift in Sources */,
 				718743A32AAFB8F500A6EFC0 /* UHCWidget.intentdefinition in Sources */,
-				1A8B13111C231D1614505D5F /* UHCWidget.intentdefinition in Sources */,
+				7123B09A2AC4B9CB00295E71 /* UHCWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,7 +504,6 @@
 				1A8B1CE5273716CC84621F94 /* FloatingHoliday.swift in Sources */,
 				1A8B112B631A5308FA97FA6B /* UnusualCalendar.swift in Sources */,
 				1A8B13F836D3BECA852C2A7B /* SearchView.swift in Sources */,
-				1A8B131B1DC2D3A38F9FD729 /* UHCWidget.intentdefinition in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,6 +545,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		7123B09C2AC4B9CB00295E71 /* UHCWidget.intentdefinition */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7123B09B2AC4B9CB00295E71 /* en */,
+			);
+			name = UHCWidget.intentdefinition;
+			sourceTree = "<group>";
+		};
 		7137D6ED2AA5D6FD00CE239B /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
