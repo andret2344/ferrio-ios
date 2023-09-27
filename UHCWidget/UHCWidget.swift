@@ -74,7 +74,7 @@ struct UHCWidgetEntryView: View {
 					.frame(maxWidth: .infinity)
 			let holidays: [Holiday] = entry.holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays)
 			if holidays.isEmpty {
-				Text("No unusual holidays today.")
+				Text("No unusual holidays.")
 						.font(.body)
 						.multilineTextAlignment(.center)
 				Image("SadIcon")
