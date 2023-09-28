@@ -21,12 +21,14 @@ struct ContentView: View {
 				.task {
 					do {
 						var unusualCalendar: UnusualCalendar = try await URLSession.shared.decode(UnusualCalendar.self, from: getUrl())
-						let context = JSContext()!
 						for holiday in unusualCalendar.floating {
+							let context = JSContext()!
 							let result: JSValue? = context.evaluateScript(holiday.script)
 							let date: [String.SubSequence]? = result?.toString()?.split(separator: ".")
 							let data: [String.SubSequence] = date!
-							unusualCalendar.add(day: Int(data[0])!, month: Int(data[1])!, holiday: Holiday(floatingHoliday: holiday))
+							if result != nil {
+								unusualCalendar.add(day: Int(data[0])!, month: Int(data[1])!, holiday: Holiday(floatingHoliday: holiday))
+							}
 						}
 						days = unusualCalendar.fixed
 						fetching = false
