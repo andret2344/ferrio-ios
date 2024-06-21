@@ -3,13 +3,21 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseCore
+import GoogleSignIn
 
 class AppDelegate: NSObject, UIApplicationDelegate {
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-		if let preferences = Bundle.main.path(forResource: "defaults", ofType: "plist"),
-		   let dict = NSDictionary(contentsOfFile: preferences) as? [String: Any] {
-			UserDefaults.standard.register(defaults: dict)
-		}
+		GIDSignIn.sharedInstance.configuration = GIDConfiguration(clientID: "MY_CLIENT_ID")
+		GIDSignIn.sharedInstance.restorePreviousSignIn()
+		FirebaseApp.configure()
 		return true
+	}
+	
+	func application(_ app: UIApplication,
+					 open url: URL,
+					 options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+		return GIDSignIn.sharedInstance.handle(url)
 	}
 }
