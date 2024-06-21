@@ -22,19 +22,15 @@ struct MonthAdapter: View {
 					ForEach(0..<rows[weekIndex].endIndex, id: \.self) { dayIndex in
 						let day: Int = weekIndex * 7 + dayIndex
 						let holidayDay: HolidayDay = holidayDays[day]
-						let button = renderButton(holidayDay: holidayDay)
 						let components: DateComponents = Calendar.current.dateComponents([.day, .month], from: Date())
-						let color = getColor(currentMonth: holidayDay.month == month, holidayDay: holidayDay)
-						let view: some View = button
-							.frame(width: getWidth(), height: getHeight())
-							.background(Color(color))
-							.foregroundColor(Color(.label))
-							.cornerRadius(5)
-						if components.day == holidayDay.day && components.month == holidayDay.month {
-							view.overlay(RoundedRectangle(cornerRadius: 5).stroke(.red, lineWidth: 3))
-						} else {
-							view
-						}
+
+						let view: some View = renderButton(holidayDay: holidayDay)
+							.overlay(
+								components.day == holidayDay.day && components.month == holidayDay.month ?
+								RoundedRectangle(cornerRadius: 5).stroke(Color.red, lineWidth: 3) : nil
+							)
+
+						view
 					}
 				}
 			}
@@ -44,20 +40,25 @@ struct MonthAdapter: View {
 		.navigationTitle(Text(DateFormatter().standaloneMonthSymbols[month - 1].capitalized))
 	}
 
-	private func renderButton(holidayDay: HolidayDay) -> Button<some View> {
-		let button: Button = Button {
+	private func renderButton(holidayDay: HolidayDay) -> some View {
+		Button(action: {
 			selectedDay = holidayDay
-		} label: {
-			if holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays).count == 0 {
-				Image("SadIcon")
-					.resizable()
-					.aspectRatio(contentMode: .fit)
-			} else {
-				Text(String(holidayDay.day))
-					.font(.system(size: 25))
+		}) {
+			ZStack {
+				if holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays).count == 0 {
+					Image("SadIcon")
+						.resizable()
+						.aspectRatio(contentMode: .fit)
+				} else {
+					Text(String(holidayDay.day))
+						.font(.system(size: 25))
+				}
 			}
+			.frame(width: getWidth(), height: getHeight())
 		}
-		return button
+		.background(Color(getColor(currentMonth: holidayDay.month == month, holidayDay: holidayDay)))
+		.foregroundColor(Color(.label))
+		.cornerRadius(5)
 	}
 
 	func getColor(currentMonth: Bool, holidayDay: HolidayDay) -> UIColor {
