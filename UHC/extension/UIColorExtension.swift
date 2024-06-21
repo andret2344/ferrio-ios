@@ -8,10 +8,10 @@ extension UIColor {
 	static func random(seed: Int) -> UIColor {
 		var generator = RandomNumberGeneratorWithSeed(seed: seed)
 		return UIColor(
-				red: .random(in: 0.0..<1.0, using: &generator),
-				green: .random(in: 0.0..<1.0, using: &generator),
-				blue: .random(in: 0.0..<1.0, using: &generator),
-				alpha: 1.0
+			red: .random(in: 0.0..<1.0, using: &generator),
+			green: .random(in: 0.0..<1.0, using: &generator),
+			blue: .random(in: 0.0..<1.0, using: &generator),
+			alpha: 1.0
 		)
 	}
 }

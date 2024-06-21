@@ -23,44 +23,43 @@ struct MonthScreenView: View {
 							MonthAdapter(selectedDay: $selectedDay, month: i, days: holidayDays)
 						}
 					}
-							.overlay {
-								SearchView(searchText: searchText, holidayDays: holidayDays, selectedDay: $selectedDay)
-							}
-							.navigationBarTitleDisplayMode(.large)
-							.toolbar {
-								ToolbarItem(placement: .primaryAction) {
-									Button {
-										withAnimation {
-											selection = Calendar.current.component(.month, from: Date()) - 1
-										}
-									} label: {
-										Image(systemName: "calendar.badge.clock")
-												.accessibilityLabel("Today")
-									}
+					.overlay {
+						SearchView(searchText: searchText, holidayDays: holidayDays, selectedDay: $selectedDay)
+					}
+					.navigationBarTitleDisplayMode(.large)
+					.toolbar {
+						ToolbarItem(placement: .primaryAction) {
+							Button {
+								withAnimation {
+									selection = Calendar.current.component(.month, from: Date()) - 1
 								}
-								ToolbarItem(placement: .primaryAction) {
-									Button {
-										selectedDay = getRandomHolidayDay()
-									} label: {
-										Image(systemName: "shuffle")
-												.accessibilityLabel("Random")
-									}
-								}
+							} label: {
+								Image(systemName: "calendar.badge.clock")
+									.accessibilityLabel("Today")
 							}
-							.searchable(text: $searchText,
-									placement: .navigationBarDrawer(displayMode: .always),
-									prompt: "Type name of a holiday")
-							.ignoresSafeArea(.keyboard)
-				}
-
-						.sheet(item: $selectedDay) { item in
-							SheetView(holidayDay: item)
-									.presentationDetents([.fraction(0.5), .fraction(0.9)])
 						}
-						.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-						.tabViewStyle(.page(indexDisplayMode: .never))
-			}
+						ToolbarItem(placement: .primaryAction) {
+							Button {
+								selectedDay = getRandomHolidayDay()
+							} label: {
+								Image(systemName: "shuffle")
+									.accessibilityLabel("Random")
+							}
+						}
+					}
+					.searchable(text: $searchText,
+								placement: .navigationBarDrawer(displayMode: .always),
+								prompt: "Type name of a holiday")
 					.ignoresSafeArea(.keyboard)
+				}
+				.sheet(item: $selectedDay) { item in
+					SheetView(holidayDay: item)
+						.presentationDetents([.fraction(0.5), .fraction(0.9)])
+				}
+				.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+				.tabViewStyle(.page(indexDisplayMode: .never))
+			}
+			.ignoresSafeArea(.keyboard)
 		}
 	}
 

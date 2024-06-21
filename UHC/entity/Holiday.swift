@@ -42,9 +42,9 @@ struct Holiday: Identifiable, Decodable, Equatable {
 
 	static func ==(lhs: Holiday, rhs: Holiday) -> Bool {
 		lhs.id == rhs.id &&
-				lhs.usual == rhs.usual &&
-				lhs.name == rhs.name &&
-				lhs.description == rhs.description &&
-				lhs.url == rhs.url
+		lhs.usual == rhs.usual &&
+		lhs.name == rhs.name &&
+		lhs.description == rhs.description &&
+		lhs.url == rhs.url
 	}
 }
