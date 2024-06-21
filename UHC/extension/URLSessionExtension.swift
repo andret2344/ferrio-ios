@@ -6,11 +6,11 @@ import Foundation
 
 public extension URLSession {
 	func decode<T: Decodable>(
-			_ type: T.Type = T.self,
-			from url: URL,
-			keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
-			dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .deferredToData,
-			dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate
+		_ type: T.Type = T.self,
+		from url: URL,
+		keyDecodingStrategy: JSONDecoder.KeyDecodingStrategy = .useDefaultKeys,
+		dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .deferredToData,
+		dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate
 	) async throws -> T {
 		let (data, _) = try await data(from: url)
 

@@ -26,10 +26,10 @@ struct MonthAdapter: View {
 						let components: DateComponents = Calendar.current.dateComponents([.day, .month], from: Date())
 						let color = getColor(currentMonth: holidayDay.month == month, holidayDay: holidayDay)
 						let view: some View = button
-								.frame(width: getWidth(), height: getHeight())
-								.background(Color(color))
-								.foregroundColor(Color(.label))
-								.cornerRadius(5)
+							.frame(width: getWidth(), height: getHeight())
+							.background(Color(color))
+							.foregroundColor(Color(.label))
+							.cornerRadius(5)
 						if components.day == holidayDay.day && components.month == holidayDay.month {
 							view.overlay(RoundedRectangle(cornerRadius: 5).stroke(.red, lineWidth: 3))
 						} else {
@@ -40,8 +40,8 @@ struct MonthAdapter: View {
 			}
 			Spacer()
 		}
-				.padding()
-				.navigationTitle(Text(DateFormatter().standaloneMonthSymbols[month - 1].capitalized))
+		.padding()
+		.navigationTitle(Text(DateFormatter().standaloneMonthSymbols[month - 1].capitalized))
 	}
 
 	private func renderButton(holidayDay: HolidayDay) -> Button<some View> {
@@ -50,11 +50,11 @@ struct MonthAdapter: View {
 		} label: {
 			if holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays).count == 0 {
 				Image("SadIcon")
-						.resizable()
-						.aspectRatio(contentMode: .fit)
+					.resizable()
+					.aspectRatio(contentMode: .fit)
 			} else {
 				Text(String(holidayDay.day))
-						.font(.system(size: 25))
+					.font(.system(size: 25))
 			}
 		}
 		return button

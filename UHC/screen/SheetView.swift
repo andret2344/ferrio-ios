@@ -2,9 +2,15 @@
 // Created by Andrzej Chmiel on 02/09/2023.
 //
 
+import StoreKit
 import SwiftUI
+import UIKit
 
 struct SheetView: View {
+	@State
+	private var isShareSheetPresented = false
+	@Environment(\.requestReview)
+	var requestReview
 	@StateObject
 	var observableConfig = ObservableConfig()
 	@Environment(\.dismiss)
@@ -17,9 +23,9 @@ struct SheetView: View {
 				let holidays: [Holiday] = holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays);
 				if holidays.count == 0 {
 					Image("SadIcon")
-							.resizable()
-							.aspectRatio(contentMode: .fit)
-							.frame(width: 128, height: 128)
+						.resizable()
+						.aspectRatio(contentMode: .fit)
+						.frame(width: 128, height: 128)
 					Text("No unusual holidays.")
 				} else {
 					List {
@@ -29,26 +35,63 @@ struct SheetView: View {
 					}
 				}
 			}
-					.navigationBarTitle(date!.formatted(.dateTime.day().month(.wide)))
-					.navigationBarTitleDisplayMode(.large)
-					.navigationBarItems(leading: Button {
-						dismiss()
-					} label: {
-						Image(systemName: "chevron.backward")
-						Text("Back")
-					}, trailing: Button {
-					} label: {
-						let holidays: [Holiday] = holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays)
-						if (holidays.count != 0) {
-							let holidays = holidays.map { holiday in
-										"- \(holiday.name)"
-									}
-									.joined(separator: "\n")
-							let text = "\(holidayDay.day).\(holidayDay.month):\n\n\(holidays)\n\n\(NSLocalizedString("Check it yourself!", comment: ""))"
-							ShareLink(item: text, preview: SharePreview(text))
-									.labelStyle(.iconOnly)
-						}
-					})
+			.navigationBarTitle(date!.formatted(.dateTime.day().month(.wide)))
+			.navigationBarTitleDisplayMode(.large)
+			.navigationBarItems(leading: Button {
+				dismiss()
+			} label: {
+				Image(systemName: "chevron.backward")
+				Text("Back")
+			}, trailing: Button {
+				isShareSheetPresented = true
+			} label: {
+				Image(systemName: "square.and.arrow.up")
+			})
 		}
+		.sheet(isPresented: $isShareSheetPresented) {
+			let holidays = holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays)
+			if holidays.count != 0 {
+				let holidaysList = holidays.map { holiday in
+					"- \(holiday.name)"
+				}
+					.joined(separator: "\n")
+				let text = "\(holidayDay.day).\(holidayDay.month):\n\(holidaysList)\n\n\(NSLocalizedString("Check it yourself!", comment: ""))"
+				ShareSheet(activityItems: [text], completion: {
+					requestReview()
+				})
+			}
+		}
+	}
+}
+
+struct ShareSheet: UIViewControllerRepresentable {
+	var activityItems: [Any]
+	var applicationActivities: [UIActivity]? = nil
+	var completion: (() -> Void)?
+
+	func makeUIViewController(context: Context) -> UIActivityViewController {
+		let controller = UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
+		controller.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
+			if completed {
+				completion?()
+			}
+		}
+		return controller
+	}
+
+	func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
+		// No update required
+	}
+
+	class Coordinator: NSObject {
+		var parent: ShareSheet
+
+		init(parent: ShareSheet) {
+			self.parent = parent
+		}
+	}
+
+	func makeCoordinator() -> Coordinator {
+		Coordinator(parent: self)
 	}
 }
