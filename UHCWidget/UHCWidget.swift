@@ -92,7 +92,7 @@ struct UHCWidgetEntryView: View {
 			}
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-		.background(getColor(colorized: entry.colorized).gradient)
+		.containerBackground(getColor(colorized: entry.colorized).gradient, for: .widget)
 	}
 
 	func getColor(colorized: Bool) -> Color {
