@@ -40,6 +40,7 @@
 		718743A32AAFB8F500A6EFC0 /* UHCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 718743A52AAFB8F500A6EFC0 /* UHCWidget.intentdefinition */; };
 		718743AA2AB3B7FC00A6EFC0 /* FloatingHoliday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1C09241000093713F0DF /* FloatingHoliday.swift */; };
 		718743AB2ABA5A8000A6EFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71FA8B022AA54A03000E2831 /* Assets.xcassets */; };
+		71B81C912C25701E0039D554 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B81C902C25701E0039D554 /* MainScreenView.swift */; };
 		71D16D0F2ABCE54B00BE9B3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71D16D122ABCE54B00BE9B3A /* InfoPlist.strings */; };
 		71D16D102ABCE54B00BE9B3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71D16D122ABCE54B00BE9B3A /* InfoPlist.strings */; };
 		71D16D142ABDA9D700BE9B3A /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B10F20ACAAC22CFF240FA /* DateExtension.swift */; };
@@ -121,6 +122,7 @@
 		7137D71A2AA7147E00CE239B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		718743A72AAFB8FA00A6EFC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UHCWidget.strings; sourceTree = "<group>"; };
 		718743A92AAFB8FB00A6EFC0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/UHCWidget.strings; sourceTree = "<group>"; };
+		71B81C902C25701E0039D554 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		71D16D112ABCE54B00BE9B3A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		71D16D132ABCE54C00BE9B3A /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		71DCA3692ABC9A69004C68A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -183,7 +185,7 @@
 		1A8B19EB18EAA233F4C46C74 /* screen */ = {
 			isa = PBXGroup;
 			children = (
-				1A8B11FC25FF622BF8103CA4 /* SheetView.swift */,
+				71B81C902C25701E0039D554 /* MainScreenView.swift */,
 				1A8B1CAFE49FB33A63415436 /* MonthScreenView.swift */,
 				1A8B1099EB8290D954AD1CA0 /* SearchView.swift */,
 			);
@@ -232,6 +234,14 @@
 			path = UHCWidget;
 			sourceTree = "<group>";
 		};
+		71B81C8F2C256F930039D554 /* sheet */ = {
+			isa = PBXGroup;
+			children = (
+				1A8B11FC25FF622BF8103CA4 /* SheetView.swift */,
+			);
+			path = sheet;
+			sourceTree = "<group>";
+		};
 		71FA8AF22AA54A00000E2831 = {
 			isa = PBXGroup;
 			children = (
@@ -265,6 +275,7 @@
 				71FA8AFE2AA54A00000E2831 /* UHCApp.swift */,
 				71FA8B022AA54A03000E2831 /* Assets.xcassets */,
 				7137D6ED2AA5D6FD00CE239B /* Localizable.strings */,
+				71B81C8F2C256F930039D554 /* sheet */,
 				71FA8B042AA54A03000E2831 /* Preview Content */,
 				1A8B19EB18EAA233F4C46C74 /* screen */,
 				1A8B1D95E86FB026BB08C7F4 /* entity */,
@@ -504,6 +515,7 @@
 				1A8B13A5961A9CF307EAE195 /* AppDelegate.swift in Sources */,
 				1A8B13FBBE820C88F7AD2481 /* ObservableConfig.swift in Sources */,
 				1A8B15612F5FA0A8B3DB25CF /* UIColorExtension.swift in Sources */,
+				71B81C912C25701E0039D554 /* MainScreenView.swift in Sources */,
 				1A8B1CE5273716CC84621F94 /* FloatingHoliday.swift in Sources */,
 				1A8B112B631A5308FA97FA6B /* UnusualCalendar.swift in Sources */,
 				1A8B13F836D3BECA852C2A7B /* SearchView.swift in Sources */,

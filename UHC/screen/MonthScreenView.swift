@@ -10,8 +10,7 @@ struct MonthScreenView: View {
 	private var selection = Calendar.current.component(.month, from: Date()) - 1
 	@State
 	private var selectedDay: HolidayDay? = nil
-	@Binding
-	var loading: Bool
+	let loading: Bool
 	@State
 	private var searchText = ""
 	var body: some View {
