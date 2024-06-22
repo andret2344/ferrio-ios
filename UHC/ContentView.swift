@@ -11,13 +11,7 @@ struct ContentView: View {
 	@State
 	private var days = [HolidayDay]()
 	var body: some View {
-		MonthScreenView(holidayDays: days, loading: $fetching)
-			.overlay {
-				if fetching {
-					ProgressView().progressViewStyle(.circular)
-				}
-			}
-			.animation(.easeIn, value: days)
+		MainScreenView(holidayDays: days, loading: $fetching)
 			.task {
 				do {
 					var unusualCalendar: UnusualCalendar = try await URLSession.shared.decode(UnusualCalendar.self, from: getUrl())
