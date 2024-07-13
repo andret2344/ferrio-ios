@@ -49,9 +49,3 @@ struct ContentView: View {
 		return URL(string: "https://api.unusualcalendar.net/v2/holiday/\(lang)")!
 	}
 }
-
-struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		ContentView()
-	}
-}

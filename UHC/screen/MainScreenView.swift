@@ -1,7 +1,4 @@
 //
-//  ContentView.swift
-//  UHC
-//
 //  Created by Andrzej Chmiel on 21/06/2024.
 //
 
@@ -9,8 +6,7 @@ import SwiftUI
 
 struct MainScreenView: View {
 	let holidayDays: [HolidayDay]
-	@Binding
-	var loading: Bool
+	@Binding var loading: Bool
 	var body: some View {
 		if loading {
 			ProgressView().progressViewStyle(.circular)
@@ -21,9 +17,10 @@ struct MainScreenView: View {
 					.tabItem {
 						Label("Calendar", systemImage: "calendar")
 					}
-				Text("Heere will be the feedback view")
+				ReportScreenView()
+					.navigationBarTitleDisplayMode(.large)
 					.tabItem {
-						Label("Feedback", systemImage: "pencil")
+						Label("Reports", systemImage: "pencil")
 					}
 			}
 		}
