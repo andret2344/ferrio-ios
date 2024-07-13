@@ -24,13 +24,11 @@ struct MonthAdapter: View {
 						let holidayDay: HolidayDay = holidayDays[day]
 						let components: DateComponents = Calendar.current.dateComponents([.day, .month], from: Date())
 
-						let view: some View = renderButton(holidayDay: holidayDay)
+						renderButton(holidayDay: holidayDay)
 							.overlay(
 								components.day == holidayDay.day && components.month == holidayDay.month ?
 								RoundedRectangle(cornerRadius: 5).stroke(Color.red, lineWidth: 3) : nil
 							)
-
-						view
 					}
 				}
 			}
@@ -76,22 +74,15 @@ struct MonthAdapter: View {
 	}
 
 	func getHeight() -> CGFloat {
-		(UIScreen.main.bounds.height - 161) / 7
+		(UIScreen.main.bounds.height - 261) / 7
 	}
 
 	func getHolidayDays() -> [HolidayDay] {
 		let year: Int = Calendar.current.component(.year, from: Date())
 		let date: Date = Date.from(year: year, month: month, day: 1)
-		let before = getBefore(date: date)
-		let after = getAfter(date: date)
+		let before: Date = getBefore(date: date)
+		let after: Date = Calendar.current.date(byAdding: .day, value: 41, to: before)!
 		return getDays(from: before, to: after)
-	}
-
-	func getAfter(date: Date) -> Date {
-		let endOfMonth: Date = Calendar.current.date(byAdding: .day, value: -1, to: date.endOfMonth())!
-		let weekday: Int = Calendar.current.component(.weekday, from: endOfMonth)
-		let remainingDays: Int = (13 + calendar.firstWeekday - weekday) % 7
-		return Calendar.current.date(byAdding: .day, value: remainingDays, to: endOfMonth)!
 	}
 
 	func getBefore(date: Date) -> Date {

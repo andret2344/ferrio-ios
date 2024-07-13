@@ -48,7 +48,7 @@ struct MonthScreenView: View {
 					}
 					.searchable(text: $searchText,
 								placement: .navigationBarDrawer(displayMode: .always),
-								prompt: "Type name of a holiday")
+								prompt: "Search across \(getHolidaysCount()) holidays...")
 					.ignoresSafeArea(.keyboard)
 				}
 				.sheet(item: $selectedDay) { item in
@@ -64,5 +64,11 @@ struct MonthScreenView: View {
 
 	func getRandomHolidayDay() -> HolidayDay {
 		holidayDays[Int.random(in: 0..<holidayDays.count)];
+	}
+
+	func getHolidaysCount() -> Int {
+		holidayDays.flatMap { day in
+			day.holidays
+		}.count
 	}
 }
