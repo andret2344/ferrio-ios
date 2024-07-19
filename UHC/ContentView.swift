@@ -6,10 +6,9 @@ import SwiftUI
 import JavaScriptCore
 
 struct ContentView: View {
-	@State
-	var fetching: Bool = true
-	@State
-	private var days = [HolidayDay]()
+	@State var fetching: Bool = true
+	@State private var days = [HolidayDay]()
+
 	var body: some View {
 		MainScreenView(holidayDays: days, loading: $fetching)
 			.task {

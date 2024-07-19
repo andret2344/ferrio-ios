@@ -7,6 +7,7 @@ import SwiftUI
 struct MainScreenView: View {
 	let holidayDays: [HolidayDay]
 	@Binding var loading: Bool
+
 	var body: some View {
 		if loading {
 			ProgressView().progressViewStyle(.circular)

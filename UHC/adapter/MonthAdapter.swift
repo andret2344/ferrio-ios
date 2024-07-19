@@ -5,14 +5,12 @@
 import SwiftUI
 
 struct MonthAdapter: View {
-	@Environment(\.calendar)
-	var calendar
-	@StateObject
-	var observableConfig = ObservableConfig()
-	@Binding
-	var selectedDay: HolidayDay?
+	@Environment(\.calendar) var calendar
+	@StateObject var observableConfig = ObservableConfig()
+	@Binding var selectedDay: HolidayDay?
 	let month: Int
 	let days: [HolidayDay]
+
 	var body: some View {
 		VStack(alignment: .leading) {
 			let holidayDays: [HolidayDay] = getHolidayDays();

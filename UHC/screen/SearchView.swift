@@ -5,10 +5,10 @@
 import SwiftUI
 
 struct SearchView: View {
+	@Binding var selectedDay: HolidayDay?
 	let searchText: String
 	let holidayDays: [HolidayDay]
-	@Binding
-	var selectedDay: HolidayDay?
+
 	var body: some View {
 		if searchText != "" {
 			List {

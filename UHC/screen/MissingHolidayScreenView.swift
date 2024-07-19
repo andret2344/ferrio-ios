@@ -4,27 +4,6 @@
 
 import SwiftUI
 
-protocol MissingHolidayPayload : Encodable {
-	var name: String {get}
-	var description: String {get}
-	var userId: String {get}
-}
-
-struct MissingFixedHolidayPayload : MissingHolidayPayload {
-	var name: String
-	var description: String
-	var userId: String
-	var day: Int
-	var month: Int
-}
-
-struct MissingFloatingHolidayPayload : MissingHolidayPayload {
-	var name: String
-	var description: String
-	var userId: String
-	var date: String
-}
-
 struct MissingHolidayScreenView: View {
 	@Environment(\.dismiss) private var dismiss
 	@State private var floating: Bool = false
@@ -75,6 +54,7 @@ struct MissingHolidayScreenView: View {
 				}
 			}
 		}
+		.padding(12)
 		.navigationBarTitle("Missing holiday?")
 		.navigationBarTitleDisplayMode(.large)
 		.toolbar {
