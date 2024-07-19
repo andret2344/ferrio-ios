@@ -69,30 +69,30 @@ struct UHCWidgetEntryView: View {
 		VStack {
 			let date: Date? = Date.from(month: entry.holidayDay.month, day: entry.holidayDay.day)
 			Text(date!.formatted(.dateTime.day().month(.wide)))
-					.bold()
-					.padding(8)
-					.frame(maxWidth: .infinity)
+				.bold()
+				.padding(8)
+				.frame(maxWidth: .infinity)
 			let holidays: [Holiday] = entry.holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays)
 			if holidays.isEmpty {
-				Text("No unusual holidays today.")
-						.font(.body)
-						.multilineTextAlignment(.center)
+				Text("No unusual holidays.")
+					.font(.body)
+					.multilineTextAlignment(.center)
 				Image("SadIcon")
 			} else {
 				ForEach(holidays) { holiday in
 					HStack(alignment: .top) {
 						Text("\u{2022}")
-								.padding(.leading, 6)
+							.padding(.leading, 6)
 						Text(holiday.name)
 					}
-							.font(.caption)
-							.padding(.horizontal, 6)
-							.frame(maxWidth: .infinity, alignment: .topLeading)
+					.font(.caption)
+					.padding(.horizontal, 6)
+					.frame(maxWidth: .infinity, alignment: .topLeading)
 				}
 			}
 		}
-				.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-				.background(getColor(colorized: entry.colorized).gradient)
+		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
+		.containerBackground(getColor(colorized: entry.colorized).gradient, for: .widget)
 	}
 
 	func getColor(colorized: Bool) -> Color {
@@ -109,8 +109,8 @@ struct UHCWidget: Widget {
 		IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
 			UHCWidgetEntryView(entry: entry)
 		}
-				.configurationDisplayName("Unusual Holiday Calendar")
-				.description("Simply check what holidays are today.")
-				.contentMarginsDisabled()
+		.configurationDisplayName("Unusual Holiday Calendar")
+		.description("Simply check what holidays are today.")
+		.contentMarginsDisabled()
 	}
 }

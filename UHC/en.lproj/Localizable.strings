@@ -3,3 +3,20 @@
 "Today" = "Today";
 "Check it yourself!" = "Check it yourself!";
 "Random" = "Random";
+"Back" = "Back";
+"Search across %lld holidays..." = "Search acros %lld holidays...";
+"Calendar" = "Calendar";
+"Reports" = "Reports";
+"Missing holiday?" = "Missing holiday?";
+"Holiday name" = "Holiday name";
+"Holiday description" = "Holiday description";
+"Date" = "Date";
+"Month" = "Month";
+"Day" = "Day";
+"Report" = "Report";
+"OK" = "OK";
+"Invalid data format" = "Invalid data format";
+"Could not connect to server. Please try again later." = "Could not connect to server. Please try again later.";
+"The request was unsuccessfull. Please try again later. Response code: %lld" = "The request was unsuccessfull. Please try again later. Response code: %lld";
+"Missing holiday reported successfully!" = "Missing holiday reported successfully!";
+
