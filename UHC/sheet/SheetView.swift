@@ -7,15 +7,12 @@ import SwiftUI
 import UIKit
 
 struct SheetView: View {
-	@State
-	private var isShareSheetPresented = false
-	@Environment(\.requestReview)
-	var requestReview
-	@StateObject
-	var observableConfig = ObservableConfig()
-	@Environment(\.dismiss)
-	var dismiss
+	@State private var isShareSheetPresented = false
+	@Environment(\.requestReview) var requestReview
+	@StateObject var observableConfig = ObservableConfig()
+	@Environment(\.dismiss) var dismiss
 	let holidayDay: HolidayDay
+
 	var body: some View {
 		let date: Date? = Date.from(month: holidayDay.month, day: holidayDay.day)
 		NavigationView {
