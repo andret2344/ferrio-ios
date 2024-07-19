@@ -12,6 +12,7 @@ struct SheetView: View {
 	@StateObject var observableConfig = ObservableConfig()
 	@Environment(\.dismiss) var dismiss
 	let holidayDay: HolidayDay
+
 	var body: some View {
 		let date: Date? = Date.from(month: holidayDay.month, day: holidayDay.day)
 		NavigationView {
