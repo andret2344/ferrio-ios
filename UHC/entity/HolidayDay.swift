@@ -35,9 +35,9 @@ struct HolidayDay: Identifiable, Decodable, Equatable {
 
 	static func ==(lhs: HolidayDay, rhs: HolidayDay) -> Bool {
 		lhs.id == rhs.id &&
-				lhs.day == rhs.day &&
-				lhs.month == rhs.month &&
-				lhs.holidays == rhs.holidays
+		lhs.day == rhs.day &&
+		lhs.month == rhs.month &&
+		lhs.holidays == rhs.holidays
 	}
 
 	func getDate() -> String {

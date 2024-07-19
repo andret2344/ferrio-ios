@@ -5,10 +5,10 @@
 import SwiftUI
 
 struct SearchView: View {
+	@Binding var selectedDay: HolidayDay?
 	let searchText: String
 	let holidayDays: [HolidayDay]
-	@Binding
-	var selectedDay: HolidayDay?
+
 	var body: some View {
 		if searchText != "" {
 			List {
@@ -19,7 +19,7 @@ struct SearchView: View {
 					if holidays.count > 0 {
 						HStack {
 							Text("\(holidayDay.getDate())")
-									.frame(width: 50, alignment: .leading)
+								.frame(width: 50, alignment: .leading)
 							Divider()
 							VStack(alignment: .leading) {
 								ForEach(holidays, id: \.id) { holiday in
@@ -27,9 +27,9 @@ struct SearchView: View {
 								}
 							}
 						}
-								.onTapGesture {
-									selectedDay = holidayDay
-								}
+						.onTapGesture {
+							selectedDay = holidayDay
+						}
 					}
 				}
 			}
