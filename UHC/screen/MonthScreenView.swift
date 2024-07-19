@@ -5,15 +5,12 @@
 import SwiftUI
 
 struct MonthScreenView: View {
+	@State private var selection = Calendar.current.component(.month, from: Date()) - 1
+	@State private var selectedDay: HolidayDay? = nil
+	@State private var searchText = ""
 	let holidayDays: [HolidayDay]
-	@State
-	private var selection = Calendar.current.component(.month, from: Date()) - 1
-	@State
-	private var selectedDay: HolidayDay? = nil
-	@Binding
-	var loading: Bool
-	@State
-	private var searchText = ""
+	let loading: Bool
+
 	var body: some View {
 		if loading == false {
 			LazyHStack {
@@ -24,7 +21,7 @@ struct MonthScreenView: View {
 						}
 					}
 					.overlay {
-						SearchView(searchText: searchText, holidayDays: holidayDays, selectedDay: $selectedDay)
+						SearchView(selectedDay: $selectedDay, searchText: searchText, holidayDays: holidayDays)
 					}
 					.navigationBarTitleDisplayMode(.large)
 					.toolbar {
@@ -49,7 +46,7 @@ struct MonthScreenView: View {
 					}
 					.searchable(text: $searchText,
 								placement: .navigationBarDrawer(displayMode: .always),
-								prompt: "Type name of a holiday")
+								prompt: "Search across \(getHolidaysCount()) holidays...")
 					.ignoresSafeArea(.keyboard)
 				}
 				.sheet(item: $selectedDay) { item in
@@ -65,5 +62,11 @@ struct MonthScreenView: View {
 
 	func getRandomHolidayDay() -> HolidayDay {
 		holidayDays[Int.random(in: 0..<holidayDays.count)];
+	}
+
+	func getHolidaysCount() -> Int {
+		holidayDays.flatMap { day in
+			day.holidays
+		}.count
 	}
 }

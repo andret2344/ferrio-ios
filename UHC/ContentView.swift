@@ -6,18 +6,11 @@ import SwiftUI
 import JavaScriptCore
 
 struct ContentView: View {
-	@State
-	var fetching: Bool = true
-	@State
-	private var days = [HolidayDay]()
+	@State var fetching: Bool = true
+	@State private var days = [HolidayDay]()
+
 	var body: some View {
-		MonthScreenView(holidayDays: days, loading: $fetching)
-			.overlay {
-				if fetching {
-					ProgressView().progressViewStyle(.circular)
-				}
-			}
-			.animation(.easeIn, value: days)
+		MainScreenView(holidayDays: days, loading: $fetching)
 			.task {
 				do {
 					var unusualCalendar: UnusualCalendar = try await URLSession.shared.decode(UnusualCalendar.self, from: getUrl())
@@ -53,11 +46,5 @@ struct ContentView: View {
 		let code: String? = Locale.current.language.languageCode?.identifier
 		let lang: String = ["pl"].contains(code!) ? code! : "en"
 		return URL(string: "https://api.unusualcalendar.net/v2/holiday/\(lang)")!
-	}
-}
-
-struct ContentView_Previews: PreviewProvider {
-	static var previews: some View {
-		ContentView()
 	}
 }
