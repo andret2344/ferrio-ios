@@ -1,7 +1,31 @@
 {
   "images" : [
     {
-      "filename" : "UHC_big.png",
+      "filename" : "uhc-basic.png",
+      "idiom" : "universal",
+      "platform" : "ios",
+      "size" : "1024x1024"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ],
+      "filename" : "uhc-basic-dark.png",
+      "idiom" : "universal",
+      "platform" : "ios",
+      "size" : "1024x1024"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "tinted"
+        }
+      ],
+      "filename" : "uhc-basic-mask.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
