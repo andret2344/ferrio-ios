@@ -9,11 +9,11 @@
 	<key>INIntentDefinitionNamespace</key>
 	<string>88xZPY</string>
 	<key>INIntentDefinitionSystemVersion</key>
-	<string>22G91</string>
+	<string>22G120</string>
 	<key>INIntentDefinitionToolsBuildVersion</key>
-	<string>14E300c</string>
+	<string>15A240d</string>
 	<key>INIntentDefinitionToolsVersion</key>
-	<string>14.3.1</string>
+	<string>15.0</string>
 	<key>INIntents</key>
 	<array>
 		<dict>
@@ -28,7 +28,7 @@
 			<key>INIntentIneligibleForSuggestions</key>
 			<true/>
 			<key>INIntentLastParameterTag</key>
-			<integer>4</integer>
+			<integer>10</integer>
 			<key>INIntentName</key>
 			<string>Configuration</string>
 			<key>INIntentParameters</key>
@@ -44,12 +44,8 @@
 					<integer>1</integer>
 					<key>INIntentParameterMetadata</key>
 					<dict>
-						<key>INIntentParameterMetadataDefaultValue</key>
-						<integer>0</integer>
 						<key>INIntentParameterMetadataMaximumValue</key>
-						<integer>31</integer>
-						<key>INIntentParameterMetadataMinimumValue</key>
-						<integer>-31</integer>
+						<integer>1</integer>
 						<key>INIntentParameterMetadataType</key>
 						<string>Stepper</string>
 					</dict>
@@ -77,7 +73,7 @@
 					<key>INIntentParameterSupportsResolution</key>
 					<true/>
 					<key>INIntentParameterTag</key>
-					<integer>2</integer>
+					<integer>10</integer>
 					<key>INIntentParameterType</key>
 					<string>Integer</string>
 					<key>INIntentParameterUnsupportedReasons</key>
