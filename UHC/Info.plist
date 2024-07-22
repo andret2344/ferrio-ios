@@ -9,10 +9,12 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.124787310112-dtmvonna9f662e8qvhf5f7nd1gk80ugo</string>
+				<string>com.googleusercontent.apps.124787310112-m7qjkg1u6c1j8tpkrb4qjgft18jkvbjr</string>
 			</array>
 		</dict>
 	</array>
+	<key>GIDClientID</key>
+	<string>124787310112-m7qjkg1u6c1j8tpkrb4qjgft18jkvbjr.apps.googleusercontent.com</string>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>ConfigurationIntent</string>
