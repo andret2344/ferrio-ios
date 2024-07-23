@@ -6,6 +6,8 @@ import SwiftUI
 import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
+import GoogleSignInSwift
+
 
 struct LogInScreenView: View {
 	@EnvironmentObject var viewModel: AuthenticationViewModel
@@ -13,25 +15,40 @@ struct LogInScreenView: View {
 	var body: some View {
 		NavigationView {
 			VStack {
+				Spacer()
+				Image("Logo")
+					.resizable()
+					.aspectRatio(contentMode: .fit)
+					.frame(width: 256, height: 256, alignment: .center)
+					.cornerRadius(48)
+				Spacer()
 				Button {
-					viewModel.signIn()
+					viewModel.signInWithGoogle()
 				} label: {
-					Text("GoogleButton")
+					HStack {
+						Image("GoogleIcon")
+							.renderingMode(.template)
+							.resizable()
+							.frame(maxWidth: 16, maxHeight: 16)
+							.foregroundStyle(Color(.blue))
+						Text("Sign in with Google")
+					}
+					.frame(width: 200)
 				}
+				.buttonStyle(BorderedButtonStyle())
+				Button {
+					viewModel.signInAnonymously()
+				} label: {
+					HStack {
+						Image(systemName: "person")
+						Text("Anonymous login")
+					}
+					.frame(width: 200)
+				}
+				.buttonStyle(BorderedButtonStyle())
+				Spacer()
 			}
 			.padding()
 		}
-	}
-
-	func getRootViewController() -> UIViewController {
-		guard let screen = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
-			return .init()
-		}
-
-		guard let root = screen.windows.first?.rootViewController else {
-			return .init()
-		}
-
-		return root
 	}
 }

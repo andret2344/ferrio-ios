@@ -8,42 +8,45 @@ import GoogleSignIn
 class AuthenticationViewModel: ObservableObject {
 	@Published var state: SignInState = .signedOut
 
-	func initialLogin() {
+	init() {
+		Auth.auth().addStateDidChangeListener { (auth, user) in
+			if user != nil {
+				self.state = .signedIn
+			} else {
+				self.state = .signedOut
+			}
+		}
+	}
+
+	func signInWithGoogle() {
 		guard let clientID = FirebaseApp.app()?.options.clientID else { return }
 
 		let configuration = GIDConfiguration(clientID: clientID)
 		GIDSignIn.sharedInstance.configuration = configuration
 
-		if GIDSignIn.sharedInstance.hasPreviousSignIn() {
-			GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
-				self.authenticateUser(user!, error: error)
-			}
+		guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+		guard let rootViewController = windowScene.windows.first?.rootViewController else { return }
+
+		GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { result, error in
+			self.authenticateUser(result?.user, error: error)
 		}
 	}
 
-	func signIn() {
-		if GIDSignIn.sharedInstance.hasPreviousSignIn() {
-			GIDSignIn.sharedInstance.restorePreviousSignIn { user, error in
-				self.authenticateUser(user!, error: error)
-			}
-		} else {
-			guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-			guard let rootViewController = windowScene.windows.first?.rootViewController else { return }
-
-			GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { result, error in
-				self.authenticateUser(result!.user, error: error)
-			}
-		}
+	func signInAnonymously() {
+		Auth.auth().signInAnonymously()
 	}
 
-	private func authenticateUser(_ user: GIDGoogleUser, error: Error?) {
+	private func authenticateUser(_ user: GIDGoogleUser?, error: Error?) {
 		if let error = error {
 			print(error)
 			return
 		}
 
-		guard let idToken = user.idToken?.tokenString
-		else {
+		guard let user = user else {
+			return
+		}
+
+		guard let idToken = user.idToken?.tokenString else {
 			return
 		}
 
