@@ -3,11 +3,8 @@
 //
 
 import SwiftUI
-import FirebaseCore
 import FirebaseAuth
 import GoogleSignIn
-import GoogleSignInSwift
-
 
 struct LogInScreenView: View {
 	@EnvironmentObject var viewModel: AuthenticationViewModel
