@@ -3,8 +3,6 @@
 //
 
 import SwiftUI
-import FirebaseAuth
-import FirebaseCore
 
 @main
 struct UHCApp: App {
