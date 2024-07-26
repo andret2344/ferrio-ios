@@ -52,7 +52,6 @@ struct SheetView: View {
 								Text(holiday.name)
 							}
 						}
-
 					}
 				}
 			}

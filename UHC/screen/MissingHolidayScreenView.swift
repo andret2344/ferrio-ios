@@ -3,6 +3,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct MissingHolidayScreenView: View {
 	@Environment(\.dismiss) private var dismiss
@@ -58,15 +59,17 @@ struct MissingHolidayScreenView: View {
 		.navigationBarTitle("Missing holiday?")
 		.navigationBarTitleDisplayMode(.large)
 		.toolbar {
-			ToolbarItem(placement: .primaryAction) {
-				Button("Send") {
-					if floating {
-						sendMissingHolidayPayload(missingHolidayPayload: MissingFloatingHolidayPayload(name: name, description: description, userId: "TEST-TEST", date: date), path: "missing/floating")
-					} else {
-						sendMissingHolidayPayload(missingHolidayPayload: MissingFixedHolidayPayload(name: name, description: description, userId: "TEST-TEST", day: day, month: month + 1), path: "missing/fixed")
+			if let uid = Auth.auth().currentUser?.uid {
+				ToolbarItem(placement: .primaryAction) {
+					Button("Send") {
+						if floating {
+							sendMissingHolidayPayload(missingHolidayPayload: MissingFloatingHolidayPayload(name: name, description: description, userId: uid, date: date), path: "missing/floating")
+						} else {
+							sendMissingHolidayPayload(missingHolidayPayload: MissingFixedHolidayPayload(name: name, description: description, userId: uid, day: day, month: month + 1), path: "missing/fixed")
+						}
 					}
+					.disabled(disabledSend())
 				}
-				.disabled(disabledSend())
 			}
 		}
 		.alert(isPresented: $showAlert) {

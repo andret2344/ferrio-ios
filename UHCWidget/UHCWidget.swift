@@ -110,7 +110,7 @@ struct UHCWidget: Widget {
 			UHCWidgetEntryView(entry: entry)
 		}
 		.configurationDisplayName("Unusual Holiday Calendar")
-		.description("Simply check what holidays are today.")
+		.description("Check what holidays are on a given date.")
 		.contentMarginsDisabled()
 	}
 }
