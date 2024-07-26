@@ -29,6 +29,8 @@
 		710187142C5375AD009061F1 /* ReportState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710187122C5375AD009061F1 /* ReportState.swift */; };
 		710187162C53796F009061F1 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710187152C53796F009061F1 /* StringExtension.swift */; };
 		710187172C53796F009061F1 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710187152C53796F009061F1 /* StringExtension.swift */; };
+		710187192C538416009061F1 /* MissingFloatingHoliday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710187182C538416009061F1 /* MissingFloatingHoliday.swift */; };
+		7101871A2C538416009061F1 /* MissingFloatingHoliday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710187182C538416009061F1 /* MissingFloatingHoliday.swift */; };
 		7109DEFA2C4A3F7B00600EDA /* MissingHolidayPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109DEF92C4A3F7B00600EDA /* MissingHolidayPayload.swift */; };
 		711493FB2C4EA12200245BB4 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 711493FA2C4EA12200245BB4 /* GoogleSignIn */; };
 		711F6D752C39414500CCBDB5 /* MissingHolidayScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F6D742C39414500CCBDB5 /* MissingHolidayScreenView.swift */; };
@@ -130,6 +132,7 @@
 		7101870F2C52E6F8009061F1 /* MissingFixedHoliday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingFixedHoliday.swift; sourceTree = "<group>"; };
 		710187122C5375AD009061F1 /* ReportState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportState.swift; sourceTree = "<group>"; };
 		710187152C53796F009061F1 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		710187182C538416009061F1 /* MissingFloatingHoliday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingFloatingHoliday.swift; sourceTree = "<group>"; };
 		7109DEF92C4A3F7B00600EDA /* MissingHolidayPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingHolidayPayload.swift; sourceTree = "<group>"; };
 		711F6D742C39414500CCBDB5 /* MissingHolidayScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingHolidayScreenView.swift; sourceTree = "<group>"; };
 		7123B09B2AC4B9CB00295E71 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = en; path = en.lproj/UHCWidget.intentdefinition; sourceTree = "<group>"; };
@@ -239,6 +242,7 @@
 				1A8B18120DC8F1B2DCC45BDA /* UnusualCalendar.swift */,
 				7101870F2C52E6F8009061F1 /* MissingFixedHoliday.swift */,
 				710187122C5375AD009061F1 /* ReportState.swift */,
+				710187182C538416009061F1 /* MissingFloatingHoliday.swift */,
 			);
 			path = entity;
 			sourceTree = "<group>";
@@ -567,6 +571,7 @@
 				71D16D152ABDB59600BE9B3A /* ObservableConfig.swift in Sources */,
 				718743A32AAFB8F500A6EFC0 /* UHCWidget.intentdefinition in Sources */,
 				7123B09A2AC4B9CB00295E71 /* UHCWidget.intentdefinition in Sources */,
+				7101871A2C538416009061F1 /* MissingFloatingHoliday.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -588,6 +593,7 @@
 				1A8B16B55B81D47B30A8FEB6 /* ArrayExtension.swift in Sources */,
 				71C144B52C4EEC32005A937A /* AuthenticationViewModel.swift in Sources */,
 				1A8B1E96C93116A2D02E6335 /* URLSessionExtension.swift in Sources */,
+				710187192C538416009061F1 /* MissingFloatingHoliday.swift in Sources */,
 				1A8B1DF78BB062853E4ADA84 /* ContentView.swift in Sources */,
 				1A8B1AEA03E60FDB045A3F6D /* MonthAdapter.swift in Sources */,
 				711F6D752C39414500CCBDB5 /* MissingHolidayScreenView.swift in Sources */,
