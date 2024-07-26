@@ -3,16 +3,30 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ReportScreenView: View {
 	var body: some View {
 		NavigationView {
 			List {
-				NavigationLink("Missing holiday?") {
+				NavigationLink {
 					MissingHolidayScreenView()
+				} label: {
+					Label("Missing holiday?", systemImage: "pencil")
 				}
-				//	.disabled(true)
+				NavigationLink {
+					SuggestionsScreenView()
+				} label: {
+					Label("My suggestions", systemImage: "checkmark")
+				}
+				NavigationLink {
+					MissingHolidayScreenView()
+				} label: {
+					Label("My reports", systemImage: "calendar.badge.exclamationmark")
+				}
+				.disabled(true)
 			}
+			.disabled(Auth.auth().currentUser?.isAnonymous ?? true)
 			.navigationTitle("Reports")
 		}
 		.scrollDisabled(true)
