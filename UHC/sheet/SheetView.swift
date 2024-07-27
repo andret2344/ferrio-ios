@@ -46,10 +46,10 @@ struct SheetView: View {
 									.padding()
 									.frame(maxWidth: .infinity, alignment: .leading)
 								} label: {
-									Text(holiday.name)
+									renderText(holiday: holiday)
 								}
 							} else {
-								Text(holiday.name)
+								renderText(holiday: holiday)
 							}
 						}
 					}
@@ -82,6 +82,17 @@ struct SheetView: View {
 				})
 			}
 		}
+	}
+
+	func renderText(holiday: Holiday) -> some View {
+		Text(holiday.name)
+			.contextMenu {
+				Button(action: {
+					print("Reporting \(holiday.name)")
+				}) {
+					Label("Report", systemImage: "exclamationmark.triangle")
+				}
+			}
 	}
 }
 
