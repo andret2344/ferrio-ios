@@ -24,8 +24,8 @@ struct MissingFixedHoliday: Decodable {
 		userId = try container.decode(String.self, forKey: .userId)
 		name = try container.decode(String.self, forKey: .name)
 		description = try container.decode(String.self, forKey: .description)
-		day = Int(try container.decode(String.self, forKey: .day))!
-		month = Int(try container.decode(String.self, forKey: .month))!
+		day = try container.decode(Int.self, forKey: .day)
+		month = try container.decode(Int.self, forKey: .month)
 		holidayId = try container.decode(Int?.self, forKey: .holidayId)
 		reportState = try container.decode(ReportState.self, forKey: .reportState)
 	}
