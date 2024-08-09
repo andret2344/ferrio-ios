@@ -69,23 +69,6 @@ struct SuggestionsScreenView: View {
 		.task {
 			do {
 				suggestionsFixed = try await URLSession.shared.decode([MissingFixedHoliday].self, from: getUrlForFixed(), keyDecodingStrategy: .convertFromSnakeCase)
-			} catch let DecodingError.dataCorrupted(context) {
-				print(context)
-			} catch let DecodingError.keyNotFound(key, context) {
-				print("Key '\(key)' not found:", context.debugDescription)
-				print("codingPath:", context.codingPath)
-			} catch let DecodingError.valueNotFound(value, context) {
-				print("Value '\(value)' not found:", context.debugDescription)
-				print("codingPath:", context.codingPath)
-			} catch let DecodingError.typeMismatch(type, context) {
-				print("Type '\(type)' mismatch:", context.debugDescription)
-				print("codingPath:", context.codingPath)
-			} catch {
-				print("error: ", error)
-			}
-		}
-		.task {
-			do {
 				suggestionsFloating = try await URLSession.shared.decode([MissingFloatingHoliday].self, from: getUrlForFloating(), keyDecodingStrategy: .convertFromSnakeCase)
 			} catch let DecodingError.dataCorrupted(context) {
 				print(context)
@@ -128,8 +111,4 @@ struct SuggestionsScreenView: View {
 			return Color(UIColor.systemYellow)
 		}
 	}
-}
-
-#Preview {
-	SuggestionsScreenView()
 }

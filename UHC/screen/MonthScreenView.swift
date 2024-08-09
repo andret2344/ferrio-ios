@@ -60,7 +60,7 @@ struct MonthScreenView: View {
 					.ignoresSafeArea(.keyboard)
 				}
 				.sheet(item: $selectedDay) { item in
-					SheetView(holidayDay: item)
+					HolidayDaySheetView(holidayDay: item)
 						.presentationDetents([.fraction(0.5), .fraction(0.9)])
 				}
 				.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)

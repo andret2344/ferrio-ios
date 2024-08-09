@@ -6,8 +6,9 @@ import StoreKit
 import SwiftUI
 import UIKit
 
-struct SheetView: View {
-	@State private var isShareSheetPresented = false
+struct HolidayDaySheetView: View {
+	@State private var isShareSheetPresented: Bool = false
+	@State private var reportedHoliday: Holiday? = nil
 	@Environment(\.requestReview) var requestReview
 	@StateObject var observableConfig = ObservableConfig()
 	@Environment(\.dismiss) var dismiss
@@ -15,7 +16,7 @@ struct SheetView: View {
 
 	var body: some View {
 		let date: Date? = Date.from(month: holidayDay.month, day: holidayDay.day)
-		NavigationView {
+		NavigationStack {
 			VStack {
 				let holidays: [Holiday] = holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays);
 				if holidays.count == 0 {
@@ -82,14 +83,27 @@ struct SheetView: View {
 				})
 			}
 		}
+		.sheet(
+			isPresented: Binding(
+				get: {
+					reportedHoliday != nil
+				},
+				set: {
+					if !$0 {
+						reportedHoliday = nil
+					}
+				})
+		) {
+			ReportHolidaySheetView(holiday: self.reportedHoliday!)
+		}
 	}
 
 	func renderText(holiday: Holiday) -> some View {
 		Text(holiday.name)
 			.contextMenu {
-				Button(action: {
-					print("Reporting \(holiday.name)")
-				}) {
+				Button {
+					self.reportedHoliday = holiday
+				} label: {
 					Label("Report", systemImage: "exclamationmark.triangle")
 				}
 			}
