@@ -11,7 +11,7 @@ struct SuggestionsScreenView: View {
 	@State private var reportedHolidaysType: String = "fixed"
 
 	var body: some View {
-		Picker("Select reported holidays type", selection: $reportedHolidaysType) {
+		Picker("Select missing holidays type", selection: $reportedHolidaysType) {
 			Text("Fixed").tag("fixed")
 			Text("Floating").tag("floating")
 		}
@@ -35,7 +35,7 @@ struct SuggestionsScreenView: View {
 						Spacer()
 						Text(suggestion.reportState.rawValue.localized())
 							.foregroundStyle(Color(UIColor.systemBackground))
-							.frame(width: 128, height: 32)
+							.frame(width: 108, height: 32)
 							.background(RoundedRectangle(cornerRadius: 8).fill(getColor(reportState: suggestion.reportState)))
 							.overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.black, lineWidth: 1))
 					}
@@ -58,7 +58,7 @@ struct SuggestionsScreenView: View {
 						Spacer()
 						Text(suggestion.reportState.rawValue.localized())
 							.foregroundStyle(Color(UIColor.systemBackground))
-							.frame(width: 128, height: 32)
+							.frame(width: 108, height: 32)
 							.background(RoundedRectangle(cornerRadius: 8).fill(getColor(reportState: suggestion.reportState)))
 							.overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.black, lineWidth: 1))
 					}
@@ -68,8 +68,18 @@ struct SuggestionsScreenView: View {
 		.navigationTitle("My suggestions")
 		.task {
 			do {
-				suggestionsFixed = try await URLSession.shared.decode([MissingFixedHoliday].self, from: getUrlForFixed(), keyDecodingStrategy: .convertFromSnakeCase)
-				suggestionsFloating = try await URLSession.shared.decode([MissingFloatingHoliday].self, from: getUrlForFloating(), keyDecodingStrategy: .convertFromSnakeCase)
+				suggestionsFixed = try await URLSession.shared
+					.decode(
+						[MissingFixedHoliday].self,
+						from: getUrlForFixed(),
+						keyDecodingStrategy: .convertFromSnakeCase
+					)
+				suggestionsFloating = try await URLSession.shared
+					.decode(
+						[MissingFloatingHoliday].self,
+						from: getUrlForFloating(),
+						keyDecodingStrategy: .convertFromSnakeCase
+					)
 			} catch let DecodingError.dataCorrupted(context) {
 				print(context)
 			} catch let DecodingError.keyNotFound(key, context) {

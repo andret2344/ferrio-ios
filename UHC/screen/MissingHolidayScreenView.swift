@@ -63,9 +63,26 @@ struct MissingHolidayScreenView: View {
 				ToolbarItem(placement: .primaryAction) {
 					Button("Send") {
 						if floating {
-							sendMissingHolidayPayload(missingHolidayPayload: MissingFloatingHolidayPayload(name: name, description: description, userId: uid, date: date), path: "missing/floating")
+							sendMissingHolidayPayload(
+								missingHolidayPayload: MissingFloatingHolidayPayload(
+									name: name,
+									description: description,
+									userId: uid,
+									date: date
+								),
+								path: "missing/floating"
+							)
 						} else {
-							sendMissingHolidayPayload(missingHolidayPayload: MissingFixedHolidayPayload(name: name, description: description, userId: uid, day: day, month: month + 1), path: "missing/fixed")
+							sendMissingHolidayPayload(
+								missingHolidayPayload: MissingFixedHolidayPayload(
+									name: name,
+									description: description,
+									userId: uid,
+									day: day,
+									month: month + 1
+								),
+								path: "missing/fixed"
+							)
 						}
 					}
 					.disabled(disabledSend())

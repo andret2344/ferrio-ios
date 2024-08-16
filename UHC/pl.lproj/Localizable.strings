@@ -10,6 +10,7 @@
 "Missing holiday?" = "Brakujące święto?";
 "Holiday name" = "Nazwa święta";
 "Holiday description" = "Opis święta";
+"Floating holiday" = "Święto ruchome";
 "Date" = "Data";
 "Month" = "Miesiąc";
 "Day" = "Dzień";
@@ -20,7 +21,12 @@
 "The request was unsuccessfull. Please try again later. Response code: %lld" = "Wysyałanie nieudane. Proszę spróbować ponownie później. Kod odpowiedzi: %lld";
 "Missing holiday reported successfully!" = "Missing holiday reported successfully!";
 "My suggestions" = "Moje sugestie";
+"Send" = "Wyślij";
 "REPORTED" = "Zgłoszonee";
 "APPLIED" = "Zastosowane";
 "DECLINED" = "Odrzucone";
 "ON_HOLD" = "Wstrzymane";
+"WRONG_DATE" = "Błędna data";
+"WRONG_NAME" = "Błędna nazwa";
+"WRONG_DESCRIPTION" = "Błędny opis";
+"OTHER" = "Inne";

@@ -23,11 +23,10 @@ struct ReportScreenView: View {
 						Label("My suggestions", systemImage: "checkmark")
 					}
 					NavigationLink {
-						MissingHolidayScreenView()
+						ReportsScreenView()
 					} label: {
 						Label("My reports", systemImage: "calendar.badge.exclamationmark")
 					}
-					.disabled(true)
 				}
 				.disabled(Auth.auth().currentUser?.isAnonymous ?? true)
 				Section(header: Text("Application")) {
