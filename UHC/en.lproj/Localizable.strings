@@ -10,6 +10,7 @@
 "Missing holiday?" = "Missing holiday?";
 "Holiday name" = "Holiday name";
 "Holiday description" = "Holiday description";
+"Floating holiday" = "Floating holiday";
 "Date" = "Date";
 "Month" = "Month";
 "Day" = "Day";
@@ -20,7 +21,12 @@
 "The request was unsuccessfull. Please try again later. Response code: %lld" = "The request was unsuccessfull. Please try again later. Response code: %lld";
 "Missing holiday reported successfully!" = "Missing holiday reported successfully!";
 "My suggestions" = "My suggestions";
+"Send" = "Send";
 "REPORTED" = "Reported";
 "APPLIED" = "Applied";
 "DECLINED" = "Declined";
 "ON_HOLD" = "On hold";
+"WRONG_DATE" = "Wrong date";
+"WRONG_NAME" = "Wrong name";
+"WRONG_DESCRIPTION" = "Wrong description";
+"OTHER" = "Other";

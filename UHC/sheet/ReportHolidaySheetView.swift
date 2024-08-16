@@ -8,6 +8,7 @@ import SwiftUI
 struct ReportHolidaySheetView: View {
 	@Environment(\.dismiss) var dismiss
 	let holiday: Holiday
+	private let types: [String] = ["WRONG_NAME", "WRONG_DESCRIPTION", "WRONG_DATE", "OTHER"]
 	@State private var reportType: String = "WRONG_NAME"
 	@State private var description: String = ""
 	@State private var showAlert = false
@@ -27,10 +28,9 @@ struct ReportHolidaySheetView: View {
 						.lineLimit(1...2)
 
 					Picker("Reason", selection: $reportType) {
-						Text("Wrong name").tag("WRONG_NAME")
-						Text("Wrong description").tag("WRONG_DESCRIPTION")
-						Text("Wrong date").tag("WRONG_DATE")
-						Text("Other").tag("OTHER")
+						ForEach(types, id: \.self) { type in
+							Text(type.localized()).tag(type)
+						}
 					}
 					.pickerStyle(.automatic)
 					.buttonStyle(BorderedButtonStyle())
@@ -43,7 +43,7 @@ struct ReportHolidaySheetView: View {
 					)
 					.textFieldStyle(RoundedBorderTextFieldStyle())
 					.lineLimit(6...6)
-					Text("Reports with the description are more likely to be verified on the first place.")
+					Text("Reports with the description are more likely to be verified in the first place.")
 						.textFieldStyle(RoundedBorderTextFieldStyle())
 						.lineLimit(1...3)
 						.font(.footnote)
@@ -102,7 +102,7 @@ struct ReportHolidaySheetView: View {
 
 	func renderDescriptionText() -> Text {
 		if holiday.description == "" {
-			return Text("- No deescription -")
+			return Text("- No description -")
 				.italic()
 				.foregroundStyle(.gray)
 		}
