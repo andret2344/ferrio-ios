@@ -1,7 +1,4 @@
 //
-//  MissingFloatingHoliday.swift
-//  UHC
-//
 //  Created by Andrzej Chmiel on 26/07/2024.
 //
 
