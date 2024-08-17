@@ -19,7 +19,8 @@
 "Invalid data format" = "Niepoprawny format danych";
 "Could not connect to server. Please try again later." = "Nie można połączyć z serwerem. Proszę spróbować ponownie później.";
 "The request was unsuccessfull. Please try again later. Response code: %lld" = "Wysyałanie nieudane. Proszę spróbować ponownie później. Kod odpowiedzi: %lld";
-"Missing holiday reported successfully!" = "Missing holiday reported successfully!";
+"Missing holiday reported successfully." = "Brakujące święto zgloszono pomyślnie.";
+"Holiday report sent successfully." = "Zgłoszenie święta wysłano pomyślnie.";
 "My suggestions" = "Moje sugestie";
 "Send" = "Wyślij";
 "REPORTED" = "Zgłoszonee";

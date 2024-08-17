@@ -19,7 +19,8 @@
 "Invalid data format" = "Invalid data format";
 "Could not connect to server. Please try again later." = "Could not connect to server. Please try again later.";
 "The request was unsuccessfull. Please try again later. Response code: %lld" = "The request was unsuccessfull. Please try again later. Response code: %lld";
-"Missing holiday reported successfully!" = "Missing holiday reported successfully!";
+"Missing holiday reported successfully." = "Missing holiday reported successfully.";
+"Holiday report sent successfully." = "Holiday report sent successfully.";
 "My suggestions" = "My suggestions";
 "Send" = "Send";
 "REPORTED" = "Reported";
