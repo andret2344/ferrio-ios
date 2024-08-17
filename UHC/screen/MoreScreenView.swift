@@ -5,7 +5,7 @@
 import SwiftUI
 import FirebaseAuth
 
-struct ReportScreenView: View {
+struct MoreScreenView: View {
 	@State private var showingAlert = false
 
 	var body: some View {
@@ -30,18 +30,20 @@ struct ReportScreenView: View {
 				}
 				.disabled(Auth.auth().currentUser?.isAnonymous ?? true)
 				Section(header: Text("Application")) {
-					Label("About calendar", systemImage: "info")
-						.contentShape(Rectangle())
-						.onTapGesture {
-							showingAlert = true
-						}
-						.alert("About calendar", isPresented: $showingAlert, actions: {}, message: {
-							Image("SadIcon")
-							Text("All holidays - even those most unusual - are an opportunity to look in a different way at people, and appreciate phenomena we usually ignore.")
-						})
+					Button(action: {
+						showingAlert = true
+					}) {
+						Label("About calendar", systemImage: "info")
+							.frame(maxWidth: .infinity, alignment: .leading)
+							.contentShape(Rectangle())
+					}
+					.buttonStyle(PlainButtonStyle())
+					.alert("About calendar", isPresented: $showingAlert, actions: {}, message: {
+						Text("All holidays - even those most unusual - are an opportunity to look in a different way at people, and appreciate phenomena we usually ignore.")
+					})
 				}
 			}
-			.navigationTitle("Reports")
+			.navigationTitle("More")
 		}
 		.scrollDisabled(true)
 	}
