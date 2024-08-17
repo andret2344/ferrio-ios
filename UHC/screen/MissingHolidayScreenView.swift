@@ -105,7 +105,7 @@ struct MissingHolidayScreenView: View {
 			let jsonData: Data = try encoder.encode(missingHolidayPayload)
 			URLSession.shared.sendRequest(jsonData: jsonData, path: path) { message, success in
 				DispatchQueue.main.async {
-					self.alertMessage = message
+					self.alertMessage = message ?? "Missing holiday reported successfully."
 					self.showAlert = true
 					self.success = success
 				}

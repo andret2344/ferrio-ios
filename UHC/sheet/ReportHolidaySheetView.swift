@@ -116,7 +116,7 @@ struct ReportHolidaySheetView: View {
 			let jsonData: Data = try encoder.encode(reportPayload)
 			URLSession.shared.sendRequest(jsonData: jsonData, path: path) { message, success in
 				DispatchQueue.main.async {
-					self.alertMessage = message
+					self.alertMessage = message ?? "Holiday report sent successfully."
 					self.showAlert = true
 					self.success = success
 				}
