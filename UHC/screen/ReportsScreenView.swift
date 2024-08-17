@@ -12,8 +12,8 @@ struct ReportsScreenView: View {
 
 	var body: some View {
 		Picker("Select reported holidays type", selection: $reportedHolidaysType) {
-			Text("Fixed").tag("fixed")
-			Text("Floating").tag("floating")
+			Text("Fixed holidays").tag("fixed")
+			Text("Floating holidays").tag("floating")
 		}
 		.pickerStyle(.segmented)
 		List {
@@ -27,7 +27,7 @@ struct ReportsScreenView: View {
 				}
 			}
 		}
-		.navigationTitle("My suggestions")
+		.navigationTitle("My reports")
 		.task {
 			do {
 				reportsFixed = try await URLSession.shared
