@@ -18,10 +18,10 @@ struct MainScreenView: View {
 					.tabItem {
 						Label("Calendar", systemImage: "calendar")
 					}
-				ReportScreenView()
+				MoreScreenView()
 					.navigationBarTitleDisplayMode(.large)
 					.tabItem {
-						Label("Reports", systemImage: "pencil")
+						Label("More", systemImage: "ellipsis")
 					}
 			}
 		}
