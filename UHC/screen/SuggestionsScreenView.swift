@@ -12,8 +12,8 @@ struct SuggestionsScreenView: View {
 
 	var body: some View {
 		Picker("Select missing holidays type", selection: $reportedHolidaysType) {
-			Text("Fixed").tag("fixed")
-			Text("Floating").tag("floating")
+			Text("Fixed holidays").tag("fixed")
+			Text("Floating holidays").tag("floating")
 		}
 		.pickerStyle(.segmented)
 		List {
