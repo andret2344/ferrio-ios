@@ -52,11 +52,11 @@ struct MoreScreenView: View {
 							.foregroundStyle(Color(.systemRed))
 					}
 					.buttonStyle(PlainButtonStyle())
-					.alert("Logout", isPresented: $logoutAlert) {
+					.alert("Log out", isPresented: $logoutAlert) {
 						Button("Cancel", role: .cancel) {
 							logoutAlert = false
 						}
-						Button("Logout", role: .destructive) {
+						Button("Log out", role: .destructive) {
 							viewModel.signOut()
 						}
 					} message: {
