@@ -9,7 +9,6 @@ struct MonthScreenView: View {
 	@State private var selection = Calendar.current.component(.month, from: Date()) - 1
 	@State private var selectedDay: HolidayDay? = nil
 	@State private var searchText = ""
-	@EnvironmentObject var viewModel: AuthenticationViewModel
 	let holidayDays: [HolidayDay]
 	let loading: Bool
 
@@ -27,14 +26,6 @@ struct MonthScreenView: View {
 					}
 					.navigationBarTitleDisplayMode(.large)
 					.toolbar {
-						ToolbarItem(placement: .primaryAction) {
-							Button {
-								viewModel.signOut()
-							} label: {
-								Image(systemName: "clear")
-									.accessibilityLabel("Log out")
-							}
-						}
 						ToolbarItem(placement: .primaryAction) {
 							Button {
 								withAnimation {

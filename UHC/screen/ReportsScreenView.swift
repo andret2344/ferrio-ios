@@ -9,6 +9,7 @@ struct ReportsScreenView: View {
 	@State private var reportsFixed: [HolidayReport] = []
 	@State private var reportsFloating: [HolidayReport] = []
 	@State private var reportedHolidaysType: String = "fixed"
+	@State private var expanded: Int? = nil
 
 	var body: some View {
 		Picker("Select reported holidays type", selection: $reportedHolidaysType) {
@@ -63,7 +64,7 @@ struct ReportsScreenView: View {
 		HStack {
 			VStack {
 				Text(report.description)
-					.lineLimit(2)
+					.lineLimit(report.id == expanded ? nil : 2)
 					.frame(maxWidth: .infinity, alignment: .leading)
 				Text(report.reportType.localized())
 					.italic()
@@ -72,7 +73,7 @@ struct ReportsScreenView: View {
 					.foregroundStyle(Color(UIColor.systemGray))
 			}
 			Spacer()
-			Text("#\(report.metadataId)")
+			Text("#\(String(report.metadataId))")
 				.italic()
 				.frame(maxWidth: 48, alignment: .trailing)
 			Text(report.reportState.rawValue.localized())
@@ -80,6 +81,13 @@ struct ReportsScreenView: View {
 				.frame(width: 108, height: 32)
 				.background(RoundedRectangle(cornerRadius: 8).fill(getColor(reportState: report.reportState)))
 				.overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.black, lineWidth: 1))
+		}
+		.onTapGesture {
+			if expanded == report.id {
+				expanded = nil
+			} else {
+				expanded = report.id
+			}
 		}
 	}
 

@@ -9,6 +9,7 @@ struct SuggestionsScreenView: View {
 	@State private var suggestionsFixed: [MissingFixedHoliday] = []
 	@State private var suggestionsFloating: [MissingFloatingHoliday] = []
 	@State private var reportedHolidaysType: String = "fixed"
+	@State private var expanded: Int? = nil
 
 	var body: some View {
 		Picker("Select missing holidays type", selection: $reportedHolidaysType) {
@@ -26,10 +27,10 @@ struct SuggestionsScreenView: View {
 								.frame(maxWidth: .infinity, alignment: .leading)
 							Text(suggestion.name)
 								.bold()
-								.lineLimit(1)
+								.lineLimit(suggestion.id == expanded ? nil : 1)
 								.frame(maxWidth: .infinity, alignment: .leading)
 							Text(suggestion.description)
-								.lineLimit(2)
+								.lineLimit(suggestion.id == expanded ? nil : 2)
 								.frame(maxWidth: .infinity, alignment: .leading)
 						}
 						Spacer()
@@ -38,6 +39,14 @@ struct SuggestionsScreenView: View {
 							.frame(width: 108, height: 32)
 							.background(RoundedRectangle(cornerRadius: 8).fill(getColor(reportState: suggestion.reportState)))
 							.overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.black, lineWidth: 1))
+					}
+					.contentShape(Rectangle())
+					.onTapGesture {
+						if expanded == suggestion.id {
+							expanded = nil
+						} else {
+							expanded = suggestion.id
+						}
 					}
 				}
 			} else {
@@ -49,10 +58,10 @@ struct SuggestionsScreenView: View {
 								.frame(maxWidth: .infinity, alignment: .leading)
 							Text(suggestion.name)
 								.bold()
-								.lineLimit(1)
+								.lineLimit(suggestion.id == expanded ? nil : 1)
 								.frame(maxWidth: .infinity, alignment: .leading)
 							Text(suggestion.description)
-								.lineLimit(2)
+								.lineLimit(suggestion.id == expanded ? nil : 2)
 								.frame(maxWidth: .infinity, alignment: .leading)
 						}
 						Spacer()
@@ -61,6 +70,14 @@ struct SuggestionsScreenView: View {
 							.frame(width: 108, height: 32)
 							.background(RoundedRectangle(cornerRadius: 8).fill(getColor(reportState: suggestion.reportState)))
 							.overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.black, lineWidth: 1))
+					}
+					.contentShape(Rectangle())
+					.onTapGesture {
+						if expanded == suggestion.id {
+							expanded = nil
+						} else {
+							expanded = suggestion.id
+						}
 					}
 				}
 			}
