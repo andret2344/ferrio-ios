@@ -32,3 +32,6 @@
 "WRONG_NAME" = "Wrong name";
 "WRONG_DESCRIPTION" = "Wrong description";
 "OTHER" = "Other";
+"Log out" = "Log out";
+"Cancel" = "Cancel";
+"Are you sure you want to log out?" = "Are you sure you want to log out?";

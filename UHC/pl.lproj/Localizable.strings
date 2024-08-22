@@ -34,3 +34,6 @@
 "WRONG_NAME" = "Błędna nazwa";
 "WRONG_DESCRIPTION" = "Błędny opis";
 "OTHER" = "Inne";
+"Log out" = "Wyloguj";
+"Cancel" = "Anuluj";
+"Are you sure you want to log out?" = "Na pewno chcesz się wylogować?";
