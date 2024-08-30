@@ -2,14 +2,12 @@
 // Created by Andrzej Chmiel on 02/09/2023.
 //
 
-import StoreKit
 import SwiftUI
 import UIKit
 
 struct HolidayDaySheetView: View {
 	@State private var isShareSheetPresented: Bool = false
 	@State private var reportedHoliday: Holiday? = nil
-	@Environment(\.requestReview) var requestReview
 	@StateObject var observableConfig = ObservableConfig()
 	@Environment(\.dismiss) var dismiss
 	let holidayDay: HolidayDay
@@ -65,23 +63,18 @@ struct HolidayDaySheetView: View {
 				Image(systemName: "chevron.backward")
 				Text("Back")
 			}, trailing: Button {
-				isShareSheetPresented = true
 			} label: {
-				Image(systemName: "square.and.arrow.up")
-			})
-		}
-		.sheet(isPresented: $isShareSheetPresented) {
-			let holidays = holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays)
-			if holidays.count != 0 {
-				let holidaysList = holidays.map { holiday in
-					"- \(holiday.name)"
+				let holidays: [Holiday] = holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays)
+				if (holidays.count != 0) {
+					let holidays = holidays.map { holiday in
+						"- \(holiday.name)"
+					}
+						.joined(separator: "\n")
+					let text = "\(holidayDay.day).\(holidayDay.month):\n\(holidays)\n\n\("Check it yourself!".localized())"
+					ShareLink(item: text, preview: SharePreview(text))
+						.labelStyle(.iconOnly)
 				}
-					.joined(separator: "\n")
-				let text = "\(holidayDay.day).\(holidayDay.month):\n\(holidaysList)\n\n\(NSLocalizedString("Check it yourself!", comment: ""))"
-				ShareSheet(activityItems: [text], completion: {
-					requestReview()
-				})
-			}
+			})
 		}
 		.sheet(
 			isPresented: Binding(
@@ -107,37 +100,5 @@ struct HolidayDaySheetView: View {
 					Label("Report", systemImage: "exclamationmark.triangle")
 				}
 			}
-	}
-}
-
-struct ShareSheet: UIViewControllerRepresentable {
-	var activityItems: [Any]
-	var applicationActivities: [UIActivity]? = nil
-	var completion: (() -> Void)?
-
-	func makeUIViewController(context: Context) -> UIActivityViewController {
-		let controller = UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
-		controller.completionWithItemsHandler = { (activityType, completed, returnedItems, error) in
-			if completed {
-				completion?()
-			}
-		}
-		return controller
-	}
-
-	func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
-		// No update required
-	}
-
-	class Coordinator: NSObject {
-		var parent: ShareSheet
-
-		init(parent: ShareSheet) {
-			self.parent = parent
-		}
-	}
-
-	func makeCoordinator() -> Coordinator {
-		Coordinator(parent: self)
 	}
 }

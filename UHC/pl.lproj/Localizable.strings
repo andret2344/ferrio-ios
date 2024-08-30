@@ -7,6 +7,8 @@
 "Search across %lld holidays..." = "Szukaj wśród %lld świąt...";
 "Calendar" = "Kalendarz";
 "More" = "Więcej";
+"Sign in with Google" = "Zaloguj się z Google";
+"Anonymous login" = "Anonimowe logowanie";
 "Missing holiday?" = "Brakujące święto?";
 "Holiday name" = "Nazwa święta";
 "Holiday description" = "Opis święta";
@@ -14,7 +16,11 @@
 "Date" = "Data";
 "Month" = "Miesiąc";
 "Day" = "Dzień";
-"Report" = "Zgłoszenie";
+"Report" = "Zgłoś";
+"Report sent" = "Zgłoszenie wysłane";
+"Report holiday" = "Zgłoś święto";
+"No description" = "Brak opisu";
+"Reports with the description are more likely to be verified in the first place." = "Zgłoszenia z opisem będą sprawdzone w pierwszej kolejności z większym prawdopodobieństwem.";
 "OK" = "OK";
 "Fixed holidays" = "Nieruchome";
 "Floating holidays" = "Ruchome";
@@ -37,3 +43,5 @@
 "Log out" = "Wyloguj";
 "Cancel" = "Anuluj";
 "Are you sure you want to log out?" = "Na pewno chcesz się wylogować?";
+"About calendar" = "O kalendarzu";
+"All holidays - even those most unusual - are an opportunity to look in a different way at people, and appreciate phenomena we usually ignore." = "Wszystkie święta, nawet te najbardziej nietypowe, są okazją do spojrzenia na ludzi w inny sposób i docenienia na co dzień ignorowanych zjawisk.";

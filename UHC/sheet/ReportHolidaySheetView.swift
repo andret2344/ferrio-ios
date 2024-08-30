@@ -102,7 +102,7 @@ struct ReportHolidaySheetView: View {
 
 	func renderDescriptionText() -> Text {
 		if holiday.description == "" {
-			return Text("- No description -")
+			return Text("- \("No description".localized()) -")
 				.italic()
 				.foregroundStyle(.gray)
 		}

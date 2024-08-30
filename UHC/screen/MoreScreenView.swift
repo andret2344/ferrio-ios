@@ -46,7 +46,7 @@ struct MoreScreenView: View {
 					Button(action: {
 						logoutAlert = true
 					}) {
-						Label("Logout", systemImage: "rectangle.portrait.and.arrow.right")
+						Label("Log out", systemImage: "rectangle.portrait.and.arrow.right")
 							.frame(maxWidth: .infinity, alignment: .leading)
 							.contentShape(Rectangle())
 							.foregroundStyle(Color(.systemRed))
