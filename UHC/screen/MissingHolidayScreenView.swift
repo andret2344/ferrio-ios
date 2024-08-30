@@ -3,10 +3,12 @@
 //
 
 import FirebaseAuth
+import StoreKit
 import SwiftUI
 
 struct MissingHolidayScreenView: View {
 	@Environment(\.dismiss) private var dismiss
+	@Environment(\.requestReview) private var requestReview
 	@State private var floating: Bool = false
 	@State private var name: String = ""
 	@State private var description: String = ""
@@ -54,6 +56,11 @@ struct MissingHolidayScreenView: View {
 					.labelStyle(TitleOnlyLabelStyle())
 				}
 			}
+			Text("Reports with the description are more likely to be verified in the first place.")
+				.textFieldStyle(RoundedBorderTextFieldStyle())
+				.lineLimit(1...3)
+				.font(.footnote)
+				.foregroundStyle(.orange)
 		}
 		.padding(12)
 		.navigationBarTitle("Missing holiday?")
@@ -90,9 +97,15 @@ struct MissingHolidayScreenView: View {
 			}
 		}
 		.alert(isPresented: $showAlert) {
-			Alert(title: Text("Report"), message: Text(alertMessage), dismissButton: .default(Text("OK")) {
+			Alert(
+				title: Text("Report sent"),
+				message: Text(alertMessage.localized()),
+				dismissButton: .default(
+					Text("OK")
+				) {
 				if success {
 					dismiss()
+					requestReview()
 				}
 			})
 		}
