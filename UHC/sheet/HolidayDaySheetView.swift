@@ -76,18 +76,8 @@ struct HolidayDaySheetView: View {
 				}
 			})
 		}
-		.sheet(
-			isPresented: Binding(
-				get: {
-					reportedHoliday != nil
-				},
-				set: {
-					if !$0 {
-						reportedHoliday = nil
-					}
-				})
-		) {
-			ReportHolidaySheetView(holiday: self.reportedHoliday!)
+		.sheet(isPresented: nullBinding($reportedHoliday)) {
+			ReportHolidaySheetView(holiday: reportedHoliday!)
 		}
 	}
 
@@ -100,5 +90,17 @@ struct HolidayDaySheetView: View {
 					Label("Report", systemImage: "exclamationmark.triangle")
 				}
 			}
+	}
+
+	func nullBinding<T>(_ element: Binding<T?>) -> Binding<Bool> {
+		return Binding(
+			get: {
+				element.wrappedValue != nil
+			},
+			set: {
+				if !$0 {
+					element.wrappedValue = nil
+				}
+			})
 	}
 }
