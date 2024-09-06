@@ -8,14 +8,16 @@ import SwiftUI
 struct ReportHolidaySheetView: View {
 	@Environment(\.dismiss) var dismiss
 	let holiday: Holiday
+	let languageCode: String = String(Locale.preferredLanguages[0].prefix(2))
 	private let types: [String] = ["WRONG_NAME", "WRONG_DESCRIPTION", "WRONG_DATE", "OTHER"]
 	@State private var reportType: String = "WRONG_NAME"
 	@State private var description: String = ""
-	@State private var showAlert = false
-	@State private var alertMessage = ""
-	@State private var success = false;
+	@State private var showAlert: Bool = false
+	@State private var alertMessage: String = ""
+	@State private var success: Bool = false;
 
 	var body: some View {
+		let _ = print()
 		NavigationStack {
 			VStack {
 				Form {
@@ -29,7 +31,9 @@ struct ReportHolidaySheetView: View {
 
 					Picker("Reason", selection: $reportType) {
 						ForEach(types, id: \.self) { type in
-							Text(type.localized()).tag(type)
+							if (type != "WRONG_DESCRIPTION" || holiday.description != "") {
+								Text(type.localized()).tag(type)
+							}
 						}
 					}
 					.pickerStyle(.automatic)
@@ -62,7 +66,7 @@ struct ReportHolidaySheetView: View {
 									reportPayload: HolidayReportPayload(
 										userId: uid,
 										metadata: -holiday.id,
-										language: "en",
+										language: languageCode,
 										reportType: reportType,
 										description: description
 									),
@@ -73,7 +77,7 @@ struct ReportHolidaySheetView: View {
 									reportPayload: HolidayReportPayload(
 										userId: uid,
 										metadata: holiday.id,
-										language: "en",
+										language: languageCode,
 										reportType: reportType,
 										description: description
 									),
