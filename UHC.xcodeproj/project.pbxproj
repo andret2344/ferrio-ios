@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1A8B10790965E9FA883073F5 /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B11FC25FF622BF8103CA4 /* SheetView.swift */; };
+		1A8B10790965E9FA883073F5 /* HolidayDaySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B11FC25FF622BF8103CA4 /* HolidayDaySheetView.swift */; };
 		1A8B112B631A5308FA97FA6B /* UnusualCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B18120DC8F1B2DCC45BDA /* UnusualCalendar.swift */; };
 		1A8B12DCBD209A62D97052F5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B10F20ACAAC22CFF240FA /* DateExtension.swift */; };
 		1A8B1300D25F3DF37014DB4E /* MonthScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1CAFE49FB33A63415436 /* MonthScreenView.swift */; };
@@ -22,11 +22,20 @@
 		1A8B1DF78BB062853E4ADA84 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B12214F0DD9E8499ECE57 /* ContentView.swift */; };
 		1A8B1E96C93116A2D02E6335 /* URLSessionExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B131C071B4025F6354DC3 /* URLSessionExtension.swift */; };
 		1A8B1F7FF4C4565DF161C065 /* HolidayDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1218DD3EF5D07BF92C36 /* HolidayDay.swift */; };
+		7101870E2C52E540009061F1 /* SuggestionsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7101870D2C52E540009061F1 /* SuggestionsScreenView.swift */; };
+		710187102C52E6F8009061F1 /* MissingFixedHoliday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7101870F2C52E6F8009061F1 /* MissingFixedHoliday.swift */; };
+		710187112C52E6F8009061F1 /* MissingFixedHoliday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7101870F2C52E6F8009061F1 /* MissingFixedHoliday.swift */; };
+		710187132C5375AD009061F1 /* ReportState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710187122C5375AD009061F1 /* ReportState.swift */; };
+		710187142C5375AD009061F1 /* ReportState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710187122C5375AD009061F1 /* ReportState.swift */; };
+		710187162C53796F009061F1 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710187152C53796F009061F1 /* StringExtension.swift */; };
+		710187172C53796F009061F1 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710187152C53796F009061F1 /* StringExtension.swift */; };
+		710187192C538416009061F1 /* MissingFloatingHoliday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710187182C538416009061F1 /* MissingFloatingHoliday.swift */; };
+		7101871A2C538416009061F1 /* MissingFloatingHoliday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710187182C538416009061F1 /* MissingFloatingHoliday.swift */; };
 		7109DEFA2C4A3F7B00600EDA /* MissingHolidayPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109DEF92C4A3F7B00600EDA /* MissingHolidayPayload.swift */; };
 		711493FB2C4EA12200245BB4 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 711493FA2C4EA12200245BB4 /* GoogleSignIn */; };
 		711F6D752C39414500CCBDB5 /* MissingHolidayScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 711F6D742C39414500CCBDB5 /* MissingHolidayScreenView.swift */; };
 		7123B09A2AC4B9CB00295E71 /* UHCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7123B09C2AC4B9CB00295E71 /* UHCWidget.intentdefinition */; };
-		7137D6EB2AA5D6FD00CE239B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7137D6ED2AA5D6FD00CE239B /* Localizable.strings */; };
+		7137D6EB2AA5D6FD00CE239B /* Localizable in Resources */ = {isa = PBXBuildFile; fileRef = 7137D6ED2AA5D6FD00CE239B /* Localizable */; };
 		7137D6F52AA600D500CE239B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7137D6F42AA600D500CE239B /* WidgetKit.framework */; };
 		7137D6F72AA600D500CE239B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7137D6F62AA600D500CE239B /* SwiftUI.framework */; };
 		7137D6FA2AA600D500CE239B /* UHCWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7137D6F92AA600D500CE239B /* UHCWidgetBundle.swift */; };
@@ -39,12 +48,18 @@
 		7137D7132AA6830200CE239B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7137D7152AA6830200CE239B /* Localizable.strings */; };
 		7137D71B2AA7147E00CE239B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7137D71A2AA7147E00CE239B /* Settings.bundle */; };
 		714270002ABCB89100C94742 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B15593B806217A51802A1 /* UIColorExtension.swift */; };
+		71560FFF2C596A0400942DB4 /* ReportHolidaySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71560FFE2C596A0400942DB4 /* ReportHolidaySheetView.swift */; };
 		718743A22AAFB8F500A6EFC0 /* UHCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 718743A52AAFB8F500A6EFC0 /* UHCWidget.intentdefinition */; };
 		718743A32AAFB8F500A6EFC0 /* UHCWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 718743A52AAFB8F500A6EFC0 /* UHCWidget.intentdefinition */; };
 		718743AA2AB3B7FC00A6EFC0 /* FloatingHoliday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1C09241000093713F0DF /* FloatingHoliday.swift */; };
 		718743AB2ABA5A8000A6EFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71FA8B022AA54A03000E2831 /* Assets.xcassets */; };
-		71896E2D2C27E8DD00E2B000 /* ReportScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71896E2C2C27E8DD00E2B000 /* ReportScreenView.swift */; };
+		71896E2D2C27E8DD00E2B000 /* MoreScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71896E2C2C27E8DD00E2B000 /* MoreScreenView.swift */; };
+		71A0F97E2C693053007F595F /* ReportsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A0F97D2C693053007F595F /* ReportsScreenView.swift */; };
+		71A0F9802C695748007F595F /* HolidayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A0F97F2C695748007F595F /* HolidayReport.swift */; };
+		71A0F9812C695748007F595F /* HolidayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A0F97F2C695748007F595F /* HolidayReport.swift */; };
 		71B81C912C25701E0039D554 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B81C902C25701E0039D554 /* MainScreenView.swift */; };
+		71B8BA0C2C65FA5F00F1B211 /* HolidayReportPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B8BA0B2C65FA5F00F1B211 /* HolidayReportPayload.swift */; };
+		71B8BA0D2C65FA5F00F1B211 /* HolidayReportPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B8BA0B2C65FA5F00F1B211 /* HolidayReportPayload.swift */; };
 		71C144B52C4EEC32005A937A /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C144B42C4EEC32005A937A /* AuthenticationViewModel.swift */; };
 		71CD251E2C4EAA57007963D8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71CD251D2C4EAA57007963D8 /* GoogleService-Info.plist */; };
 		71D16D0F2ABCE54B00BE9B3A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 71D16D122ABCE54B00BE9B3A /* InfoPlist.strings */; };
@@ -105,7 +120,7 @@
 /* Begin PBXFileReference section */
 		1A8B1099EB8290D954AD1CA0 /* SearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		1A8B10F20ACAAC22CFF240FA /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
-		1A8B11FC25FF622BF8103CA4 /* SheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; usesTabs = 1; };
+		1A8B11FC25FF622BF8103CA4 /* HolidayDaySheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidayDaySheetView.swift; sourceTree = "<group>"; usesTabs = 1; };
 		1A8B1218DD3EF5D07BF92C36 /* HolidayDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidayDay.swift; sourceTree = "<group>"; };
 		1A8B12214F0DD9E8499ECE57 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1A8B131C071B4025F6354DC3 /* URLSessionExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
@@ -119,6 +134,11 @@
 		1A8B1CAFE49FB33A63415436 /* MonthScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthScreenView.swift; sourceTree = "<group>"; };
 		1A8B1D27889C5E839E12D607 /* MonthAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MonthAdapter.swift; sourceTree = "<group>"; };
 		1A8B1FA259D1D09B4119D61E /* ObservableConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObservableConfig.swift; sourceTree = "<group>"; };
+		7101870D2C52E540009061F1 /* SuggestionsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsScreenView.swift; sourceTree = "<group>"; };
+		7101870F2C52E6F8009061F1 /* MissingFixedHoliday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingFixedHoliday.swift; sourceTree = "<group>"; };
+		710187122C5375AD009061F1 /* ReportState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportState.swift; sourceTree = "<group>"; };
+		710187152C53796F009061F1 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		710187182C538416009061F1 /* MissingFloatingHoliday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingFloatingHoliday.swift; sourceTree = "<group>"; };
 		7109DEF92C4A3F7B00600EDA /* MissingHolidayPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingHolidayPayload.swift; sourceTree = "<group>"; };
 		711F6D742C39414500CCBDB5 /* MissingHolidayScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingHolidayScreenView.swift; sourceTree = "<group>"; };
 		7123B09B2AC4B9CB00295E71 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = en; path = en.lproj/UHCWidget.intentdefinition; sourceTree = "<group>"; };
@@ -133,10 +153,14 @@
 		7137D7142AA6830200CE239B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7137D7162AA6830400CE239B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7137D71A2AA7147E00CE239B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		71560FFE2C596A0400942DB4 /* ReportHolidaySheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportHolidaySheetView.swift; sourceTree = "<group>"; };
 		718743A72AAFB8FA00A6EFC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/UHCWidget.strings; sourceTree = "<group>"; };
 		718743A92AAFB8FB00A6EFC0 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/UHCWidget.strings; sourceTree = "<group>"; };
-		71896E2C2C27E8DD00E2B000 /* ReportScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportScreenView.swift; sourceTree = "<group>"; };
+		71896E2C2C27E8DD00E2B000 /* MoreScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreScreenView.swift; sourceTree = "<group>"; };
+		71A0F97D2C693053007F595F /* ReportsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsScreenView.swift; sourceTree = "<group>"; };
+		71A0F97F2C695748007F595F /* HolidayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayReport.swift; sourceTree = "<group>"; };
 		71B81C902C25701E0039D554 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
+		71B8BA0B2C65FA5F00F1B211 /* HolidayReportPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayReportPayload.swift; sourceTree = "<group>"; };
 		71C144B42C4EEC32005A937A /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		71CD251D2C4EAA57007963D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		71D16D112ABCE54B00BE9B3A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -200,6 +224,7 @@
 				1A8B131C071B4025F6354DC3 /* URLSessionExtension.swift */,
 				1A8B15593B806217A51802A1 /* UIColorExtension.swift */,
 				71EDA5C52C3D3DD000FC7E8C /* EncodableExtenstion.swift */,
+				710187152C53796F009061F1 /* StringExtension.swift */,
 			);
 			path = extension;
 			sourceTree = "<group>";
@@ -207,12 +232,14 @@
 		1A8B19EB18EAA233F4C46C74 /* screen */ = {
 			isa = PBXGroup;
 			children = (
-				71896E2C2C27E8DD00E2B000 /* ReportScreenView.swift */,
+				71896E2C2C27E8DD00E2B000 /* MoreScreenView.swift */,
 				71B81C902C25701E0039D554 /* MainScreenView.swift */,
 				1A8B1CAFE49FB33A63415436 /* MonthScreenView.swift */,
 				1A8B1099EB8290D954AD1CA0 /* SearchView.swift */,
 				711F6D742C39414500CCBDB5 /* MissingHolidayScreenView.swift */,
 				71D56C2C2C4E96E900ED8F15 /* LogInScreenView.swift */,
+				7101870D2C52E540009061F1 /* SuggestionsScreenView.swift */,
+				71A0F97D2C693053007F595F /* ReportsScreenView.swift */,
 			);
 			path = screen;
 			sourceTree = "<group>";
@@ -220,9 +247,13 @@
 		1A8B1D95E86FB026BB08C7F4 /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				1A8B1C09241000093713F0DF /* FloatingHoliday.swift */,
 				1A8B176D3CDAB3162E902569 /* Holiday.swift */,
 				1A8B1218DD3EF5D07BF92C36 /* HolidayDay.swift */,
-				1A8B1C09241000093713F0DF /* FloatingHoliday.swift */,
+				71A0F97F2C695748007F595F /* HolidayReport.swift */,
+				7101870F2C52E6F8009061F1 /* MissingFixedHoliday.swift */,
+				710187182C538416009061F1 /* MissingFloatingHoliday.swift */,
+				710187122C5375AD009061F1 /* ReportState.swift */,
 				1A8B18120DC8F1B2DCC45BDA /* UnusualCalendar.swift */,
 			);
 			path = entity;
@@ -239,6 +270,7 @@
 		7109DEF82C4A3F2B00600EDA /* payload */ = {
 			isa = PBXGroup;
 			children = (
+				71B8BA0B2C65FA5F00F1B211 /* HolidayReportPayload.swift */,
 				7109DEF92C4A3F7B00600EDA /* MissingHolidayPayload.swift */,
 			);
 			path = payload;
@@ -270,7 +302,8 @@
 		71B81C8F2C256F930039D554 /* sheet */ = {
 			isa = PBXGroup;
 			children = (
-				1A8B11FC25FF622BF8103CA4 /* SheetView.swift */,
+				1A8B11FC25FF622BF8103CA4 /* HolidayDaySheetView.swift */,
+				71560FFE2C596A0400942DB4 /* ReportHolidaySheetView.swift */,
 			);
 			path = sheet;
 			sourceTree = "<group>";
@@ -323,7 +356,7 @@
 				71FA8B022AA54A03000E2831 /* Assets.xcassets */,
 				71CD251D2C4EAA57007963D8 /* GoogleService-Info.plist */,
 				71DCA3692ABC9A69004C68A5 /* Info.plist */,
-				7137D6ED2AA5D6FD00CE239B /* Localizable.strings */,
+				7137D6ED2AA5D6FD00CE239B /* Localizable */,
 				1A8B12214F0DD9E8499ECE57 /* ContentView.swift */,
 				1A8B1FA259D1D09B4119D61E /* ObservableConfig.swift */,
 				71FA8B042AA54A03000E2831 /* Preview Content */,
@@ -509,7 +542,7 @@
 			files = (
 				7137D71B2AA7147E00CE239B /* Settings.bundle in Resources */,
 				71FA8B062AA54A03000E2831 /* Preview Assets.xcassets in Resources */,
-				7137D6EB2AA5D6FD00CE239B /* Localizable.strings in Resources */,
+				7137D6EB2AA5D6FD00CE239B /* Localizable in Resources */,
 				71FA8B032AA54A03000E2831 /* Assets.xcassets in Resources */,
 				71D16D0F2ABCE54B00BE9B3A /* InfoPlist.strings in Resources */,
 				71CD251E2C4EAA57007963D8 /* GoogleService-Info.plist in Resources */,
@@ -538,7 +571,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				7137D70C2AA6601200CE239B /* URLSessionExtension.swift in Sources */,
+				710187142C5375AD009061F1 /* ReportState.swift in Sources */,
+				710187172C53796F009061F1 /* StringExtension.swift in Sources */,
 				71D16D142ABDA9D700BE9B3A /* DateExtension.swift in Sources */,
+				71B8BA0D2C65FA5F00F1B211 /* HolidayReportPayload.swift in Sources */,
 				7137D70D2AA6602D00CE239B /* HolidayDay.swift in Sources */,
 				7137D70E2AA67A2300CE239B /* Holiday.swift in Sources */,
 				714270002ABCB89100C94742 /* UIColorExtension.swift in Sources */,
@@ -546,9 +582,12 @@
 				71EDA5C62C3D3DD000FC7E8C /* EncodableExtenstion.swift in Sources */,
 				7137D6FA2AA600D500CE239B /* UHCWidgetBundle.swift in Sources */,
 				718743AA2AB3B7FC00A6EFC0 /* FloatingHoliday.swift in Sources */,
+				710187102C52E6F8009061F1 /* MissingFixedHoliday.swift in Sources */,
 				71D16D152ABDB59600BE9B3A /* ObservableConfig.swift in Sources */,
 				718743A32AAFB8F500A6EFC0 /* UHCWidget.intentdefinition in Sources */,
 				7123B09A2AC4B9CB00295E71 /* UHCWidget.intentdefinition in Sources */,
+				71A0F9812C695748007F595F /* HolidayReport.swift in Sources */,
+				7101871A2C538416009061F1 /* MissingFloatingHoliday.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -556,28 +595,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71A0F97E2C693053007F595F /* ReportsScreenView.swift in Sources */,
 				71FA8AFF2AA54A00000E2831 /* UHCApp.swift in Sources */,
-				1A8B10790965E9FA883073F5 /* SheetView.swift in Sources */,
+				1A8B10790965E9FA883073F5 /* HolidayDaySheetView.swift in Sources */,
 				7109DEFA2C4A3F7B00600EDA /* MissingHolidayPayload.swift in Sources */,
 				1A8B1300D25F3DF37014DB4E /* MonthScreenView.swift in Sources */,
 				71D56C2D2C4E96E900ED8F15 /* LogInScreenView.swift in Sources */,
 				1A8B193C13A479F68307A24A /* Holiday.swift in Sources */,
 				1A8B1F7FF4C4565DF161C065 /* HolidayDay.swift in Sources */,
 				1A8B12DCBD209A62D97052F5 /* DateExtension.swift in Sources */,
-				71896E2D2C27E8DD00E2B000 /* ReportScreenView.swift in Sources */,
+				710187162C53796F009061F1 /* StringExtension.swift in Sources */,
+				71896E2D2C27E8DD00E2B000 /* MoreScreenView.swift in Sources */,
 				718743A22AAFB8F500A6EFC0 /* UHCWidget.intentdefinition in Sources */,
 				1A8B16B55B81D47B30A8FEB6 /* ArrayExtension.swift in Sources */,
+				71A0F9802C695748007F595F /* HolidayReport.swift in Sources */,
 				71C144B52C4EEC32005A937A /* AuthenticationViewModel.swift in Sources */,
 				1A8B1E96C93116A2D02E6335 /* URLSessionExtension.swift in Sources */,
+				710187192C538416009061F1 /* MissingFloatingHoliday.swift in Sources */,
 				1A8B1DF78BB062853E4ADA84 /* ContentView.swift in Sources */,
 				1A8B1AEA03E60FDB045A3F6D /* MonthAdapter.swift in Sources */,
 				711F6D752C39414500CCBDB5 /* MissingHolidayScreenView.swift in Sources */,
 				1A8B13A5961A9CF307EAE195 /* AppDelegate.swift in Sources */,
 				1A8B13FBBE820C88F7AD2481 /* ObservableConfig.swift in Sources */,
+				7101870E2C52E540009061F1 /* SuggestionsScreenView.swift in Sources */,
 				71EDA5C72C3D3DD000FC7E8C /* EncodableExtenstion.swift in Sources */,
 				1A8B15612F5FA0A8B3DB25CF /* UIColorExtension.swift in Sources */,
 				71B81C912C25701E0039D554 /* MainScreenView.swift in Sources */,
+				710187112C52E6F8009061F1 /* MissingFixedHoliday.swift in Sources */,
 				1A8B1CE5273716CC84621F94 /* FloatingHoliday.swift in Sources */,
+				710187132C5375AD009061F1 /* ReportState.swift in Sources */,
+				71B8BA0C2C65FA5F00F1B211 /* HolidayReportPayload.swift in Sources */,
+				71560FFF2C596A0400942DB4 /* ReportHolidaySheetView.swift in Sources */,
 				1A8B112B631A5308FA97FA6B /* UnusualCalendar.swift in Sources */,
 				1A8B13F836D3BECA852C2A7B /* SearchView.swift in Sources */,
 			);
@@ -630,13 +678,13 @@
 			name = UHCWidget.intentdefinition;
 			sourceTree = "<group>";
 		};
-		7137D6ED2AA5D6FD00CE239B /* Localizable.strings */ = {
+		7137D6ED2AA5D6FD00CE239B /* Localizable */ = {
 			isa = PBXVariantGroup;
 			children = (
 				7137D6EC2AA5D6FD00CE239B /* en */,
 				1A8B1AC23FE5563DD8D09062 /* pl */,
 			);
-			name = Localizable.strings;
+			name = Localizable;
 			sourceTree = "<group>";
 		};
 		7137D7152AA6830200CE239B /* Localizable.strings */ = {
