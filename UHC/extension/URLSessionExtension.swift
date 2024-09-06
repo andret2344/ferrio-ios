@@ -23,7 +23,7 @@ public extension URLSession {
 		return decoded
 	}
 
-	func sendRequest(jsonData: Data, path: String, callback: @escaping (String, Bool) -> Void) {
+	func sendRequest(jsonData: Data, path: String, callback: @escaping (String?, Bool) -> Void) {
 		guard let url = URL(string: "https://api.unusualcalendar.net/v2/\(path)") else { return }
 		var request = URLRequest(url: url)
 		request.httpMethod = "POST"
@@ -42,7 +42,7 @@ public extension URLSession {
 				return;
 			}
 
-			callback("Missing holiday reported successfully!", true)
+			callback(nil, true)
 		}.resume()
 	}
 }

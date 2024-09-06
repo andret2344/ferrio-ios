@@ -2,10 +2,13 @@
 //  Created by Andrzej Chmiel on 06/07/2024.
 //
 
+import FirebaseAuth
+import StoreKit
 import SwiftUI
 
 struct MissingHolidayScreenView: View {
 	@Environment(\.dismiss) private var dismiss
+	@Environment(\.requestReview) private var requestReview
 	@State private var floating: Bool = false
 	@State private var name: String = ""
 	@State private var description: String = ""
@@ -53,26 +56,56 @@ struct MissingHolidayScreenView: View {
 					.labelStyle(TitleOnlyLabelStyle())
 				}
 			}
+			Text("Reports with the description are more likely to be verified in the first place.")
+				.textFieldStyle(RoundedBorderTextFieldStyle())
+				.lineLimit(1...3)
+				.font(.footnote)
+				.foregroundStyle(.orange)
 		}
 		.padding(12)
 		.navigationBarTitle("Missing holiday?")
 		.navigationBarTitleDisplayMode(.large)
 		.toolbar {
-			ToolbarItem(placement: .primaryAction) {
-				Button("Send") {
-					if floating {
-						sendMissingHolidayPayload(missingHolidayPayload: MissingFloatingHolidayPayload(name: name, description: description, userId: "TEST-TEST", date: date), path: "missing/floating")
-					} else {
-						sendMissingHolidayPayload(missingHolidayPayload: MissingFixedHolidayPayload(name: name, description: description, userId: "TEST-TEST", day: day, month: month + 1), path: "missing/fixed")
+			if let uid = Auth.auth().currentUser?.uid {
+				ToolbarItem(placement: .primaryAction) {
+					Button("Send") {
+						if floating {
+							sendMissingHolidayPayload(
+								missingHolidayPayload: MissingFloatingHolidayPayload(
+									name: name,
+									description: description,
+									userId: uid,
+									date: date
+								),
+								path: "missing/floating"
+							)
+						} else {
+							sendMissingHolidayPayload(
+								missingHolidayPayload: MissingFixedHolidayPayload(
+									name: name,
+									description: description,
+									userId: uid,
+									day: day,
+									month: month + 1
+								),
+								path: "missing/fixed"
+							)
+						}
 					}
+					.disabled(disabledSend())
 				}
-				.disabled(disabledSend())
 			}
 		}
 		.alert(isPresented: $showAlert) {
-			Alert(title: Text("Report"), message: Text(alertMessage), dismissButton: .default(Text("OK")) {
+			Alert(
+				title: Text("Report sent"),
+				message: Text(alertMessage.localized()),
+				dismissButton: .default(
+					Text("OK")
+				) {
 				if success {
 					dismiss()
+					requestReview()
 				}
 			})
 		}
@@ -85,7 +118,7 @@ struct MissingHolidayScreenView: View {
 			let jsonData: Data = try encoder.encode(missingHolidayPayload)
 			URLSession.shared.sendRequest(jsonData: jsonData, path: path) { message, success in
 				DispatchQueue.main.async {
-					self.alertMessage = message
+					self.alertMessage = message ?? "Missing holiday reported successfully."
 					self.showAlert = true
 					self.success = success
 				}
