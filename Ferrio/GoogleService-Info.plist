@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>124787310112-m7qjkg1u6c1j8tpkrb4qjgft18jkvbjr.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.124787310112-m7qjkg1u6c1j8tpkrb4qjgft18jkvbjr</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>124787310112-b1qm79pocs5pkuso527v86ini2b86qmo.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCGqr1_vaRoxQ_IvWmkDGE5YAoJtxAMT94</string>
+	<key>GCM_SENDER_ID</key>
+	<string>124787310112</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>eu.andret.uhc</string>
+	<key>PROJECT_ID</key>
+	<string>unusual-holiday-calendar-1</string>
+	<key>STORAGE_BUCKET</key>
+	<string>unusual-holiday-calendar-1.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:124787310112:ios:f32cc0727ad4b5638dc645</string>
+</dict>
+</plist>
