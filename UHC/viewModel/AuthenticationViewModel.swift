@@ -2,19 +2,24 @@
 //  Created by Andrzej Chmiel on 22/07/2024.
 //
 
-import Firebase
+import FirebaseCore
+import FirebaseAuth
 import GoogleSignIn
 
+@MainActor
 class AuthenticationViewModel: ObservableObject {
 	@Published var state: SignInState = .signedOut
+	private var authListenerHandle: AuthStateDidChangeListenerHandle?
 
 	init() {
-		Auth.auth().addStateDidChangeListener { (auth, user) in
-			if user != nil {
-				self.state = .signedIn
-			} else {
-				self.state = .signedOut
-			}
+		authListenerHandle = Auth.auth().addStateDidChangeListener { [weak self] _, user in
+			self?.state = (user != nil) ? .signedIn : .signedOut
+		}
+	}
+
+	deinit {
+		if let handle = authListenerHandle {
+			Auth.auth().removeStateDidChangeListener(handle)
 		}
 	}
 
@@ -28,7 +33,9 @@ class AuthenticationViewModel: ObservableObject {
 		guard let rootViewController = windowScene.windows.first?.rootViewController else { return }
 
 		GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { result, error in
-			self.authenticateUser(result?.user, error: error)
+			Task { @MainActor in
+				self.authenticateUser(result?.user, error: error)
+			}
 		}
 	}
 

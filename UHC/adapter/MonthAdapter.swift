@@ -12,45 +12,62 @@ struct MonthAdapter: View {
 	let days: [HolidayDay]
 
 	var body: some View {
-		VStack(alignment: .leading) {
-			let holidayDays: [HolidayDay] = getHolidayDays();
-			let rows: [[HolidayDay]] = holidayDays.chunked(into: 7)
-			ForEach(0..<rows.endIndex, id: \.self) { weekIndex in
-				HStack(spacing: 6) {
-					ForEach(0..<rows[weekIndex].endIndex, id: \.self) { dayIndex in
-						let day: Int = weekIndex * 7 + dayIndex
-						let holidayDay: HolidayDay = holidayDays[day]
-						let components: DateComponents = Calendar.current.dateComponents([.day, .month], from: Date())
+		GeometryReader { geo in
+			let cols = 7
+			let rows = 6
+			let spacing: CGFloat = 6
 
-						renderButton(holidayDay: holidayDay)
-							.overlay(
-								components.day == holidayDay.day && components.month == holidayDay.month ?
-								RoundedRectangle(cornerRadius: 5).stroke(Color.red, lineWidth: 3) : nil
-							)
+			let availW = geo.size.width - geo.safeAreaInsets.leading - geo.safeAreaInsets.trailing - 16
+			let availH = geo.size.height - geo.safeAreaInsets.top - geo.safeAreaInsets.bottom - 16
+
+			let cellW = floor((availW - spacing * CGFloat(cols - 1)) / CGFloat(cols))
+			let cellH = floor((availH - spacing * CGFloat(rows - 1)) / CGFloat(rows))
+
+			let gridW = cellW * CGFloat(cols) + spacing * CGFloat(cols - 1)
+			let gridH = cellH * CGFloat(rows) + spacing * CGFloat(rows - 1)
+
+			let holidayDays: [HolidayDay] = getHolidayDays()
+			let rowsData: [[HolidayDay]] = holidayDays.chunked(into: cols)
+
+			VStack(alignment: .leading, spacing: spacing) {
+				ForEach(0..<rowsData.endIndex, id: \.self) { weekIndex in
+					HStack(spacing: spacing) {
+						ForEach(0..<rowsData[weekIndex].endIndex, id: \.self) { dayIndex in
+							let day: Int = weekIndex * 7 + dayIndex
+							let holidayDay: HolidayDay = holidayDays[day]
+							let components: DateComponents = Calendar.current.dateComponents([.day, .month], from: Date())
+
+							renderButton(holidayDay: holidayDay, width: cellW, height: cellH)
+								.overlay(
+									components.day == holidayDay.day && components.month == holidayDay.month
+											? RoundedRectangle(cornerRadius: 5).stroke(Color.red, lineWidth: 3)
+											: nil
+								)
+						}
 					}
 				}
+				Spacer(minLength: 0)
 			}
-			Spacer()
+			.frame(width: gridW, height: gridH, alignment: .topLeading)
+			.padding(.vertical, 8)
+			.padding(.horizontal, 8)
+			.navigationTitle(Text(DateFormatter().standaloneMonthSymbols[month - 1].capitalized))
 		}
-		.padding()
-		.navigationTitle(Text(DateFormatter().standaloneMonthSymbols[month - 1].capitalized))
 	}
 
-	private func renderButton(holidayDay: HolidayDay) -> some View {
-		Button(action: {
-			selectedDay = holidayDay
-		}) {
+	private func renderButton(holidayDay: HolidayDay, width: CGFloat, height: CGFloat) -> some View {
+		Button { selectedDay = holidayDay } label: {
 			ZStack {
-				if holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays).count == 0 {
+				if holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays).isEmpty {
 					Image("SadIcon")
 						.resizable()
-						.aspectRatio(contentMode: .fit)
+						.scaledToFit()
 				} else {
-					Text(String(holidayDay.day))
+					Text("\(holidayDay.day)")
 						.font(.system(size: 25))
 				}
 			}
-			.frame(width: getWidth(), height: getHeight())
+			.frame(width: max(0, width), height: max(0, height))
 		}
 		.background(Color(getColor(currentMonth: holidayDay.month == month, holidayDay: holidayDay)))
 		.foregroundColor(Color(.label))
@@ -65,14 +82,6 @@ struct MonthAdapter: View {
 			return UIColor.random(seed: Int(holidayDay.id)!)
 		}
 		return .systemFill
-	}
-
-	func getWidth() -> CGFloat {
-		(UIScreen.main.bounds.width - 63) / 7
-	}
-
-	func getHeight() -> CGFloat {
-		(UIScreen.main.bounds.height - 261) / 7
 	}
 
 	func getHolidayDays() -> [HolidayDay] {

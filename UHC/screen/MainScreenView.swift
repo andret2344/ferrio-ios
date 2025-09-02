@@ -14,7 +14,7 @@ struct MainScreenView: View {
 				.animation(.easeIn, value: holidayDays)
 		} else {
 			TabView {
-				MonthScreenView(holidayDays: holidayDays, loading: loading)
+				MonthScreenView(holidayDays: holidayDays)
 					.tabItem {
 						Label("Calendar", systemImage: "calendar")
 					}
