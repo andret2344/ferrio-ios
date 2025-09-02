@@ -10,54 +10,48 @@ struct MonthScreenView: View {
 	@State private var selectedDay: HolidayDay? = nil
 	@State private var searchText = ""
 	let holidayDays: [HolidayDay]
-	let loading: Bool
 
 	var body: some View {
-		if loading == false {
-			LazyHStack {
-				NavigationStack {
-					TabView(selection: $selection) {
-						ForEach(1..<13) { i in
-							MonthAdapter(selectedDay: $selectedDay, month: i, days: holidayDays)
-						}
-					}
-					.overlay {
-						SearchView(selectedDay: $selectedDay, searchText: searchText, holidayDays: holidayDays)
-					}
-					.navigationBarTitleDisplayMode(.large)
-					.toolbar {
-						ToolbarItem(placement: .primaryAction) {
-							Button {
-								withAnimation {
-									selection = Calendar.current.component(.month, from: Date()) - 1
-								}
-							} label: {
-								Image(systemName: "calendar.badge.clock")
-									.accessibilityLabel("Today")
-							}
-						}
-						ToolbarItem(placement: .primaryAction) {
-							Button {
-								selectedDay = getRandomHolidayDay()
-							} label: {
-								Image(systemName: "shuffle")
-									.accessibilityLabel("Random")
-							}
-						}
-					}
-					.searchable(text: $searchText,
-								placement: .navigationBarDrawer(displayMode: .always),
-								prompt: "Search across \(getHolidaysCount()) holidays...")
-					.ignoresSafeArea(.keyboard)
+		NavigationStack {
+			TabView(selection: $selection) {
+				ForEach(1..<13) { i in
+					MonthAdapter(selectedDay: $selectedDay, month: i, days: holidayDays)
+						.tag(i)
 				}
-				.sheet(item: $selectedDay) { item in
-					HolidayDaySheetView(holidayDay: item)
-						.presentationDetents([.fraction(0.5), .fraction(0.9)])
-				}
-				.frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-				.tabViewStyle(.page(indexDisplayMode: .never))
 			}
+			.tabViewStyle(.page(indexDisplayMode: .never))
+			.overlay {
+				SearchView(selectedDay: $selectedDay, searchText: searchText, holidayDays: holidayDays)
+			}
+			.navigationBarTitleDisplayMode(.large)
+			.toolbar {
+				ToolbarItem(placement: .primaryAction) {
+					Button {
+						withAnimation {
+							selection = Calendar.current.component(.month, from: Date()) - 1
+						}
+					} label: {
+						Image(systemName: "calendar.badge.clock")
+							.accessibilityLabel("Today")
+					}
+				}
+				ToolbarItem(placement: .primaryAction) {
+					Button {
+						selectedDay = getRandomHolidayDay()
+					} label: {
+						Image(systemName: "shuffle")
+							.accessibilityLabel("Random")
+					}
+				}
+			}
+			.searchable(text: $searchText,
+						placement: .navigationBarDrawer(displayMode: .always),
+						prompt: "Search across \(getHolidaysCount()) holidays...")
 			.ignoresSafeArea(.keyboard)
+		}
+		.sheet(item: $selectedDay) { item in
+			HolidayDaySheetView(holidayDay: item)
+				.presentationDetents([.fraction(0.5), .fraction(0.9)])
 		}
 	}
 

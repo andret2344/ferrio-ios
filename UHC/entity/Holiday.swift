@@ -10,9 +10,12 @@ struct Holiday: Identifiable, Decodable, Equatable {
 	let name: String
 	let description: String
 	let url: String
+	let countryCode: String?
+	let category: String?
+	let matureContent: Bool?
 
 	enum CodingKeys: CodingKey {
-		case id, usual, name, description, url
+		case id, usual, name, description, url, countryCode, category, matureContent
 	}
 
 	init(from decoder: Decoder) throws {
@@ -22,14 +25,20 @@ struct Holiday: Identifiable, Decodable, Equatable {
 		name = try container.decode(String.self, forKey: .name)
 		description = try container.decode(String.self, forKey: .description)
 		url = try container.decode(String.self, forKey: .url)
+		countryCode = try container.decodeIfPresent(String.self, forKey: .countryCode)
+		category = try container.decodeIfPresent(String.self, forKey: .category)
+		matureContent = try container.decodeIfPresent(Bool.self, forKey: .matureContent)
 	}
 
-	init(id: Int, usual: Bool, name: String, description: String, url: String) {
+	init(id: Int, usual: Bool, name: String, description: String, url: String, countryCode: String?, category: String?, matureContent: Bool?) {
 		self.id = id
 		self.usual = usual
 		self.name = name
 		self.description = description
 		self.url = url
+		self.countryCode = countryCode
+		self.category = category
+		self.matureContent = matureContent
 	}
 
 	init(floatingHoliday: FloatingHoliday) {
@@ -38,6 +47,9 @@ struct Holiday: Identifiable, Decodable, Equatable {
 		name = floatingHoliday.name
 		description = floatingHoliday.description
 		url = floatingHoliday.url
+		countryCode = floatingHoliday.countryCode
+		category = floatingHoliday.category
+		matureContent = floatingHoliday.matureContent
 	}
 
 	static func ==(lhs: Holiday, rhs: Holiday) -> Bool {
@@ -45,6 +57,9 @@ struct Holiday: Identifiable, Decodable, Equatable {
 		lhs.usual == rhs.usual &&
 		lhs.name == rhs.name &&
 		lhs.description == rhs.description &&
-		lhs.url == rhs.url
+		lhs.url == rhs.url &&
+		lhs.countryCode == rhs.countryCode &&
+		lhs.category == rhs.category &&
+		lhs.matureContent == rhs.matureContent
 	}
 }

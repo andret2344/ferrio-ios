@@ -11,7 +11,16 @@ struct Provider: IntentTimelineProvider {
 	typealias Intent = ConfigurationIntent
 
 	func placeholder(in context: Context) -> WidgetEntry {
-		let holiday: Holiday = Holiday(id: 1, usual: true, name: "Perfect day!", description: "", url: "")
+		let holiday: Holiday = Holiday(
+			id: 1,
+			usual: true,
+			name: "Perfect day!",
+			description: "",
+			url: "",
+			countryCode: "",
+			category: "",
+			matureContent: false
+		)
 		return WidgetEntry(date: Date(), holidayDay: HolidayDay(id: "-1", day: 1, month: 1, holidays: [holiday]), dayOffset: 0, colorized: false)
 	}
 

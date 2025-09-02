@@ -3,6 +3,7 @@
 //
 
 import SwiftUI
+import GoogleSignIn
 
 @main
 struct UHCApp: App {
@@ -11,13 +12,16 @@ struct UHCApp: App {
 
 	var body: some Scene {
 		WindowGroup {
-			if viewModel.state == .signedIn {
-				ContentView()
-					.environmentObject(viewModel)
-			} else  {
-				LogInScreenView()
-					.environmentObject(viewModel)
-
+			Group {
+				if viewModel.state == .signedIn {
+					ContentView()
+				} else {
+					LogInScreenView()
+				}
+			}
+			.environmentObject(viewModel)
+			.onOpenURL { url in
+				_ = GIDSignIn.sharedInstance.handle(url)
 			}
 		}
 	}

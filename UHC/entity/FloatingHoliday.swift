@@ -11,9 +11,12 @@ struct FloatingHoliday: Identifiable, Decodable {
 	let description: String
 	let url: String
 	let script: String
+	let countryCode: String?
+	let category: String?
+	let matureContent: Bool?
 
 	enum CodingKeys: CodingKey {
-		case id, usual, name, description, url, script
+		case id, usual, name, description, url, script, countryCode, category, matureContent
 	}
 
 	init(from decoder: Decoder) throws {
@@ -24,14 +27,20 @@ struct FloatingHoliday: Identifiable, Decodable {
 		description = try container.decode(String.self, forKey: .description)
 		url = try container.decode(String.self, forKey: .url)
 		script = try container.decode(String.self, forKey: .script)
+		countryCode = try container.decodeIfPresent(String.self, forKey: .countryCode)
+		category = try container.decodeIfPresent(String.self, forKey: .category)
+		matureContent = try container.decodeIfPresent(Bool.self, forKey: .matureContent)
 	}
 
-	init(id: Int, usual: Bool, name: String, description: String, url: String, script: String) {
+	init(id: Int, usual: Bool, name: String, description: String, url: String, script: String, countryCode: String?, category: String?, matureContent: Bool?) {
 		self.id = id
 		self.usual = usual
 		self.name = name
 		self.description = description
 		self.url = url
 		self.script = script
+		self.countryCode = countryCode
+		self.category = category
+		self.matureContent = matureContent
 	}
 }
