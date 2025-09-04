@@ -16,7 +16,7 @@ struct HolidayDaySheetView: View {
 		let date: Date? = Date.from(month: holidayDay.month, day: holidayDay.day)
 		NavigationStack {
 			VStack {
-				let holidays: [Holiday] = holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays);
+				let holidays: [Holiday] = holidayDay.getHolidays(includeUsual: observableConfig.includeUsual);
 				if holidays.count == 0 {
 					Image("SadIcon")
 						.resizable()
@@ -64,7 +64,7 @@ struct HolidayDaySheetView: View {
 				Text("back")
 			}, trailing: Button {
 			} label: {
-				let holidays: [Holiday] = holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays)
+				let holidays: [Holiday] = holidayDay.getHolidays(includeUsual: observableConfig.includeUsual)
 				if (holidays.count != 0) {
 					let holidays = holidays.map { holiday in
 						"- \(holiday.name)"

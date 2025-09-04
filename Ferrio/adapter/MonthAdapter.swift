@@ -58,7 +58,7 @@ struct MonthAdapter: View {
 	private func renderButton(holidayDay: HolidayDay, width: CGFloat, height: CGFloat) -> some View {
 		Button { selectedDay = holidayDay } label: {
 			ZStack {
-				if holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays).isEmpty {
+				if holidayDay.getHolidays(includeUsual: observableConfig.includeUsual).isEmpty {
 					Image("SadIcon")
 						.resizable()
 						.scaledToFit()
