@@ -71,27 +71,102 @@ struct WidgetEntry: TimelineEntry {
 }
 
 struct FerrioWidgetEntryView: View {
-	@StateObject
-	var observableConfig = ObservableConfig()
+	@Environment(\.widgetFamily) private var family
+	@StateObject var observableConfig = ObservableConfig()
 	var entry: Provider.Entry
+
 	var body: some View {
-		VStack {
-			let date: Date? = Date.from(month: entry.holidayDay.month, day: entry.holidayDay.day)
-			Text(date!.formatted(.dateTime.day().month(.wide)))
-				.bold()
-				.padding(8)
-				.frame(maxWidth: .infinity)
-			let holidays: [Holiday] = entry.holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays)
+		let holidays = entry.holidayDay.getHolidays(includeUsual: observableConfig.includeUsual)
+		switch family {
+		case .accessoryInline:
+			FerrioAccessoryInlineView(
+				entry: entry,
+				holidays: holidays
+			)
+		case .accessoryRectangular:
+			FerrioAccessoryRectangularView(
+				entry: entry,
+				holidays: holidays
+			)
+		default:
+			FerrioRegularView(
+				entry: entry,
+				holidays: holidays
+			)
+		}
+	}
+}
+
+struct FerrioAccessoryInlineView: View {
+	let entry: WidgetEntry
+	let holidays: [Holiday]
+
+	var body: some View {
+		Label {
+			Text(getTitle())
+				.lineLimit(1)
+				.minimumScaleFactor(0.8)
+		} icon: {
+			Image(systemName: "calendar")
+				.widgetAccentable()
+		}
+		.widgetURL(URL(string: "ferrio://open"))
+	}
+
+	func getTitle() -> String {
+		let holidays = entry.holidayDay.getHolidays(includeUsual: true)
+		if holidays.isEmpty {
+			return "no-unusual-holidays"
+		}
+		let moreText = holidays.count == 1 ? "" : "(\(holidays.count - 1) more)"
+		return "\(holidays.first!.name) \(moreText)"
+	}
+}
+
+struct FerrioAccessoryRectangularView: View {
+	let entry: WidgetEntry
+	let holidays: [Holiday]
+
+	var body: some View {
+		VStack(alignment: .leading, spacing: 2) {
 			if holidays.isEmpty {
-				Text("no-unusual-holidays")
-					.font(.body)
-					.multilineTextAlignment(.center)
+				Text("no-unusual-holidays").font(.body).multilineTextAlignment(.center)
 				Image("SadIcon")
 			} else {
 				ForEach(holidays) { holiday in
 					HStack(alignment: .top) {
-						Text("\u{2022}")
-							.padding(.leading, 6)
+						Text("\u{2022}").padding(.leading, 6)
+						Text(holiday.name)
+					}
+					.font(.caption)
+					.padding(.horizontal, 6)
+					.frame(maxWidth: .infinity, alignment: .topLeading)
+				}
+			}
+		}
+		.containerBackground(for: .widget) { Color.clear }
+	}
+}
+
+struct FerrioRegularView: View {
+	let entry: WidgetEntry
+	let holidays: [Holiday]
+
+	var body: some View {
+		VStack {
+			let date = Date.from(month: entry.holidayDay.month, day: entry.holidayDay.day)!
+			Text(date.formatted(.dateTime.day().month(.wide)))
+				.bold()
+				.padding(8)
+				.frame(maxWidth: .infinity)
+
+			if holidays.isEmpty {
+				Text("no-unusual-holidays").font(.body).multilineTextAlignment(.center)
+				Image("SadIcon")
+			} else {
+				ForEach(holidays) { holiday in
+					HStack(alignment: .top) {
+						Text("\u{2022}").padding(.leading, 6)
 						Text(holiday.name)
 					}
 					.font(.caption)
@@ -102,6 +177,7 @@ struct FerrioWidgetEntryView: View {
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
 		.containerBackground(getColor(colorized: entry.colorized).gradient, for: .widget)
+		.widgetURL(URL(string: "ferrio://open"))
 	}
 
 	func getColor(colorized: Bool) -> Color {
@@ -120,6 +196,15 @@ struct FerrioWidget: Widget {
 		}
 		.configurationDisplayName("Ferrio")
 		.description("widget-description")
+		.supportedFamilies(
+			[
+				.systemSmall,
+				.systemMedium,
+				.systemLarge,
+				.accessoryInline,
+				.accessoryRectangular,
+			]
+		)
 		.contentMarginsDisabled()
 	}
 }

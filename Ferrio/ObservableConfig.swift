@@ -5,6 +5,6 @@
 import SwiftUI
 
 class ObservableConfig: ObservableObject {
-	@AppStorage("includeUsualHolidays") var includeUsualHolidays: Bool = true
+	@AppStorage("includeUsual") var includeUsual: Bool = true
 	@AppStorage("colorizedDays") var colorizedDays: Bool = false
 }
