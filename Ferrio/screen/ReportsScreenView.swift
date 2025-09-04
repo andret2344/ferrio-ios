@@ -13,10 +13,11 @@ struct ReportsScreenView: View {
 
 	var body: some View {
 		Picker("Select reported holidays type", selection: $reportedHolidaysType) {
-			Text("Fixed holidays").tag("fixed")
-			Text("Floating holidays").tag("floating")
+			Text("holidays-fixed").tag("fixed")
+			Text("holidays-floating").tag("floating")
 		}
 		.pickerStyle(.segmented)
+		.padding()
 		List {
 			if reportedHolidaysType == "fixed" {
 				ForEach(reportsFixed, id: \.id) { report in
@@ -31,7 +32,7 @@ struct ReportsScreenView: View {
 		.refreshable {
 			await fetchData()
 		}
-		.navigationTitle("My reports")
+		.navigationTitle("my-reports")
 		.task {
 			await fetchData()
 		}

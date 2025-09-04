@@ -32,13 +32,13 @@ public extension URLSession {
 
 		dataTask(with: request) { data, response, error in
 			if error != nil {
-				callback("Could not connect to server. Please try again later.", false)
+				callback("could-not-connect", false)
 				return;
 			}
 
 			let httpResponse = response as? HTTPURLResponse
 			guard let response = httpResponse, response.statusCode / 100 == 2 else {
-				callback("The request was unsuccessfull. Please try again later. Response code: \(httpResponse?.statusCode ?? -1).", false)
+				callback("unsuccessfull-request-\(httpResponse?.statusCode ?? -1)", false)
 				return;
 			}
 

@@ -49,8 +49,6 @@
 		714270002ABCB89100C94742 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B15593B806217A51802A1 /* UIColorExtension.swift */; };
 		71560FFF2C596A0400942DB4 /* ReportHolidaySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71560FFE2C596A0400942DB4 /* ReportHolidaySheetView.swift */; };
 		7156F5802E65CC4E00232B28 /* FerrioWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7156F57F2E65CC4E00232B28 /* FerrioWidget.intentdefinition */; };
-		718743A22AAFB8F500A6EFC0 /* FerrioWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 718743A52AAFB8F500A6EFC0 /* FerrioWidget.intentdefinition */; };
-		718743A32AAFB8F500A6EFC0 /* FerrioWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 718743A52AAFB8F500A6EFC0 /* FerrioWidget.intentdefinition */; };
 		718743AA2AB3B7FC00A6EFC0 /* FloatingHoliday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1C09241000093713F0DF /* FloatingHoliday.swift */; };
 		718743AB2ABA5A8000A6EFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71FA8B022AA54A03000E2831 /* Assets.xcassets */; };
 		71896E2D2C27E8DD00E2B000 /* MoreScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71896E2C2C27E8DD00E2B000 /* MoreScreenView.swift */; };
@@ -151,7 +149,6 @@
 		7137D71A2AA7147E00CE239B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		71560FFE2C596A0400942DB4 /* ReportHolidaySheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportHolidaySheetView.swift; sourceTree = "<group>"; };
 		7156F57F2E65CC4E00232B28 /* FerrioWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = FerrioWidget.intentdefinition; sourceTree = "<group>"; };
-		718743A72AAFB8FA00A6EFC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; name = en; path = en.lproj/FerrioWidget.intentdefinition; sourceTree = "<group>"; };
 		71896E2C2C27E8DD00E2B000 /* MoreScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreScreenView.swift; sourceTree = "<group>"; };
 		71A0F97D2C693053007F595F /* ReportsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsScreenView.swift; sourceTree = "<group>"; };
 		71A0F97F2C695748007F595F /* HolidayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayReport.swift; sourceTree = "<group>"; };
@@ -284,7 +281,6 @@
 				7156F57F2E65CC4E00232B28 /* FerrioWidget.intentdefinition */,
 				7137D6F92AA600D500CE239B /* FerrioWidgetBundle.swift */,
 				7137D6FD2AA600D500CE239B /* FerrioWidget.swift */,
-				718743A52AAFB8F500A6EFC0 /* FerrioWidget.intentdefinition */,
 				7137D7002AA600DB00CE239B /* Assets.xcassets */,
 				7137D7022AA600DB00CE239B /* Info.plist */,
 				7137D7152AA6830200CE239B /* Localizable.strings */,
@@ -565,7 +561,6 @@
 				718743AA2AB3B7FC00A6EFC0 /* FloatingHoliday.swift in Sources */,
 				710187102C52E6F8009061F1 /* MissingFixedHoliday.swift in Sources */,
 				71D16D152ABDB59600BE9B3A /* ObservableConfig.swift in Sources */,
-				718743A32AAFB8F500A6EFC0 /* FerrioWidget.intentdefinition in Sources */,
 				71A0F9812C695748007F595F /* HolidayReport.swift in Sources */,
 				7101871A2C538416009061F1 /* MissingFloatingHoliday.swift in Sources */,
 			);
@@ -586,7 +581,6 @@
 				1A8B12DCBD209A62D97052F5 /* DateExtension.swift in Sources */,
 				710187162C53796F009061F1 /* StringExtension.swift in Sources */,
 				71896E2D2C27E8DD00E2B000 /* MoreScreenView.swift in Sources */,
-				718743A22AAFB8F500A6EFC0 /* FerrioWidget.intentdefinition in Sources */,
 				1A8B16B55B81D47B30A8FEB6 /* ArrayExtension.swift in Sources */,
 				71A0F9802C695748007F595F /* HolidayReport.swift in Sources */,
 				71C144B52C4EEC32005A937A /* AuthenticationViewModel.swift in Sources */,
@@ -666,14 +660,6 @@
 				7137D7162AA6830400CE239B /* pl */,
 			);
 			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-		718743A52AAFB8F500A6EFC0 /* FerrioWidget.intentdefinition */ = {
-			isa = PBXVariantGroup;
-			children = (
-				718743A72AAFB8FA00A6EFC0 /* en */,
-			);
-			name = FerrioWidget.intentdefinition;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
