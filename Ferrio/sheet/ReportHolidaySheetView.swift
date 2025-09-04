@@ -29,7 +29,7 @@ struct ReportHolidaySheetView: View {
 						.textFieldStyle(RoundedBorderTextFieldStyle())
 						.lineLimit(1...2)
 
-					Picker("Reason", selection: $reportType) {
+					Picker("reason", selection: $reportType) {
 						ForEach(types, id: \.self) { type in
 							if (type != "WRONG_DESCRIPTION" || holiday.description != "") {
 								Text(type.localized()).tag(type)
@@ -41,26 +41,26 @@ struct ReportHolidaySheetView: View {
 					.labelStyle(TitleOnlyLabelStyle())
 
 					TextField(
-						"Description",
+						"description",
 						text: $description,
 						axis: .vertical
 					)
 					.textFieldStyle(RoundedBorderTextFieldStyle())
 					.lineLimit(6...6)
-					Text("Reports with the description are more likely to be verified in the first place.")
+					Text("report-notice")
 						.textFieldStyle(RoundedBorderTextFieldStyle())
 						.lineLimit(1...3)
 						.font(.footnote)
 						.foregroundStyle(.orange)
 				}
 			}
-			.navigationTitle("Report holiday")
+			.navigationTitle("report-holiday")
 			.navigationBarTitleDisplayMode(.large)
 			.navigationViewStyle(.stack)
 			.toolbar {
 				if let uid = Auth.auth().currentUser?.uid {
 					ToolbarItem(placement: .primaryAction) {
-						Button("Send") {
+						Button("send") {
 							if holiday.id < 0 {
 								sendReport(
 									reportPayload: HolidayReportPayload(
@@ -92,10 +92,10 @@ struct ReportHolidaySheetView: View {
 				dismiss()
 			} label: {
 				Image(systemName: "chevron.backward")
-				Text("Back")
+				Text("back")
 			})
 			.alert(isPresented: $showAlert) {
-				Alert(title: Text("Report"), message: Text(alertMessage), dismissButton: .default(Text("OK")) {
+				Alert(title: Text("report"), message: Text(alertMessage), dismissButton: .default(Text("ok")) {
 					if success {
 						dismiss()
 					}
@@ -106,7 +106,7 @@ struct ReportHolidaySheetView: View {
 
 	func renderDescriptionText() -> Text {
 		if holiday.description == "" {
-			return Text("- \("No description".localized()) -")
+			return Text("- \("no-description".localized()) -")
 				.italic()
 				.foregroundStyle(.gray)
 		}
@@ -120,14 +120,14 @@ struct ReportHolidaySheetView: View {
 			let jsonData: Data = try encoder.encode(reportPayload)
 			URLSession.shared.sendRequest(jsonData: jsonData, path: path) { message, success in
 				DispatchQueue.main.async {
-					self.alertMessage = message ?? "Holiday report sent successfully."
+					self.alertMessage = message ?? "sent"
 					self.showAlert = true
 					self.success = success
 				}
 			}
 		} catch {
 			DispatchQueue.main.async {
-				self.alertMessage = "Invalid data format"
+				self.alertMessage = "invalid-data-format"
 				self.showAlert = true
 			}
 		}

@@ -22,7 +22,7 @@ struct HolidayDaySheetView: View {
 						.resizable()
 						.aspectRatio(contentMode: .fit)
 						.frame(width: 128, height: 128)
-					Text("No unusual holidays.")
+					Text("no-unusual-holidays")
 				} else {
 					List {
 						ForEach(holidays, id: \.id) { holiday in
@@ -61,7 +61,7 @@ struct HolidayDaySheetView: View {
 				dismiss()
 			} label: {
 				Image(systemName: "chevron.backward")
-				Text("Back")
+				Text("back")
 			}, trailing: Button {
 			} label: {
 				let holidays: [Holiday] = holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays)
@@ -70,7 +70,7 @@ struct HolidayDaySheetView: View {
 						"- \(holiday.name)"
 					}
 						.joined(separator: "\n")
-					let text = "\(holidayDay.day).\(holidayDay.month):\n\(holidays)\n\n\("Check it yourself!".localized())"
+					let text = "\(holidayDay.day).\(holidayDay.month):\n\(holidays)\n\n\("check-it-yourself".localized())"
 					ShareLink(item: text, preview: SharePreview(text))
 						.labelStyle(.iconOnly)
 				}
@@ -87,7 +87,7 @@ struct HolidayDaySheetView: View {
 				Button {
 					self.reportedHoliday = holiday
 				} label: {
-					Label("Report", systemImage: "exclamationmark.triangle")
+					Label("report", systemImage: "exclamationmark.triangle")
 				}
 			}
 	}

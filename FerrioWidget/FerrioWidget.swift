@@ -14,7 +14,7 @@ struct Provider: IntentTimelineProvider {
 		let holiday: Holiday = Holiday(
 			id: 1,
 			usual: true,
-			name: "Perfect day!",
+			name: "perfect-day",
 			description: "",
 			url: "",
 			countryCode: "",
@@ -83,7 +83,7 @@ struct FerrioWidgetEntryView: View {
 				.frame(maxWidth: .infinity)
 			let holidays: [Holiday] = entry.holidayDay.getHolidays(includeUsualHolidays: observableConfig.includeUsualHolidays)
 			if holidays.isEmpty {
-				Text("No unusual holidays.")
+				Text("no-unusual-holidays")
 					.font(.body)
 					.multilineTextAlignment(.center)
 				Image("SadIcon")
@@ -119,7 +119,7 @@ struct FerrioWidget: Widget {
 			FerrioWidgetEntryView(entry: entry)
 		}
 		.configurationDisplayName("Ferrio")
-		.description("Check what holidays are on a given date.")
+		.description("widget-description")
 		.contentMarginsDisabled()
 	}
 }

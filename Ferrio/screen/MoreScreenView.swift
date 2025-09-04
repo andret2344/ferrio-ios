@@ -13,58 +13,58 @@ struct MoreScreenView: View {
 	var body: some View {
 		NavigationView {
 			List {
-				Section(header: Text("Reports")) {
+				Section(header: Text("reports")) {
 					NavigationLink {
 						MissingHolidayScreenView()
 					} label: {
-						Label("Missing holiday?", systemImage: "pencil")
+						Label("missing-holiday", systemImage: "pencil")
 					}
 					NavigationLink {
 						SuggestionsScreenView()
 					} label: {
-						Label("My suggestions", systemImage: "checkmark")
+						Label("my-suggestions", systemImage: "checkmark")
 					}
 					NavigationLink {
 						ReportsScreenView()
 					} label: {
-						Label("My reports", systemImage: "calendar.badge.exclamationmark")
+						Label("my-reports", systemImage: "calendar.badge.exclamationmark")
 					}
 				}
 				.disabled(Auth.auth().currentUser?.isAnonymous ?? true)
-				Section(header: Text("Application")) {
+				Section(header: Text("application")) {
 					Button(action: {
 						infoAlert = true
 					}) {
-						Label("About calendar", systemImage: "info")
+						Label("about-calendar", systemImage: "info")
 							.frame(maxWidth: .infinity, alignment: .leading)
 							.contentShape(Rectangle())
 					}
 					.buttonStyle(PlainButtonStyle())
-					.alert("About calendar", isPresented: $infoAlert, actions: {}, message: {
-						Text("All holidays - even those most unusual - are an opportunity to look in a different way at people, and appreciate phenomena we usually ignore.")
+					.alert("about-calendar", isPresented: $infoAlert, actions: {}, message: {
+						Text("about-holidays")
 					})
 					Button(action: {
 						logoutAlert = true
 					}) {
-						Label("Log out", systemImage: "rectangle.portrait.and.arrow.right")
+						Label("log-out", systemImage: "rectangle.portrait.and.arrow.right")
 							.frame(maxWidth: .infinity, alignment: .leading)
 							.contentShape(Rectangle())
 							.foregroundStyle(Color(.systemRed))
 					}
 					.buttonStyle(PlainButtonStyle())
-					.alert("Log out", isPresented: $logoutAlert) {
-						Button("Cancel", role: .cancel) {
+					.alert("log-out", isPresented: $logoutAlert) {
+						Button("cancel", role: .cancel) {
 							logoutAlert = false
 						}
-						Button("Log out", role: .destructive) {
+						Button("log-out", role: .destructive) {
 							viewModel.signOut()
 						}
 					} message: {
-						Text("Are you sure you want to log out?")
+						Text("logout-confirm")
 					}
 				}
 			}
-			.navigationTitle("More")
+			.navigationTitle("more")
 		}
 	}
 }

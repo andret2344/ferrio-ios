@@ -21,21 +21,21 @@ struct MissingHolidayScreenView: View {
 
 	var body: some View {
 		Form {
-			TextField("Holiday name", text: $name, axis: .vertical)
+			TextField("holiday-name", text: $name, axis: .vertical)
 				.textFieldStyle(RoundedBorderTextFieldStyle())
 				.lineLimit(2...2)
-			TextField("Holiday description", text: $description, axis: .vertical)
+			TextField("holiday-description", text: $description, axis: .vertical)
 				.textFieldStyle(RoundedBorderTextFieldStyle())
 				.lineLimit(5...5)
-			Toggle("Floating holiday", isOn: $floating)
+			Toggle("holiday-floating", isOn: $floating)
 				.toggleStyle(SwitchToggleStyle(tint: .accentColor))
 			if floating {
-				TextField("Date", text: $date, axis: .vertical)
+				TextField("date", text: $date, axis: .vertical)
 					.textFieldStyle(RoundedBorderTextFieldStyle())
 					.lineLimit(3...3)
 			} else {
 				HStack {
-					Picker("Month", selection: $month) {
+					Picker("month", selection: $month) {
 						ForEach(0..<12) { id in
 							Text(DateFormatter().standaloneMonthSymbols[id].capitalized).tag(id)
 						}
@@ -46,7 +46,7 @@ struct MissingHolidayScreenView: View {
 					.pickerStyle(.automatic)
 					.buttonStyle(BorderedButtonStyle())
 					.labelStyle(TitleOnlyLabelStyle())
-					Picker("Day", selection: $day) {
+					Picker("day", selection: $day) {
 						ForEach(0..<getDaysInMonth(month: month + 1), id: \.self) { id in
 							Text("\(id + 1)").tag(id + 1)
 						}
@@ -56,19 +56,19 @@ struct MissingHolidayScreenView: View {
 					.labelStyle(TitleOnlyLabelStyle())
 				}
 			}
-			Text("Reports with the description are more likely to be verified in the first place.")
+			Text("report-notice")
 				.textFieldStyle(RoundedBorderTextFieldStyle())
 				.lineLimit(1...3)
 				.font(.footnote)
 				.foregroundStyle(.orange)
 		}
 		.padding(12)
-		.navigationBarTitle("Missing holiday?")
+		.navigationBarTitle("missing-holiday")
 		.navigationBarTitleDisplayMode(.large)
 		.toolbar {
 			if let uid = Auth.auth().currentUser?.uid {
 				ToolbarItem(placement: .primaryAction) {
-					Button("Send") {
+					Button("send") {
 						if floating {
 							sendMissingHolidayPayload(
 								missingHolidayPayload: MissingFloatingHolidayPayload(
@@ -98,10 +98,10 @@ struct MissingHolidayScreenView: View {
 		}
 		.alert(isPresented: $showAlert) {
 			Alert(
-				title: Text("Report sent"),
+				title: Text("report-sent"),
 				message: Text(alertMessage.localized()),
 				dismissButton: .default(
-					Text("OK")
+					Text("ok")
 				) {
 				if success {
 					dismiss()
@@ -118,14 +118,14 @@ struct MissingHolidayScreenView: View {
 			let jsonData: Data = try encoder.encode(missingHolidayPayload)
 			URLSession.shared.sendRequest(jsonData: jsonData, path: path) { message, success in
 				DispatchQueue.main.async {
-					self.alertMessage = message ?? "Missing holiday reported successfully."
+					self.alertMessage = message ?? "sent"
 					self.showAlert = true
 					self.success = success
 				}
 			}
 		} catch {
 			DispatchQueue.main.async {
-				self.alertMessage = "Invalid data format"
+				self.alertMessage = "invalid-data-format"
 				self.showAlert = true
 			}
 		}
