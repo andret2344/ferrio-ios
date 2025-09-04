@@ -12,7 +12,7 @@
 			<key>Title</key>
 			<string>Include usual holidays</string>
 			<key>Key</key>
-			<string>includeUsualHolidays</string>
+			<string>includeUsual</string>
 			<key>DefaultValue</key>
 			<true/>
 		</dict>

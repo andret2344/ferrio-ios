@@ -44,8 +44,8 @@ struct HolidayDay: Identifiable, Decodable, Equatable {
 		String(format: "%02d", day) + "." + String(format: "%02d", month)
 	}
 
-	func getHolidays(includeUsualHolidays: Bool) -> [Holiday] {
-		if includeUsualHolidays {
+	func getHolidays(includeUsual: Bool) -> [Holiday] {
+		if includeUsual {
 			return holidays
 		}
 		return holidays.filter { holiday in

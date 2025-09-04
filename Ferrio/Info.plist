@@ -12,6 +12,14 @@
 				<string>com.googleusercontent.apps.136386894416-filk66upmah3qmht1arg6ln6vvjmj9lp</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>ferrio</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>ferrio</string>
+			</array>
+		</dict>
 	</array>
 	<key>GIDClientID</key>
 	<string>136386894416-filk66upmah3qmht1arg6ln6vvjmj9lp.apps.googleusercontent.com</string>
