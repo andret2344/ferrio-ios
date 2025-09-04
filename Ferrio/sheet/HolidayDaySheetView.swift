@@ -2,6 +2,8 @@
 // Created by Andrzej Chmiel on 02/09/2023.
 //
 
+import StoreKit
+import SwiftData
 import SwiftUI
 import UIKit
 
@@ -9,8 +11,10 @@ struct HolidayDaySheetView: View {
 	@State private var isShareSheetPresented: Bool = false
 	@State private var reportedHoliday: Holiday? = nil
 	@StateObject var observableConfig = ObservableConfig()
+	@Environment(\.modelContext) private var modelContext
 	@Environment(\.dismiss) var dismiss
 	let holidayDay: HolidayDay
+	@Query private var favorite: [Favorite]
 
 	var body: some View {
 		let date: Date? = Date.from(month: holidayDay.month, day: holidayDay.day)
@@ -82,14 +86,57 @@ struct HolidayDaySheetView: View {
 	}
 
 	func renderText(holiday: Holiday) -> some View {
-		Text(holiday.name)
-			.contextMenu {
-				Button {
-					self.reportedHoliday = holiday
-				} label: {
-					Label("report", systemImage: "exclamationmark.triangle")
+		let fav: Favorite? = findFavorite(id: holiday.id)
+		return HStack {
+			Text(holiday.name)
+				.contextMenu {
+					Button {
+						self.reportedHoliday = holiday
+					} label: {
+						Label("Report", systemImage: "exclamationmark.triangle")
+					}
 				}
+			Spacer()
+			Button {
+				let id: String = "HolidayDay-\(holidayDay.month)-\(holidayDay.day)"
+				if fav == nil {
+					modelContext.insert(Favorite(holidayId: holiday.id))
+					runNotification(id: id, holiday: holiday)
+				} else {
+					modelContext.delete(fav!)
+					UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [id])
+				}
+			} label: {
+				Image(systemName: fav == nil ? "star" : "star.fill")
 			}
+		}
+	}
+
+	func findFavorite(id: Int) -> Favorite? {
+		favorite.first(where: { $0.holidayId == id })
+	}
+
+	func runNotification(id: String, holiday: Holiday) -> Void {
+		UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
+			if success {
+				let notificationContent = UNMutableNotificationContent()
+				notificationContent.title = "Ferrio"
+				notificationContent.body = holiday.name
+				notificationContent.sound = .defaultRingtone
+
+				var components = DateComponents()
+				components.day = holidayDay.day
+				components.month = holidayDay.month
+				components.hour = 9
+				components.minute = 30
+
+				let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+				let request = UNNotificationRequest(identifier: id, content: notificationContent, trigger: trigger)
+				UNUserNotificationCenter.current().add(request);
+			} else if let error = error {
+				print(error.localizedDescription)
+			}
+		}
 	}
 
 	func nullBinding<T>(_ element: Binding<T?>) -> Binding<Bool> {

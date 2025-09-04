@@ -49,6 +49,8 @@
 		714270002ABCB89100C94742 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B15593B806217A51802A1 /* UIColorExtension.swift */; };
 		71560FFF2C596A0400942DB4 /* ReportHolidaySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71560FFE2C596A0400942DB4 /* ReportHolidaySheetView.swift */; };
 		7156F5802E65CC4E00232B28 /* FerrioWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7156F57F2E65CC4E00232B28 /* FerrioWidget.intentdefinition */; };
+		7157EF202E6993B600EF9F9A /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7157EF1F2E6993B600EF9F9A /* Favorite.swift */; };
+		7157EF212E6993B600EF9F9A /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7157EF1F2E6993B600EF9F9A /* Favorite.swift */; };
 		718743AA2AB3B7FC00A6EFC0 /* FloatingHoliday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1C09241000093713F0DF /* FloatingHoliday.swift */; };
 		718743AB2ABA5A8000A6EFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71FA8B022AA54A03000E2831 /* Assets.xcassets */; };
 		71896E2D2C27E8DD00E2B000 /* MoreScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71896E2C2C27E8DD00E2B000 /* MoreScreenView.swift */; };
@@ -149,6 +151,7 @@
 		7137D71A2AA7147E00CE239B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		71560FFE2C596A0400942DB4 /* ReportHolidaySheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportHolidaySheetView.swift; sourceTree = "<group>"; };
 		7156F57F2E65CC4E00232B28 /* FerrioWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = FerrioWidget.intentdefinition; sourceTree = "<group>"; };
+		7157EF1F2E6993B600EF9F9A /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		71896E2C2C27E8DD00E2B000 /* MoreScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreScreenView.swift; sourceTree = "<group>"; };
 		71A0F97D2C693053007F595F /* ReportsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsScreenView.swift; sourceTree = "<group>"; };
 		71A0F97F2C695748007F595F /* HolidayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayReport.swift; sourceTree = "<group>"; };
@@ -237,6 +240,7 @@
 		1A8B1D95E86FB026BB08C7F4 /* entity */ = {
 			isa = PBXGroup;
 			children = (
+				7157EF1F2E6993B600EF9F9A /* Favorite.swift */,
 				1A8B1C09241000093713F0DF /* FloatingHoliday.swift */,
 				1A8B176D3CDAB3162E902569 /* Holiday.swift */,
 				1A8B1218DD3EF5D07BF92C36 /* HolidayDay.swift */,
@@ -561,6 +565,7 @@
 				718743AA2AB3B7FC00A6EFC0 /* FloatingHoliday.swift in Sources */,
 				710187102C52E6F8009061F1 /* MissingFixedHoliday.swift in Sources */,
 				71D16D152ABDB59600BE9B3A /* ObservableConfig.swift in Sources */,
+				7157EF202E6993B600EF9F9A /* Favorite.swift in Sources */,
 				71A0F9812C695748007F595F /* HolidayReport.swift in Sources */,
 				7101871A2C538416009061F1 /* MissingFloatingHoliday.swift in Sources */,
 			);
@@ -576,6 +581,7 @@
 				7109DEFA2C4A3F7B00600EDA /* MissingHolidayPayload.swift in Sources */,
 				1A8B1300D25F3DF37014DB4E /* MonthScreenView.swift in Sources */,
 				71D56C2D2C4E96E900ED8F15 /* LogInScreenView.swift in Sources */,
+				7157EF212E6993B600EF9F9A /* Favorite.swift in Sources */,
 				1A8B193C13A479F68307A24A /* Holiday.swift in Sources */,
 				1A8B1F7FF4C4565DF161C065 /* HolidayDay.swift in Sources */,
 				1A8B12DCBD209A62D97052F5 /* DateExtension.swift in Sources */,

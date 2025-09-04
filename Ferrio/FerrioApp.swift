@@ -3,6 +3,7 @@
 //
 
 import SwiftUI
+import SwiftData
 import GoogleSignIn
 
 @main
@@ -24,5 +25,6 @@ struct FerrioApp: App {
 				_ = GIDSignIn.sharedInstance.handle(url)
 			}
 		}
+		.modelContainer(for: Favorite.self)
 	}
 }
