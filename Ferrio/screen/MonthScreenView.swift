@@ -32,7 +32,7 @@ struct MonthScreenView: View {
 						}
 					} label: {
 						Image(systemName: "calendar.badge.clock")
-							.accessibilityLabel("Today")
+							.accessibilityLabel("today")
 					}
 				}
 				ToolbarItem(placement: .primaryAction) {
@@ -40,13 +40,13 @@ struct MonthScreenView: View {
 						selectedDay = getRandomHolidayDay()
 					} label: {
 						Image(systemName: "shuffle")
-							.accessibilityLabel("Random")
+							.accessibilityLabel("random")
 					}
 				}
 			}
 			.searchable(text: $searchText,
 						placement: .navigationBarDrawer(displayMode: .always),
-						prompt: "Search across \(getHolidaysCount()) holidays...")
+						prompt: "search-across-\(getHolidaysCount())")
 			.ignoresSafeArea(.keyboard)
 		}
 		.sheet(item: $selectedDay) { item in

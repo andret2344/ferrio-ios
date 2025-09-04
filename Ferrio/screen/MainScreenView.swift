@@ -16,12 +16,12 @@ struct MainScreenView: View {
 			TabView {
 				MonthScreenView(holidayDays: holidayDays)
 					.tabItem {
-						Label("Calendar", systemImage: "calendar")
+						Label("calendar", systemImage: "calendar")
 					}
 				MoreScreenView()
 					.navigationBarTitleDisplayMode(.large)
 					.tabItem {
-						Label("More", systemImage: "ellipsis")
+						Label("more", systemImage: "ellipsis")
 					}
 			}
 		}
