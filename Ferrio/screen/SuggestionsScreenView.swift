@@ -17,7 +17,7 @@ struct SuggestionsScreenView: View {
 			Text("holidays-floating").tag("floating")
 		}
 		.pickerStyle(.segmented)
-		.padding()
+		.padding(.horizontal)
 		List {
 			if reportedHolidaysType == "fixed" {
 				ForEach(suggestionsFixed, id: \.id) { suggestion in

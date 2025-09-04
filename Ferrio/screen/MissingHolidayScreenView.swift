@@ -62,7 +62,6 @@ struct MissingHolidayScreenView: View {
 				.font(.footnote)
 				.foregroundStyle(.orange)
 		}
-		.padding(12)
 		.navigationBarTitle("missing-holiday")
 		.navigationBarTitleDisplayMode(.large)
 		.toolbar {

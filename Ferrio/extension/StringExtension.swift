@@ -13,4 +13,8 @@ extension String {
 			value: self,
 			comment: self)
 	}
+
+	func norm() -> String {
+		self.folding(options: .diacriticInsensitive, locale: .current).lowercased()
+	}
 }
