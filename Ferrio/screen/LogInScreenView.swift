@@ -7,6 +7,7 @@ import FirebaseAuth
 import GoogleSignIn
 
 struct LogInScreenView: View {
+	@State private var anonymousLoginAlert = false
 	@EnvironmentObject var viewModel: AuthenticationViewModel
 
 	var body: some View {
@@ -18,6 +19,8 @@ struct LogInScreenView: View {
 					.aspectRatio(contentMode: .fit)
 					.frame(width: 256, height: 256, alignment: .center)
 					.cornerRadius(48)
+				Text("Ferrio")
+					.font(.largeTitle)
 				Spacer()
 				Button {
 					viewModel.signInWithGoogle()
@@ -28,21 +31,29 @@ struct LogInScreenView: View {
 							.resizable()
 							.frame(maxWidth: 16, maxHeight: 16)
 							.foregroundStyle(Color(.blue))
-						Text("Sign in with Google")
+						Text("signin-google")
 					}
 					.frame(width: 200)
 				}
 				.buttonStyle(BorderedButtonStyle())
 				Button {
-					viewModel.signInAnonymously()
+					anonymousLoginAlert = true
 				} label: {
 					HStack {
 						Image(systemName: "person")
-						Text("Anonymous login")
+						Text("login-anonymous")
 					}
 					.frame(width: 200)
 				}
 				.buttonStyle(BorderedButtonStyle())
+				.alert("signin-anonymous-alert", isPresented: $anonymousLoginAlert) {
+					Button("ok", role: .confirm) {
+						viewModel.signInAnonymously()
+					}
+					Button("cancel", role: .cancel) {
+						anonymousLoginAlert = false
+					}
+				}
 				Spacer()
 			}
 			.padding()
