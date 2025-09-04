@@ -1,7 +1,4 @@
 //
-//  FerrioWidgetBundle.swift
-//  FerrioWidget
-//
 //  Created by Andrzej Chmiel on 04/09/2023.
 //
 
