@@ -23,6 +23,8 @@
 "my-reports" = "My reports";
 "my-suggestions" = "My suggestions";
 "no-description" = "No description";
+"no-results" = "No results";
+"no-results-description" = "Can't find such a holiday. Try again.";
 "no-unusual-holidays" = "No unusual holidays.";
 "ok" = "OK";
 "random" = "Random";
@@ -31,12 +33,14 @@
 "report-holiday" = "Report holiday";
 "report-notice" = "Reports with the description are more likely to be verified in the first place.";
 "report-sent" = "Report sent";
+"search" = "Search";
 "search-across-%lld" = "Search across %lld holidays...";
 "send" = "Send";
 "sent" = "Sent!";
 "signin-anonymous" = "Anonymous login";
 "signin-anonymous-alert" = "By logging in anonymously, you won't be able to fully utilize the application's features, for instance, reporting mistakes.";
 "signin-google" = "Sign in with Google";
+"start-searching" = "Type something to start searching";
 "today" = "Today";
 "unsuccessfull-request-%lld" = "The request was unsuccessfull. Please try again later. Response code: %lld.";
 

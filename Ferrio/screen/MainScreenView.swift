@@ -6,6 +6,8 @@ import SwiftUI
 
 struct MainScreenView: View {
 	let holidayDays: [HolidayDay]
+	@State private var searchText = ""
+	@State private var selectedDay: HolidayDay?
 	@Binding var loading: Bool
 
 	var body: some View {
@@ -14,16 +16,45 @@ struct MainScreenView: View {
 				.animation(.easeIn, value: holidayDays)
 		} else {
 			TabView {
-				MonthScreenView(holidayDays: holidayDays)
-					.tabItem {
-						Label("calendar", systemImage: "calendar")
+				Tab("calendar", systemImage: "calendar") {
+					NavigationStack {
+						MonthScreenView(
+							selectedDay: $selectedDay,
+							holidayDays: holidayDays
+						)
+						.navigationBarTitleDisplayMode(.large)
 					}
-				MoreScreenView()
-					.navigationBarTitleDisplayMode(.large)
-					.tabItem {
-						Label("more", systemImage: "ellipsis")
+				}
+				Tab("more", systemImage: "ellipsis") {
+					NavigationStack {
+						MoreScreenView()
+							.navigationTitle("more")
+							.navigationBarTitleDisplayMode(.large)
 					}
+				}
+				Tab("search", systemImage: "magnifyingglass", role: .search) {
+					NavigationStack {
+						SearchScreenView(
+							selectedDay: $selectedDay,
+							searchText: searchText,
+							holidayDays: holidayDays
+						)
+						.navigationBarTitleDisplayMode(.large)
+					}
+					.searchable(
+						text: $searchText,
+						placement: .navigationBarDrawer(displayMode: .always),
+						prompt: Text("search-across-\(getAllHolidays().count)")
+					)
+					.autocorrectionDisabled()
+					.textInputAutocapitalization(.never)
+				}
 			}
 		}
+	}
+
+	func getAllHolidays() -> [Holiday] {
+		holidayDays
+			.flatMap { holiday in holiday.holidays }
 	}
 }

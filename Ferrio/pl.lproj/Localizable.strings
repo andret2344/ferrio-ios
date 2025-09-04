@@ -23,6 +23,8 @@
 "my-reports" = "Moje zgłoszenia";
 "my-suggestions" = "Moje sugestie";
 "no-description" = "Brak opisu";
+"no-results" = "Brak wyników";
+"no-results-description" = "Nie można znaleźć żadnego święta. Spróbuj ponownie.";
 "no-unusual-holidays" = "Brak nietypowych świąt.";
 "ok" = "OK";
 "random" = "Losowo";
@@ -31,12 +33,14 @@
 "report-holiday" = "Zgłoś święto";
 "report-notice" = "Zgłoszenia zawierające opis będą sprawdzane w pierwszej kolejności.";
 "report-sent" = "Zgłoszenie wysłane";
+"search" = "Wyszukaj";
 "search-across-%lld" = "Szukaj wśród %lld świąt...";
 "send" = "Wyślij";
 "sent" = "Wysłano.";
 "signin-anonymous" = "Anonimowe logowanie";
 "signin-anonymous-alert" = "Logując się anonimowo, nie będziesz w stanie w pełni wykorzystać funkcji aplikacji, przykładowo, zgłaszanie błędów.";
 "signin-google" = "Zaloguj się z Google";
+"start-searching" = "Wpisz swoje wyszukiwanie";
 "today" = "Dzisiaj";
 "unsuccessfull-request-%lld" = "Wysyałanie nieudane. Proszę spróbować ponownie później. Kod odpowiedzi: %lld.";
 

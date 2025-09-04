@@ -11,60 +11,57 @@ struct MoreScreenView: View {
 	@EnvironmentObject var viewModel: AuthenticationViewModel
 
 	var body: some View {
-		NavigationView {
-			List {
-				Section(header: Text("reports")) {
-					NavigationLink {
-						MissingHolidayScreenView()
-					} label: {
-						Label("missing-holiday", systemImage: "pencil")
-					}
-					NavigationLink {
-						SuggestionsScreenView()
-					} label: {
-						Label("my-suggestions", systemImage: "checkmark")
-					}
-					NavigationLink {
-						ReportsScreenView()
-					} label: {
-						Label("my-reports", systemImage: "calendar.badge.exclamationmark")
-					}
+		List {
+			Section(header: Text("reports")) {
+				NavigationLink {
+					MissingHolidayScreenView()
+				} label: {
+					Label("missing-holiday", systemImage: "pencil")
 				}
-				.disabled(Auth.auth().currentUser?.isAnonymous ?? true)
-				Section(header: Text("application")) {
-					Button(action: {
-						infoAlert = true
-					}) {
-						Label("about-calendar", systemImage: "info")
-							.frame(maxWidth: .infinity, alignment: .leading)
-							.contentShape(Rectangle())
-					}
-					.buttonStyle(PlainButtonStyle())
-					.alert("about-calendar", isPresented: $infoAlert, actions: {}, message: {
-						Text("about-holidays")
-					})
-					Button(action: {
-						logoutAlert = true
-					}) {
-						Label("log-out", systemImage: "rectangle.portrait.and.arrow.right")
-							.frame(maxWidth: .infinity, alignment: .leading)
-							.contentShape(Rectangle())
-							.foregroundStyle(Color(.systemRed))
-					}
-					.buttonStyle(PlainButtonStyle())
-					.alert("log-out", isPresented: $logoutAlert) {
-						Button("cancel", role: .cancel) {
-							logoutAlert = false
-						}
-						Button("log-out", role: .destructive) {
-							viewModel.signOut()
-						}
-					} message: {
-						Text("logout-confirm")
-					}
+				NavigationLink {
+					SuggestionsScreenView()
+				} label: {
+					Label("my-suggestions", systemImage: "checkmark")
+				}
+				NavigationLink {
+					ReportsScreenView()
+				} label: {
+					Label("my-reports", systemImage: "calendar.badge.exclamationmark")
 				}
 			}
-			.navigationTitle("more")
+			.disabled(Auth.auth().currentUser?.isAnonymous ?? true)
+			Section(header: Text("application")) {
+				Button(action: {
+					infoAlert = true
+				}) {
+					Label("about-calendar", systemImage: "info")
+						.frame(maxWidth: .infinity, alignment: .leading)
+						.contentShape(Rectangle())
+				}
+				.buttonStyle(PlainButtonStyle())
+				.alert("about-calendar", isPresented: $infoAlert, actions: {}, message: {
+					Text("about-holidays")
+				})
+				Button(action: {
+					logoutAlert = true
+				}) {
+					Label("log-out", systemImage: "rectangle.portrait.and.arrow.right")
+						.frame(maxWidth: .infinity, alignment: .leading)
+						.contentShape(Rectangle())
+						.foregroundStyle(Color(.systemRed))
+				}
+				.buttonStyle(PlainButtonStyle())
+				.alert("log-out", isPresented: $logoutAlert) {
+					Button("cancel", role: .cancel) {
+						logoutAlert = false
+					}
+					Button("log-out", role: .destructive) {
+						viewModel.signOut()
+					}
+				} message: {
+					Text("logout-confirm")
+				}
+			}
 		}
 	}
 }

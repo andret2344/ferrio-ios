@@ -17,7 +17,7 @@ struct ReportsScreenView: View {
 			Text("holidays-floating").tag("floating")
 		}
 		.pickerStyle(.segmented)
-		.padding()
+		.padding(.horizontal)
 		List {
 			if reportedHolidaysType == "fixed" {
 				ForEach(reportsFixed, id: \.id) { report in
