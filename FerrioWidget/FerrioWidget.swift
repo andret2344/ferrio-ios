@@ -98,6 +98,7 @@ struct FerrioWidgetEntryView: View {
 }
 
 struct FerrioAccessoryInlineView: View {
+	@StateObject var observableConfig = ObservableConfig()
 	let entry: WidgetEntry
 	let holidays: [Holiday]
 
@@ -114,12 +115,11 @@ struct FerrioAccessoryInlineView: View {
 	}
 
 	func getTitle() -> String {
-		let holidays = entry.holidayDay.getHolidays(includeUsual: true)
+		let holidays = entry.holidayDay.getHolidays(includeUsual: observableConfig.includeUsual)
 		if holidays.isEmpty {
 			return "no-unusual-holidays"
 		}
-		let moreText = holidays.count == 1 ? "" : "(\(holidays.count - 1) more)"
-		return "\(holidays.first!.name) \(moreText)"
+		return holidays[Int.random(in: 0..<holidays.count)].name
 	}
 }
 
@@ -128,23 +128,34 @@ struct FerrioAccessoryRectangularView: View {
 	let holidays: [Holiday]
 
 	var body: some View {
-		VStack(alignment: .leading, spacing: 2) {
-			if holidays.isEmpty {
-				Text("no-unusual-holidays").font(.body).multilineTextAlignment(.center)
-				Image("SadIcon")
-			} else {
-				ForEach(holidays) { holiday in
-					HStack(alignment: .top) {
-						Text("\u{2022}").padding(.leading, 6)
-						Text(holiday.name)
+		ZStack {
+			AccessoryWidgetBackground()
+
+			VStack(spacing: 4) {
+				if holidays.isEmpty {
+					VStack(spacing: 4) {
+						Text("no-unusual-holidays")
+							.font(.caption)
+						Image("SadIcon")
 					}
-					.font(.caption)
-					.padding(.horizontal, 6)
-					.frame(maxWidth: .infinity, alignment: .topLeading)
+					.frame(maxWidth: .infinity, alignment: .center)
+				} else {
+					VStack(alignment: .leading, spacing: 4) {
+						ForEach(holidays.prefix(3)) { holiday in
+							HStack(alignment: .top, spacing: 4) {
+								Text("•")
+								Text(holiday.name)
+							}
+							.font(.caption)
+						}
+					}
+					.frame(maxWidth: .infinity, alignment: .leading)
 				}
 			}
+			.padding(6)
 		}
-		.containerBackground(for: .widget) { Color.clear }
+		.containerBackground(Color.clear, for: .widget)
+		.clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
 	}
 }
 
