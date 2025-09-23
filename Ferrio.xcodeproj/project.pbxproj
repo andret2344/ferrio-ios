@@ -27,6 +27,7 @@
 		7101871A2C538416009061F1 /* MissingFloatingHoliday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710187182C538416009061F1 /* MissingFloatingHoliday.swift */; };
 		7109DEFA2C4A3F7B00600EDA /* MissingHolidayPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7109DEF92C4A3F7B00600EDA /* MissingHolidayPayload.swift */; };
 		711493FB2C4EA12200245BB4 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 711493FA2C4EA12200245BB4 /* GoogleSignIn */; };
+		712911552E8304EC001A4CF3 /* AppIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 712911542E8304EC001A4CF3 /* AppIcon.icon */; };
 		7137D6EB2AA5D6FD00CE239B /* Localizable in Resources */ = {isa = PBXBuildFile; fileRef = 7137D6ED2AA5D6FD00CE239B /* Localizable */; };
 		7137D6F52AA600D500CE239B /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7137D6F42AA600D500CE239B /* WidgetKit.framework */; };
 		7137D6F72AA600D500CE239B /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7137D6F62AA600D500CE239B /* SwiftUI.framework */; };
@@ -117,6 +118,7 @@
 		710187152C53796F009061F1 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		710187182C538416009061F1 /* MissingFloatingHoliday.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingFloatingHoliday.swift; sourceTree = "<group>"; };
 		7109DEF92C4A3F7B00600EDA /* MissingHolidayPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingHolidayPayload.swift; sourceTree = "<group>"; };
+		712911542E8304EC001A4CF3 /* AppIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon; sourceTree = "<group>"; };
 		7137D6EC2AA5D6FD00CE239B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7137D6F22AA600D500CE239B /* FerrioWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FerrioWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7137D6F42AA600D500CE239B /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -288,6 +290,7 @@
 				71C144B32C4EEC11005A937A /* viewModel */,
 				1A8B167F98CAD8D4CF11EE60 /* AppDelegate.swift */,
 				71FA8B022AA54A03000E2831 /* Assets.xcassets */,
+				712911542E8304EC001A4CF3 /* AppIcon.icon */,
 				71CD251D2C4EAA57007963D8 /* GoogleService-Info.plist */,
 				71DCA3692ABC9A69004C68A5 /* Info.plist */,
 				7137D6ED2AA5D6FD00CE239B /* Localizable */,
@@ -467,6 +470,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7137D71B2AA7147E00CE239B /* Settings.bundle in Resources */,
+				712911552E8304EC001A4CF3 /* AppIcon.icon in Resources */,
 				7137D6EB2AA5D6FD00CE239B /* Localizable in Resources */,
 				71FA8B032AA54A03000E2831 /* Assets.xcassets in Resources */,
 				71CD251E2C4EAA57007963D8 /* GoogleService-Info.plist in Resources */,
@@ -607,7 +611,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 5A8327DV4D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FerrioWidget/Info.plist;
@@ -620,7 +624,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
-				MARKETING_VERSION = 1.1.5;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.andret.uhc.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -639,7 +643,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 5A8327DV4D;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FerrioWidget/Info.plist;
@@ -652,7 +656,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.5;
-				MARKETING_VERSION = 1.1.5;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.andret.uhc.widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -793,7 +797,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 5A8327DV4D;
 				ENABLE_PREVIEWS = YES;
@@ -812,7 +816,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.5;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.andret.uhc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -830,7 +834,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 5A8327DV4D;
 				ENABLE_PREVIEWS = YES;
@@ -849,7 +853,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.5;
+				MARKETING_VERSION = 2.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = eu.andret.uhc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
