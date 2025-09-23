@@ -10,7 +10,7 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Include usual holidays</string>
+			<string>include-usual</string>
 			<key>Key</key>
 			<string>includeUsual</string>
 			<key>DefaultValue</key>
@@ -20,7 +20,7 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Colorized days</string>
+			<string>colorized-days</string>
 			<key>Key</key>
 			<string>colorizedDays</string>
 			<key>DefaultValue</key>

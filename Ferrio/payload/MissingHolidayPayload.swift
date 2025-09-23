@@ -14,6 +14,7 @@ struct MissingFixedHolidayPayload : MissingHolidayPayload {
 	var name: String
 	var description: String
 	var userId: String
+	var country: String?
 	var day: Int
 	var month: Int
 }
@@ -22,5 +23,6 @@ struct MissingFloatingHolidayPayload : MissingHolidayPayload {
 	var name: String
 	var description: String
 	var userId: String
+	var country: String?
 	var date: String
 }

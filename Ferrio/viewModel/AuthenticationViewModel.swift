@@ -8,7 +8,7 @@ import GoogleSignIn
 
 @MainActor
 class AuthenticationViewModel: ObservableObject {
-	@Published var state: SignInState = .signedOut
+	@Published var state: SignInState = .unknown
 	private var authListenerHandle: AuthStateDidChangeListenerHandle?
 
 	init() {
@@ -35,6 +35,38 @@ class AuthenticationViewModel: ObservableObject {
 		GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { result, error in
 			Task { @MainActor in
 				self.authenticateUser(result?.user, error: error)
+			}
+		}
+	}
+
+	func signInWithGitHub() {
+		let provider = OAuthProvider(providerID: "github.com")
+		provider.scopes = ["read:user", "user:email"]
+		print("1")
+
+		provider.getCredentialWith(nil) { [weak self] (credential: AuthCredential?, error: Error?) in
+			print("1.5")
+			guard let self = self else { return }
+
+			if let error = error {
+				print("GitHub credential error:", error)
+				return
+			}
+			guard let credential = credential else {
+				print("No credential returned")
+				return
+			}
+			print("3")
+
+			Auth.auth().signIn(with: credential) { [weak self] _, error in
+				guard let self = self else { return }
+				print("4")
+				if let error = error {
+					print("GitHub sign-in error:", error)
+					return
+				}
+				print("5")
+				self.state = .signedIn
 			}
 		}
 	}
@@ -81,6 +113,6 @@ class AuthenticationViewModel: ObservableObject {
 	}
 
 	enum SignInState {
-		case signedIn, signedOut
+		case signedIn, signedOut, unknown
 	}
 }

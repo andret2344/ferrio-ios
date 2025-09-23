@@ -20,6 +20,14 @@
 				<string>ferrio</string>
 			</array>
 		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>app-1-136386894416-ios-447df208b9b61fdcb28f55</string>
+			</array>
+		</dict>
 	</array>
 	<key>GIDClientID</key>
 	<string>136386894416-filk66upmah3qmht1arg6ln6vvjmj9lp.apps.googleusercontent.com</string>

@@ -5,15 +5,15 @@
 import SwiftUI
 import FirebaseAuth
 
-struct MonthScreenView: View {
-	@State private var selection = Calendar.current.component(.month, from: Date()) - 1
+struct CalendarView: View {
+	@State private var selection = Calendar.current.component(.month, from: Date())
 	@Binding var selectedDay: HolidayDay?
 	let holidayDays: [HolidayDay]
 
 	var body: some View {
 		TabView(selection: $selection) {
 			ForEach(1..<13) { i in
-				MonthAdapter(selectedDay: $selectedDay, month: i, days: holidayDays)
+				MonthAdapterView(selectedDay: $selectedDay, month: i, days: holidayDays)
 					.tag(i)
 			}
 		}

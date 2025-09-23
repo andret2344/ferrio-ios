@@ -6,7 +6,7 @@ import SwiftUI
 import FirebaseAuth
 import GoogleSignIn
 
-struct LogInScreenView: View {
+struct LogInView: View {
 	@State private var anonymousLoginAlert = false
 	@EnvironmentObject var viewModel: AuthenticationViewModel
 
@@ -36,12 +36,26 @@ struct LogInScreenView: View {
 					.frame(width: 200)
 				}
 				.buttonStyle(BorderedButtonStyle())
+//				Button {
+//					viewModel.signInWithGitHub()
+//				} label: {
+//					HStack {
+//						Image("GithubIcon")
+//							.renderingMode(.template)
+//							.resizable()
+//							.frame(maxWidth: 16, maxHeight: 16)
+//							.foregroundStyle(Color(.blue))
+//						Text("signin-github")
+//					}
+//					.frame(width: 200)
+//				}
+//				.buttonStyle(BorderedButtonStyle())
 				Button {
 					anonymousLoginAlert = true
 				} label: {
 					HStack {
 						Image(systemName: "person")
-						Text("login-anonymous")
+						Text("signin-anonymous")
 					}
 					.frame(width: 200)
 				}

@@ -59,7 +59,7 @@ struct Provider: IntentTimelineProvider {
 		let components: DateComponents = Calendar.current.dateComponents([.day, .month], from: current)
 		let code: String? = Locale.current.language.languageCode?.identifier
 		let lang: String = ["pl"].contains(code!) ? code! : "en"
-		return URL(string: "https://api.unusualcalendar.net/holiday/\(lang)/day/\(components.month!)/\(components.day!)")!
+		return URL(string: "https://api.ferrio.app/v2/holiday/\(lang)/day/\(components.month!)/\(components.day!)")!
 	}
 }
 

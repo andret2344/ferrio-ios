@@ -24,7 +24,7 @@ public extension URLSession {
 	}
 
 	func sendRequest(jsonData: Data, path: String, callback: @escaping (String?, Bool) -> Void) {
-		guard let url = URL(string: "https://api.unusualcalendar.net/v2/\(path)") else { return }
+		guard let url = URL(string: "https://api.ferrio.app/v2/\(path)") else { return }
 		var request = URLRequest(url: url)
 		request.httpMethod = "POST"
 		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
