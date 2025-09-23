@@ -4,6 +4,7 @@
 
 import SwiftUI
 import GoogleSignIn
+import FirebaseAuth
 
 @main
 struct FerrioApp: App {
@@ -13,15 +14,24 @@ struct FerrioApp: App {
 	var body: some Scene {
 		WindowGroup {
 			Group {
-				if viewModel.state == .signedIn {
+				switch viewModel.state {
+				case .signedIn:
 					ContentView()
-				} else {
-					LogInScreenView()
+				case .signedOut:
+					LogInView()
+				case .unknown:
+					ProgressView().progressViewStyle(.circular)
+						.animation(.easeIn, value: viewModel.state)
 				}
 			}
 			.environmentObject(viewModel)
 			.onOpenURL { url in
 				_ = GIDSignIn.sharedInstance.handle(url)
+				if Auth.auth().canHandle(url) {
+					print("Firebase handled OAuth redirect: \(url)")
+					return
+				}
+				print("Unhandled URL: \(url)")
 			}
 		}
 	}

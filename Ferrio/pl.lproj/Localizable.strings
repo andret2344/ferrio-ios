@@ -1,19 +1,23 @@
 "about-calendar" = "O kalendarzu";
 "about-holidays" = "Wszystkie święta, nawet te najbardziej nietypowe, są okazją do spojrzenia na ludzi w inny sposób i docenienia na co dzień ignorowanych zjawisk.";
+"account" = "Konto";
 "application" = "Aplikacja";
 "back" = "Wróć";
 "calendar" = "Kalendarz";
 "cancel" = "Anuluj";
 "check-it-yourself" = "Sprawdź sam!";
 "could-not-connect" = "Nie można połączyć z serwerem. Proszę spróbować ponownie później.";
+"country" = "Kraj";
 "date" = "Data";
 "day" = "Dzień";
+"errors" = "Błędy";
 "holiday-description" = "Opis święta";
 "holiday-fixed" = "Święto niechome";
 "holiday-floating" = "Święto ruchome";
 "holiday-name" = "Nazwa święta";
 "holidays-fixed" = "Święta niechome";
 "holidays-floating" = "Święta ruchome";
+"international" = "Międzynarodowe";
 "invalid-data-format" = "Niepoprawny format danych";
 "log-out" = "Wyloguj";
 "logout-confirm" = "Na pewno chcesz się wylogować?";
@@ -40,7 +44,10 @@
 "signin-anonymous" = "Anonimowe logowanie";
 "signin-anonymous-alert" = "Logując się anonimowo, nie będziesz w stanie w pełni wykorzystać funkcji aplikacji, przykładowo, zgłaszanie błędów.";
 "signin-google" = "Zaloguj się z Google";
+"signin-google" = "Zaloguj się z GitHub";
 "start-searching" = "Wpisz swoje wyszukiwanie";
+"suggest-holiday" = "Zasugeruj święto";
+"suggestions" = "Sugestie";
 "today" = "Dzisiaj";
 "unsuccessfull-request-%lld" = "Wysyałanie nieudane. Proszę spróbować ponownie później. Kod odpowiedzi: %lld.";
 

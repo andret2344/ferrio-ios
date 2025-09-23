@@ -4,7 +4,7 @@
 
 import SwiftUI
 
-struct MonthAdapter: View {
+struct MonthAdapterView: View {
 	@Environment(\.calendar) var calendar
 	@StateObject var observableConfig = ObservableConfig()
 	@Binding var selectedDay: HolidayDay?

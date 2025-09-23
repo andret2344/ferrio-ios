@@ -5,7 +5,7 @@
 import FirebaseAuth
 import SwiftUI
 
-struct ReportsScreenView: View {
+struct MyReportsScreenView: View {
 	@State private var reportsFixed: [HolidayReport] = []
 	@State private var reportsFloating: [HolidayReport] = []
 	@State private var reportedHolidaysType: String = "fixed"
@@ -101,12 +101,12 @@ struct ReportsScreenView: View {
 
 	func getUrlForFixed() -> URL {
 		let uuid: String = Auth.auth().currentUser?.uid ?? ""
-		return URL(string: "https://api.unusualcalendar.net/v2/report/\(uuid)/fixed")!
+		return URL(string: "https://api.ferrio.app/v2/report/\(uuid)/fixed")!
 	}
 
 	func getUrlForFloating() -> URL {
 		let uuid: String = Auth.auth().currentUser?.uid ?? ""
-		return URL(string: "https://api.unusualcalendar.net/v2/report/\(uuid)/floating")!
+		return URL(string: "https://api.ferrio.app/v2/report/\(uuid)/floating")!
 	}
 
 	func getColor(reportState: ReportState) -> Color {

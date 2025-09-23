@@ -17,4 +17,11 @@ extension String {
 	func norm() -> String {
 		self.folding(options: .diacriticInsensitive, locale: .current).lowercased()
 	}
+
+	func asFlagEmoji() -> String {
+		unicodeScalars
+			.compactMap { UnicodeScalar(127397 + Int($0.value)) }
+			.map { String($0) }
+			.joined()
+	}
 }

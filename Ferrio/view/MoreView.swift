@@ -5,31 +5,13 @@
 import SwiftUI
 import FirebaseAuth
 
-struct MoreScreenView: View {
+struct MoreView: View {
 	@State private var infoAlert = false
 	@State private var logoutAlert = false
 	@EnvironmentObject var viewModel: AuthenticationViewModel
 
 	var body: some View {
 		List {
-			Section(header: Text("reports")) {
-				NavigationLink {
-					MissingHolidayScreenView()
-				} label: {
-					Label("missing-holiday", systemImage: "pencil")
-				}
-				NavigationLink {
-					SuggestionsScreenView()
-				} label: {
-					Label("my-suggestions", systemImage: "checkmark")
-				}
-				NavigationLink {
-					ReportsScreenView()
-				} label: {
-					Label("my-reports", systemImage: "calendar.badge.exclamationmark")
-				}
-			}
-			.disabled(Auth.auth().currentUser?.isAnonymous ?? true)
 			Section(header: Text("application")) {
 				Button(action: {
 					infoAlert = true
@@ -42,6 +24,8 @@ struct MoreScreenView: View {
 				.alert("about-calendar", isPresented: $infoAlert, actions: {}, message: {
 					Text("about-holidays")
 				})
+			}
+			Section(header: Text("account")) {
 				Button(action: {
 					logoutAlert = true
 				}) {
