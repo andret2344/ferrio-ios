@@ -3,21 +3,19 @@
 //
 
 import SwiftUI
-import UIKit
 
 struct HolidayDaySheetView: View {
-	@State private var isShareSheetPresented: Bool = false
 	@State private var reportedHoliday: Holiday? = nil
-	@StateObject var observableConfig = ObservableConfig()
+	@EnvironmentObject var observableConfig: ObservableConfig
 	@Environment(\.dismiss) var dismiss
 	let holidayDay: HolidayDay
 
 	var body: some View {
 		let date: Date? = Date.from(month: holidayDay.month, day: holidayDay.day)
+		let holidays: [Holiday] = holidayDay.getHolidays(includeUsual: observableConfig.includeUsual)
 		NavigationStack {
 			VStack {
-				let holidays: [Holiday] = holidayDay.getHolidays(includeUsual: observableConfig.includeUsual);
-				if holidays.count == 0 {
+				if holidays.isEmpty {
 					Image("SadIcon")
 						.resizable()
 						.aspectRatio(contentMode: .fit)
@@ -26,7 +24,7 @@ struct HolidayDaySheetView: View {
 				} else {
 					List {
 						ForEach(holidays, id: \.id) { holiday in
-							if holiday.description != "" {
+							if !holiday.description.isEmpty {
 								NavigationLink {
 									VStack(alignment: .leading) {
 										Text(holiday.description)
@@ -34,14 +32,14 @@ struct HolidayDaySheetView: View {
 									}
 									.navigationTitle(holiday.name)
 									.navigationBarTitleDisplayMode(.large)
-									.navigationViewStyle(.stack)
-									.navigationBarItems(trailing: Button {
-									} label: {
-										let name: String = "[\(holidayDay.getDate())] \(holiday.name)"
-										let text: String = "\(name) - \(holiday.description)"
-										ShareLink(item: text, preview: SharePreview(name))
-											.labelStyle(.iconOnly)
-									})
+									.toolbar {
+										ToolbarItem(placement: .primaryAction) {
+											let name: String = "[\(holidayDay.getDate())] \(holiday.name)"
+											let text: String = "\(name) - \(holiday.description)"
+											ShareLink(item: text, preview: SharePreview(name))
+												.labelStyle(.iconOnly)
+										}
+									}
 									.padding()
 									.frame(maxWidth: .infinity, alignment: .leading)
 								} label: {
@@ -54,30 +52,29 @@ struct HolidayDaySheetView: View {
 					}
 				}
 			}
-			.navigationTitle(date!.formatted(.dateTime.day().month(.wide)))
+			.navigationTitle(date?.formatted(.dateTime.day().month(.wide)) ?? "")
 			.navigationBarTitleDisplayMode(.large)
-			.navigationViewStyle(.stack)
-			.navigationBarItems(leading: Button {
-				dismiss()
-			} label: {
-				Image(systemName: "chevron.backward")
-				Text("back")
-			}, trailing: Button {
-			} label: {
-				let holidays: [Holiday] = holidayDay.getHolidays(includeUsual: observableConfig.includeUsual)
-				if (holidays.count != 0) {
-					let holidays = holidays.map { holiday in
-						"- \(holiday.name)"
+			.toolbar {
+				ToolbarItem(placement: .cancellationAction) {
+					Button {
+						dismiss()
+					} label: {
+						Image(systemName: "chevron.backward")
+						Text("back")
 					}
-						.joined(separator: "\n")
-					let text = "\(holidayDay.day).\(holidayDay.month):\n\(holidays)\n\n\("check-it-yourself".localized())"
-					ShareLink(item: text, preview: SharePreview(text))
-						.labelStyle(.iconOnly)
 				}
-			})
+				ToolbarItem(placement: .primaryAction) {
+					if !holidays.isEmpty {
+						let list = holidays.map { "- \($0.name)" }.joined(separator: "\n")
+						let text = "\(holidayDay.day).\(holidayDay.month):\n\(list)\n\n\("check-it-yourself".localized())"
+						ShareLink(item: text, preview: SharePreview(text))
+							.labelStyle(.iconOnly)
+					}
+				}
+			}
 		}
-		.sheet(isPresented: nullBinding($reportedHoliday)) {
-			ReportHolidaySheetView(holiday: reportedHoliday!)
+		.sheet(item: $reportedHoliday) { holiday in
+			ReportHolidaySheetView(holiday: holiday)
 		}
 	}
 
@@ -90,17 +87,5 @@ struct HolidayDaySheetView: View {
 					Label("report", systemImage: "exclamationmark.triangle")
 				}
 			}
-	}
-
-	func nullBinding<T>(_ element: Binding<T?>) -> Binding<Bool> {
-		return Binding(
-			get: {
-				element.wrappedValue != nil
-			},
-			set: {
-				if !$0 {
-					element.wrappedValue = nil
-				}
-			})
 	}
 }

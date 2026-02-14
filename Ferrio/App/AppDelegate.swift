@@ -2,7 +2,6 @@
 // Created by Andrzej Chmiel on 03/09/2023.
 //
 
-import SwiftUI
 import FirebaseCore
 import GoogleSignIn
 

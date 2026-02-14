@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1A8B112B631A5308FA97FA6B /* UnusualCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B18120DC8F1B2DCC45BDA /* UnusualCalendar.swift */; };
+		1A8B112C631A5308FA97FA6C /* UnusualCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B18120DC8F1B2DCC45BDA /* UnusualCalendar.swift */; };
 		1A8B12DCBD209A62D97052F5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B10F20ACAAC22CFF240FA /* DateExtension.swift */; };
 		1A8B13A5961A9CF307EAE195 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B167F98CAD8D4CF11EE60 /* AppDelegate.swift */; };
 		1A8B13FBBE820C88F7AD2481 /* ObservableConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1FA259D1D09B4119D61E /* ObservableConfig.swift */; };
@@ -42,10 +43,27 @@
 		7137D71B2AA7147E00CE239B /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7137D71A2AA7147E00CE239B /* Settings.bundle */; };
 		714270002ABCB89100C94742 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B15593B806217A51802A1 /* UIColorExtension.swift */; };
 		7156F5802E65CC4E00232B28 /* FerrioWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 7156F57F2E65CC4E00232B28 /* FerrioWidget.intentdefinition */; };
+		7171BBC42F3F5D9E00678359 /* HolidayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7171BBC22F3F5D9E00678359 /* HolidayRepository.swift */; };
+		7171BBC52F3F5D9E00678359 /* HolidayRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7171BBC22F3F5D9E00678359 /* HolidayRepository.swift */; };
+		7171BBC82F3F5E0200678359 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7171BBC62F3F5E0200678359 /* CalendarService.swift */; };
+		7171BBC92F3F5E0200678359 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7171BBC62F3F5E0200678359 /* CalendarService.swift */; };
+		7171BBCB2F3F5E1700678359 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7171BBCA2F3F5E1700678359 /* ContentViewModel.swift */; };
 		718743AA2AB3B7FC00A6EFC0 /* FloatingHoliday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1C09241000093713F0DF /* FloatingHoliday.swift */; };
 		718743AB2ABA5A8000A6EFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71FA8B022AA54A03000E2831 /* Assets.xcassets */; };
 		71A0F9802C695748007F595F /* HolidayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A0F97F2C695748007F595F /* HolidayReport.swift */; };
 		71A0F9812C695748007F595F /* HolidayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A0F97F2C695748007F595F /* HolidayReport.swift */; };
+		71B0474D2F3E42E800F0CB1C /* MonthAdapterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0473E2F3E42E800F0CB1C /* MonthAdapterView.swift */; };
+		71B0474E2F3E42E800F0CB1C /* MyReportsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B047402F3E42E800F0CB1C /* MyReportsScreenView.swift */; };
+		71B0474F2F3E42E800F0CB1C /* MySuggestionsScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B047412F3E42E800F0CB1C /* MySuggestionsScreenView.swift */; };
+		71B047502F3E42E800F0CB1C /* SearchScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B047422F3E42E800F0CB1C /* SearchScreenView.swift */; };
+		71B047512F3E42E800F0CB1C /* SuggestHolidayScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B047432F3E42E800F0CB1C /* SuggestHolidayScreenView.swift */; };
+		71B047522F3E42E800F0CB1C /* HolidayDaySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B047452F3E42E800F0CB1C /* HolidayDaySheetView.swift */; };
+		71B047532F3E42E800F0CB1C /* ReportHolidaySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B047462F3E42E800F0CB1C /* ReportHolidaySheetView.swift */; };
+		71B047542F3E42E800F0CB1C /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B047482F3E42E800F0CB1C /* CalendarView.swift */; };
+		71B047552F3E42E800F0CB1C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B047492F3E42E800F0CB1C /* ContentView.swift */; };
+		71B047562F3E42E800F0CB1C /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0474A2F3E42E800F0CB1C /* LogInView.swift */; };
+		71B047572F3E42E800F0CB1C /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0474B2F3E42E800F0CB1C /* MoreView.swift */; };
+		71B047582F3E42E800F0CB1C /* ReportsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0474C2F3E42E800F0CB1C /* ReportsView.swift */; };
 		71B8BA0C2C65FA5F00F1B211 /* HolidayReportPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B8BA0B2C65FA5F00F1B211 /* HolidayReportPayload.swift */; };
 		71B8BA0D2C65FA5F00F1B211 /* HolidayReportPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B8BA0B2C65FA5F00F1B211 /* HolidayReportPayload.swift */; };
 		71C144B52C4EEC32005A937A /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C144B42C4EEC32005A937A /* AuthenticationViewModel.swift */; };
@@ -54,13 +72,17 @@
 		71D16D152ABDB59600BE9B3A /* ObservableConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1FA259D1D09B4119D61E /* ObservableConfig.swift */; };
 		71DFA0032BD143E000029519 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 71DFA0022BD143E000029519 /* GoogleSignInSwift */; };
 		71DFA0072BD14A4800029519 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 71DFA0062BD14A4800029519 /* FirebaseAuth */; };
-		71EDA5C62C3D3DD000FC7E8C /* EncodableExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDA5C52C3D3DD000FC7E8C /* EncodableExtenstion.swift */; };
-		71EDA5C72C3D3DD000FC7E8C /* EncodableExtenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71EDA5C52C3D3DD000FC7E8C /* EncodableExtenstion.swift */; };
 		71FA8AFF2AA54A00000E2831 /* FerrioApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA8AFE2AA54A00000E2831 /* FerrioApp.swift */; };
 		71FA8B032AA54A03000E2831 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71FA8B022AA54A03000E2831 /* Assets.xcassets */; };
 		71FA8B102AA54A03000E2831 /* FerrioTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA8B0F2AA54A03000E2831 /* FerrioTests.swift */; };
 		71FA8B1A2AA54A03000E2831 /* FerrioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA8B192AA54A03000E2831 /* FerrioUITests.swift */; };
 		71FA8B1C2AA54A03000E2831 /* FerrioUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FA8B1B2AA54A03000E2831 /* FerrioUITestsLaunchTests.swift */; };
+		AAAA00022F3F600000000001 /* ReportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA00012F3F600000000001 /* ReportsViewModel.swift */; };
+		AAAA00042F3F600000000002 /* SuggestionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA00032F3F600000000002 /* SuggestionsViewModel.swift */; };
+		AAAA00062F3F600000000003 /* SuggestHolidayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA00052F3F600000000003 /* SuggestHolidayViewModel.swift */; };
+		AAAA00082F3F600000000004 /* ReportState+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA00072F3F600000000004 /* ReportState+Color.swift */; };
+		AAAA000B2F3F600000000006 /* HolidayRepositoryReports.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA000A2F3F600000000006 /* HolidayRepositoryReports.swift */; };
+		AAAA000D2F3F600000000007 /* ReportHolidayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA000C2F3F600000000007 /* ReportHolidayViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,12 +153,28 @@
 		7137D7162AA6830400CE239B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7137D71A2AA7147E00CE239B /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		7156F57F2E65CC4E00232B28 /* FerrioWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = FerrioWidget.intentdefinition; sourceTree = "<group>"; };
+		7171BBC22F3F5D9E00678359 /* HolidayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayRepository.swift; sourceTree = "<group>"; };
+		7171BBC62F3F5E0200678359 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		7171BBCA2F3F5E1700678359 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		7187DB812F4113880008896C /* Ferrio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ferrio.entitlements; sourceTree = "<group>"; };
+		7187DB822F4113AB0008896C /* FerrioWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FerrioWidgetExtension.entitlements; sourceTree = "<group>"; };
 		71A0F97F2C695748007F595F /* HolidayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayReport.swift; sourceTree = "<group>"; };
+		71B0473E2F3E42E800F0CB1C /* MonthAdapterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthAdapterView.swift; sourceTree = "<group>"; };
+		71B047402F3E42E800F0CB1C /* MyReportsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReportsScreenView.swift; sourceTree = "<group>"; };
+		71B047412F3E42E800F0CB1C /* MySuggestionsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySuggestionsScreenView.swift; sourceTree = "<group>"; };
+		71B047422F3E42E800F0CB1C /* SearchScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenView.swift; sourceTree = "<group>"; };
+		71B047432F3E42E800F0CB1C /* SuggestHolidayScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestHolidayScreenView.swift; sourceTree = "<group>"; };
+		71B047452F3E42E800F0CB1C /* HolidayDaySheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayDaySheetView.swift; sourceTree = "<group>"; };
+		71B047462F3E42E800F0CB1C /* ReportHolidaySheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportHolidaySheetView.swift; sourceTree = "<group>"; };
+		71B047482F3E42E800F0CB1C /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		71B047492F3E42E800F0CB1C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		71B0474A2F3E42E800F0CB1C /* LogInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
+		71B0474B2F3E42E800F0CB1C /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
+		71B0474C2F3E42E800F0CB1C /* ReportsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsView.swift; sourceTree = "<group>"; };
 		71B8BA0B2C65FA5F00F1B211 /* HolidayReportPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayReportPayload.swift; sourceTree = "<group>"; };
 		71C144B42C4EEC32005A937A /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		71CD251D2C4EAA57007963D8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		71DCA3692ABC9A69004C68A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		71EDA5C52C3D3DD000FC7E8C /* EncodableExtenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtenstion.swift; sourceTree = "<group>"; };
 		71FA8AFB2AA54A00000E2831 /* Ferrio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ferrio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FA8AFE2AA54A00000E2831 /* FerrioApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FerrioApp.swift; sourceTree = "<group>"; };
 		71FA8B022AA54A03000E2831 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -145,11 +183,13 @@
 		71FA8B152AA54A03000E2831 /* FerrioUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FerrioUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71FA8B192AA54A03000E2831 /* FerrioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FerrioUITests.swift; sourceTree = "<group>"; };
 		71FA8B1B2AA54A03000E2831 /* FerrioUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FerrioUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AAAA00012F3F600000000001 /* ReportsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewModel.swift; sourceTree = "<group>"; };
+		AAAA00032F3F600000000002 /* SuggestionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsViewModel.swift; sourceTree = "<group>"; };
+		AAAA00052F3F600000000003 /* SuggestHolidayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestHolidayViewModel.swift; sourceTree = "<group>"; };
+		AAAA00072F3F600000000004 /* ReportState+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportState+Color.swift"; sourceTree = "<group>"; };
+		AAAA000A2F3F600000000006 /* HolidayRepositoryReports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HolidayRepositoryReports.swift"; sourceTree = "<group>"; };
+		AAAA000C2F3F600000000007 /* ReportHolidayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportHolidayViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		713861A22E797A9C00AA0572 /* view */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = view; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		7137D6EF2AA600D500CE239B /* Frameworks */ = {
@@ -188,43 +228,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1A8B17913731C424284FDCF0 /* extension */ = {
-			isa = PBXGroup;
-			children = (
-				1A8B10F20ACAAC22CFF240FA /* DateExtension.swift */,
-				1A8B188A9D4440C41E27E9E9 /* ArrayExtension.swift */,
-				1A8B131C071B4025F6354DC3 /* URLSessionExtension.swift */,
-				1A8B15593B806217A51802A1 /* UIColorExtension.swift */,
-				71EDA5C52C3D3DD000FC7E8C /* EncodableExtenstion.swift */,
-				710187152C53796F009061F1 /* StringExtension.swift */,
-			);
-			path = extension;
-			sourceTree = "<group>";
-		};
-		1A8B1D95E86FB026BB08C7F4 /* entity */ = {
-			isa = PBXGroup;
-			children = (
-				1A8B1C09241000093713F0DF /* FloatingHoliday.swift */,
-				1A8B176D3CDAB3162E902569 /* Holiday.swift */,
-				1A8B1218DD3EF5D07BF92C36 /* HolidayDay.swift */,
-				71A0F97F2C695748007F595F /* HolidayReport.swift */,
-				7101870F2C52E6F8009061F1 /* MissingFixedHoliday.swift */,
-				710187182C538416009061F1 /* MissingFloatingHoliday.swift */,
-				710187122C5375AD009061F1 /* ReportState.swift */,
-				1A8B18120DC8F1B2DCC45BDA /* UnusualCalendar.swift */,
-			);
-			path = entity;
-			sourceTree = "<group>";
-		};
-		7109DEF82C4A3F2B00600EDA /* payload */ = {
-			isa = PBXGroup;
-			children = (
-				71B8BA0B2C65FA5F00F1B211 /* HolidayReportPayload.swift */,
-				7109DEF92C4A3F7B00600EDA /* MissingHolidayPayload.swift */,
-			);
-			path = payload;
-			sourceTree = "<group>";
-		};
 		7137D6F32AA600D500CE239B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,17 +250,185 @@
 			path = FerrioWidget;
 			sourceTree = "<group>";
 		};
-		71C144B32C4EEC11005A937A /* viewModel */ = {
+		7171BBC32F3F5D9E00678359 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				71C144B42C4EEC32005A937A /* AuthenticationViewModel.swift */,
+				7171BBC22F3F5D9E00678359 /* HolidayRepository.swift */,
+				AAAA000A2F3F600000000006 /* HolidayRepositoryReports.swift */,
 			);
-			path = viewModel;
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		7171BBC72F3F5E0200678359 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7171BBC62F3F5E0200678359 /* CalendarService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		71B0475B2F3E52CF00F0CB1C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1A8B167F98CAD8D4CF11EE60 /* AppDelegate.swift */,
+				71FA8AFE2AA54A00000E2831 /* FerrioApp.swift */,
+				1A8B1FA259D1D09B4119D61E /* ObservableConfig.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		71B0475C2F3E532700F0CB1C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				7171BBC72F3F5E0200678359 /* Services */,
+				71B0475D2F3E533C00F0CB1C /* Extensions */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		71B0475D2F3E533C00F0CB1C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1A8B10F20ACAAC22CFF240FA /* DateExtension.swift */,
+				1A8B188A9D4440C41E27E9E9 /* ArrayExtension.swift */,
+				1A8B131C071B4025F6354DC3 /* URLSessionExtension.swift */,
+				1A8B15593B806217A51802A1 /* UIColorExtension.swift */,
+				710187152C53796F009061F1 /* StringExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		71B0475F2F3E53C900F0CB1C /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				7171BBC32F3F5D9E00678359 /* Repositories */,
+				71B047602F3E53D600F0CB1C /* DTOs */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		71B047602F3E53D600F0CB1C /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				71B8BA0B2C65FA5F00F1B211 /* HolidayReportPayload.swift */,
+				7109DEF92C4A3F7B00600EDA /* MissingHolidayPayload.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
+		71B047612F3E53F100F0CB1C /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				71B047622F3E53FF00F0CB1C /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		71B047622F3E53FF00F0CB1C /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				1A8B1C09241000093713F0DF /* FloatingHoliday.swift */,
+				1A8B176D3CDAB3162E902569 /* Holiday.swift */,
+				1A8B1218DD3EF5D07BF92C36 /* HolidayDay.swift */,
+				71A0F97F2C695748007F595F /* HolidayReport.swift */,
+				7101870F2C52E6F8009061F1 /* MissingFixedHoliday.swift */,
+				710187182C538416009061F1 /* MissingFloatingHoliday.swift */,
+				710187122C5375AD009061F1 /* ReportState.swift */,
+				1A8B18120DC8F1B2DCC45BDA /* UnusualCalendar.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		71B047632F3E541A00F0CB1C /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				AAAA00092F3F600000000005 /* Extensions */,
+				71B047682F3E550A00F0CB1C /* Sheets */,
+				71B047662F3E543D00F0CB1C /* Components */,
+				71B047652F3E543600F0CB1C /* ViewModels */,
+				71B047642F3E543000F0CB1C /* Views */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		71B047642F3E543000F0CB1C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				71B0476A2F3E555100F0CB1C /* Components */,
+				71B047692F3E553C00F0CB1C /* Screens */,
+				71B047482F3E42E800F0CB1C /* CalendarView.swift */,
+				71B047492F3E42E800F0CB1C /* ContentView.swift */,
+				71B0474A2F3E42E800F0CB1C /* LogInView.swift */,
+				71B0474B2F3E42E800F0CB1C /* MoreView.swift */,
+				71B0474C2F3E42E800F0CB1C /* ReportsView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		71B047652F3E543600F0CB1C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				7171BBCA2F3F5E1700678359 /* ContentViewModel.swift */,
+				71C144B42C4EEC32005A937A /* AuthenticationViewModel.swift */,
+				AAAA00012F3F600000000001 /* ReportsViewModel.swift */,
+				AAAA00032F3F600000000002 /* SuggestionsViewModel.swift */,
+				AAAA00052F3F600000000003 /* SuggestHolidayViewModel.swift */,
+				AAAA000C2F3F600000000007 /* ReportHolidayViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		71B047662F3E543D00F0CB1C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		71B047672F3E547F00F0CB1C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				71FA8B022AA54A03000E2831 /* Assets.xcassets */,
+				7137D6ED2AA5D6FD00CE239B /* Localizable */,
+				7137D71A2AA7147E00CE239B /* Settings.bundle */,
+				71CD251D2C4EAA57007963D8 /* GoogleService-Info.plist */,
+				71DCA3692ABC9A69004C68A5 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		71B047682F3E550A00F0CB1C /* Sheets */ = {
+			isa = PBXGroup;
+			children = (
+				71B047452F3E42E800F0CB1C /* HolidayDaySheetView.swift */,
+				71B047462F3E42E800F0CB1C /* ReportHolidaySheetView.swift */,
+			);
+			path = Sheets;
+			sourceTree = "<group>";
+		};
+		71B047692F3E553C00F0CB1C /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				71B047402F3E42E800F0CB1C /* MyReportsScreenView.swift */,
+				71B047412F3E42E800F0CB1C /* MySuggestionsScreenView.swift */,
+				71B047422F3E42E800F0CB1C /* SearchScreenView.swift */,
+				71B047432F3E42E800F0CB1C /* SuggestHolidayScreenView.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		71B0476A2F3E555100F0CB1C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				71B0473E2F3E42E800F0CB1C /* MonthAdapterView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		71FA8AF22AA54A00000E2831 = {
 			isa = PBXGroup;
 			children = (
+				7187DB822F4113AB0008896C /* FerrioWidgetExtension.entitlements */,
 				71FA8AFD2AA54A00000E2831 /* Ferrio */,
 				71FA8B0E2AA54A03000E2831 /* FerrioTests */,
 				71FA8B182AA54A03000E2831 /* FerrioUITests */,
@@ -283,20 +454,14 @@
 		71FA8AFD2AA54A00000E2831 /* Ferrio */ = {
 			isa = PBXGroup;
 			children = (
-				1A8B17913731C424284FDCF0 /* extension */,
-				1A8B1D95E86FB026BB08C7F4 /* entity */,
-				7109DEF82C4A3F2B00600EDA /* payload */,
-				713861A22E797A9C00AA0572 /* view */,
-				71C144B32C4EEC11005A937A /* viewModel */,
-				1A8B167F98CAD8D4CF11EE60 /* AppDelegate.swift */,
-				71FA8B022AA54A03000E2831 /* Assets.xcassets */,
+				7187DB812F4113880008896C /* Ferrio.entitlements */,
+				71B0475B2F3E52CF00F0CB1C /* App */,
+				71B0475C2F3E532700F0CB1C /* Core */,
+				71B047612F3E53F100F0CB1C /* Domain */,
+				71B0475F2F3E53C900F0CB1C /* Data */,
+				71B047632F3E541A00F0CB1C /* Presentation */,
+				71B047672F3E547F00F0CB1C /* Resources */,
 				712911542E8304EC001A4CF3 /* AppIcon.icon */,
-				71CD251D2C4EAA57007963D8 /* GoogleService-Info.plist */,
-				71DCA3692ABC9A69004C68A5 /* Info.plist */,
-				7137D6ED2AA5D6FD00CE239B /* Localizable */,
-				1A8B1FA259D1D09B4119D61E /* ObservableConfig.swift */,
-				7137D71A2AA7147E00CE239B /* Settings.bundle */,
-				71FA8AFE2AA54A00000E2831 /* FerrioApp.swift */,
 			);
 			path = Ferrio;
 			sourceTree = "<group>";
@@ -318,6 +483,14 @@
 				71FA8B1B2AA54A03000E2831 /* FerrioUITestsLaunchTests.swift */,
 			);
 			path = FerrioUITests;
+			sourceTree = "<group>";
+		};
+		AAAA00092F3F600000000005 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				AAAA00072F3F600000000004 /* ReportState+Color.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -353,9 +526,6 @@
 			);
 			dependencies = (
 				7137D7062AA600DB00CE239B /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				713861A22E797A9C00AA0572 /* view */,
 			);
 			name = Ferrio;
 			packageProductDependencies = (
@@ -498,23 +668,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7137D70C2AA6601200CE239B /* URLSessionExtension.swift in Sources */,
-				710187142C5375AD009061F1 /* ReportState.swift in Sources */,
-				710187172C53796F009061F1 /* StringExtension.swift in Sources */,
-				71D16D142ABDA9D700BE9B3A /* DateExtension.swift in Sources */,
-				7156F5802E65CC4E00232B28 /* FerrioWidget.intentdefinition in Sources */,
-				71B8BA0D2C65FA5F00F1B211 /* HolidayReportPayload.swift in Sources */,
-				7137D70D2AA6602D00CE239B /* HolidayDay.swift in Sources */,
 				7137D70E2AA67A2300CE239B /* Holiday.swift in Sources */,
-				714270002ABCB89100C94742 /* UIColorExtension.swift in Sources */,
-				7137D6FE2AA600D500CE239B /* FerrioWidget.swift in Sources */,
-				71EDA5C62C3D3DD000FC7E8C /* EncodableExtenstion.swift in Sources */,
-				7137D6FA2AA600D500CE239B /* FerrioWidgetBundle.swift in Sources */,
+				7137D70D2AA6602D00CE239B /* HolidayDay.swift in Sources */,
 				718743AA2AB3B7FC00A6EFC0 /* FloatingHoliday.swift in Sources */,
-				710187102C52E6F8009061F1 /* MissingFixedHoliday.swift in Sources */,
-				71D16D152ABDB59600BE9B3A /* ObservableConfig.swift in Sources */,
+				1A8B112C631A5308FA97FA6C /* UnusualCalendar.swift in Sources */,
 				71A0F9812C695748007F595F /* HolidayReport.swift in Sources */,
+				710187102C52E6F8009061F1 /* MissingFixedHoliday.swift in Sources */,
 				7101871A2C538416009061F1 /* MissingFloatingHoliday.swift in Sources */,
+				710187142C5375AD009061F1 /* ReportState.swift in Sources */,
+				71D16D142ABDA9D700BE9B3A /* DateExtension.swift in Sources */,
+				710187172C53796F009061F1 /* StringExtension.swift in Sources */,
+				7137D70C2AA6601200CE239B /* URLSessionExtension.swift in Sources */,
+				714270002ABCB89100C94742 /* UIColorExtension.swift in Sources */,
+				71B8BA0D2C65FA5F00F1B211 /* HolidayReportPayload.swift in Sources */,
+				7171BBC52F3F5D9E00678359 /* HolidayRepository.swift in Sources */,
+				7171BBC82F3F5E0200678359 /* CalendarService.swift in Sources */,
+				71D16D152ABDB59600BE9B3A /* ObservableConfig.swift in Sources */,
+				7156F5802E65CC4E00232B28 /* FerrioWidget.intentdefinition in Sources */,
+				7137D6FA2AA600D500CE239B /* FerrioWidgetBundle.swift in Sources */,
+				7137D6FE2AA600D500CE239B /* FerrioWidget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,26 +694,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71FA8AFF2AA54A00000E2831 /* FerrioApp.swift in Sources */,
-				7109DEFA2C4A3F7B00600EDA /* MissingHolidayPayload.swift in Sources */,
 				1A8B193C13A479F68307A24A /* Holiday.swift in Sources */,
 				1A8B1F7FF4C4565DF161C065 /* HolidayDay.swift in Sources */,
+				1A8B1CE5273716CC84621F94 /* FloatingHoliday.swift in Sources */,
+				1A8B112B631A5308FA97FA6B /* UnusualCalendar.swift in Sources */,
+				71A0F9802C695748007F595F /* HolidayReport.swift in Sources */,
+				710187112C52E6F8009061F1 /* MissingFixedHoliday.swift in Sources */,
+				710187192C538416009061F1 /* MissingFloatingHoliday.swift in Sources */,
+				710187132C5375AD009061F1 /* ReportState.swift in Sources */,
 				1A8B12DCBD209A62D97052F5 /* DateExtension.swift in Sources */,
 				710187162C53796F009061F1 /* StringExtension.swift in Sources */,
 				1A8B16B55B81D47B30A8FEB6 /* ArrayExtension.swift in Sources */,
-				71A0F9802C695748007F595F /* HolidayReport.swift in Sources */,
-				71C144B52C4EEC32005A937A /* AuthenticationViewModel.swift in Sources */,
 				1A8B1E96C93116A2D02E6335 /* URLSessionExtension.swift in Sources */,
-				710187192C538416009061F1 /* MissingFloatingHoliday.swift in Sources */,
-				1A8B13A5961A9CF307EAE195 /* AppDelegate.swift in Sources */,
-				1A8B13FBBE820C88F7AD2481 /* ObservableConfig.swift in Sources */,
-				71EDA5C72C3D3DD000FC7E8C /* EncodableExtenstion.swift in Sources */,
 				1A8B15612F5FA0A8B3DB25CF /* UIColorExtension.swift in Sources */,
-				710187112C52E6F8009061F1 /* MissingFixedHoliday.swift in Sources */,
-				1A8B1CE5273716CC84621F94 /* FloatingHoliday.swift in Sources */,
-				710187132C5375AD009061F1 /* ReportState.swift in Sources */,
+				7109DEFA2C4A3F7B00600EDA /* MissingHolidayPayload.swift in Sources */,
 				71B8BA0C2C65FA5F00F1B211 /* HolidayReportPayload.swift in Sources */,
-				1A8B112B631A5308FA97FA6B /* UnusualCalendar.swift in Sources */,
+				7171BBC42F3F5D9E00678359 /* HolidayRepository.swift in Sources */,
+				AAAA000B2F3F600000000006 /* HolidayRepositoryReports.swift in Sources */,
+				7171BBC92F3F5E0200678359 /* CalendarService.swift in Sources */,
+				1A8B13FBBE820C88F7AD2481 /* ObservableConfig.swift in Sources */,
+				1A8B13A5961A9CF307EAE195 /* AppDelegate.swift in Sources */,
+				71FA8AFF2AA54A00000E2831 /* FerrioApp.swift in Sources */,
+				71C144B52C4EEC32005A937A /* AuthenticationViewModel.swift in Sources */,
+				7171BBCB2F3F5E1700678359 /* ContentViewModel.swift in Sources */,
+				AAAA00022F3F600000000001 /* ReportsViewModel.swift in Sources */,
+				AAAA00042F3F600000000002 /* SuggestionsViewModel.swift in Sources */,
+				AAAA00062F3F600000000003 /* SuggestHolidayViewModel.swift in Sources */,
+				AAAA00082F3F600000000004 /* ReportState+Color.swift in Sources */,
+				AAAA000D2F3F600000000007 /* ReportHolidayViewModel.swift in Sources */,
+				71B0474D2F3E42E800F0CB1C /* MonthAdapterView.swift in Sources */,
+				71B0474E2F3E42E800F0CB1C /* MyReportsScreenView.swift in Sources */,
+				71B0474F2F3E42E800F0CB1C /* MySuggestionsScreenView.swift in Sources */,
+				71B047502F3E42E800F0CB1C /* SearchScreenView.swift in Sources */,
+				71B047512F3E42E800F0CB1C /* SuggestHolidayScreenView.swift in Sources */,
+				71B047522F3E42E800F0CB1C /* HolidayDaySheetView.swift in Sources */,
+				71B047532F3E42E800F0CB1C /* ReportHolidaySheetView.swift in Sources */,
+				71B047542F3E42E800F0CB1C /* CalendarView.swift in Sources */,
+				71B047552F3E42E800F0CB1C /* ContentView.swift in Sources */,
+				71B047562F3E42E800F0CB1C /* LogInView.swift in Sources */,
+				71B047572F3E42E800F0CB1C /* MoreView.swift in Sources */,
+				71B047582F3E42E800F0CB1C /* ReportsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,6 +802,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = FerrioWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 5A8327DV4D;
@@ -642,6 +835,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = FerrioWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = 5A8327DV4D;
@@ -796,13 +990,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Ferrio/Ferrio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 5A8327DV4D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Ferrio/Info.plist;
+				INFOPLIST_FILE = Ferrio/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Ferrio;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -817,6 +1012,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = eu.andret.uhc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -833,13 +1029,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Ferrio/Ferrio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_ASSET_PATHS = "";
 				DEVELOPMENT_TEAM = 5A8327DV4D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Ferrio/Info.plist;
+				INFOPLIST_FILE = Ferrio/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Ferrio;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -854,6 +1051,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 2.0.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = eu.andret.uhc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -991,7 +1189,7 @@
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 12.2.0;
+				minimumVersion = 12.9.0;
 			};
 		};
 		71DFA0012BD143E000029519 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
@@ -999,7 +1197,7 @@
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
+				minimumVersion = 9.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

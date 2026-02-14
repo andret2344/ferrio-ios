@@ -1,6 +1,9 @@
 "about-calendar" = "About calendar";
+"account-linking-required" = "Account Linking Required";
 "about-holidays" = "All holidays - even those most unusual - are an opportunity to look in a different way at people, and appreciate phenomena we usually ignore.";
 "account" = "Account";
+"account-exists-with-email-%@" = "An account already exists with the email %@. Sign in with your existing method to link accounts.";
+"account-exists-generic" = "An account already exists with this email. Sign in with your existing method first.";
 "application" = "Application";
 "back" = "Back";
 "calendar" = "Calendar";
@@ -10,6 +13,7 @@
 "country" = "Country";
 "date" = "Date";
 "day" = "Day";
+"error" = "Error";
 "errors" = "Errors";
 "holiday-description" = "Holiday description";
 "holiday-floating" = "Floating holiday";
@@ -19,6 +23,8 @@
 "holidays-fixed" = "Fixed holidays";
 "international" = "International";
 "invalid-data-format" = "Invalid data format";
+"link-accounts-failed-%@" = "Failed to link accounts: %@";
+"load-error" = "Unable to load holidays. We're working on fixing the issue. Sorry for the inconvenience.";
 "log-out" = "Log out";
 "logout-confirm" = "Are you sure you want to log out?";
 "month" = "Month";
@@ -31,12 +37,16 @@
 "no-unusual-holidays" = "No unusual holidays.";
 "ok" = "OK";
 "random" = "Random";
+"reason" = "Reason";
 "report" = "Report";
+"retry" = "Retry";
 "reports" = "Reports";
 "report-holiday" = "Report holiday";
 "report-notice" = "Reports with the description are more likely to be verified in the first place.";
 "report-sent" = "Report sent";
 "search" = "Search";
+"select-missing-holidays-type" = "Select missing holidays type";
+"select-reported-holidays-type" = "Select reported holidays type";
 "search-across-%lld" = "Search across %lld holidays...";
 "send" = "Send";
 "sent" = "Sent!";
@@ -46,9 +56,12 @@
 "signin-github" = "Sign in with GitHub";
 "start-searching" = "Type something to start searching";
 "suggest-holiday" = "Suggest a holiday";
+"suggestion-sent" = "Suggestion sent";
+"suggestion-sent-description" = "Thank you for your suggestion! Our team will review it and, if approved, it will appear in the calendar.";
 "suggestions" = "Suggestions";
 "today" = "Today";
-"unsuccessfull-request-%lld" = "The request was unsuccessfull. Please try again later. Response code: %lld.";
+"unsuccessful-request-%lld" = "The request was unsuccessful. Please try again later. Response code: %lld.";
+"invalid-url" = "Invalid URL. Please try again later.";
 
 // Statuses
 "REPORTED" = "Reported";

@@ -3,7 +3,6 @@
 //
 
 import SwiftUI
-import FirebaseAuth
 
 struct CalendarView: View {
 	@State private var selection = Calendar.current.component(.month, from: Date())
@@ -31,11 +30,12 @@ struct CalendarView: View {
 			}
 			ToolbarItem(placement: .primaryAction) {
 				Button {
-					selectedDay = getRandomHolidayDay()
+					selectedDay = holidayDays.randomElement()
 				} label: {
 					Image(systemName: "shuffle")
 						.accessibilityLabel("random")
 				}
+				.disabled(holidayDays.isEmpty)
 			}
 		}
 		.ignoresSafeArea(.keyboard)
@@ -45,13 +45,4 @@ struct CalendarView: View {
 		}
 	}
 
-	func getRandomHolidayDay() -> HolidayDay {
-		holidayDays[Int.random(in: 0..<holidayDays.count)];
-	}
-	
-	func getHolidaysCount() -> Int {
-		holidayDays.flatMap { day in
-			day.holidays
-		}.count
-	}
 }

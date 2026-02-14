@@ -7,17 +7,20 @@ import SwiftUI
 
 struct ReportHolidaySheetView: View {
 	@Environment(\.dismiss) var dismiss
+	@StateObject private var viewModel = ReportHolidayViewModel()
 	let holiday: Holiday
-	let languageCode: String = String(Locale.preferredLanguages[0].prefix(2))
-	private let types: [String] = ["WRONG_NAME", "WRONG_DESCRIPTION", "WRONG_DATE", "OTHER"]
-	@State private var reportType: String = "WRONG_NAME"
+	let languageCode: String = String((Locale.preferredLanguages.first ?? "en").prefix(2))
+	@State private var reportType: ReportType = .WRONG_NAME
 	@State private var description: String = ""
-	@State private var showAlert: Bool = false
-	@State private var alertMessage: String = ""
-	@State private var success: Bool = false;
+
+	private var availableTypes: [ReportType] {
+		if holiday.description.isEmpty {
+			return ReportType.allCases.filter { $0 != .WRONG_DESCRIPTION }
+		}
+		return ReportType.allCases
+	}
 
 	var body: some View {
-		let _ = print()
 		NavigationStack {
 			VStack {
 				Form {
@@ -30,10 +33,8 @@ struct ReportHolidaySheetView: View {
 						.lineLimit(1...2)
 
 					Picker("reason", selection: $reportType) {
-						ForEach(types, id: \.self) { type in
-							if (type != "WRONG_DESCRIPTION" || holiday.description != "") {
-								Text(type.localized()).tag(type)
-							}
+						ForEach(availableTypes, id: \.self) { type in
+							Text(type.rawValue.localized()).tag(type)
 						}
 					}
 					.pickerStyle(.automatic)
@@ -56,80 +57,53 @@ struct ReportHolidaySheetView: View {
 			}
 			.navigationTitle("report-holiday")
 			.navigationBarTitleDisplayMode(.large)
-			.navigationViewStyle(.stack)
 			.toolbar {
 				if let uid = Auth.auth().currentUser?.uid {
 					ToolbarItem(placement: .primaryAction) {
 						Button("send") {
-							if holiday.id < 0 {
-								sendReport(
-									reportPayload: HolidayReportPayload(
-										userId: uid,
-										metadata: -holiday.id,
-										language: languageCode,
-										reportType: reportType,
-										description: description
-									),
-									path: "report/floating"
+							Task {
+								let payload = HolidayReportPayload(
+									userId: uid,
+									metadata: abs(holiday.id),
+									language: languageCode,
+									reportType: reportType,
+									description: description
 								)
-							} else {
-								sendReport(
-									reportPayload: HolidayReportPayload(
-										userId: uid,
-										metadata: holiday.id,
-										language: languageCode,
-										reportType: reportType,
-										description: description
-									),
-									path: "report/fixed"
-								)
+								let path = holiday.id < 0 ? "report/floating" : "report/fixed"
+								await viewModel.sendReport(reportPayload: payload, path: path)
 							}
 						}
 					}
 				}
 			}
-			.navigationBarItems(leading: Button {
-				dismiss()
-			} label: {
-				Image(systemName: "chevron.backward")
-				Text("back")
-			})
-			.alert(isPresented: $showAlert) {
-				Alert(title: Text("report"), message: Text(alertMessage), dismissButton: .default(Text("ok")) {
-					if success {
+			.toolbar {
+				ToolbarItem(placement: .cancellationAction) {
+					Button {
+						dismiss()
+					} label: {
+						Image(systemName: "chevron.backward")
+						Text("back")
+					}
+				}
+			}
+			.alert("report", isPresented: $viewModel.showAlert) {
+				Button("ok") {
+					if viewModel.success {
 						dismiss()
 					}
-				})
+				}
+			} message: {
+				Text(viewModel.alertMessage)
 			}
 		}
 	}
 
 	func renderDescriptionText() -> Text {
-		if holiday.description == "" {
+		if holiday.description.isEmpty {
 			return Text("- \("no-description".localized()) -")
 				.italic()
 				.foregroundStyle(.gray)
 		}
 		return Text(holiday.description)
-	}
-
-	func sendReport(reportPayload: HolidayReportPayload, path: String) {
-		let encoder: JSONEncoder = JSONEncoder()
-		encoder.keyEncodingStrategy = .convertToSnakeCase
-		do {
-			let jsonData: Data = try encoder.encode(reportPayload)
-			URLSession.shared.sendRequest(jsonData: jsonData, path: path) { message, success in
-				DispatchQueue.main.async {
-					self.alertMessage = message ?? "sent"
-					self.showAlert = true
-					self.success = success
-				}
-			}
-		} catch {
-			DispatchQueue.main.async {
-				self.alertMessage = "invalid-data-format"
-				self.showAlert = true
-			}
-		}
 	}
 }

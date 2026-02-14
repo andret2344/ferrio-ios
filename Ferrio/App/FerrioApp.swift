@@ -10,6 +10,7 @@ import FirebaseAuth
 struct FerrioApp: App {
 	@UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 	@StateObject var viewModel = AuthenticationViewModel()
+	@StateObject var config = ObservableConfig.shared
 
 	var body: some Scene {
 		WindowGroup {
@@ -25,13 +26,10 @@ struct FerrioApp: App {
 				}
 			}
 			.environmentObject(viewModel)
+			.environmentObject(config)
 			.onOpenURL { url in
 				_ = GIDSignIn.sharedInstance.handle(url)
-				if Auth.auth().canHandle(url) {
-					print("Firebase handled OAuth redirect: \(url)")
-					return
-				}
-				print("Unhandled URL: \(url)")
+				_ = Auth.auth().canHandle(url)
 			}
 		}
 	}

@@ -1,6 +1,9 @@
 "about-calendar" = "O kalendarzu";
+"account-linking-required" = "Wymagane powiązanie konta";
 "about-holidays" = "Wszystkie święta, nawet te najbardziej nietypowe, są okazją do spojrzenia na ludzi w inny sposób i docenienia na co dzień ignorowanych zjawisk.";
 "account" = "Konto";
+"account-exists-with-email-%@" = "Konto z adresem e-mail %@ już istnieje. Zaloguj się za pomocą dotychczasowej metody, aby powiązać konta.";
+"account-exists-generic" = "Konto z tym adresem e-mail już istnieje. Najpierw zaloguj się za pomocą dotychczasowej metody.";
 "application" = "Aplikacja";
 "back" = "Wróć";
 "calendar" = "Kalendarz";
@@ -10,6 +13,7 @@
 "country" = "Kraj";
 "date" = "Data";
 "day" = "Dzień";
+"error" = "Błąd";
 "errors" = "Błędy";
 "holiday-description" = "Opis święta";
 "holiday-fixed" = "Święto niechome";
@@ -19,6 +23,8 @@
 "holidays-floating" = "Święta ruchome";
 "international" = "Międzynarodowe";
 "invalid-data-format" = "Niepoprawny format danych";
+"link-accounts-failed-%@" = "Nie udało się powiązać kont: %@";
+"load-error" = "Nie udało się załadować świąt. Pracujemy nad rozwiązaniem problemu. Przepraszamy za niedogodności.";
 "log-out" = "Wyloguj";
 "logout-confirm" = "Na pewno chcesz się wylogować?";
 "missing-holiday" = "Brakujące święto?";
@@ -32,24 +38,31 @@
 "no-unusual-holidays" = "Brak nietypowych świąt.";
 "ok" = "OK";
 "random" = "Losowo";
+"reason" = "Powód";
 "report" = "Zgłoś";
+"retry" = "Ponów";
 "reports" = "Zgłoszenia";
 "report-holiday" = "Zgłoś święto";
 "report-notice" = "Zgłoszenia zawierające opis będą sprawdzane w pierwszej kolejności.";
 "report-sent" = "Zgłoszenie wysłane";
 "search" = "Wyszukaj";
+"select-missing-holidays-type" = "Wybierz typ brakujących świąt";
+"select-reported-holidays-type" = "Wybierz typ zgłoszonych świąt";
 "search-across-%lld" = "Szukaj wśród %lld świąt...";
 "send" = "Wyślij";
 "sent" = "Wysłano.";
 "signin-anonymous" = "Anonimowe logowanie";
 "signin-anonymous-alert" = "Logując się anonimowo, nie będziesz w stanie w pełni wykorzystać funkcji aplikacji, przykładowo, zgłaszanie błędów.";
 "signin-google" = "Zaloguj się z Google";
-"signin-google" = "Zaloguj się z GitHub";
+"signin-github" = "Zaloguj się z GitHub";
 "start-searching" = "Wpisz swoje wyszukiwanie";
 "suggest-holiday" = "Zasugeruj święto";
+"suggestion-sent" = "Sugestia wysłana";
+"suggestion-sent-description" = "Dziękujemy za sugestię! Nasz zespół ją zweryfikuje i, jeśli zostanie zatwierdzona, pojawi się w kalendarzu.";
 "suggestions" = "Sugestie";
 "today" = "Dzisiaj";
-"unsuccessfull-request-%lld" = "Wysyałanie nieudane. Proszę spróbować ponownie później. Kod odpowiedzi: %lld.";
+"unsuccessful-request-%lld" = "Wysyłanie nieudane. Proszę spróbować ponownie później. Kod odpowiedzi: %lld.";
+"invalid-url" = "Nieprawidłowy adres URL. Proszę spróbować ponownie później.";
 
 // Statuses
 "REPORTED" = "Zgłoszone";

@@ -2,17 +2,15 @@
 //  Created by Andrzej Chmiel on 11/08/2024.
 //
 
-import FirebaseAuth
 import SwiftUI
 
 struct MyReportsScreenView: View {
-	@State private var reportsFixed: [HolidayReport] = []
-	@State private var reportsFloating: [HolidayReport] = []
+	@StateObject private var viewModel = ReportsViewModel()
 	@State private var reportedHolidaysType: String = "fixed"
 	@State private var expanded: Int? = nil
 
 	var body: some View {
-		Picker("Select reported holidays type", selection: $reportedHolidaysType) {
+		Picker("select-reported-holidays-type", selection: $reportedHolidaysType) {
 			Text("holidays-fixed").tag("fixed")
 			Text("holidays-floating").tag("floating")
 		}
@@ -20,51 +18,21 @@ struct MyReportsScreenView: View {
 		.padding(.horizontal)
 		List {
 			if reportedHolidaysType == "fixed" {
-				ForEach(reportsFixed, id: \.id) { report in
+				ForEach(viewModel.reportsFixed, id: \.id) { report in
 					renderReport(report: report)
 				}
 			} else {
-				ForEach(reportsFloating, id: \.id) { report in
+				ForEach(viewModel.reportsFloating, id: \.id) { report in
 					renderReport(report: report)
 				}
 			}
 		}
 		.refreshable {
-			await fetchData()
+			await viewModel.fetchData()
 		}
 		.navigationTitle("my-reports")
 		.task {
-			await fetchData()
-		}
-	}
-
-	func fetchData() async {
-		do {
-			reportsFixed = try await URLSession.shared
-				.decode(
-					[HolidayReport].self,
-					from: getUrlForFixed(),
-					keyDecodingStrategy: .convertFromSnakeCase
-				)
-			reportsFloating = try await URLSession.shared
-				.decode(
-					[HolidayReport].self,
-					from: getUrlForFloating(),
-					keyDecodingStrategy: .convertFromSnakeCase
-				)
-		} catch let DecodingError.dataCorrupted(context) {
-			print(context)
-		} catch let DecodingError.keyNotFound(key, context) {
-			print("Key '\(key)' not found:", context.debugDescription)
-			print("codingPath:", context.codingPath)
-		} catch let DecodingError.valueNotFound(value, context) {
-			print("Value '\(value)' not found:", context.debugDescription)
-			print("codingPath:", context.codingPath)
-		} catch let DecodingError.typeMismatch(type, context) {
-			print("Type '\(type)' mismatch:", context.debugDescription)
-			print("codingPath:", context.codingPath)
-		} catch {
-			print("error: ", error)
+			await viewModel.fetchData()
 		}
 	}
 
@@ -87,7 +55,7 @@ struct MyReportsScreenView: View {
 			Text(report.reportState.rawValue.localized())
 				.foregroundStyle(Color(UIColor.systemBackground))
 				.frame(width: 108, height: 32)
-				.background(RoundedRectangle(cornerRadius: 8).fill(getColor(reportState: report.reportState)))
+				.background(RoundedRectangle(cornerRadius: 8).fill(report.reportState.color))
 				.overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.black, lineWidth: 1))
 		}
 		.onTapGesture {
@@ -96,31 +64,6 @@ struct MyReportsScreenView: View {
 			} else {
 				expanded = report.id
 			}
-		}
-	}
-
-	func getUrlForFixed() -> URL {
-		let uuid: String = Auth.auth().currentUser?.uid ?? ""
-		return URL(string: "https://api.ferrio.app/v2/report/\(uuid)/fixed")!
-	}
-
-	func getUrlForFloating() -> URL {
-		let uuid: String = Auth.auth().currentUser?.uid ?? ""
-		return URL(string: "https://api.ferrio.app/v2/report/\(uuid)/floating")!
-	}
-
-	func getColor(reportState: ReportState) -> Color {
-		switch reportState {
-		case .REPORTED:
-			return Color(UIColor.systemBlue)
-		case .APPLIED:
-			return Color(UIColor.systemGreen)
-		case .DECLINED:
-			return Color(UIColor.systemRed)
-		case .ON_HOLD:
-			fallthrough
-		default:
-			return Color(UIColor.systemYellow)
 		}
 	}
 }

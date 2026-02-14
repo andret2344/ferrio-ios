@@ -3,22 +3,20 @@
 //
 
 import SwiftUI
-import FirebaseAuth
-import GoogleSignIn
 
 struct LogInView: View {
 	@State private var anonymousLoginAlert = false
 	@EnvironmentObject var viewModel: AuthenticationViewModel
 
 	var body: some View {
-		NavigationView {
+		NavigationStack {
 			VStack {
 				Spacer()
 				Image("Logo")
 					.resizable()
 					.aspectRatio(contentMode: .fit)
 					.frame(width: 256, height: 256, alignment: .center)
-					.cornerRadius(48)
+					.clipShape(RoundedRectangle(cornerRadius: 48))
 				Text("Ferrio")
 					.font(.largeTitle)
 				Spacer()
@@ -36,20 +34,20 @@ struct LogInView: View {
 					.frame(width: 200)
 				}
 				.buttonStyle(BorderedButtonStyle())
-//				Button {
-//					viewModel.signInWithGitHub()
-//				} label: {
-//					HStack {
-//						Image("GithubIcon")
-//							.renderingMode(.template)
-//							.resizable()
-//							.frame(maxWidth: 16, maxHeight: 16)
-//							.foregroundStyle(Color(.blue))
-//						Text("signin-github")
-//					}
-//					.frame(width: 200)
-//				}
-//				.buttonStyle(BorderedButtonStyle())
+				Button {
+					viewModel.signInWithGitHub()
+				} label: {
+					HStack {
+						Image("GithubIcon")
+							.renderingMode(.template)
+							.resizable()
+							.frame(maxWidth: 16, maxHeight: 16)
+							.foregroundStyle(Color(.blue))
+						Text("signin-github")
+					}
+					.frame(width: 200)
+				}
+				.buttonStyle(BorderedButtonStyle())
 				Button {
 					anonymousLoginAlert = true
 				} label: {
@@ -71,6 +69,17 @@ struct LogInView: View {
 				Spacer()
 			}
 			.padding()
+			.alert("account-linking-required", isPresented: Binding(
+				get: { viewModel.linkingError != nil },
+				set: { if !$0 { viewModel.dismissLinkingError() } }
+			)) {
+				Button("ok") { viewModel.dismissLinkingError() }
+				Button("cancel", role: .cancel) { viewModel.dismissLinkingError() }
+			} message: {
+				if let error = viewModel.linkingError {
+					Text(error.message)
+				}
+			}
 		}
 	}
 }

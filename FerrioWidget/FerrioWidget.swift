@@ -21,90 +21,157 @@ struct Provider: IntentTimelineProvider {
 			category: "",
 			matureContent: false
 		)
-		return WidgetEntry(date: Date(), holidayDay: HolidayDay(id: "-1", day: 1, month: 1, holidays: [holiday]), dayOffset: 0, colorized: false)
+		return WidgetEntry(date: Date(), holidayDay: HolidayDay(id: "-1", day: 1, month: 1, holidays: [holiday]), dayOffset: 0, colorized: false, includeUsual: false, isLoggedIn: true)
 	}
 
 	func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (WidgetEntry) -> Void) {
 		Task {
-			guard let holidayDay = try? await URLSession.shared.decode(HolidayDay.self, from: getUrl(plusDays: 0)) else {
+			guard ObservableConfig.isRealUserLoggedIn else {
+				completion(WidgetEntry.loggedOut())
 				return
 			}
-			let entry = WidgetEntry(date: Date(), holidayDay: holidayDay, dayOffset: 0, colorized: false)
+			var holidayDay: HolidayDay? = nil
+			if let url = getUrl(plusDays: 0) {
+				holidayDay = try? await URLSession.shared.decode(HolidayDay.self, from: url)
+			}
+			let entry = WidgetEntry(date: Date(), holidayDay: holidayDay, dayOffset: 0, colorized: false, includeUsual: ObservableConfig.shared.includeUsual, isLoggedIn: true)
 			completion(entry)
 		}
 	}
 
 	func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<WidgetEntry>) -> Void) {
 		Task {
-			let plusDays = configuration.plusDays?.intValue ?? 0
-			guard let holidayDay = try? await URLSession.shared.decode(HolidayDay.self, from: getUrl(plusDays: plusDays)) else {
+			let now = Date()
+			let midnight = Calendar.current.startOfDay(for: now)
+			let nextMidnight = Calendar.current.date(byAdding: .day, value: 1, to: midnight) ?? now
+
+			guard ObservableConfig.isRealUserLoggedIn else {
+				let entry = WidgetEntry(date: now, holidayDay: nil, dayOffset: 0, colorized: false,
+					includeUsual: ObservableConfig.shared.includeUsual, isLoggedIn: false)
+				completion(Timeline(entries: [entry], policy: .after(nextMidnight)))
 				return
 			}
-			let target: Date = Calendar.current.date(bySettingHour: 0, minute: .random(in: 0..<3), second: .random(in: 0..<59), of: Date())!
-			let entry: WidgetEntry = WidgetEntry(date: getProperDate(targetDate: target), holidayDay: holidayDay, dayOffset: plusDays, colorized: configuration.colorized?.boolValue ?? false)
-			completion(Timeline(entries: [entry], policy: .after(target)))
+			let plusDays = configuration.plusDays?.intValue ?? 0
+			var holidayDay: HolidayDay? = nil
+			if let url = getUrl(plusDays: plusDays) {
+				holidayDay = try? await URLSession.shared.decode(HolidayDay.self, from: url)
+			}
+			let entry = WidgetEntry(date: now, holidayDay: holidayDay, dayOffset: plusDays, colorized: configuration.colorized?.boolValue ?? false, includeUsual: ObservableConfig.shared.includeUsual, isLoggedIn: true)
+			completion(Timeline(entries: [entry], policy: .after(nextMidnight)))
 		}
 	}
 
-	func getProperDate(targetDate: Date) -> Date {
-		let timeDifference: Double = targetDate.timeIntervalSince(Date())
-		if timeDifference > 0 {
-			return targetDate;
-		}
-		return Calendar.current.date(byAdding: .day, value: 1, to: targetDate)!
-	}
-
-	func getUrl(plusDays: Int) -> URL {
-		let current: Date = Calendar.current.date(byAdding: .day, value: plusDays, to: Date())!
-		let components: DateComponents = Calendar.current.dateComponents([.day, .month], from: current)
-		let code: String? = Locale.current.language.languageCode?.identifier
-		let lang: String = ["pl"].contains(code!) ? code! : "en"
-		return URL(string: "https://api.ferrio.app/v2/holiday/\(lang)/day/\(components.month!)/\(components.day!)")!
+	func getUrl(plusDays: Int) -> URL? {
+		guard let current = Calendar.current.date(byAdding: .day, value: plusDays, to: Date()) else { return nil }
+		let components = Calendar.current.dateComponents([.day, .month], from: current)
+		guard let month = components.month, let day = components.day else { return nil }
+		return URL(string: "\(API.baseURL)/holiday/\(API.language)/day/\(month)/\(day)")
 	}
 }
+
+// MARK: - Entry
 
 struct WidgetEntry: TimelineEntry {
 	let date: Date
-	let holidayDay: HolidayDay
+	let holidayDay: HolidayDay?
 	let dayOffset: Int
 	let colorized: Bool
+	let includeUsual: Bool
+	let isLoggedIn: Bool
+
+	static func loggedOut() -> WidgetEntry {
+		WidgetEntry(date: Date(), holidayDay: nil, dayOffset: 0, colorized: false, includeUsual: false, isLoggedIn: false)
+	}
 }
+
+// MARK: - Entry View
 
 struct FerrioWidgetEntryView: View {
 	@Environment(\.widgetFamily) private var family
-	@StateObject var observableConfig = ObservableConfig()
 	var entry: Provider.Entry
 
 	var body: some View {
-		let holidays = entry.holidayDay.getHolidays(includeUsual: observableConfig.includeUsual)
-		switch family {
-		case .accessoryInline:
-			FerrioAccessoryInlineView(
-				entry: entry,
-				holidays: holidays
-			)
-		case .accessoryRectangular:
-			FerrioAccessoryRectangularView(
-				entry: entry,
-				holidays: holidays
-			)
-		default:
-			FerrioRegularView(
-				entry: entry,
-				holidays: holidays
-			)
+		if entry.isLoggedIn {
+			let holidays = entry.holidayDay?.getHolidays(includeUsual: entry.includeUsual) ?? []
+			switch family {
+			case .accessoryInline:
+				FerrioAccessoryInlineView(entry: entry, holidays: holidays)
+			case .accessoryRectangular:
+				FerrioAccessoryRectangularView(entry: entry, holidays: holidays)
+			default:
+				FerrioRegularView(entry: entry, holidays: holidays)
+			}
+		} else {
+			switch family {
+			case .accessoryInline:
+				LoginRequiredInlineView()
+			case .accessoryRectangular:
+				LoginRequiredRectangularView()
+			default:
+				LoginRequiredRegularView()
+			}
 		}
 	}
 }
 
+// MARK: - Login Required Views
+
+struct LoginRequiredInlineView: View {
+	var body: some View {
+		Label {
+			Text("widget-login-required")
+				.lineLimit(1)
+				.minimumScaleFactor(0.8)
+		} icon: {
+			Image(systemName: "person.crop.circle.badge.exclamationmark")
+				.widgetAccentable()
+		}
+		.widgetURL(URL(string: "ferrio://open"))
+	}
+}
+
+struct LoginRequiredRectangularView: View {
+	var body: some View {
+		ZStack {
+			AccessoryWidgetBackground()
+			VStack(spacing: 4) {
+				Image(systemName: "person.crop.circle.badge.exclamationmark")
+				Text("widget-login-required")
+					.font(.caption)
+					.multilineTextAlignment(.center)
+			}
+			.padding(6)
+		}
+		.containerBackground(Color.clear, for: .widget)
+		.clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+	}
+}
+
+struct LoginRequiredRegularView: View {
+	var body: some View {
+		VStack(spacing: 12) {
+			Image(systemName: "person.crop.circle.badge.exclamationmark")
+				.font(.largeTitle)
+			Text("widget-login-required")
+				.font(.body)
+				.multilineTextAlignment(.center)
+				.padding(.horizontal)
+		}
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
+		.containerBackground(Color(UIColor.systemBackground).gradient, for: .widget)
+		.widgetURL(URL(string: "ferrio://open"))
+	}
+}
+
+// MARK: - Holiday Views
+
 struct FerrioAccessoryInlineView: View {
-	@StateObject var observableConfig = ObservableConfig()
 	let entry: WidgetEntry
 	let holidays: [Holiday]
 
 	var body: some View {
 		Label {
-			Text(getTitle())
+			titleText
 				.lineLimit(1)
 				.minimumScaleFactor(0.8)
 		} icon: {
@@ -114,12 +181,11 @@ struct FerrioAccessoryInlineView: View {
 		.widgetURL(URL(string: "ferrio://open"))
 	}
 
-	func getTitle() -> String {
-		let holidays = entry.holidayDay.getHolidays(includeUsual: observableConfig.includeUsual)
-		if holidays.isEmpty {
-			return "no-unusual-holidays"
+	var titleText: Text {
+		if let holiday = holidays.randomElement() {
+			return Text(holiday.name)
 		}
-		return holidays[Int.random(in: 0..<holidays.count)].name
+		return Text("no-unusual-holidays")
 	}
 }
 
@@ -165,7 +231,7 @@ struct FerrioRegularView: View {
 
 	var body: some View {
 		VStack {
-			let date = Date.from(month: entry.holidayDay.month, day: entry.holidayDay.day)!
+			let date = Date.from(month: entry.holidayDay?.month ?? 1, day: entry.holidayDay?.day ?? 1) ?? Date()
 			Text(date.formatted(.dateTime.day().month(.wide)))
 				.bold()
 				.padding(8)
@@ -192,12 +258,14 @@ struct FerrioRegularView: View {
 	}
 
 	func getColor(colorized: Bool) -> Color {
-		if !entry.colorized {
+		if !colorized {
 			return Color(UIColor.systemBackground)
 		}
-		return Color(UIColor.random(seed: Int(entry.holidayDay.id)!))
+		return Color(UIColor.random(seed: Int(entry.holidayDay?.id ?? "0") ?? 0))
 	}
 }
+
+// MARK: - Widget Configuration
 
 struct FerrioWidget: Widget {
 	let kind: String = "FerrioWidget"

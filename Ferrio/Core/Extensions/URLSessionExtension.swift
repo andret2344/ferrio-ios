@@ -4,7 +4,16 @@
 
 import Foundation
 
-public extension URLSession {
+enum API {
+	static let baseURL = "https://api.ferrio.app/v2"
+
+	static var language: String {
+		let code = Locale.current.language.languageCode?.identifier ?? ""
+		return ["pl"].contains(code) ? code : "en"
+	}
+}
+
+extension URLSession {
 	func decode<T: Decodable>(
 		_ type: T.Type = T.self,
 		from url: URL,
@@ -12,7 +21,12 @@ public extension URLSession {
 		dataDecodingStrategy: JSONDecoder.DataDecodingStrategy = .deferredToData,
 		dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate
 	) async throws -> T {
-		let (data, _) = try await data(from: url)
+		let (data, response) = try await data(from: url)
+
+		if let httpResponse = response as? HTTPURLResponse,
+		   !(200...299).contains(httpResponse.statusCode) {
+			throw APIError.unsuccessfulRequest(statusCode: httpResponse.statusCode)
+		}
 
 		let decoder = JSONDecoder()
 		decoder.keyDecodingStrategy = keyDecodingStrategy
@@ -23,26 +37,33 @@ public extension URLSession {
 		return decoded
 	}
 
-	func sendRequest(jsonData: Data, path: String, callback: @escaping (String?, Bool) -> Void) {
-		guard let url = URL(string: "https://api.ferrio.app/v2/\(path)") else { return }
+	func sendRequest(jsonData: Data, path: String) async throws {
+		guard let url = URL(string: "\(API.baseURL)/\(path)") else { throw APIError.invalidURL }
 		var request = URLRequest(url: url)
 		request.httpMethod = "POST"
 		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 		request.httpBody = jsonData
 
-		dataTask(with: request) { data, response, error in
-			if error != nil {
-				callback("could-not-connect", false)
-				return;
-			}
+		let (_, response) = try await data(for: request)
 
-			let httpResponse = response as? HTTPURLResponse
-			guard let response = httpResponse, response.statusCode / 100 == 2 else {
-				callback("unsuccessfull-request-\(httpResponse?.statusCode ?? -1)", false)
-				return;
-			}
+		guard let httpResponse = response as? HTTPURLResponse,
+			  (200...299).contains(httpResponse.statusCode) else {
+			let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
+			throw APIError.unsuccessfulRequest(statusCode: statusCode)
+		}
+	}
+}
 
-			callback(nil, true)
-		}.resume()
+enum APIError: LocalizedError {
+	case unsuccessfulRequest(statusCode: Int)
+	case invalidURL
+
+	var errorDescription: String? {
+		switch self {
+		case .unsuccessfulRequest(let statusCode):
+			String(format: "unsuccessful-request-%lld".localized(), statusCode)
+		case .invalidURL:
+			"invalid-url".localized()
+		}
 	}
 }

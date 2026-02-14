@@ -4,10 +4,17 @@
 
 import Foundation
 
+enum ReportType: String, Encodable, CaseIterable {
+	case WRONG_NAME
+	case WRONG_DESCRIPTION
+	case WRONG_DATE
+	case OTHER
+}
+
 struct HolidayReportPayload: Encodable {
 	var userId: String
 	var metadata: Int
 	var language: String
-	var reportType: String
+	var reportType: ReportType
 	var description: String
 }

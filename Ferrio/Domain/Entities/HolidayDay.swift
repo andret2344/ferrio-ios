@@ -5,7 +5,7 @@
 import Foundation
 
 struct HolidayDay: Identifiable, Decodable, Equatable {
-	let id: String;
+	let id: String
 	let day: Int
 	let month: Int
 	var holidays: [Holiday]

@@ -5,6 +5,17 @@
 import SwiftUI
 
 class ObservableConfig: ObservableObject {
-	@AppStorage("includeUsual") var includeUsual: Bool = false
-	@AppStorage("colorizedDays") var colorizedDays: Bool = false
+	static let shared = ObservableConfig()
+	static let appGroupId = "group.eu.andret.uhc"
+	static let sharedDefaults = UserDefaults(suiteName: appGroupId)
+
+	@AppStorage("includeUsual", store: ObservableConfig.sharedDefaults) var includeUsual: Bool = false
+	@AppStorage("colorizedDays", store: ObservableConfig.sharedDefaults) var colorizedDays: Bool = false
+
+	static var isRealUserLoggedIn: Bool {
+		get { sharedDefaults?.bool(forKey: "isRealUserLoggedIn") ?? false }
+		set { sharedDefaults?.set(newValue, forKey: "isRealUserLoggedIn") }
+	}
+
+	private init() {}
 }

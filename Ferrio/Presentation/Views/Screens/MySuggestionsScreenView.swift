@@ -2,17 +2,15 @@
 //  Created by Andrzej Chmiel on 25/07/2024.
 //
 
-import FirebaseAuth
 import SwiftUI
 
 struct MySuggestionsScreenView: View {
-	@State private var suggestionsFixed: [MissingFixedHoliday] = []
-	@State private var suggestionsFloating: [MissingFloatingHoliday] = []
+	@StateObject private var viewModel = SuggestionsViewModel()
 	@State private var reportedHolidaysType: String = "fixed"
 	@State private var expanded: Int? = nil
 
 	var body: some View {
-		Picker("Select missing holidays type", selection: $reportedHolidaysType) {
+		Picker("select-missing-holidays-type", selection: $reportedHolidaysType) {
 			Text("holidays-fixed").tag("fixed")
 			Text("holidays-floating").tag("floating")
 		}
@@ -20,7 +18,7 @@ struct MySuggestionsScreenView: View {
 		.padding(.horizontal)
 		List {
 			if reportedHolidaysType == "fixed" {
-				ForEach(suggestionsFixed, id: \.id) { suggestion in
+				ForEach(viewModel.suggestionsFixed, id: \.id) { suggestion in
 					HStack {
 						VStack {
 							Text("\(String(format: "%02d", suggestion.month)).\(String(format: "%02d", suggestion.day))")
@@ -38,7 +36,7 @@ struct MySuggestionsScreenView: View {
 						Text(suggestion.reportState.rawValue.localized())
 							.foregroundStyle(Color(UIColor.systemBackground))
 							.frame(width: 108, height: 32)
-							.background(RoundedRectangle(cornerRadius: 8).fill(getColor(reportState: suggestion.reportState)))
+							.background(RoundedRectangle(cornerRadius: 8).fill(suggestion.reportState.color))
 							.overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.black, lineWidth: 1))
 					}
 					.contentShape(Rectangle())
@@ -51,7 +49,7 @@ struct MySuggestionsScreenView: View {
 					}
 				}
 			} else {
-				ForEach(suggestionsFloating, id: \.id) { suggestion in
+				ForEach(viewModel.suggestionsFloating, id: \.id) { suggestion in
 					HStack {
 						VStack {
 							Text(suggestion.date)
@@ -69,7 +67,7 @@ struct MySuggestionsScreenView: View {
 						Text(suggestion.reportState.rawValue.localized())
 							.foregroundStyle(Color(UIColor.systemBackground))
 							.frame(width: 108, height: 32)
-							.background(RoundedRectangle(cornerRadius: 8).fill(getColor(reportState: suggestion.reportState)))
+							.background(RoundedRectangle(cornerRadius: 8).fill(suggestion.reportState.color))
 							.overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.black, lineWidth: 1))
 					}
 					.contentShape(Rectangle())
@@ -84,66 +82,11 @@ struct MySuggestionsScreenView: View {
 			}
 		}
 		.refreshable {
-			await fetchData()
+			await viewModel.fetchData()
 		}
 		.navigationTitle("my-suggestions")
 		.task {
-			await fetchData()
-		}
-	}
-
-	func fetchData() async {
-		do {
-			suggestionsFixed = try await URLSession.shared
-				.decode(
-					[MissingFixedHoliday].self,
-					from: getUrlForFixed(),
-					keyDecodingStrategy: .convertFromSnakeCase
-				)
-			suggestionsFloating = try await URLSession.shared
-				.decode(
-					[MissingFloatingHoliday].self,
-					from: getUrlForFloating(),
-					keyDecodingStrategy: .convertFromSnakeCase
-				)
-		} catch let DecodingError.dataCorrupted(context) {
-			print(context)
-		} catch let DecodingError.keyNotFound(key, context) {
-			print("Key '\(key)' not found:", context.debugDescription)
-			print("codingPath:", context.codingPath)
-		} catch let DecodingError.valueNotFound(value, context) {
-			print("Value '\(value)' not found:", context.debugDescription)
-			print("codingPath:", context.codingPath)
-		} catch let DecodingError.typeMismatch(type, context) {
-			print("Type '\(type)' mismatch:", context.debugDescription)
-			print("codingPath:", context.codingPath)
-		} catch {
-			print("error: ", error)
-		}
-	}
-
-	func getUrlForFixed() -> URL {
-		let uuid: String = Auth.auth().currentUser?.uid ?? ""
-		return URL(string: "https://api.ferrio.app/v2/missing/\(uuid)/fixed")!
-	}
-
-	func getUrlForFloating() -> URL {
-		let uuid: String = Auth.auth().currentUser?.uid ?? ""
-		return URL(string: "https://api.ferrio.app/v2/missing/\(uuid)/floating")!
-	}
-
-	func getColor(reportState: ReportState) -> Color {
-		switch reportState {
-		case .REPORTED:
-			return Color(UIColor.systemBlue)
-		case .APPLIED:
-			return Color(UIColor.systemGreen)
-		case .DECLINED:
-			return Color(UIColor.systemRed)
-		case .ON_HOLD:
-			fallthrough
-		default:
-			return Color(UIColor.systemYellow)
+			await viewModel.fetchData()
 		}
 	}
 }
