@@ -35,8 +35,9 @@ struct HolidayShareCardView: View {
 
 			Spacer(minLength: 0)
 
-			Divider()
-				.overlay(.white.opacity(0.15))
+			Rectangle()
+				.fill(.white.opacity(0.15))
+				.frame(height: 1)
 				.padding(.bottom, 14)
 
 			HStack(spacing: 8) {
@@ -79,7 +80,7 @@ struct HolidayDayShareCardView: View {
 				.padding(.bottom, 14)
 
 			VStack(alignment: .leading, spacing: 6) {
-				ForEach(holidays.prefix(8), id: \.self) { name in
+				ForEach(holidays.prefix(6), id: \.self) { name in
 					HStack(alignment: .top, spacing: 8) {
 						Circle()
 							.fill(.white.opacity(0.5))
@@ -91,8 +92,8 @@ struct HolidayDayShareCardView: View {
 							.lineLimit(1)
 					}
 				}
-				if holidays.count > 8 {
-					Text("+\(holidays.count - 8) more...")
+				if holidays.count > 6 {
+					Text("+\(holidays.count - 6) more...")
 						.font(.system(size: 14, weight: .regular))
 						.foregroundStyle(.white.opacity(0.5))
 						.padding(.leading, 14)
@@ -101,8 +102,9 @@ struct HolidayDayShareCardView: View {
 
 			Spacer(minLength: 0)
 
-			Divider()
-				.overlay(.white.opacity(0.15))
+			Rectangle()
+				.fill(.white.opacity(0.15))
+				.frame(height: 1)
 				.padding(.bottom, 14)
 
 			HStack(spacing: 8) {
