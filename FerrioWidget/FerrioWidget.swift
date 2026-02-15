@@ -182,7 +182,13 @@ struct FerrioAccessoryInlineView: View {
 	}
 
 	var titleText: Text {
-		if let holiday = holidays.randomElement() {
+		let deviceCountry = Locale.current.region?.identifier
+		let localHolidays = holidays.filter { holiday in
+			guard let countryCode = holiday.countryCode, !countryCode.isEmpty,
+				  let deviceCountry else { return false }
+			return countryCode.caseInsensitiveCompare(deviceCountry) == .orderedSame
+		}
+		if let holiday = localHolidays.randomElement() ?? holidays.randomElement() {
 			return Text(holiday.name)
 		}
 		return Text("no-unusual-holidays")

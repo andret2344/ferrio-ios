@@ -50,6 +50,7 @@
 		7171BBCB2F3F5E1700678359 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7171BBCA2F3F5E1700678359 /* ContentViewModel.swift */; };
 		718743AA2AB3B7FC00A6EFC0 /* FloatingHoliday.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1C09241000093713F0DF /* FloatingHoliday.swift */; };
 		718743AB2ABA5A8000A6EFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71FA8B022AA54A03000E2831 /* Assets.xcassets */; };
+		7192FFB92F4214AE0047DDFC /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192FFB82F4214AE0047DDFC /* ShareButton.swift */; };
 		71A0F9802C695748007F595F /* HolidayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A0F97F2C695748007F595F /* HolidayReport.swift */; };
 		71A0F9812C695748007F595F /* HolidayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A0F97F2C695748007F595F /* HolidayReport.swift */; };
 		71B0474D2F3E42E800F0CB1C /* MonthAdapterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0473E2F3E42E800F0CB1C /* MonthAdapterView.swift */; };
@@ -158,6 +159,7 @@
 		7171BBCA2F3F5E1700678359 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		7187DB812F4113880008896C /* Ferrio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ferrio.entitlements; sourceTree = "<group>"; };
 		7187DB822F4113AB0008896C /* FerrioWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FerrioWidgetExtension.entitlements; sourceTree = "<group>"; };
+		7192FFB82F4214AE0047DDFC /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 		71A0F97F2C695748007F595F /* HolidayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayReport.swift; sourceTree = "<group>"; };
 		71B0473E2F3E42E800F0CB1C /* MonthAdapterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthAdapterView.swift; sourceTree = "<group>"; };
 		71B047402F3E42E800F0CB1C /* MyReportsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReportsScreenView.swift; sourceTree = "<group>"; };
@@ -187,7 +189,7 @@
 		AAAA00032F3F600000000002 /* SuggestionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsViewModel.swift; sourceTree = "<group>"; };
 		AAAA00052F3F600000000003 /* SuggestHolidayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestHolidayViewModel.swift; sourceTree = "<group>"; };
 		AAAA00072F3F600000000004 /* ReportState+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReportState+Color.swift"; sourceTree = "<group>"; };
-		AAAA000A2F3F600000000006 /* HolidayRepositoryReports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HolidayRepositoryReports.swift"; sourceTree = "<group>"; };
+		AAAA000A2F3F600000000006 /* HolidayRepositoryReports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayRepositoryReports.swift; sourceTree = "<group>"; };
 		AAAA000C2F3F600000000007 /* ReportHolidayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportHolidayViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -420,6 +422,7 @@
 		71B0476A2F3E555100F0CB1C /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				7192FFB82F4214AE0047DDFC /* ShareButton.swift */,
 				71B0473E2F3E42E800F0CB1C /* MonthAdapterView.swift */,
 			);
 			path = Components;
@@ -710,6 +713,7 @@
 				7109DEFA2C4A3F7B00600EDA /* MissingHolidayPayload.swift in Sources */,
 				71B8BA0C2C65FA5F00F1B211 /* HolidayReportPayload.swift in Sources */,
 				7171BBC42F3F5D9E00678359 /* HolidayRepository.swift in Sources */,
+				7192FFB92F4214AE0047DDFC /* ShareButton.swift in Sources */,
 				AAAA000B2F3F600000000006 /* HolidayRepositoryReports.swift in Sources */,
 				7171BBC92F3F5E0200678359 /* CalendarService.swift in Sources */,
 				1A8B13FBBE820C88F7AD2481 /* ObservableConfig.swift in Sources */,

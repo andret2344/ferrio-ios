@@ -34,10 +34,12 @@ struct HolidayDaySheetView: View {
 									.navigationBarTitleDisplayMode(.large)
 									.toolbar {
 										ToolbarItem(placement: .primaryAction) {
-											let name: String = "[\(holidayDay.getDate())] \(holiday.name)"
-											let text: String = "\(name) - \(holiday.description)"
-											ShareLink(item: text, preview: SharePreview(name))
-												.labelStyle(.iconOnly)
+											let dateText = date?.formatted(.dateTime.day().month(.wide)) ?? holidayDay.getDate()
+											ShareHolidayButton(
+												date: dateText,
+												holidayName: holiday.name,
+												holidayDescription: holiday.description
+											)
 										}
 									}
 									.padding()
@@ -65,10 +67,11 @@ struct HolidayDaySheetView: View {
 				}
 				ToolbarItem(placement: .primaryAction) {
 					if !holidays.isEmpty {
-						let list = holidays.map { "- \($0.name)" }.joined(separator: "\n")
-						let text = "\(holidayDay.day).\(holidayDay.month):\n\(list)\n\n\("check-it-yourself".localized())"
-						ShareLink(item: text, preview: SharePreview(text))
-							.labelStyle(.iconOnly)
+						let dateText = date?.formatted(.dateTime.day().month(.wide)) ?? holidayDay.getDate()
+						ShareHolidayDayButton(
+							date: dateText,
+							holidays: holidays.map { $0.name }
+						)
 					}
 				}
 			}
