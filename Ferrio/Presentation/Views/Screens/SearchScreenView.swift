@@ -43,7 +43,7 @@ struct SearchScreenView: View {
 								Divider()
 								VStack(alignment: .leading, spacing: 6) {
 									ForEach(group.items, id: \.id) { holiday in
-										Text("• \(holiday.name)")
+										Text("• \(holiday.nameWithFlag)")
 											.lineLimit(2)
 									}
 								}

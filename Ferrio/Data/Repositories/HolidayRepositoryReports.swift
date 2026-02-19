@@ -6,8 +6,8 @@ import Foundation
 
 extension HolidayRepository {
 	func fetchReports(uid: String) async throws -> (fixed: [HolidayReport], floating: [HolidayReport]) {
-		guard let fixedURL = URL(string: "\(API.baseURL)/report/\(uid)/fixed"),
-			  let floatingURL = URL(string: "\(API.baseURL)/report/\(uid)/floating") else {
+		guard let fixedURL = URL(string: "\(API.reportsBaseURL)/report/\(uid)/fixed"),
+			  let floatingURL = URL(string: "\(API.reportsBaseURL)/report/\(uid)/floating") else {
 			throw APIError.invalidURL
 		}
 		let fixed = try await URLSession.shared.decode(
@@ -24,8 +24,8 @@ extension HolidayRepository {
 	}
 
 	func fetchSuggestions(uid: String) async throws -> (fixed: [MissingFixedHoliday], floating: [MissingFloatingHoliday]) {
-		guard let fixedURL = URL(string: "\(API.baseURL)/missing/\(uid)/fixed"),
-			  let floatingURL = URL(string: "\(API.baseURL)/missing/\(uid)/floating") else {
+		guard let fixedURL = URL(string: "\(API.reportsBaseURL)/missing/\(uid)/fixed"),
+			  let floatingURL = URL(string: "\(API.reportsBaseURL)/missing/\(uid)/floating") else {
 			throw APIError.invalidURL
 		}
 		let fixed = try await URLSession.shared.decode(
@@ -42,7 +42,7 @@ extension HolidayRepository {
 	}
 
 	func fetchCountries() async throws -> [Locale.Region] {
-		guard let url = URL(string: "\(API.baseURL)/countries?format=code") else {
+		guard let url = URL(string: "\(API.reportsBaseURL)/countries?format=code") else {
 			throw APIError.invalidURL
 		}
 		let codes = try await URLSession.shared.decode(

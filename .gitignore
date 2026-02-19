@@ -1,7 +1,4 @@
-# Mac files
 .DS_Store
 **/.DS_Store
-
-# xcodee files
-xcuserdata/
-
+/xcuserdata/
+/build/

@@ -3,80 +3,26 @@
 //
 
 import Foundation
-import JavaScriptCore
 
 class HolidayRepository {
 	func fetchHolidays(language: String) async throws -> [HolidayDay] {
 		let url = try getUrl(language: language)
-		var unusualCalendar: UnusualCalendar = try await URLSession.shared.decode(UnusualCalendar.self, from: url)
-
-		guard let context = JSContext() else {
-			throw HolidayRepositoryError.jsContextCreationFailed
-		}
-
-		for holiday in unusualCalendar.floating {
-			guard let result = context.evaluateScript(holiday.script),
-				  !result.isUndefined,
-				  !result.isNull,
-				  let (day, month) = parseDayMonth(from: result)
-			else {
-				continue
-			}
-
-			unusualCalendar.add(
-				day: day,
-				month: month,
-				holiday: Holiday(floatingHoliday: holiday)
-			)
-		}
-
-		return unusualCalendar.fixed
+		let dtos: [HolidayDTO] = try await URLSession.shared.decode(from: url)
+		return Self.groupIntoHolidayDays(dtos)
 	}
 
 	private func getUrl(language: String) throws -> URL {
-		guard let url = URL(string: "\(API.baseURL)/holiday/\(language)") else {
+		guard let url = URL(string: "\(API.baseURL)/holidays?lang=\(language)") else {
 			throw APIError.invalidURL
 		}
 		return url
 	}
 
-	private func parseDayMonth(from value: JSValue) -> (day: Int, month: Int)? {
-		// Object: { day: 3, month: 8 }
-		if value.isObject,
-		   let day: Int = value.forProperty("day")?.toNumber()?.intValue,
-		   let month: Int = value.forProperty("month")?.toNumber()?.intValue,
-		   valid(day: day, month: month) {
-			return (day, month)
+	static func groupIntoHolidayDays(_ dtos: [HolidayDTO]) -> [HolidayDay] {
+		let grouped = Dictionary(grouping: dtos) { "\($0.month)-\($0.day)" }
+		return grouped.compactMap { (_, group) -> HolidayDay? in
+			guard let first = group.first else { return nil }
+			return HolidayDay(day: first.day, month: first.month, holidays: group.map(\.toHoliday))
 		}
-
-		// Array: [3, 8]
-		if value.isArray,
-		   let arr: [Any] = value.toArray(),
-		   arr.count >= 2,
-		   let day = (arr[0] as? NSNumber).map({ $0.intValue }),
-		   let month = (arr[1] as? NSNumber).map({ $0.intValue }),
-		   valid(day: day, month: month) {
-			return (day, month)
-		}
-
-		// String: "3.8" / "03.08"
-		let parts = value.toString().split(separator: ".", omittingEmptySubsequences: true)
-		if parts.count == 2,
-		   let day = Int(parts[0]),
-		   let month = Int(parts[1]),
-		   valid(day: day, month: month) {
-			return (day, month)
-		}
-
-		return nil
 	}
-
-	@inline(__always)
-	private func valid(day: Int, month: Int) -> Bool {
-		(1...31).contains(day) && (1...12).contains(month)
-	}
-}
-
-enum HolidayRepositoryError: Error {
-	case jsContextCreationFailed
 }

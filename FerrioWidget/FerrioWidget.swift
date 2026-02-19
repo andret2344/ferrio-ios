@@ -12,16 +12,15 @@ struct Provider: IntentTimelineProvider {
 
 	func placeholder(in context: Context) -> WidgetEntry {
 		let holiday: Holiday = Holiday(
-			id: 1,
+			id: "fixed-0",
 			usual: true,
 			name: "perfect-day",
 			description: "",
 			url: "",
 			countryCode: "",
-			category: "",
 			matureContent: false
 		)
-		return WidgetEntry(date: Date(), holidayDay: HolidayDay(id: "-1", day: 1, month: 1, holidays: [holiday]), dayOffset: 0, colorized: false, includeUsual: false, isLoggedIn: true)
+		return WidgetEntry(date: Date(), holidayDay: HolidayDay(day: 1, month: 1, holidays: [holiday]), dayOffset: 0, colorized: false, includeUsual: false, isLoggedIn: true)
 	}
 
 	func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (WidgetEntry) -> Void) {
@@ -30,10 +29,7 @@ struct Provider: IntentTimelineProvider {
 				completion(WidgetEntry.loggedOut())
 				return
 			}
-			var holidayDay: HolidayDay? = nil
-			if let url = getUrl(plusDays: 0) {
-				holidayDay = try? await URLSession.shared.decode(HolidayDay.self, from: url)
-			}
+			let holidayDay = await fetchHolidayDay(plusDays: 0)
 			let entry = WidgetEntry(date: Date(), holidayDay: holidayDay, dayOffset: 0, colorized: false, includeUsual: ObservableConfig.shared.includeUsual, isLoggedIn: true)
 			completion(entry)
 		}
@@ -52,20 +48,23 @@ struct Provider: IntentTimelineProvider {
 				return
 			}
 			let plusDays = configuration.plusDays?.intValue ?? 0
-			var holidayDay: HolidayDay? = nil
-			if let url = getUrl(plusDays: plusDays) {
-				holidayDay = try? await URLSession.shared.decode(HolidayDay.self, from: url)
-			}
+			let holidayDay = await fetchHolidayDay(plusDays: plusDays)
 			let entry = WidgetEntry(date: now, holidayDay: holidayDay, dayOffset: plusDays, colorized: configuration.colorized?.boolValue ?? false, includeUsual: ObservableConfig.shared.includeUsual, isLoggedIn: true)
 			completion(Timeline(entries: [entry], policy: .after(nextMidnight)))
 		}
+	}
+
+	private func fetchHolidayDay(plusDays: Int) async -> HolidayDay? {
+		guard let url = getUrl(plusDays: plusDays) else { return nil }
+		guard let apiHolidays = try? await URLSession.shared.decode([HolidayDTO].self, from: url) else { return nil }
+		return HolidayRepository.groupIntoHolidayDays(apiHolidays).first
 	}
 
 	func getUrl(plusDays: Int) -> URL? {
 		guard let current = Calendar.current.date(byAdding: .day, value: plusDays, to: Date()) else { return nil }
 		let components = Calendar.current.dateComponents([.day, .month], from: current)
 		guard let month = components.month, let day = components.day else { return nil }
-		return URL(string: "\(API.baseURL)/holiday/\(API.language)/day/\(month)/\(day)")
+		return URL(string: "\(API.baseURL)/holidays?lang=\(API.language)&month=\(month)&day=\(day)")
 	}
 }
 
@@ -189,7 +188,7 @@ struct FerrioAccessoryInlineView: View {
 			return countryCode.caseInsensitiveCompare(deviceCountry) == .orderedSame
 		}
 		if let holiday = localHolidays.randomElement() ?? holidays.randomElement() {
-			return Text(holiday.name)
+			return Text(holiday.nameWithFlag)
 		}
 		return Text("no-unusual-holidays")
 	}
@@ -216,7 +215,7 @@ struct FerrioAccessoryRectangularView: View {
 						ForEach(holidays.prefix(3)) { holiday in
 							HStack(alignment: .top, spacing: 4) {
 								Text("•")
-								Text(holiday.name)
+								Text(holiday.nameWithFlag)
 							}
 							.font(.caption)
 						}
@@ -250,7 +249,7 @@ struct FerrioRegularView: View {
 				ForEach(holidays) { holiday in
 					HStack(alignment: .top) {
 						Text("\u{2022}").padding(.leading, 6)
-						Text(holiday.name)
+						Text(holiday.nameWithFlag)
 					}
 					.font(.caption)
 					.padding(.horizontal, 6)

@@ -44,6 +44,9 @@
 "reports" = "Zgłoszenia";
 "report-holiday" = "Zgłoś święto";
 "report-notice" = "Zgłoszenia zawierające opis będą sprawdzane w pierwszej kolejności.";
+"report-holiday-subject" = "Zgłaszane święto";
+"report-details" = "Szczegóły";
+"report-description-placeholder" = "Opisz problem...";
 "report-sent" = "Zgłoszenie wysłane";
 "search" = "Wyszukaj";
 "select-missing-holidays-type" = "Wybierz typ brakujących świąt";
@@ -75,3 +78,7 @@
 "WRONG_NAME" = "Błędna nazwa";
 "WRONG_DESCRIPTION" = "Błędny opis";
 "OTHER" = "Inne";
+
+// Actions
+"favorite" = "Ulubione";
+"share" = "Udostępnij";

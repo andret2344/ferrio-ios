@@ -22,36 +22,48 @@ struct ReportHolidaySheetView: View {
 
 	var body: some View {
 		NavigationStack {
-			VStack {
-				Form {
-					Text(holiday.name)
-						.textFieldStyle(RoundedBorderTextFieldStyle())
-						.lineLimit(1...1)
+			Form {
+				Section {
+					VStack(alignment: .leading, spacing: 0) {
+						Text(holiday.nameWithFlag)
+							.font(.headline)
+							.padding(12)
+							.frame(maxWidth: .infinity, alignment: .leading)
+						if !holiday.description.isEmpty {
+							Divider()
+							Text(holiday.description)
+								.font(.subheadline)
+								.foregroundStyle(.secondary)
+								.lineLimit(3)
+								.padding(12)
+								.frame(maxWidth: .infinity, alignment: .leading)
+						}
+					}
+					.background(Color(.secondarySystemBackground))
+					.clipShape(RoundedRectangle(cornerRadius: 10))
+					.listRowBackground(Color.clear)
+					.listRowInsets(EdgeInsets(top: 4, leading: 16, bottom: 4, trailing: 16))
+				} header: {
+					Text("report-holiday-subject")
+				}
 
-					renderDescriptionText()
-						.textFieldStyle(RoundedBorderTextFieldStyle())
-						.lineLimit(1...2)
-
+				Section {
 					Picker("reason", selection: $reportType) {
 						ForEach(availableTypes, id: \.self) { type in
 							Text(type.rawValue.localized()).tag(type)
 						}
 					}
-					.pickerStyle(.automatic)
-					.buttonStyle(BorderedButtonStyle())
-					.labelStyle(TitleOnlyLabelStyle())
 
 					TextField(
-						"description",
+						"report-description-placeholder",
 						text: $description,
 						axis: .vertical
 					)
-					.textFieldStyle(RoundedBorderTextFieldStyle())
-					.lineLimit(6...6)
+					.lineLimit(4...6)
+				} header: {
+					Text("report-details")
+				} footer: {
 					Text("report-notice")
-						.textFieldStyle(RoundedBorderTextFieldStyle())
-						.lineLimit(1...3)
-						.font(.footnote)
 						.foregroundStyle(.orange)
 				}
 			}
@@ -64,12 +76,12 @@ struct ReportHolidaySheetView: View {
 							Task {
 								let payload = HolidayReportPayload(
 									userId: uid,
-									metadata: abs(holiday.id),
+									metadata: holiday.numericId,
 									language: languageCode,
 									reportType: reportType,
 									description: description
 								)
-								let path = holiday.id < 0 ? "report/floating" : "report/fixed"
+								let path = holiday.isFloating ? "report/floating" : "report/fixed"
 								await viewModel.sendReport(reportPayload: payload, path: path)
 							}
 						}
@@ -96,14 +108,5 @@ struct ReportHolidaySheetView: View {
 				Text(viewModel.alertMessage)
 			}
 		}
-	}
-
-	func renderDescriptionText() -> Text {
-		if holiday.description.isEmpty {
-			return Text("- \("no-description".localized()) -")
-				.italic()
-				.foregroundStyle(.gray)
-		}
-		return Text(holiday.description)
 	}
 }

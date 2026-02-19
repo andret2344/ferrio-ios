@@ -105,6 +105,7 @@ struct HolidayDayShareCardView: View {
 			Rectangle()
 				.fill(.white.opacity(0.15))
 				.frame(height: 1)
+				.padding(.top, 14)
 				.padding(.bottom, 14)
 
 			HStack(spacing: 8) {

@@ -11,28 +11,50 @@ import SwiftUI
 
 // MARK: - Inline Domain Models
 
-private struct Holiday: Identifiable, Decodable {
-	let id: Int
+private struct MessagesHoliday: Identifiable, Decodable {
+	let id: String
+	let day: Int
+	let month: Int
 	let usual: Bool
 	let name: String
 	let description: String
 	let url: String
-	let countryCode: String?
-	let category: String?
-	let matureContent: Bool?
+	let country: String?
+	let matureContent: Bool
+
+	enum CodingKeys: String, CodingKey {
+		case id, day, month, usual, name, description, url, country
+		case matureContent = "mature_content"
+	}
+
+	var nameWithFlag: String {
+		guard let code = country, code.count == 2 else { return name }
+		let base: UInt32 = 0x1F1E6 - 65
+		let flag = code.uppercased().unicodeScalars.compactMap {
+			UnicodeScalar(base + $0.value).map(String.init)
+		}.joined()
+		return "\(name) \(flag)"
+	}
 }
 
 private struct HolidayDay: Decodable {
 	let id: String
 	let day: Int
 	let month: Int
-	let holidays: [Holiday]
+	let holidays: [MessagesHoliday]
+
+	init(day: Int, month: Int, holidays: [MessagesHoliday]) {
+		self.id = String(format: "%02d%02d", month, day)
+		self.day = day
+		self.month = month
+		self.holidays = holidays
+	}
 }
 
 // MARK: - API Helpers
 
 private enum API {
-	static let baseURL = "https://api.ferrio.app/v2"
+	static let baseURL = "https://api.ferrio.app/v3"
 
 	static var language: String {
 		let code = Locale.current.language.languageCode?.identifier ?? ""
@@ -203,7 +225,7 @@ private struct HolidayListView: View {
 	@State private var isLoading = true
 	@State private var errorMessage: String?
 
-	let onSelectHoliday: (Holiday) -> Void
+	let onSelectHoliday: (MessagesHoliday) -> Void
 	let onSelectAll: (HolidayDay) -> Void
 
 	var body: some View {
@@ -255,7 +277,7 @@ private struct HolidayListView: View {
 								onSelectHoliday(holiday)
 							} label: {
 								HStack {
-									Text(holiday.name)
+									Text(holiday.nameWithFlag)
 										.font(.subheadline.weight(.medium))
 										.foregroundStyle(.primary)
 										.lineLimit(2)
@@ -302,14 +324,15 @@ private struct HolidayListView: View {
 		let day = calendar.component(.day, from: now)
 		let month = calendar.component(.month, from: now)
 
-		guard let url = URL(string: "\(API.baseURL)/holiday/\(API.language)/day/\(month)/\(day)") else {
+		guard let url = URL(string: "\(API.baseURL)/holidays?lang=\(API.language)&month=\(month)&day=\(day)") else {
 			errorMessage = "Invalid URL"
 			isLoading = false
 			return
 		}
 
 		do {
-			holidayDay = try await URLSession.shared.decode(HolidayDay.self, from: url)
+			let holidays = try await URLSession.shared.decode([MessagesHoliday].self, from: url)
+			holidayDay = HolidayDay(day: day, month: month, holidays: holidays)
 		} catch {
 			errorMessage = "Could not load holidays"
 		}
@@ -328,10 +351,10 @@ class MessagesViewController: MSMessagesAppViewController {
 
 	private func setupUI() {
 		let listView = HolidayListView(
-			onSelectHoliday: { [weak self] holiday in
+			onSelectHoliday: { [weak self] (holiday: MessagesHoliday) in
 				self?.insertHolidayCard(holiday)
 			},
-			onSelectAll: { [weak self] day in
+			onSelectAll: { [weak self] (day: HolidayDay) in
 				self?.insertDayCard(day)
 			}
 		)
@@ -350,7 +373,7 @@ class MessagesViewController: MSMessagesAppViewController {
 	}
 
 	@MainActor
-	private func insertHolidayCard(_ holiday: Holiday) {
+	private func insertHolidayCard(_ holiday: MessagesHoliday) {
 		guard let conversation = activeConversation else { return }
 
 		let now = Date()
@@ -362,12 +385,12 @@ class MessagesViewController: MSMessagesAppViewController {
 
 		let cardView = HolidayShareCardView(
 			date: dateStr,
-			holidayName: holiday.name,
+			holidayName: holiday.nameWithFlag,
 			holidayDescription: holiday.description
 		)
 
 		guard let image = renderCardToImage(cardView) else { return }
-		insertImageMessage(image: image, caption: holiday.name, conversation: conversation)
+		insertImageMessage(image: image, caption: holiday.nameWithFlag, conversation: conversation)
 	}
 
 	@MainActor
@@ -375,7 +398,7 @@ class MessagesViewController: MSMessagesAppViewController {
 		guard let conversation = activeConversation else { return }
 
 		let dateStr = formatDate(day: holidayDay.day, month: holidayDay.month)
-		let names = holidayDay.holidays.map(\.name)
+		let names = holidayDay.holidays.map(\.nameWithFlag)
 
 		let cardView = HolidayDayShareCardView(date: dateStr, holidays: names)
 

@@ -5,13 +5,13 @@
 import SwiftUI
 
 struct HolidayDaySheetView: View {
-	@State private var reportedHoliday: Holiday? = nil
 	@EnvironmentObject var observableConfig: ObservableConfig
 	@Environment(\.dismiss) var dismiss
 	let holidayDay: HolidayDay
 
 	var body: some View {
 		let date: Date? = Date.from(month: holidayDay.month, day: holidayDay.day)
+		let dateText = date?.formatted(.dateTime.day().month(.wide)) ?? holidayDay.getDate()
 		let holidays: [Holiday] = holidayDay.getHolidays(includeUsual: observableConfig.includeUsual)
 		NavigationStack {
 			VStack {
@@ -24,37 +24,16 @@ struct HolidayDaySheetView: View {
 				} else {
 					List {
 						ForEach(holidays, id: \.id) { holiday in
-							if !holiday.description.isEmpty {
-								NavigationLink {
-									VStack(alignment: .leading) {
-										Text(holiday.description)
-										Spacer()
-									}
-									.navigationTitle(holiday.name)
-									.navigationBarTitleDisplayMode(.large)
-									.toolbar {
-										ToolbarItem(placement: .primaryAction) {
-											let dateText = date?.formatted(.dateTime.day().month(.wide)) ?? holidayDay.getDate()
-											ShareHolidayButton(
-												date: dateText,
-												holidayName: holiday.name,
-												holidayDescription: holiday.description
-											)
-										}
-									}
-									.padding()
-									.frame(maxWidth: .infinity, alignment: .leading)
-								} label: {
-									renderText(holiday: holiday)
-								}
-							} else {
-								renderText(holiday: holiday)
+							NavigationLink {
+								HolidayDetailView(holiday: holiday, dateText: dateText)
+							} label: {
+								Text(holiday.nameWithFlag)
 							}
 						}
 					}
 				}
 			}
-			.navigationTitle(date?.formatted(.dateTime.day().month(.wide)) ?? "")
+			.navigationTitle(dateText)
 			.navigationBarTitleDisplayMode(.large)
 			.toolbar {
 				ToolbarItem(placement: .cancellationAction) {
@@ -67,28 +46,13 @@ struct HolidayDaySheetView: View {
 				}
 				ToolbarItem(placement: .primaryAction) {
 					if !holidays.isEmpty {
-						let dateText = date?.formatted(.dateTime.day().month(.wide)) ?? holidayDay.getDate()
 						ShareHolidayDayButton(
 							date: dateText,
-							holidays: holidays.map { $0.name }
+							holidays: holidays.map { $0.nameWithFlag }
 						)
 					}
 				}
 			}
 		}
-		.sheet(item: $reportedHoliday) { holiday in
-			ReportHolidaySheetView(holiday: holiday)
-		}
-	}
-
-	func renderText(holiday: Holiday) -> some View {
-		Text(holiday.name)
-			.contextMenu {
-				Button {
-					self.reportedHoliday = holiday
-				} label: {
-					Label("report", systemImage: "exclamationmark.triangle")
-				}
-			}
 	}
 }

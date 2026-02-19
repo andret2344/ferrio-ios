@@ -5,7 +5,8 @@
 import Foundation
 
 enum API {
-	static let baseURL = "https://api.ferrio.app/v2"
+	static let baseURL = "https://api.ferrio.app/v3"
+	static let reportsBaseURL = "https://api.ferrio.app/v2"
 
 	static var language: String {
 		let code = Locale.current.language.languageCode?.identifier ?? ""
@@ -38,7 +39,7 @@ extension URLSession {
 	}
 
 	func sendRequest(jsonData: Data, path: String) async throws {
-		guard let url = URL(string: "\(API.baseURL)/\(path)") else { throw APIError.invalidURL }
+		guard let url = URL(string: "\(API.reportsBaseURL)/\(path)") else { throw APIError.invalidURL }
 		var request = URLRequest(url: url)
 		request.httpMethod = "POST"
 		request.addValue("application/json", forHTTPHeaderField: "Content-Type")

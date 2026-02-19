@@ -43,6 +43,9 @@
 "reports" = "Reports";
 "report-holiday" = "Report holiday";
 "report-notice" = "Reports with the description are more likely to be verified in the first place.";
+"report-holiday-subject" = "Reporting holiday";
+"report-details" = "Details";
+"report-description-placeholder" = "Describe the issue...";
 "report-sent" = "Report sent";
 "search" = "Search";
 "select-missing-holidays-type" = "Select missing holidays type";
@@ -74,3 +77,7 @@
 "WRONG_NAME" = "Wrong name";
 "WRONG_DESCRIPTION" = "Wrong description";
 "OTHER" = "Other";
+
+// Actions
+"favorite" = "Favorite";
+"share" = "Share";
