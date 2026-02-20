@@ -2,7 +2,6 @@
 //  Created by Claude on 14/02/2026.
 //
 
-import FirebaseAuth
 import Foundation
 
 @MainActor
@@ -13,11 +12,10 @@ class ReportsViewModel: ObservableObject {
 	private let repository = HolidayRepository()
 
 	func fetchData() async {
-		guard let uid = Auth.auth().currentUser?.uid else { return }
 		do {
-			let result = try await repository.fetchReports(uid: uid)
-			reportsFixed = result.fixed
-			reportsFloating = result.floating
+			let result = try await repository.fetchReports()
+			reportsFixed = result.fixed.sorted { $0.datetime > $1.datetime }
+			reportsFloating = result.floating.sorted { $0.datetime > $1.datetime }
 		} catch {
 			reportsFixed = []
 			reportsFloating = []

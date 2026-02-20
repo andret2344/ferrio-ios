@@ -19,65 +19,11 @@ struct MySuggestionsScreenView: View {
 		List {
 			if reportedHolidaysType == "fixed" {
 				ForEach(viewModel.suggestionsFixed, id: \.id) { suggestion in
-					HStack {
-						VStack {
-							Text("\(String(format: "%02d", suggestion.month)).\(String(format: "%02d", suggestion.day))")
-								.italic()
-								.frame(maxWidth: .infinity, alignment: .leading)
-							Text(suggestion.name)
-								.bold()
-								.lineLimit(suggestion.id == expanded ? nil : 1)
-								.frame(maxWidth: .infinity, alignment: .leading)
-							Text(suggestion.description)
-								.lineLimit(suggestion.id == expanded ? nil : 2)
-								.frame(maxWidth: .infinity, alignment: .leading)
-						}
-						Spacer()
-						Text(suggestion.reportState.rawValue.localized())
-							.foregroundStyle(Color(UIColor.systemBackground))
-							.frame(width: 108, height: 32)
-							.background(RoundedRectangle(cornerRadius: 8).fill(suggestion.reportState.color))
-							.overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.black, lineWidth: 1))
-					}
-					.contentShape(Rectangle())
-					.onTapGesture {
-						if expanded == suggestion.id {
-							expanded = nil
-						} else {
-							expanded = suggestion.id
-						}
-					}
+					renderFixedSuggestion(suggestion: suggestion)
 				}
 			} else {
 				ForEach(viewModel.suggestionsFloating, id: \.id) { suggestion in
-					HStack {
-						VStack {
-							Text(suggestion.date)
-								.italic()
-								.frame(maxWidth: .infinity, alignment: .leading)
-							Text(suggestion.name)
-								.bold()
-								.lineLimit(suggestion.id == expanded ? nil : 1)
-								.frame(maxWidth: .infinity, alignment: .leading)
-							Text(suggestion.description)
-								.lineLimit(suggestion.id == expanded ? nil : 2)
-								.frame(maxWidth: .infinity, alignment: .leading)
-						}
-						Spacer()
-						Text(suggestion.reportState.rawValue.localized())
-							.foregroundStyle(Color(UIColor.systemBackground))
-							.frame(width: 108, height: 32)
-							.background(RoundedRectangle(cornerRadius: 8).fill(suggestion.reportState.color))
-							.overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.black, lineWidth: 1))
-					}
-					.contentShape(Rectangle())
-					.onTapGesture {
-						if expanded == suggestion.id {
-							expanded = nil
-						} else {
-							expanded = suggestion.id
-						}
-					}
+					renderFloatingSuggestion(suggestion: suggestion)
 				}
 			}
 		}
@@ -89,4 +35,69 @@ struct MySuggestionsScreenView: View {
 			await viewModel.fetchData()
 		}
 	}
+
+	func renderFixedSuggestion(suggestion: MissingFixedHoliday) -> some View {
+		VStack(alignment: .leading, spacing: 8) {
+			HStack(alignment: .top) {
+				Text(suggestion.name)
+					.fontWeight(.semibold)
+				Spacer()
+				StatusBadge(state: suggestion.reportState)
+			}
+			Text(suggestion.description)
+				.lineLimit(suggestion.id == expanded ? nil : 2)
+				.foregroundStyle(.secondary)
+			HStack {
+				Text(formatFixedDate(day: suggestion.day, month: suggestion.month))
+				Text("·")
+				Text(formatDatetime(suggestion.datetime))
+			}
+			.font(.caption)
+			.foregroundStyle(.tertiary)
+		}
+		.contentShape(Rectangle())
+		.onTapGesture {
+			expanded = expanded == suggestion.id ? nil : suggestion.id
+		}
+	}
+
+	func renderFloatingSuggestion(suggestion: MissingFloatingHoliday) -> some View {
+		VStack(alignment: .leading, spacing: 8) {
+			HStack(alignment: .top) {
+				Text(suggestion.name)
+					.fontWeight(.semibold)
+				Spacer()
+				StatusBadge(state: suggestion.reportState)
+			}
+			Text(suggestion.description)
+				.lineLimit(suggestion.id == expanded ? nil : 2)
+				.foregroundStyle(.secondary)
+			HStack {
+				Text(suggestion.date)
+				Text("·")
+				Text(formatDatetime(suggestion.datetime))
+			}
+			.font(.caption)
+			.foregroundStyle(.tertiary)
+		}
+		.contentShape(Rectangle())
+		.onTapGesture {
+			expanded = expanded == suggestion.id ? nil : suggestion.id
+		}
+	}
+}
+
+private func formatFixedDate(day: Int, month: Int) -> String {
+	var components = DateComponents()
+	components.day = day
+	components.month = month
+	components.year = Calendar.current.component(.year, from: Date())
+
+	guard let date = Calendar.current.date(from: components) else {
+		return "\(day).\(month)"
+	}
+
+	let formatter = DateFormatter()
+	formatter.setLocalizedDateFormatFromTemplate("d MMMM")
+	return formatter.string(from: date)
 }

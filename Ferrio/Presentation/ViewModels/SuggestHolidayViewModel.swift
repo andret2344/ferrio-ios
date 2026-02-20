@@ -2,7 +2,6 @@
 //  Created by Claude on 14/02/2026.
 //
 
-import FirebaseAuth
 import Foundation
 
 @MainActor
@@ -10,6 +9,7 @@ class SuggestHolidayViewModel: ObservableObject {
 	@Published var countries: [Locale.Region]? = nil
 	@Published var sortedCountries: [Locale.Region] = []
 	@Published var showAlert: Bool = false
+	@Published var alertTitle: String = ""
 	@Published var alertMessage: String = ""
 	@Published var success: Bool = false
 
@@ -30,16 +30,23 @@ class SuggestHolidayViewModel: ObservableObject {
 		}
 	}
 
-	func sendMissingSuggestion(payload: MissingHolidayPayload, path: String) async {
+	func sendMissingSuggestion<T: MissingHolidayPayload>(payload: T, holidayType: String) async {
 		do {
-			try await repository.sendMissingSuggestion(payload: payload, path: path)
+			try await repository.sendMissingSuggestion(payload: payload, holidayType: holidayType)
+			alertTitle = "suggestion-sent".localized()
 			alertMessage = "suggestion-sent-description".localized()
 			success = true
 		} catch let error as APIError {
+			print("[Suggestion] APIError: \(error)")
+			alertTitle = "error".localized()
 			alertMessage = error.localizedDescription
-		} catch is EncodingError {
+		} catch let error as EncodingError {
+			print("[Suggestion] EncodingError: \(error)")
+			alertTitle = "error".localized()
 			alertMessage = "invalid-data-format".localized()
 		} catch {
+			print("[Suggestion] Error: \(error)")
+			alertTitle = "error".localized()
 			alertMessage = "could-not-connect".localized()
 		}
 		showAlert = true

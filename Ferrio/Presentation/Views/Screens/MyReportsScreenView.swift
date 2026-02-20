@@ -37,33 +37,60 @@ struct MyReportsScreenView: View {
 	}
 
 	func renderReport(report: HolidayReport) -> some View {
-		HStack {
-			VStack {
-				Text(report.description)
-					.lineLimit(report.id == expanded ? nil : 2)
-					.frame(maxWidth: .infinity, alignment: .leading)
+		VStack(alignment: .leading, spacing: 8) {
+			HStack(alignment: .top) {
 				Text(report.reportType.localized())
-					.italic()
-					.frame(maxWidth: .infinity, alignment: .leading)
-					.font(.system(size: 12))
-					.foregroundStyle(Color(UIColor.systemGray))
+					.font(.subheadline)
+					.foregroundStyle(.secondary)
+				Spacer()
+				StatusBadge(state: report.reportState)
 			}
-			Spacer()
-			Text("#\(String(report.metadataId))")
-				.italic()
-				.frame(maxWidth: 48, alignment: .trailing)
-			Text(report.reportState.rawValue.localized())
-				.foregroundStyle(Color(UIColor.systemBackground))
-				.frame(width: 108, height: 32)
-				.background(RoundedRectangle(cornerRadius: 8).fill(report.reportState.color))
-				.overlay(RoundedRectangle(cornerRadius: 8).stroke(Color.black, lineWidth: 1))
+			Text(report.description)
+				.lineLimit(report.id == expanded ? nil : 2)
+			Text(formatDatetime(report.datetime))
+				.font(.caption)
+				.foregroundStyle(.tertiary)
 		}
+		.contentShape(Rectangle())
 		.onTapGesture {
-			if expanded == report.id {
-				expanded = nil
-			} else {
-				expanded = report.id
-			}
+			expanded = expanded == report.id ? nil : report.id
 		}
 	}
+}
+
+struct StatusBadge: View {
+	let state: ReportState
+
+	var body: some View {
+		Text(state.rawValue.localized())
+			.font(.caption)
+			.fontWeight(.medium)
+			.foregroundStyle(state.color)
+			.padding(.horizontal, 10)
+			.padding(.vertical, 4)
+			.background(
+				RoundedRectangle(cornerRadius: 6)
+					.fill(state.color.opacity(0.12))
+			)
+	}
+}
+
+func formatDatetime(_ datetime: String) -> String {
+	let isoFormatter = ISO8601DateFormatter()
+	isoFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+	let displayFormatter = DateFormatter()
+	displayFormatter.dateStyle = .medium
+	displayFormatter.timeStyle = .short
+
+	if let date = isoFormatter.date(from: datetime) {
+		return displayFormatter.string(from: date)
+	}
+
+	// Fallback without fractional seconds
+	isoFormatter.formatOptions = [.withInternetDateTime]
+	if let date = isoFormatter.date(from: datetime) {
+		return displayFormatter.string(from: date)
+	}
+
+	return datetime
 }

@@ -46,7 +46,8 @@
 "report-holiday-subject" = "Reporting holiday";
 "report-details" = "Details";
 "report-description-placeholder" = "Describe the issue...";
-"report-sent" = "Report sent";
+"report-sent" = "Thank you!";
+"report-sent-description" = "Your report has been submitted. Our team will review it shortly.";
 "search" = "Search";
 "select-missing-holidays-type" = "Select missing holidays type";
 "select-reported-holidays-type" = "Select reported holidays type";
@@ -65,6 +66,7 @@
 "today" = "Today";
 "unsuccessful-request-%lld" = "The request was unsuccessful. Please try again later. Response code: %lld.";
 "invalid-url" = "Invalid URL. Please try again later.";
+"not-authenticated" = "You must be signed in to perform this action.";
 
 // Statuses
 "REPORTED" = "Reported";
@@ -79,5 +81,4 @@
 "OTHER" = "Other";
 
 // Actions
-"favorite" = "Favorite";
 "share" = "Share";

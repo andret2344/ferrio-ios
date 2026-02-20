@@ -33,6 +33,11 @@ struct SuggestHolidayScreenView: View {
 				TextField("holiday-name", text: $name, axis: .vertical)
 					.textFieldStyle(RoundedBorderTextFieldStyle())
 					.lineLimit(2...2)
+					.onChange(of: name) {
+						if name.count > 100 {
+							name = String(name.prefix(100))
+						}
+					}
 				TextField(
 					"holiday-description",
 					text: $description,
@@ -94,41 +99,40 @@ struct SuggestHolidayScreenView: View {
 		.navigationTitle("suggest-holiday")
 		.navigationBarTitleDisplayMode(.large)
 		.toolbar {
-			if let uid = Auth.auth().currentUser?.uid {
-				ToolbarItem(placement: .primaryAction) {
-					Button("send") {
-						Task {
-							if floating {
-								await viewModel.sendMissingSuggestion(
-									payload: MissingFloatingHolidayPayload(
-										name: name,
-										description: description,
-										userId: uid,
-										country: country?.identifier,
-										date: date
-									),
-									path: "missing/floating"
-								)
-							} else {
-								await viewModel.sendMissingSuggestion(
-									payload: MissingFixedHolidayPayload(
-										name: name,
-										description: description,
-										userId: uid,
-										country: country?.identifier,
-										day: day,
-										month: month + 1
-									),
-									path: "missing/fixed"
-								)
-							}
+			ToolbarItem(placement: .primaryAction) {
+				Button("send") {
+					Task {
+						let uid = Auth.auth().currentUser?.uid ?? ""
+						if floating {
+							await viewModel.sendMissingSuggestion(
+								payload: MissingFloatingHolidayPayload(
+									name: name,
+									description: description,
+									userId: uid,
+									country: country?.identifier,
+									date: date
+								),
+								holidayType: "floating"
+							)
+						} else {
+							await viewModel.sendMissingSuggestion(
+								payload: MissingFixedHolidayPayload(
+									name: name,
+									description: description,
+									userId: uid,
+									country: country?.identifier,
+									day: day,
+									month: month + 1
+								),
+								holidayType: "fixed"
+							)
 						}
 					}
-					.disabled(disabledSend())
 				}
+				.disabled(disabledSend())
 			}
 		}
-		.alert("suggestion-sent", isPresented: $viewModel.showAlert) {
+		.alert(viewModel.alertTitle, isPresented: $viewModel.showAlert) {
 			Button("ok") {
 				if viewModel.success {
 					dismiss()
@@ -144,11 +148,10 @@ struct SuggestHolidayScreenView: View {
 	}
 
 	func disabledSend() -> Bool {
-		let holiday: Bool = name.isEmpty || description.isEmpty
 		if floating {
-			return holiday || date.isEmpty
+			return name.isEmpty || date.isEmpty
 		}
-		return holiday
+		return name.isEmpty
 	}
 
 	func adjustDayForMonth() {

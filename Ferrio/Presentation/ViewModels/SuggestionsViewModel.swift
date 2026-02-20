@@ -2,7 +2,6 @@
 //  Created by Claude on 14/02/2026.
 //
 
-import FirebaseAuth
 import Foundation
 
 @MainActor
@@ -13,11 +12,10 @@ class SuggestionsViewModel: ObservableObject {
 	private let repository = HolidayRepository()
 
 	func fetchData() async {
-		guard let uid = Auth.auth().currentUser?.uid else { return }
 		do {
-			let result = try await repository.fetchSuggestions(uid: uid)
-			suggestionsFixed = result.fixed
-			suggestionsFloating = result.floating
+			let result = try await repository.fetchSuggestions()
+			suggestionsFixed = result.fixed.sorted { $0.datetime > $1.datetime }
+			suggestionsFloating = result.floating.sorted { $0.datetime > $1.datetime }
 		} catch {
 			suggestionsFixed = []
 			suggestionsFloating = []

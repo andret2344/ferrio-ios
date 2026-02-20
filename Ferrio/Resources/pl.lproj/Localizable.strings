@@ -47,7 +47,8 @@
 "report-holiday-subject" = "Zgłaszane święto";
 "report-details" = "Szczegóły";
 "report-description-placeholder" = "Opisz problem...";
-"report-sent" = "Zgłoszenie wysłane";
+"report-sent" = "Dziękujemy!";
+"report-sent-description" = "Twoje zgłoszenie zostało przesłane. Nasz zespół wkrótce je zweryfikuje.";
 "search" = "Wyszukaj";
 "select-missing-holidays-type" = "Wybierz typ brakujących świąt";
 "select-reported-holidays-type" = "Wybierz typ zgłoszonych świąt";
@@ -66,6 +67,7 @@
 "today" = "Dzisiaj";
 "unsuccessful-request-%lld" = "Wysyłanie nieudane. Proszę spróbować ponownie później. Kod odpowiedzi: %lld.";
 "invalid-url" = "Nieprawidłowy adres URL. Proszę spróbować ponownie później.";
+"not-authenticated" = "Musisz być zalogowany, aby wykonać tę akcję.";
 
 // Statuses
 "REPORTED" = "Zgłoszone";
@@ -80,5 +82,4 @@
 "OTHER" = "Inne";
 
 // Actions
-"favorite" = "Ulubione";
 "share" = "Udostępnij";

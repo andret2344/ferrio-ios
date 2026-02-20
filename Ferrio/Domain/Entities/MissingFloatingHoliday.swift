@@ -10,11 +10,12 @@ struct MissingFloatingHoliday: Decodable {
 	let name: String
 	let description: String
 	let date: String
+	let datetime: String
 	let holidayId: Int?
 	let reportState: ReportState
 
 	enum CodingKeys: CodingKey {
-		case id, userId, name, description, date, holidayId, reportState
+		case id, userId, name, description, date, datetime, holidayId, reportState
 	}
 
 	init(from decoder: Decoder) throws {
@@ -24,17 +25,8 @@ struct MissingFloatingHoliday: Decodable {
 		name = try container.decode(String.self, forKey: .name)
 		description = try container.decode(String.self, forKey: .description)
 		date = try container.decode(String.self, forKey: .date)
+		datetime = try container.decode(String.self, forKey: .datetime)
 		holidayId = try container.decodeIfPresent(Int.self, forKey: .holidayId)
 		reportState = try container.decode(ReportState.self, forKey: .reportState)
-	}
-
-	init(id: Int, userId: String, name: String, description: String, date: String, holidayId: Int?, reportState: ReportState) {
-		self.id = id
-		self.userId = userId
-		self.name = name
-		self.description = description
-		self.date = date
-		self.holidayId = holidayId
-		self.reportState = reportState
 	}
 }

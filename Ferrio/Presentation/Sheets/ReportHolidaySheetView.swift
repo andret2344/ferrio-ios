@@ -70,20 +70,18 @@ struct ReportHolidaySheetView: View {
 			.navigationTitle("report-holiday")
 			.navigationBarTitleDisplayMode(.large)
 			.toolbar {
-				if let uid = Auth.auth().currentUser?.uid {
-					ToolbarItem(placement: .primaryAction) {
-						Button("send") {
-							Task {
-								let payload = HolidayReportPayload(
-									userId: uid,
-									metadata: holiday.numericId,
-									language: languageCode,
-									reportType: reportType,
-									description: description
-								)
-								let path = holiday.isFloating ? "report/floating" : "report/fixed"
-								await viewModel.sendReport(reportPayload: payload, path: path)
-							}
+				ToolbarItem(placement: .primaryAction) {
+					Button("send") {
+						Task {
+							let payload = HolidayReportPayload(
+								userId: Auth.auth().currentUser?.uid ?? "",
+								metadata: holiday.numericId,
+								language: languageCode,
+								reportType: reportType,
+								description: description
+							)
+							let holidayType = holiday.isFloating ? "floating" : "fixed"
+							await viewModel.sendReport(reportPayload: payload, holidayType: holidayType)
 						}
 					}
 				}
@@ -98,7 +96,7 @@ struct ReportHolidaySheetView: View {
 					}
 				}
 			}
-			.alert("report", isPresented: $viewModel.showAlert) {
+			.alert(viewModel.alertTitle, isPresented: $viewModel.showAlert) {
 				Button("ok") {
 					if viewModel.success {
 						dismiss()

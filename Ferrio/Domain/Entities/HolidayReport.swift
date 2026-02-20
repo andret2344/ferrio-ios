@@ -10,10 +10,11 @@ struct HolidayReport: Decodable {
 	let metadataId: Int
 	let reportType: String
 	let description: String
+	let datetime: String
 	let reportState: ReportState
 
 	enum CodingKeys: CodingKey {
-		case id, languageCode, metadataId, reportType, description, reportState
+		case id, languageCode, metadataId, reportType, description, datetime, reportState
 	}
 
 	init(from decoder: Decoder) throws {
@@ -23,15 +24,7 @@ struct HolidayReport: Decodable {
 		metadataId = try container.decode(Int.self, forKey: .metadataId)
 		reportType = try container.decode(String.self, forKey: .reportType)
 		description = try container.decode(String.self, forKey: .description)
+		datetime = try container.decode(String.self, forKey: .datetime)
 		reportState = try container.decode(ReportState.self, forKey: .reportState)
-	}
-
-	init(id: Int, languageCode: String, metadataId: Int, reportType: String, description: String, reportState: ReportState) {
-		self.id = id
-		self.languageCode = languageCode
-		self.metadataId = metadataId
-		self.reportType = reportType
-		self.description = description
-		self.reportState = reportState
 	}
 }

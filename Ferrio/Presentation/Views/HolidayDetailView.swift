@@ -5,7 +5,6 @@
 import SwiftUI
 
 struct HolidayDetailView: View {
-	@EnvironmentObject var observableConfig: ObservableConfig
 	@State private var showReportSheet = false
 	let holiday: Holiday
 	let dateText: String
@@ -39,12 +38,6 @@ struct HolidayDetailView: View {
 			VStack(spacing: 0) {
 				Divider()
 				HStack(spacing: 0) {
-					actionButton(
-						label: "favorite",
-						systemImage: observableConfig.isFavorite(holiday) ? "heart.fill" : "heart"
-					) {
-						observableConfig.toggleFavorite(holiday)
-					}
 					actionButton(label: "share", systemImage: "square.and.arrow.up") {
 						shareHoliday()
 					}

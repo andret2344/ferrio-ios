@@ -6,7 +6,6 @@ import Foundation
 
 enum API {
 	static let baseURL = "https://api.ferrio.app/v3"
-	static let reportsBaseURL = "https://api.ferrio.app/v2"
 
 	static var language: String {
 		let code = Locale.current.language.languageCode?.identifier ?? ""
@@ -38,26 +37,12 @@ extension URLSession {
 		return decoded
 	}
 
-	func sendRequest(jsonData: Data, path: String) async throws {
-		guard let url = URL(string: "\(API.reportsBaseURL)/\(path)") else { throw APIError.invalidURL }
-		var request = URLRequest(url: url)
-		request.httpMethod = "POST"
-		request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-		request.httpBody = jsonData
-
-		let (_, response) = try await data(for: request)
-
-		guard let httpResponse = response as? HTTPURLResponse,
-			  (200...299).contains(httpResponse.statusCode) else {
-			let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
-			throw APIError.unsuccessfulRequest(statusCode: statusCode)
-		}
-	}
 }
 
 enum APIError: LocalizedError {
 	case unsuccessfulRequest(statusCode: Int)
 	case invalidURL
+	case notAuthenticated
 
 	var errorDescription: String? {
 		switch self {
@@ -65,6 +50,8 @@ enum APIError: LocalizedError {
 			String(format: "unsuccessful-request-%lld".localized(), statusCode)
 		case .invalidURL:
 			"invalid-url".localized()
+		case .notAuthenticated:
+			"not-authenticated".localized()
 		}
 	}
 }
