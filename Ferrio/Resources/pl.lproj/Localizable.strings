@@ -49,7 +49,10 @@
 "report-description-placeholder" = "Opisz problem...";
 "report-sent" = "Dziękujemy!";
 "report-sent-description" = "Twoje zgłoszenie zostało przesłane. Nasz zespół wkrótce je zweryfikuje.";
+"colorized-days" = "Kolorowe dni";
+"include-usual" = "Dodaj święta typowe";
 "search" = "Wyszukaj";
+"settings" = "Ustawienia";
 "select-missing-holidays-type" = "Wybierz typ brakujących świąt";
 "select-reported-holidays-type" = "Wybierz typ zgłoszonych świąt";
 "search-across-%lld" = "Szukaj wśród %lld świąt...";

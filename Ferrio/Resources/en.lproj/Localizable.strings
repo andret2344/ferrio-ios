@@ -48,7 +48,10 @@
 "report-description-placeholder" = "Describe the issue...";
 "report-sent" = "Thank you!";
 "report-sent-description" = "Your report has been submitted. Our team will review it shortly.";
+"colorized-days" = "Colorized days";
+"include-usual" = "Include usual holidays";
 "search" = "Search";
+"settings" = "Settings";
 "select-missing-holidays-type" = "Select missing holidays type";
 "select-reported-holidays-type" = "Select reported holidays type";
 "search-across-%lld" = "Search across %lld holidays...";

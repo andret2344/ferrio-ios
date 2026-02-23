@@ -12,6 +12,18 @@ class ObservableConfig: ObservableObject {
 	@AppStorage("includeUsual", store: ObservableConfig.sharedDefaults) var includeUsual: Bool = false
 	@AppStorage("colorizedDays", store: ObservableConfig.sharedDefaults) var colorizedDays: Bool = false
 
+	/// Copies values written by the iOS Settings bundle (UserDefaults.standard)
+	/// into the app group suite so the app and widget see them.
+	func syncFromSettingsBundle() {
+		let standard = UserDefaults.standard
+		if let value = standard.object(forKey: "includeUsual") as? Bool {
+			includeUsual = value
+		}
+		if let value = standard.object(forKey: "colorizedDays") as? Bool {
+			colorizedDays = value
+		}
+	}
+
 	static var isRealUserLoggedIn: Bool {
 		get { sharedDefaults?.bool(forKey: "isRealUserLoggedIn") ?? false }
 		set { sharedDefaults?.set(newValue, forKey: "isRealUserLoggedIn") }

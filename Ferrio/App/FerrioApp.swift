@@ -27,6 +27,12 @@ struct FerrioApp: App {
 			}
 			.environmentObject(viewModel)
 			.environmentObject(config)
+			.onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+				config.syncFromSettingsBundle()
+			}
+			.task {
+				config.syncFromSettingsBundle()
+			}
 			.onOpenURL { url in
 				_ = GIDSignIn.sharedInstance.handle(url)
 				_ = Auth.auth().canHandle(url)

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CC000001CC000001CC000001 /* AuthenticatedURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC000002CC000002CC000002 /* AuthenticatedURLSession.swift */; };
 		1A8B12DCBD209A62D97052F5 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B10F20ACAAC22CFF240FA /* DateExtension.swift */; };
 		1A8B13A5961A9CF307EAE195 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B167F98CAD8D4CF11EE60 /* AppDelegate.swift */; };
 		1A8B13FBBE820C88F7AD2481 /* ObservableConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A8B1FA259D1D09B4119D61E /* ObservableConfig.swift */; };
@@ -46,11 +45,11 @@
 		7171BBC82F3F5E0200678359 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7171BBC62F3F5E0200678359 /* CalendarService.swift */; };
 		7171BBC92F3F5E0200678359 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7171BBC62F3F5E0200678359 /* CalendarService.swift */; };
 		7171BBCB2F3F5E1700678359 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7171BBCA2F3F5E1700678359 /* ContentViewModel.swift */; };
+		717F61122F4C924F00CB6B2A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 717F61112F4C924F00CB6B2A /* GoogleService-Info.plist */; };
 		718743AB2ABA5A8000A6EFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71FA8B022AA54A03000E2831 /* Assets.xcassets */; };
 		7192FFB92F4214AE0047DDFC /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7192FFB82F4214AE0047DDFC /* ShareButton.swift */; };
 		7192FFC02F4230720047DDFC /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7192FFBF2F4230710047DDFC /* Messages.framework */; };
 		7192FFCC2F42307D0047DDFC /* FerrioMessagesExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 7192FFBE2F4230710047DDFC /* FerrioMessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		71948FC22F476402001670C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 71948FC12F476401001670C0 /* GoogleService-Info.plist */; };
 		71A0F9802C695748007F595F /* HolidayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A0F97F2C695748007F595F /* HolidayReport.swift */; };
 		71A0F9812C695748007F595F /* HolidayReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71A0F97F2C695748007F595F /* HolidayReport.swift */; };
 		71B0474D2F3E42E800F0CB1C /* MonthAdapterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71B0473E2F3E42E800F0CB1C /* MonthAdapterView.swift */; };
@@ -86,6 +85,7 @@
 		AAAA000B2F3F600000000006 /* HolidayRepositoryReports.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA000A2F3F600000000006 /* HolidayRepositoryReports.swift */; };
 		AAAA000D2F3F600000000007 /* ReportHolidayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAA000C2F3F600000000007 /* ReportHolidayViewModel.swift */; };
 		BB000002BB000002BB000002 /* HolidayDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000001BB000001BB000001 /* HolidayDetailView.swift */; };
+		CC000001CC000001CC000001 /* AuthenticatedURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC000002CC000002CC000002 /* AuthenticatedURLSession.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,7 +138,6 @@
 		1A8B10F20ACAAC22CFF240FA /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		1A8B1218DD3EF5D07BF92C36 /* HolidayDay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolidayDay.swift; sourceTree = "<group>"; };
 		1A8B131C071B4025F6354DC3 /* URLSessionExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionExtension.swift; sourceTree = "<group>"; };
-		CC000002CC000002CC000002 /* AuthenticatedURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedURLSession.swift; sourceTree = "<group>"; };
 		1A8B15593B806217A51802A1 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		1A8B167F98CAD8D4CF11EE60 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A8B176D3CDAB3162E902569 /* Holiday.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Holiday.swift; sourceTree = "<group>"; };
@@ -166,12 +165,12 @@
 		7171BBC22F3F5D9E00678359 /* HolidayRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayRepository.swift; sourceTree = "<group>"; };
 		7171BBC62F3F5E0200678359 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		7171BBCA2F3F5E1700678359 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		717F61112F4C924F00CB6B2A /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7187DB812F4113880008896C /* Ferrio.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ferrio.entitlements; sourceTree = "<group>"; };
 		7187DB822F4113AB0008896C /* FerrioWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FerrioWidgetExtension.entitlements; sourceTree = "<group>"; };
 		7192FFB82F4214AE0047DDFC /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 		7192FFBE2F4230710047DDFC /* FerrioMessagesExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FerrioMessagesExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		7192FFBF2F4230710047DDFC /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
-		71948FC12F476401001670C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		71A0F97F2C695748007F595F /* HolidayReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayReport.swift; sourceTree = "<group>"; };
 		71B0473E2F3E42E800F0CB1C /* MonthAdapterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthAdapterView.swift; sourceTree = "<group>"; };
 		71B047402F3E42E800F0CB1C /* MyReportsScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReportsScreenView.swift; sourceTree = "<group>"; };
@@ -204,6 +203,7 @@
 		AAAA000A2F3F600000000006 /* HolidayRepositoryReports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayRepositoryReports.swift; sourceTree = "<group>"; };
 		AAAA000C2F3F600000000007 /* ReportHolidayViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportHolidayViewModel.swift; sourceTree = "<group>"; };
 		BB000001BB000001BB000001 /* HolidayDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolidayDetailView.swift; sourceTree = "<group>"; };
+		CC000002CC000002CC000002 /* AuthenticatedURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedURLSession.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -430,7 +430,7 @@
 				71FA8B022AA54A03000E2831 /* Assets.xcassets */,
 				7137D6ED2AA5D6FD00CE239B /* Localizable */,
 				7137D71A2AA7147E00CE239B /* Settings.bundle */,
-				71948FC12F476401001670C0 /* GoogleService-Info.plist */,
+				717F61112F4C924F00CB6B2A /* GoogleService-Info.plist */,
 				71DCA3692ABC9A69004C68A5 /* Info.plist */,
 			);
 			path = Resources;
@@ -717,8 +717,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7137D71B2AA7147E00CE239B /* Settings.bundle in Resources */,
-				71948FC22F476402001670C0 /* GoogleService-Info.plist in Resources */,
 				712911552E8304EC001A4CF3 /* AppIcon.icon in Resources */,
+				717F61122F4C924F00CB6B2A /* GoogleService-Info.plist in Resources */,
 				7137D6EB2AA5D6FD00CE239B /* Localizable in Resources */,
 				71FA8B032AA54A03000E2831 /* Assets.xcassets in Resources */,
 			);
