@@ -57,7 +57,7 @@ private enum API {
 	static let baseURL = "https://api.ferrio.app/v3"
 
 	static var language: String {
-		let code = Locale.current.language.languageCode?.identifier ?? ""
+		let code = Locale.preferredLanguages.first.map { String($0.prefix(2)) } ?? "en"
 		return ["pl"].contains(code) ? code : "en"
 	}
 }
@@ -242,7 +242,7 @@ private struct HolidayListView: View {
 						.font(.subheadline)
 						.foregroundStyle(.secondary)
 						.multilineTextAlignment(.center)
-					Button("Retry") {
+					Button(NSLocalizedString("retry", comment: "")) {
 						Task { await fetchHolidays() }
 					}
 					.buttonStyle(.borderedProminent)
@@ -303,7 +303,7 @@ private struct HolidayListView: View {
 					Image(systemName: "calendar.badge.exclamationmark")
 						.font(.title)
 						.foregroundStyle(.secondary)
-					Text("No holidays today")
+					Text(NSLocalizedString("no-holidays-today", comment: ""))
 						.font(.subheadline)
 						.foregroundStyle(.secondary)
 				}
@@ -325,7 +325,7 @@ private struct HolidayListView: View {
 		let month = calendar.component(.month, from: now)
 
 		guard let url = URL(string: "\(API.baseURL)/holidays?lang=\(API.language)&month=\(month)&day=\(day)") else {
-			errorMessage = "Invalid URL"
+			errorMessage = NSLocalizedString("invalid-url", comment: "")
 			isLoading = false
 			return
 		}
@@ -334,7 +334,7 @@ private struct HolidayListView: View {
 			let holidays = try await URLSession.shared.decode([MessagesHoliday].self, from: url)
 			holidayDay = HolidayDay(day: day, month: month, holidays: holidays)
 		} catch {
-			errorMessage = "Could not load holidays"
+			errorMessage = NSLocalizedString("could-not-load-holidays", comment: "")
 		}
 		isLoading = false
 	}
