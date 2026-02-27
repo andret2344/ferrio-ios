@@ -64,7 +64,8 @@ struct Provider: IntentTimelineProvider {
 		guard let current = Calendar.current.date(byAdding: .day, value: plusDays, to: Date()) else { return nil }
 		let components = Calendar.current.dateComponents([.day, .month], from: current)
 		guard let month = components.month, let day = components.day else { return nil }
-		return URL(string: "\(API.baseURL)/holidays?lang=\(API.language)&month=\(month)&day=\(day)")
+		let language = ObservableConfig.sharedDefaults?.string(forKey: "language") ?? API.language
+		return URL(string: "\(API.baseURL)/holidays?lang=\(language)&month=\(month)&day=\(day)")
 	}
 }
 

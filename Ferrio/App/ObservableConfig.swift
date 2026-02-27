@@ -14,6 +14,7 @@ class ObservableConfig: ObservableObject {
 
 	/// Copies values written by the iOS Settings bundle (UserDefaults.standard)
 	/// into the app group suite so the app and widget see them.
+	/// Also persists the resolved API language so the widget (separate process) can read it.
 	func syncFromSettingsBundle() {
 		let standard = UserDefaults.standard
 		if let value = standard.object(forKey: "includeUsual") as? Bool {
@@ -22,6 +23,7 @@ class ObservableConfig: ObservableObject {
 		if let value = standard.object(forKey: "colorizedDays") as? Bool {
 			colorizedDays = value
 		}
+		ObservableConfig.sharedDefaults?.set(API.language, forKey: "language")
 	}
 
 	static var isRealUserLoggedIn: Bool {

@@ -10,30 +10,29 @@ struct HolidayDetailView: View {
 	let dateText: String
 
 	var body: some View {
-		VStack(alignment: .leading, spacing: 16) {
-			if let countryName = holiday.countryName, let flag = holiday.flagEmoji {
-				Text("\(flag) \(countryName)")
-					.font(.subheadline)
-					.foregroundStyle(.secondary)
-			} else {
-				Label("international", systemImage: "globe")
-					.font(.subheadline)
-					.foregroundStyle(.secondary)
-			}
+		ScrollView {
+			VStack(alignment: .leading, spacing: 12) {
+				if let countryName = holiday.countryName, let flag = holiday.flagEmoji {
+					Text("\(flag) \(countryName)")
+						.font(.subheadline)
+						.foregroundStyle(.secondary)
+				} else {
+					Label("international", systemImage: "globe")
+						.font(.subheadline)
+						.foregroundStyle(.secondary)
+				}
 
-			if !holiday.description.isEmpty {
-				Text(holiday.description)
-					.lineLimit(nil)
-			} else {
-				Text("no-description")
-					.italic()
-					.foregroundStyle(.secondary)
+				if !holiday.description.isEmpty {
+					descriptionView
+				} else {
+					Text("no-description")
+						.italic()
+						.foregroundStyle(.secondary)
+				}
 			}
-
-			Spacer(minLength: 0)
+			.padding()
+			.frame(maxWidth: .infinity, alignment: .leading)
 		}
-		.padding()
-		.frame(maxWidth: .infinity, alignment: .leading)
 		.safeAreaInset(edge: .bottom) {
 			VStack(spacing: 0) {
 				Divider()
@@ -54,6 +53,15 @@ struct HolidayDetailView: View {
 		.navigationBarTitleDisplayMode(.large)
 		.sheet(isPresented: $showReportSheet) {
 			ReportHolidaySheetView(holiday: holiday)
+		}
+	}
+
+	private var descriptionView: some View {
+		let paragraphs = holiday.description.components(separatedBy: "\n").filter { !$0.isEmpty }
+		return VStack(alignment: .leading, spacing: 12) {
+			ForEach(Array(paragraphs.enumerated()), id: \.offset) { _, paragraph in
+				Text(paragraph)
+			}
 		}
 	}
 
