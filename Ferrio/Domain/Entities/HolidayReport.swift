@@ -9,7 +9,7 @@ struct HolidayReport: Decodable {
 	let languageCode: String
 	let metadataId: Int
 	let reportType: String
-	let description: String
+	let description: String?
 	let datetime: String
 	let reportState: ReportState
 
@@ -23,7 +23,7 @@ struct HolidayReport: Decodable {
 		languageCode = try container.decode(String.self, forKey: .languageCode)
 		metadataId = try container.decode(Int.self, forKey: .metadataId)
 		reportType = try container.decode(String.self, forKey: .reportType)
-		description = try container.decode(String.self, forKey: .description)
+		description = try container.decodeIfPresent(String.self, forKey: .description)
 		datetime = try container.decode(String.self, forKey: .datetime)
 		reportState = try container.decode(ReportState.self, forKey: .reportState)
 	}

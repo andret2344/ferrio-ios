@@ -12,7 +12,6 @@ enum ReportType: String, Encodable, CaseIterable {
 }
 
 struct HolidayReportPayload: Encodable {
-	var userId: String
 	var metadata: Int
 	var language: String
 	var reportType: ReportType

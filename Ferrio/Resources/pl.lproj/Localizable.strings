@@ -33,6 +33,9 @@
 "my-reports" = "Moje zgłoszenia";
 "my-suggestions" = "Moje sugestie";
 "no-description" = "Brak opisu";
+"no-reports" = "Brak raportów";
+"no-suggestions" = "Brak sugestii";
+"error-loading" = "Błąd ładowania";
 "no-results" = "Brak wyników";
 "no-results-description" = "Nie można znaleźć żadnego święta. Spróbuj ponownie.";
 "no-unusual-holidays" = "Brak nietypowych świąt.";

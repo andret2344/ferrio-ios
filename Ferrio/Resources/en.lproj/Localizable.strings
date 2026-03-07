@@ -32,6 +32,9 @@
 "my-reports" = "My reports";
 "my-suggestions" = "My suggestions";
 "no-description" = "No description";
+"no-reports" = "No reports";
+"no-suggestions" = "No suggestions";
+"error-loading" = "Failed to load";
 "no-results" = "No results";
 "no-results-description" = "Can't find such a holiday. Try again.";
 "no-unusual-holidays" = "No unusual holidays.";

@@ -14,16 +14,20 @@ extension URLSession {
 		var request = URLRequest(url: url)
 		try await request.addFirebaseAuth()
 
-		let (data, response) = try await data(for: request)
+		let (data, responseRaw) = try await data(for: request)
+		let statusCode = (responseRaw as? HTTPURLResponse)?.statusCode ?? -1
 
-		if let httpResponse = response as? HTTPURLResponse,
-		   !(200...299).contains(httpResponse.statusCode) {
-			throw APIError.unsuccessfulRequest(statusCode: httpResponse.statusCode)
+		guard (200...299).contains(statusCode) else {
+			throw APIError.unsuccessfulRequest(statusCode: statusCode)
 		}
 
 		let decoder = JSONDecoder()
 		decoder.keyDecodingStrategy = keyDecodingStrategy
-		return try decoder.decode(T.self, from: data)
+		do {
+			return try decoder.decode(T.self, from: data)
+		} catch {
+			throw error
+		}
 	}
 
 	func authenticatedPost(jsonData: Data, url: URL) async throws {
@@ -33,18 +37,13 @@ extension URLSession {
 		request.httpBody = jsonData
 		try await request.addFirebaseAuth()
 
-		print("[API POST] \(url)")
-		print("[API POST] Body: \(String(data: jsonData, encoding: .utf8) ?? "nil")")
-
 		let (responseData, response) = try await data(for: request)
 
 		guard let httpResponse = response as? HTTPURLResponse,
 			  (200...299).contains(httpResponse.statusCode) else {
 			let statusCode = (response as? HTTPURLResponse)?.statusCode ?? -1
-			print("[API POST] Error \(statusCode): \(String(data: responseData, encoding: .utf8) ?? "nil")")
 			throw APIError.unsuccessfulRequest(statusCode: statusCode)
 		}
-		print("[API POST] Success \(httpResponse.statusCode)")
 	}
 }
 
@@ -54,6 +53,6 @@ private extension URLRequest {
 			throw APIError.notAuthenticated
 		}
 		let token = try await user.getIDToken()
-		addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+		setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 	}
 }

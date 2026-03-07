@@ -2,7 +2,6 @@
 //  Created by Andrzej Chmiel on 06/07/2024.
 //
 
-import FirebaseAuth
 import StoreKit
 import SwiftUI
 
@@ -102,13 +101,11 @@ struct SuggestHolidayScreenView: View {
 			ToolbarItem(placement: .primaryAction) {
 				Button("send") {
 					Task {
-						let uid = Auth.auth().currentUser?.uid ?? ""
 						if floating {
 							await viewModel.sendMissingSuggestion(
 								payload: MissingFloatingHolidayPayload(
 									name: name,
 									description: description,
-									userId: uid,
 									country: country?.identifier,
 									date: date
 								),
@@ -119,7 +116,6 @@ struct SuggestHolidayScreenView: View {
 								payload: MissingFixedHolidayPayload(
 									name: name,
 									description: description,
-									userId: uid,
 									country: country?.identifier,
 									day: day,
 									month: month + 1

@@ -7,28 +7,54 @@ import SwiftUI
 struct MySuggestionsScreenView: View {
 	@StateObject private var viewModel = SuggestionsViewModel()
 	@State private var reportedHolidaysType: String = "fixed"
-	@State private var expanded: Int? = nil
+	@State private var expandedFixed: Int? = nil
+	@State private var expandedFloating: Int? = nil
 
 	var body: some View {
-		Picker("select-missing-holidays-type", selection: $reportedHolidaysType) {
-			Text("holidays-fixed").tag("fixed")
-			Text("holidays-floating").tag("floating")
-		}
-		.pickerStyle(.segmented)
-		.padding(.horizontal)
-		List {
-			if reportedHolidaysType == "fixed" {
-				ForEach(viewModel.suggestionsFixed, id: \.id) { suggestion in
-					renderFixedSuggestion(suggestion: suggestion)
-				}
+		VStack(spacing: 0) {
+			Picker("select-missing-holidays-type", selection: $reportedHolidaysType) {
+				Text("holidays-fixed").tag("fixed")
+				Text("holidays-floating").tag("floating")
+			}
+			.pickerStyle(.segmented)
+			.padding(.horizontal)
+			if viewModel.isLoading {
+				Spacer()
+				ProgressView()
+					.frame(maxWidth: .infinity)
+				Spacer()
+			} else if let error = viewModel.error {
+				Spacer()
+				ContentUnavailableView(
+					"error-loading",
+					systemImage: "exclamationmark.triangle",
+					description: Text(error.localizedDescription)
+				)
+				Spacer()
 			} else {
-				ForEach(viewModel.suggestionsFloating, id: \.id) { suggestion in
-					renderFloatingSuggestion(suggestion: suggestion)
+				List {
+					if reportedHolidaysType == "fixed" {
+						if viewModel.suggestionsFixed.isEmpty {
+							emptyState
+						} else {
+							ForEach(viewModel.suggestionsFixed, id: \.id) { suggestion in
+								renderFixedSuggestion(suggestion: suggestion, expanded: $expandedFixed)
+							}
+						}
+					} else {
+						if viewModel.suggestionsFloating.isEmpty {
+							emptyState
+						} else {
+							ForEach(viewModel.suggestionsFloating, id: \.id) { suggestion in
+								renderFloatingSuggestion(suggestion: suggestion, expanded: $expandedFloating)
+							}
+						}
+					}
+				}
+				.refreshable {
+					await viewModel.fetchData()
 				}
 			}
-		}
-		.refreshable {
-			await viewModel.fetchData()
 		}
 		.navigationTitle("my-suggestions")
 		.task {
@@ -36,7 +62,12 @@ struct MySuggestionsScreenView: View {
 		}
 	}
 
-	func renderFixedSuggestion(suggestion: MissingFixedHoliday) -> some View {
+	private var emptyState: some View {
+		ContentUnavailableView("no-suggestions", systemImage: "checkmark.circle")
+			.listRowBackground(Color.clear)
+	}
+
+	func renderFixedSuggestion(suggestion: MissingFixedHoliday, expanded: Binding<Int?>) -> some View {
 		VStack(alignment: .leading, spacing: 8) {
 			HStack(alignment: .top) {
 				Text(suggestion.name)
@@ -45,7 +76,7 @@ struct MySuggestionsScreenView: View {
 				StatusBadge(state: suggestion.reportState)
 			}
 			Text(suggestion.description)
-				.lineLimit(suggestion.id == expanded ? nil : 2)
+				.lineLimit(suggestion.id == expanded.wrappedValue ? nil : 2)
 				.foregroundStyle(.secondary)
 			HStack {
 				Text(formatFixedDate(day: suggestion.day, month: suggestion.month))
@@ -57,11 +88,11 @@ struct MySuggestionsScreenView: View {
 		}
 		.contentShape(Rectangle())
 		.onTapGesture {
-			expanded = expanded == suggestion.id ? nil : suggestion.id
+			expanded.wrappedValue = expanded.wrappedValue == suggestion.id ? nil : suggestion.id
 		}
 	}
 
-	func renderFloatingSuggestion(suggestion: MissingFloatingHoliday) -> some View {
+	func renderFloatingSuggestion(suggestion: MissingFloatingHoliday, expanded: Binding<Int?>) -> some View {
 		VStack(alignment: .leading, spacing: 8) {
 			HStack(alignment: .top) {
 				Text(suggestion.name)
@@ -70,7 +101,7 @@ struct MySuggestionsScreenView: View {
 				StatusBadge(state: suggestion.reportState)
 			}
 			Text(suggestion.description)
-				.lineLimit(suggestion.id == expanded ? nil : 2)
+				.lineLimit(suggestion.id == expanded.wrappedValue ? nil : 2)
 				.foregroundStyle(.secondary)
 			HStack {
 				Text(suggestion.date)
@@ -82,22 +113,7 @@ struct MySuggestionsScreenView: View {
 		}
 		.contentShape(Rectangle())
 		.onTapGesture {
-			expanded = expanded == suggestion.id ? nil : suggestion.id
+			expanded.wrappedValue = expanded.wrappedValue == suggestion.id ? nil : suggestion.id
 		}
 	}
-}
-
-private func formatFixedDate(day: Int, month: Int) -> String {
-	var components = DateComponents()
-	components.day = day
-	components.month = month
-	components.year = Calendar.current.component(.year, from: Date())
-
-	guard let date = Calendar.current.date(from: components) else {
-		return "\(day).\(month)"
-	}
-
-	let formatter = DateFormatter()
-	formatter.setLocalizedDateFormatFromTemplate("d MMMM")
-	return formatter.string(from: date)
 }

@@ -2,14 +2,13 @@
 //  Created by Andrzej Chmiel on 30/07/2024.
 //
 
-import FirebaseAuth
 import SwiftUI
 
 struct ReportHolidaySheetView: View {
 	@Environment(\.dismiss) var dismiss
 	@StateObject private var viewModel = ReportHolidayViewModel()
 	let holiday: Holiday
-	let languageCode: String = String((Locale.preferredLanguages.first ?? "en").prefix(2))
+	let languageCode: String = API.language
 	@State private var reportType: ReportType = .WRONG_NAME
 	@State private var description: String = ""
 
@@ -74,7 +73,6 @@ struct ReportHolidaySheetView: View {
 					Button("send") {
 						Task {
 							let payload = HolidayReportPayload(
-								userId: Auth.auth().currentUser?.uid ?? "",
 								metadata: holiday.numericId,
 								language: languageCode,
 								reportType: reportType,
