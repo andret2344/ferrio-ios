@@ -37,7 +37,7 @@ extension URLSession {
 		request.httpBody = jsonData
 		try await request.addFirebaseAuth()
 
-		let (responseData, response) = try await data(for: request)
+		let (_, response) = try await data(for: request)
 
 		guard let httpResponse = response as? HTTPURLResponse,
 			  (200...299).contains(httpResponse.statusCode) else {

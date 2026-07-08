@@ -38,7 +38,7 @@ struct ContentView: View {
 				}
 				Tab("reports", systemImage: "exclamationmark.triangle") {
 					NavigationStack {
-						ReportsView()
+						ReportsView(holidayDays: viewModel.holidayDays)
 							.navigationTitle("reports")
 							.navigationBarTitleDisplayMode(.large)
 					}

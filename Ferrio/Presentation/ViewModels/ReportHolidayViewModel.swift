@@ -10,10 +10,14 @@ class ReportHolidayViewModel: ObservableObject {
 	@Published var alertTitle: String = ""
 	@Published var alertMessage: String = ""
 	@Published var success: Bool = false
+	@Published var isSending: Bool = false
 
 	private let repository = HolidayRepository()
 
 	func sendReport(reportPayload: HolidayReportPayload, holidayType: String) async {
+		guard !isSending else { return }
+		isSending = true
+		defer { isSending = false }
 		do {
 			try await repository.sendReport(payload: reportPayload, holidayType: holidayType)
 			alertTitle = "report-sent".localized()

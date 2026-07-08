@@ -31,9 +31,10 @@ struct MonthAdapterView: View {
 			let cols = 7
 			let rows = 6
 			let spacing: CGFloat = 6
+			let headerH: CGFloat = 18
 
 			let availW = geo.size.width - geo.safeAreaInsets.leading - geo.safeAreaInsets.trailing - 16
-			let availH = geo.size.height - geo.safeAreaInsets.top - geo.safeAreaInsets.bottom - 16
+			let availH = geo.size.height - geo.safeAreaInsets.top - geo.safeAreaInsets.bottom - 16 - headerH - spacing
 
 			let cellW = floor((availW - spacing * CGFloat(cols - 1)) / CGFloat(cols))
 			let cellH = floor((availH - spacing * CGFloat(rows - 1)) / CGFloat(rows))
@@ -42,6 +43,15 @@ struct MonthAdapterView: View {
 			let gridH = cellH * CGFloat(rows) + spacing * CGFloat(rows - 1)
 
 			VStack(alignment: .leading, spacing: spacing) {
+				HStack(spacing: spacing) {
+					ForEach(0..<cols, id: \.self) { column in
+						Text(weekdaySymbol(for: column))
+							.font(.caption)
+							.fontWeight(.semibold)
+							.foregroundStyle(.secondary)
+							.frame(width: max(0, cellW), height: headerH)
+					}
+				}
 				ForEach(0..<rowsData.endIndex, id: \.self) { weekIndex in
 					HStack(spacing: spacing) {
 						ForEach(0..<rowsData[weekIndex].endIndex, id: \.self) { dayIndex in
@@ -59,17 +69,26 @@ struct MonthAdapterView: View {
 				}
 				Spacer(minLength: 0)
 			}
-			.frame(width: gridW, height: gridH, alignment: .topLeading)
+			.frame(width: gridW, height: gridH + headerH + spacing, alignment: .topLeading)
 			.padding(.vertical, 8)
 			.padding(.horizontal, 8)
 			.navigationTitle(Text(Self.monthFormatter.standaloneMonthSymbols[month - 1].capitalized))
 		}
 	}
 
+	// Column 0 maps to the locale's first weekday (matching CalendarService's grid alignment),
+	// so shift the Sunday-based symbol list by firstWeekday.
+	private func weekdaySymbol(for column: Int) -> String {
+		let calendar = Calendar.current
+		let symbols = calendar.shortWeekdaySymbols
+		let index = (calendar.firstWeekday - 1 + column) % symbols.count
+		return symbols[index].capitalized
+	}
+
 	private func renderButton(holidayDay: HolidayDay, width: CGFloat, height: CGFloat) -> some View {
 		Button { selectedDay = holidayDay } label: {
 			ZStack {
-				if holidayDay.getHolidays(includeUsual: observableConfig.includeUsual).isEmpty {
+				if holidayDay.getHolidays(includeUsual: observableConfig.includeUsual, showAdult: observableConfig.showAdultContent).isEmpty {
 					Image("SadIcon")
 						.resizable()
 						.scaledToFit()

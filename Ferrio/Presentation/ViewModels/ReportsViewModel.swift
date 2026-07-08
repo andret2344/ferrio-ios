@@ -12,17 +12,23 @@ class ReportsViewModel: ObservableObject {
 	@Published var error: Error? = nil
 
 	private let repository = HolidayRepository()
+	private var hasLoaded = false
 
 	func fetchData() async {
-		isLoading = true
+		if !hasLoaded {
+			isLoading = true
+		}
 		error = nil
 		do {
 			let result = try await repository.fetchReports()
 			reportsFixed = result.fixed.sorted { $0.datetime > $1.datetime }
 			reportsFloating = result.floating.sorted { $0.datetime > $1.datetime }
+			hasLoaded = true
 		} catch {
-			reportsFixed = []
-			reportsFloating = []
+			if !hasLoaded {
+				reportsFixed = []
+				reportsFloating = []
+			}
 			self.error = error
 		}
 		isLoading = false

@@ -1,0 +1,83 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "+%lld more..." : {
+
+    },
+    "could-not-load-holidays" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not load holidays"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie udało się załadować świąt"
+          }
+        }
+      }
+    },
+    "Ferrio" : {
+
+    },
+    "ferrio.app" : {
+
+    },
+    "invalid-url" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid URL"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieprawidłowy adres URL"
+          }
+        }
+      }
+    },
+    "no-holidays-today" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No holidays today"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak świąt dzisiaj"
+          }
+        }
+      }
+    },
+    "retry" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retry"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ponów"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

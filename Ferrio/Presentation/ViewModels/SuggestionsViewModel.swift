@@ -12,17 +12,23 @@ class SuggestionsViewModel: ObservableObject {
 	@Published var error: Error? = nil
 
 	private let repository = HolidayRepository()
+	private var hasLoaded = false
 
 	func fetchData() async {
-		isLoading = true
+		if !hasLoaded {
+			isLoading = true
+		}
 		error = nil
 		do {
 			let result = try await repository.fetchSuggestions()
 			suggestionsFixed = result.fixed.sorted { $0.datetime > $1.datetime }
 			suggestionsFloating = result.floating.sorted { $0.datetime > $1.datetime }
+			hasLoaded = true
 		} catch {
-			suggestionsFixed = []
-			suggestionsFloating = []
+			if !hasLoaded {
+				suggestionsFixed = []
+				suggestionsFloating = []
+			}
 			self.error = error
 		}
 		isLoading = false

@@ -7,8 +7,7 @@ import SwiftUI
 struct MyReportsScreenView: View {
 	@StateObject private var viewModel = ReportsViewModel()
 	@State private var reportedHolidaysType: String = "fixed"
-	@State private var expandedFixed: Int? = nil
-	@State private var expandedFloating: Int? = nil
+	@State private var selectedReport: HolidayReport?
 
 	var body: some View {
 		VStack(spacing: 0) {
@@ -37,16 +36,16 @@ struct MyReportsScreenView: View {
 						if viewModel.reportsFixed.isEmpty {
 							emptyState
 						} else {
-							ForEach(viewModel.reportsFixed, id: \.id) { report in
-								renderReport(report: report, expanded: $expandedFixed)
+							ForEach(viewModel.reportsFixed) { report in
+								renderReport(report: report)
 							}
 						}
 					} else {
 						if viewModel.reportsFloating.isEmpty {
 							emptyState
 						} else {
-							ForEach(viewModel.reportsFloating, id: \.id) { report in
-								renderReport(report: report, expanded: $expandedFloating)
+							ForEach(viewModel.reportsFloating) { report in
+								renderReport(report: report)
 							}
 						}
 					}
@@ -60,6 +59,16 @@ struct MyReportsScreenView: View {
 		.task {
 			await viewModel.fetchData()
 		}
+		.sheet(item: $selectedReport) { report in
+			ReportDetailsSheetView(
+				title: report.reportType.localized(),
+				state: report.reportState,
+				description: report.description,
+				comment: report.comment,
+				dateInfo: nil,
+				datetime: report.datetime
+			)
+		}
 	}
 
 	private var emptyState: some View {
@@ -67,18 +76,28 @@ struct MyReportsScreenView: View {
 			.listRowBackground(Color.clear)
 	}
 
-	func renderReport(report: HolidayReport, expanded: Binding<Int?>) -> some View {
+	private func hasComment(_ comment: String?) -> Bool {
+		guard let comment else { return false }
+		return !comment.isEmpty
+	}
+
+	func renderReport(report: HolidayReport) -> some View {
 		VStack(alignment: .leading, spacing: 8) {
-			HStack(alignment: .top) {
+			HStack(alignment: .top, spacing: 6) {
 				Text(report.reportType.localized())
 					.font(.subheadline)
 					.foregroundStyle(.secondary)
 				Spacer()
+				if hasComment(report.comment) {
+					Image(systemName: "text.bubble")
+						.font(.caption)
+						.foregroundStyle(.secondary)
+				}
 				StatusBadge(state: report.reportState)
 			}
 			if let desc = report.description, !desc.isEmpty {
 				Text(desc)
-					.lineLimit(report.id == expanded.wrappedValue ? nil : 2)
+					.lineLimit(2)
 			}
 			Text(formatDatetime(report.datetime))
 				.font(.caption)
@@ -86,7 +105,7 @@ struct MyReportsScreenView: View {
 		}
 		.contentShape(Rectangle())
 		.onTapGesture {
-			expanded.wrappedValue = expanded.wrappedValue == report.id ? nil : report.id
+			selectedReport = report
 		}
 	}
 }

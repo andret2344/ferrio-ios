@@ -61,9 +61,14 @@ struct ReportHolidaySheetView: View {
 					.lineLimit(4...6)
 				} header: {
 					Text("report-details")
-				} footer: {
-					Text("report-notice")
-						.foregroundStyle(.orange)
+				}
+
+				Section {
+					DisclosureGroup("submission-guidelines") {
+						Text("report-notice")
+							.font(.footnote)
+							.foregroundStyle(.secondary)
+					}
 				}
 			}
 			.navigationTitle("report-holiday")
@@ -82,6 +87,7 @@ struct ReportHolidaySheetView: View {
 							await viewModel.sendReport(reportPayload: payload, holidayType: holidayType)
 						}
 					}
+					.disabled(viewModel.isSending || description.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
 				}
 			}
 			.toolbar {
@@ -102,6 +108,11 @@ struct ReportHolidaySheetView: View {
 				}
 			} message: {
 				Text(viewModel.alertMessage)
+			}
+			.overlay {
+				if viewModel.isSending {
+					SendingOverlayView()
+				}
 			}
 		}
 	}

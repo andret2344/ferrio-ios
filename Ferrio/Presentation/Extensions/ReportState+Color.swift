@@ -15,6 +15,12 @@ extension ReportState {
 			Color(UIColor.systemRed)
 		case .ON_HOLD:
 			Color(UIColor.systemYellow)
+		case .DUPLICATE:
+			Color(UIColor.systemPurple)
+		case .ALREADY_EXISTS:
+			Color(UIColor.systemTeal)
+		case .UNKNOWN:
+			Color(UIColor.systemGray)
 		}
 	}
 }

@@ -21,10 +21,15 @@ struct HolidayDay: Identifiable, Equatable {
 		String(format: "%02d", day) + "." + String(format: "%02d", month)
 	}
 
-	func getHolidays(includeUsual: Bool) -> [Holiday] {
-		if includeUsual {
-			return holidays
+	func getHolidays(includeUsual: Bool, showAdult: Bool) -> [Holiday] {
+		holidays.filter { holiday in
+			if !includeUsual && holiday.usual {
+				return false
+			}
+			if !showAdult && (holiday.matureContent ?? false) {
+				return false
+			}
+			return true
 		}
-		return holidays.filter { !$0.usual }
 	}
 }

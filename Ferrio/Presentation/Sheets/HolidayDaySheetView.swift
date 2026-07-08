@@ -12,7 +12,7 @@ struct HolidayDaySheetView: View {
 	var body: some View {
 		let date: Date? = Date.from(month: holidayDay.month, day: holidayDay.day)
 		let dateText = date?.formatted(.dateTime.day().month(.wide)) ?? holidayDay.getDate()
-		let holidays: [Holiday] = holidayDay.getHolidays(includeUsual: observableConfig.includeUsual)
+		let holidays: [Holiday] = holidayDay.getHolidays(includeUsual: observableConfig.includeUsual, showAdult: observableConfig.showAdultContent)
 		NavigationStack {
 			VStack {
 				if holidays.isEmpty {

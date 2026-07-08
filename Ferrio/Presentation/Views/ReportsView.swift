@@ -6,6 +6,7 @@ import SwiftUI
 
 struct ReportsView: View {
 	@EnvironmentObject var viewModel: AuthenticationViewModel
+	let holidayDays: [HolidayDay]
 
 	var body: some View {
 		List {
@@ -16,7 +17,7 @@ struct ReportsView: View {
 					Label("suggest-holiday", systemImage: "pencil")
 				}
 				NavigationLink {
-					MySuggestionsScreenView()
+					MySuggestionsScreenView(holidayDays: holidayDays)
 				} label: {
 					Label("my-suggestions", systemImage: "checkmark")
 				}

@@ -15,6 +15,7 @@ struct MissingFixedHolidayPayload : MissingHolidayPayload {
 	var country: String?
 	var day: Int
 	var month: Int
+	var device: DeviceMetadata = .current()
 }
 
 struct MissingFloatingHolidayPayload : MissingHolidayPayload {
@@ -22,4 +23,5 @@ struct MissingFloatingHolidayPayload : MissingHolidayPayload {
 	var description: String
 	var country: String?
 	var date: String
+	var device: DeviceMetadata = .current()
 }

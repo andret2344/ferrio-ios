@@ -11,6 +11,7 @@ class ObservableConfig: ObservableObject {
 
 	@AppStorage("includeUsual", store: ObservableConfig.sharedDefaults) var includeUsual: Bool = false
 	@AppStorage("colorizedDays", store: ObservableConfig.sharedDefaults) var colorizedDays: Bool = false
+	@AppStorage("showAdultContent", store: ObservableConfig.sharedDefaults) var showAdultContent: Bool = false
 
 	/// Copies values written by the iOS Settings bundle (UserDefaults.standard)
 	/// into the app group suite so the app and widget see them.
@@ -22,6 +23,9 @@ class ObservableConfig: ObservableObject {
 		}
 		if let value = standard.object(forKey: "colorizedDays") as? Bool {
 			colorizedDays = value
+		}
+		if let value = standard.object(forKey: "showAdultContent") as? Bool {
+			showAdultContent = value
 		}
 		ObservableConfig.sharedDefaults?.set(API.language, forKey: "language")
 	}

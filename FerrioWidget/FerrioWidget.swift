@@ -4,11 +4,25 @@
 
 import WidgetKit
 import SwiftUI
-import Intents
+import AppIntents
 
-struct Provider: IntentTimelineProvider {
+struct ConfigurationAppIntent: WidgetConfigurationIntent {
+	static var title: LocalizedStringResource = "widget-configuration"
+	static var description = IntentDescription("widget-description")
+
+	@Parameter(title: "widget-plus-days", default: 0, inclusiveRange: (-30, 30))
+	var plusDays: Int
+
+	@Parameter(title: "widget-colorized", default: false)
+	var colorized: Bool
+
+	@Parameter(title: "widget-show-weekday", default: false)
+	var showWeekday: Bool
+}
+
+struct Provider: AppIntentTimelineProvider {
 	typealias Entry = WidgetEntry
-	typealias Intent = ConfigurationIntent
+	typealias Intent = ConfigurationAppIntent
 
 	func placeholder(in context: Context) -> WidgetEntry {
 		let holiday: Holiday = Holiday(
@@ -20,38 +34,31 @@ struct Provider: IntentTimelineProvider {
 			countryCode: "",
 			matureContent: false
 		)
-		return WidgetEntry(date: Date(), holidayDay: HolidayDay(day: 1, month: 1, holidays: [holiday]), dayOffset: 0, colorized: false, includeUsual: false, isLoggedIn: true)
+		return WidgetEntry(date: Date(), holidayDay: HolidayDay(day: 1, month: 1, holidays: [holiday]), dayOffset: 0, colorized: false, includeUsual: false, showAdult: false, showWeekday: false, isLoggedIn: true)
 	}
 
-	func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (WidgetEntry) -> Void) {
-		Task {
-			guard ObservableConfig.isRealUserLoggedIn else {
-				completion(WidgetEntry.loggedOut())
-				return
-			}
-			let holidayDay = await fetchHolidayDay(plusDays: 0)
-			let entry = WidgetEntry(date: Date(), holidayDay: holidayDay, dayOffset: 0, colorized: false, includeUsual: ObservableConfig.shared.includeUsual, isLoggedIn: true)
-			completion(entry)
+	func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> WidgetEntry {
+		guard ObservableConfig.isRealUserLoggedIn else {
+			return WidgetEntry.loggedOut()
 		}
+		let holidayDay = await fetchHolidayDay(plusDays: 0)
+		return WidgetEntry(date: Date(), holidayDay: holidayDay, dayOffset: 0, colorized: false, includeUsual: ObservableConfig.shared.includeUsual, showAdult: ObservableConfig.shared.showAdultContent, showWeekday: configuration.showWeekday, isLoggedIn: true)
 	}
 
-	func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<WidgetEntry>) -> Void) {
-		Task {
-			let now = Date()
-			let midnight = Calendar.current.startOfDay(for: now)
-			let nextMidnight = Calendar.current.date(byAdding: .day, value: 1, to: midnight) ?? now
+	func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<WidgetEntry> {
+		let now = Date()
+		let midnight = Calendar.current.startOfDay(for: now)
+		let nextMidnight = Calendar.current.date(byAdding: .day, value: 1, to: midnight) ?? now
 
-			guard ObservableConfig.isRealUserLoggedIn else {
-				let entry = WidgetEntry(date: now, holidayDay: nil, dayOffset: 0, colorized: false,
-					includeUsual: ObservableConfig.shared.includeUsual, isLoggedIn: false)
-				completion(Timeline(entries: [entry], policy: .after(nextMidnight)))
-				return
-			}
-			let plusDays = configuration.plusDays?.intValue ?? 0
-			let holidayDay = await fetchHolidayDay(plusDays: plusDays)
-			let entry = WidgetEntry(date: now, holidayDay: holidayDay, dayOffset: plusDays, colorized: configuration.colorized?.boolValue ?? false, includeUsual: ObservableConfig.shared.includeUsual, isLoggedIn: true)
-			completion(Timeline(entries: [entry], policy: .after(nextMidnight)))
+		guard ObservableConfig.isRealUserLoggedIn else {
+			let entry = WidgetEntry(date: now, holidayDay: nil, dayOffset: 0, colorized: false,
+				includeUsual: ObservableConfig.shared.includeUsual, showAdult: ObservableConfig.shared.showAdultContent, showWeekday: configuration.showWeekday, isLoggedIn: false)
+			return Timeline(entries: [entry], policy: .after(nextMidnight))
 		}
+		let plusDays = configuration.plusDays
+		let holidayDay = await fetchHolidayDay(plusDays: plusDays)
+		let entry = WidgetEntry(date: now, holidayDay: holidayDay, dayOffset: plusDays, colorized: configuration.colorized, includeUsual: ObservableConfig.shared.includeUsual, showAdult: ObservableConfig.shared.showAdultContent, showWeekday: configuration.showWeekday, isLoggedIn: true)
+		return Timeline(entries: [entry], policy: .after(nextMidnight))
 	}
 
 	private func fetchHolidayDay(plusDays: Int) async -> HolidayDay? {
@@ -65,7 +72,11 @@ struct Provider: IntentTimelineProvider {
 		let components = Calendar.current.dateComponents([.day, .month], from: current)
 		guard let month = components.month, let day = components.day else { return nil }
 		let language = ObservableConfig.sharedDefaults?.string(forKey: "language") ?? API.language
-		return URL(string: "\(API.baseURL)/holidays?lang=\(language)&month=\(month)&day=\(day)")
+		var urlString = "\(API.baseURL)/holidays?lang=\(language)&month=\(month)&day=\(day)"
+		if ObservableConfig.shared.showAdultContent {
+			urlString += "&includeMatureContent=true"
+		}
+		return URL(string: urlString)
 	}
 }
 
@@ -77,10 +88,12 @@ struct WidgetEntry: TimelineEntry {
 	let dayOffset: Int
 	let colorized: Bool
 	let includeUsual: Bool
+	let showAdult: Bool
+	let showWeekday: Bool
 	let isLoggedIn: Bool
 
 	static func loggedOut() -> WidgetEntry {
-		WidgetEntry(date: Date(), holidayDay: nil, dayOffset: 0, colorized: false, includeUsual: false, isLoggedIn: false)
+		WidgetEntry(date: Date(), holidayDay: nil, dayOffset: 0, colorized: false, includeUsual: false, showAdult: false, showWeekday: false, isLoggedIn: false)
 	}
 }
 
@@ -92,7 +105,7 @@ struct FerrioWidgetEntryView: View {
 
 	var body: some View {
 		if entry.isLoggedIn {
-			let holidays = entry.holidayDay?.getHolidays(includeUsual: entry.includeUsual) ?? []
+			let holidays = entry.holidayDay?.getHolidays(includeUsual: entry.includeUsual, showAdult: entry.showAdult) ?? []
 			switch family {
 			case .accessoryInline:
 				FerrioAccessoryInlineView(entry: entry, holidays: holidays)
@@ -232,13 +245,23 @@ struct FerrioAccessoryRectangularView: View {
 }
 
 struct FerrioRegularView: View {
+	@Environment(\.widgetFamily) private var family
 	let entry: WidgetEntry
 	let holidays: [Holiday]
+
+	private var maxHolidays: Int {
+		switch family {
+		case .systemLarge: return 15
+		default: return 7
+		}
+	}
 
 	var body: some View {
 		VStack {
 			let date = Date.from(month: entry.holidayDay?.month ?? 1, day: entry.holidayDay?.day ?? 1) ?? Date()
-			Text(date.formatted(.dateTime.day().month(.wide)))
+			Text(entry.showWeekday
+				? date.formatted(.dateTime.weekday(.wide).day().month(.wide))
+				: date.formatted(.dateTime.day().month(.wide)))
 				.bold()
 				.padding(8)
 				.frame(maxWidth: .infinity)
@@ -247,7 +270,7 @@ struct FerrioRegularView: View {
 				Text("no-unusual-holidays").font(.body).multilineTextAlignment(.center)
 				Image("SadIcon")
 			} else {
-				ForEach(holidays) { holiday in
+				ForEach(Array(holidays.prefix(maxHolidays))) { holiday in
 					HStack(alignment: .top) {
 						Text("\u{2022}").padding(.leading, 6)
 						Text(holiday.nameWithFlag)
@@ -276,7 +299,7 @@ struct FerrioRegularView: View {
 struct FerrioWidget: Widget {
 	let kind: String = "FerrioWidget"
 	var body: some WidgetConfiguration {
-		IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+		AppIntentConfiguration(kind: kind, intent: ConfigurationAppIntent.self, provider: Provider()) { entry in
 			FerrioWidgetEntryView(entry: entry)
 		}
 		.configurationDisplayName("Ferrio")

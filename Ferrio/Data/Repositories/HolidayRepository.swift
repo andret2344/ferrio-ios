@@ -5,14 +5,18 @@
 import Foundation
 
 class HolidayRepository {
-	func fetchHolidays(language: String) async throws -> [HolidayDay] {
-		let url = try getUrl(language: language)
+	func fetchHolidays(language: String, includeMatureContent: Bool) async throws -> [HolidayDay] {
+		let url = try getUrl(language: language, includeMatureContent: includeMatureContent)
 		let dtos: [HolidayDTO] = try await URLSession.shared.decode(from: url)
 		return Self.groupIntoHolidayDays(dtos)
 	}
 
-	private func getUrl(language: String) throws -> URL {
-		guard let url = URL(string: "\(API.baseURL)/holidays?lang=\(language)") else {
+	private func getUrl(language: String, includeMatureContent: Bool) throws -> URL {
+		var urlString = "\(API.baseURL)/holidays?lang=\(language)"
+		if includeMatureContent {
+			urlString += "&includeMatureContent=true"
+		}
+		guard let url = URL(string: urlString) else {
 			throw APIError.invalidURL
 		}
 		return url

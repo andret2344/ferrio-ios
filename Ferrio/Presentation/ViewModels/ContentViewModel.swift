@@ -23,7 +23,10 @@ class ContentViewModel: ObservableObject {
 			fetching = true
 			error = false
 
-			holidayDays = try await repository.fetchHolidays(language: API.language)
+			holidayDays = try await repository.fetchHolidays(
+				language: API.language,
+				includeMatureContent: ObservableConfig.shared.showAdultContent
+			)
 		} catch {
 			self.error = true
 			holidayDays = []

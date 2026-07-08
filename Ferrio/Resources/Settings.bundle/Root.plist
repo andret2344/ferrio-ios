@@ -10,7 +10,25 @@
 			<key>Type</key>
 			<string>PSGroupSpecifier</string>
 			<key>Title</key>
-			<string>settings</string>
+			<string>appearance</string>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSToggleSwitchSpecifier</string>
+			<key>Title</key>
+			<string>colorized-days</string>
+			<key>Key</key>
+			<string>colorizedDays</string>
+			<key>DefaultValue</key>
+			<false/>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>PSGroupSpecifier</string>
+			<key>Title</key>
+			<string>content</string>
+			<key>FooterText</key>
+			<string>adult-content-footer</string>
 		</dict>
 		<dict>
 			<key>Type</key>
@@ -26,9 +44,9 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>colorized-days</string>
+			<string>show-adult-content</string>
 			<key>Key</key>
-			<string>colorizedDays</string>
+			<string>showAdultContent</string>
 			<key>DefaultValue</key>
 			<false/>
 		</dict>

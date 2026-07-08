@@ -87,11 +87,11 @@ struct SuggestHolidayScreenView: View {
 						.pickerStyle(.wheel)
 					}
 				}
-				Text("report-notice")
-					.textFieldStyle(RoundedBorderTextFieldStyle())
-					.lineLimit(1...3)
-					.font(.footnote)
-					.foregroundStyle(.orange)
+				DisclosureGroup("submission-guidelines") {
+					Text("report-notice")
+						.font(.footnote)
+						.foregroundStyle(.secondary)
+				}
 			}
 			}
 		}
@@ -125,7 +125,7 @@ struct SuggestHolidayScreenView: View {
 						}
 					}
 				}
-				.disabled(disabledSend())
+				.disabled(viewModel.isSending || disabledSend())
 			}
 		}
 		.alert(viewModel.alertTitle, isPresented: $viewModel.showAlert) {
@@ -138,16 +138,26 @@ struct SuggestHolidayScreenView: View {
 		} message: {
 			Text(viewModel.alertMessage)
 		}
+		.overlay {
+			if viewModel.isSending {
+				SendingOverlayView()
+			}
+		}
 		.task {
 			await viewModel.fetchCountries()
 		}
 	}
 
 	func disabledSend() -> Bool {
-		if floating {
-			return name.isEmpty || date.isEmpty
+		let trimmedName = name.trimmingCharacters(in: .whitespacesAndNewlines)
+		let trimmedDescription = description.trimmingCharacters(in: .whitespacesAndNewlines)
+		if trimmedName.isEmpty || trimmedDescription.isEmpty {
+			return true
 		}
-		return name.isEmpty
+		if floating {
+			return date.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+		}
+		return false
 	}
 
 	func adjustDayForMonth() {
