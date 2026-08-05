@@ -14,7 +14,7 @@ struct HolidayDetailView: View {
 		ScrollView {
 			VStack(alignment: .leading, spacing: 12) {
 				if let countryName = holiday.countryName, let flag = holiday.flagEmoji {
-					Text("\(flag) \(countryName)")
+					Text(verbatim: "\(flag) \(countryName)")
 						.font(.subheadline)
 						.foregroundStyle(.secondary)
 				} else {

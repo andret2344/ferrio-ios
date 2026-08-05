@@ -82,7 +82,7 @@ struct ReportDetailsSheetView: View {
 			}
 
 			if let dateInfo {
-				Text("\(dateInfo) · \(countryDisplay)")
+				Text(verbatim: "\(dateInfo) · \(countryDisplay)")
 					.font(.footnote)
 					.foregroundStyle(.secondary)
 			}

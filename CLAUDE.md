@@ -191,6 +191,14 @@ literal, and code paths that need a resolved `String` use `String.localized()` (
 `Resources/Settings.bundle/{en,pl}.lproj/Root.strings` (**UTF-16LE** — keep the encoding when
 editing), and the iMessage extension has a separate catalog of its own.
 
+**A `Text` that only glues runtime values together must use `Text(verbatim:)`.** Plain
+`Text("\(a) · \(b)")` is a `LocalizedStringKey`, so Xcode extracts a key like `%@ · %@` into the
+catalog — an entry with nothing to translate, which then sits there as a permanent `new`-state CI
+warning. `verbatim:` keeps such strings out of the catalog entirely. Three of them
+(`%@ %@`, `%@  %@`, `%@ · %@`) were removed this way; edit the catalog with a script that
+round-trips the file byte-for-byte (`json.dumps(…, indent=2, separators=(',', ' : '))`, original key
+order, **no** trailing newline) or the whole 2000-line file shows up as a diff.
+
 **Keep the in-app FAQ current — but ask, don't guess.** The FAQ (`FaqCatalog`) describes
 user-facing behaviour, and a change can silently make an answer wrong or leave a new feature
 undocumented. Whenever a change touches something a user would ask about — a setting, a filter, a

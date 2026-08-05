@@ -46,7 +46,7 @@ struct SuggestHolidayScreenView: View {
 					Text("international").tag(nil as Locale.Region?)
 					ForEach(viewModel.sortedCountries, id: \.self) { c in
 						Text(
-							"\(c.identifier.asFlagEmoji())  \(translateCountry(c.identifier))"
+							verbatim: "\(c.identifier.asFlagEmoji()) \(translateCountry(c.identifier))"
 						)
 						.tag(c)
 					}
