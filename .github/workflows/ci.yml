@@ -21,7 +21,7 @@ jobs:
       DERIVED_DATA: ${{ github.workspace }}/DerivedData
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # The project needs the iOS 26 SDK. Runner images ship several Xcodes; pick the newest
       # rather than trusting the image default, which lags behind.
@@ -99,7 +99,7 @@ jobs:
 
       - name: Upload test results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: test-results
           path: ${{ env.DERIVED_DATA }}/TestResults.xcresult
@@ -112,7 +112,7 @@ jobs:
     timeout-minutes: 5
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # Every one of these has actually gone wrong in this repo, hence the guard rails.
       - name: Nothing that belongs in .gitignore is tracked
