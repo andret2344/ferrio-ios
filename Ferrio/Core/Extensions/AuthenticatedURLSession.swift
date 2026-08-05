@@ -23,11 +23,7 @@ extension URLSession {
 
 		let decoder = JSONDecoder()
 		decoder.keyDecodingStrategy = keyDecodingStrategy
-		do {
-			return try decoder.decode(T.self, from: data)
-		} catch {
-			throw error
-		}
+		return try decoder.decode(T.self, from: data)
 	}
 
 	func authenticatedPost(jsonData: Data, url: URL) async throws {

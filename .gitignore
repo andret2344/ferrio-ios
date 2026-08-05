@@ -1,5 +1,10 @@
 .DS_Store
 **/.DS_Store
-/xcuserdata/
+**/xcuserdata/
 /build/
 /graphify-out/
+
+# Firebase client config — kept out of the repo on purpose. The file is still required to
+# build; download it from the Firebase console (project settings, iOS app) into
+# Ferrio/Resources/. It is referenced by project.pbxproj, so a missing copy breaks the build.
+Ferrio/Resources/GoogleService-Info.plist

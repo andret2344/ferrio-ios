@@ -14,13 +14,16 @@ struct HolidayDTO: Decodable {
 	let country: String?
 	let url: String
 	let matureContent: Bool
+	/// Optional so that a response predating the flag still decodes instead of failing the whole load.
+	let aiGenerated: Bool?
 
 	enum CodingKeys: String, CodingKey {
 		case id, day, month, name, usual, description, country, url
 		case matureContent = "mature_content"
+		case aiGenerated = "ai_generated"
 	}
 
 	var toHoliday: Holiday {
-		Holiday(id: id, usual: usual, name: name, description: description, url: url, countryCode: country, matureContent: matureContent)
+		Holiday(id: id, usual: usual, name: name, description: description, url: url, countryCode: country, matureContent: matureContent, aiGenerated: aiGenerated ?? false)
 	}
 }

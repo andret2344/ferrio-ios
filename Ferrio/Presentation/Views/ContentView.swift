@@ -12,12 +12,22 @@ struct ContentView: View {
 	var body: some View {
 		renderView()
 			.task(id: Locale.current.identifier) { await viewModel.loadData() }
-			.alert("error", isPresented: $viewModel.error) {
+			.alert("error", isPresented: $viewModel.hasError) {
 				Button("retry") { Task { await viewModel.loadData() } }
 				Button("ok", role: .cancel) {}
 			} message: {
-				Text("load-error")
+				Text(loadErrorMessage)
 			}
+	}
+
+	/// Alerts render a single message view, so the concrete reason is appended to the generic line
+	/// — a 503 no longer looks the same as being offline. Assembled as a plain `String`: the parts
+	/// are already localized, and interpolating them into a `LocalizedStringKey` would send the
+	/// whole sentence back through the catalog as a new key.
+	private var loadErrorMessage: String {
+		let generic = "load-error".localized()
+		guard let reason = viewModel.errorMessage else { return generic }
+		return "\(generic)\n\n\(reason)"
 	}
 
 	@ViewBuilder

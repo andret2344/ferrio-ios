@@ -11,6 +11,7 @@ struct HolidayShareCardView: View {
 	let date: String
 	let holidayName: String
 	let holidayDescription: String?
+	let aiGenerated: Bool
 
 	var body: some View {
 		VStack(alignment: .leading, spacing: 0) {
@@ -31,6 +32,19 @@ struct HolidayShareCardView: View {
 					.foregroundStyle(.white.opacity(0.8))
 					.lineLimit(7)
 					.padding(.bottom, 8)
+
+				// The card leaves the app, so the AI disclosure has to travel with the generated
+				// text. It is tied to the description because that is the only AI-written part.
+				if aiGenerated {
+					HStack(spacing: 5) {
+						Image(systemName: "sparkles")
+							.font(.system(size: 11))
+						Text("ai-content")
+							.font(.system(size: 11, weight: .medium))
+					}
+					.foregroundStyle(.white.opacity(0.5))
+					.padding(.bottom, 8)
+				}
 			}
 
 			Spacer(minLength: 0)
@@ -139,32 +153,13 @@ struct HolidayDayShareCardView: View {
 
 // MARK: - Rendering
 
-@MainActor private func renderCardToImage<V: View>(_ view: V) -> UIImage? {
+@MainActor func renderCardToImage<V: View>(_ view: V) -> UIImage? {
 	let renderer = ImageRenderer(content: view)
 	renderer.scale = 3.0
 	return renderer.uiImage
 }
 
 // MARK: - Share Buttons
-
-struct ShareHolidayButton: View {
-	let date: String
-	let holidayName: String
-	let holidayDescription: String?
-
-	var body: some View {
-		Button {
-			let card = HolidayShareCardView(
-				date: date,
-				holidayName: holidayName,
-				holidayDescription: holidayDescription
-			)
-			shareImage(renderCardToImage(card))
-		} label: {
-			Image(systemName: "square.and.arrow.up")
-		}
-	}
-}
 
 struct ShareHolidayDayButton: View {
 	let date: String
@@ -182,7 +177,7 @@ struct ShareHolidayDayButton: View {
 
 // MARK: - Presentation
 
-private func shareImage(_ image: UIImage?) {
+func shareImage(_ image: UIImage?) {
 	guard let image else { return }
 	let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
 	guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,

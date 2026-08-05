@@ -33,6 +33,8 @@
 	</array>
 	<key>GIDClientID</key>
 	<string>136386894416-filk66upmah3qmht1arg6ln6vvjmj9lp.apps.googleusercontent.com</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>ConfigurationIntent</string>

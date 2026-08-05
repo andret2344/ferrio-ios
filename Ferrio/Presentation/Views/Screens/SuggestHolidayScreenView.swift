@@ -24,10 +24,8 @@ struct SuggestHolidayScreenView: View {
 
 	var body: some View {
 		Group {
-			if viewModel.countries == nil {
-				ProgressView().progressViewStyle(.circular)
-					.frame(maxWidth: .infinity, maxHeight: .infinity)
-			} else {
+			// No spinner any more: the country list is built from the system's ISO table, so it
+			// is ready before the first render.
 			Form {
 				TextField("holiday-name", text: $name, axis: .vertical)
 					.textFieldStyle(RoundedBorderTextFieldStyle())
@@ -93,7 +91,6 @@ struct SuggestHolidayScreenView: View {
 						.foregroundStyle(.secondary)
 				}
 			}
-			}
 		}
 		.navigationTitle("suggest-holiday")
 		.navigationBarTitleDisplayMode(.large)
@@ -109,7 +106,7 @@ struct SuggestHolidayScreenView: View {
 									country: country?.identifier,
 									date: date
 								),
-								holidayType: "floating"
+								holidayType: .floating
 							)
 						} else {
 							await viewModel.sendMissingSuggestion(
@@ -120,7 +117,7 @@ struct SuggestHolidayScreenView: View {
 									day: day,
 									month: month + 1
 								),
-								holidayType: "fixed"
+								holidayType: .fixed
 							)
 						}
 					}
@@ -143,8 +140,8 @@ struct SuggestHolidayScreenView: View {
 				SendingOverlayView()
 			}
 		}
-		.task {
-			await viewModel.fetchCountries()
+		.onAppear {
+			viewModel.loadCountries()
 		}
 	}
 

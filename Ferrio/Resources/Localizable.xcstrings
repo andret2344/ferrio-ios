@@ -1,1746 +1,2154 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "%@  %@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$@  %2$@"
+  "sourceLanguage" : "en",
+  "strings" : {
+    "·" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "·"
           }
+        }
+      }
+    },
+    "%@  %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@  %2$@"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%@ · %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ · %2$@"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        }
+      }
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "• %@" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• %@"
+          }
+        }
+      }
+    },
+    "+%lld more..." : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld więcej…"
+          }
+        }
+      }
+    },
+    "about-calendar" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About calendar"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O kalendarzu"
+          }
+        }
+      }
+    },
+    "about-holidays" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All holidays - even those most unusual - are an opportunity to look in a different way at people, and appreciate phenomena we usually ignore."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wszystkie święta, nawet te najbardziej nietypowe, są okazją do spojrzenia na ludzi w inny sposób i docenienia na co dzień ignorowanych zjawisk."
+          }
+        }
+      }
+    },
+    "account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konto"
+          }
+        }
+      }
+    },
+    "account-exists-generic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An account already exists with this email. Sign in with your existing method first."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konto z tym adresem e-mail już istnieje. Najpierw zaloguj się za pomocą dotychczasowej metody."
+          }
+        }
+      }
+    },
+    "account-exists-with-email-%@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An account already exists with the email %@. Sign in with your existing method to link accounts."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konto z adresem e-mail %@ już istnieje. Zaloguj się za pomocą dotychczasowej metody, aby powiązać konta."
+          }
+        }
+      }
+    },
+    "account-linking-required" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account Linking Required"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wymagane powiązanie konta"
+          }
+        }
+      }
+    },
+    "ai-content" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI-generated"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wygenerowane przez AI"
+          }
+        }
+      }
+    },
+    "ai-content-info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What does AI-generated mean?"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Co oznacza: wygenerowane przez AI?"
+          }
+        }
+      }
+    },
+    "ai-content-message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The description of this holiday was generated by artificial intelligence, based on publicly available sources.\n\nIt has not been written by a human editor and may contain inaccuracies. Verify important facts in other sources before relying on them.\n\nIf you spot a mistake, report it – every report is reviewed by a moderator."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opis tego święta został wygenerowany przez sztuczną inteligencję na podstawie ogólnodostępnych źródeł.\n\nNie napisał go człowiek i może zawierać nieścisłości. Ważne fakty warto zweryfikować w innych źródłach.\n\nJeśli zauważysz błąd, zgłoś go – każde zgłoszenie trafia do moderatora."
+          }
+        }
+      }
+    },
+    "ai-content-title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AI-generated content"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Treść wygenerowana przez AI"
+          }
+        }
+      }
+    },
+    "ALREADY_EXISTS" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Already exists"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Już istnieje"
+          }
+        }
+      }
+    },
+    "application" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Application"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aplikacja"
+          }
+        }
+      }
+    },
+    "APPLIED" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Applied"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zastosowane"
+          }
+        }
+      }
+    },
+    "back" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wróć"
+          }
+        }
+      }
+    },
+    "calendar" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calendar"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kalendarz"
+          }
+        }
+      }
+    },
+    "cancel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ %2$@"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anuluj"
           }
         }
       }
     },
-    "%@ %@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$@ %2$@"
+    "colorized-days" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Colorized days"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ %2$@"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kolorowe dni"
           }
         }
       }
     },
-    "%@ · %@": {
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "new",
-            "value": "%1$@ · %2$@"
+    "could-not-connect" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Could not connect to the server. Please try again later."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ · %2$@"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie można połączyć z serwerem. Proszę spróbować ponownie później."
           }
         }
       }
     },
-    "%lld": {
-      "localizations": {
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%lld"
+    "country" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Country"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kraj"
           }
         }
       }
     },
-    "+%lld more...": {
-      "localizations": {
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "+%lld więcej…"
+    "date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
           }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data"
+          }
         }
       }
     },
-    "ALREADY_EXISTS": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Already exists"
+    "day" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Day"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Już istnieje"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dzień"
           }
         }
       }
     },
-    "APPLIED": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Applied"
+    "DECLINED" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Declined"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zastosowane"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Odrzucone"
           }
         }
       }
     },
-    "DECLINED": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Declined"
+    "DUPLICATE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duplicate"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Odrzucone"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duplikat"
           }
         }
       }
     },
-    "DUPLICATE": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Duplicate"
+    "error" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Duplikat"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Błąd"
           }
         }
       }
     },
-    "Ferrio": {
-      "localizations": {
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ferrio"
+    "error-loading" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to load"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Błąd ładowania"
           }
         }
       }
     },
-    "ON_HOLD": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "On hold"
+    "errors" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Errors"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wstrzymane"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Błędy"
           }
         }
       }
     },
-    "OTHER": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Other"
+    "faq" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FAQ"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Inne"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FAQ"
           }
         }
       }
     },
-    "REPORTED": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reported"
+    "faq-answer-account-types" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An anonymous account lets you browse the calendar, open descriptions and search for holidays. A Google or GitHub account additionally lets you suggest new holidays, report errors and review the history of your own submissions along with their statuses and moderator notes. A disabled **Report** button, or no access to **My suggestions**, means you are using an anonymous account. You can sign in at any time without losing any of your current access."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zgłoszone"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konto anonimowe umożliwia przeglądanie kalendarza, otwieranie opisów oraz wyszukiwanie świąt. Konto Google lub GitHub dodatkowo pozwala sugerować nowe święta, zgłaszać błędy oraz przeglądać historię własnych wysyłek wraz ze statusami i notatkami moderatora. Nieaktywny przycisk **Zgłoś** lub brak dostępu do **Moich sugestii** oznacza korzystanie z konta anonimowego. Zalogowanie się jest możliwe w dowolnym momencie i nie powoduje utraty dotychczasowego dostępu."
           }
         }
       }
     },
-    "UNKNOWN": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unknown"
+    "faq-answer-colorized-days" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By default every day of the displayed month shares one neutral background. The **Colorized days** option in Settings gives each day its own colour, which makes the grid easier to scan. Days belonging to the neighbouring months stay grey, today is outlined in red, and a day with no holidays – after your filters are applied – shows a sad icon instead of the number. If there are unusually many of them, check the settings described in the first question."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nieznany"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Domyślnie wszystkie dni prezentowanego miesiąca mają to samo neutralne tło. Opcja **Kolorowe dni** w Ustawieniach nadaje każdemu dniowi własny kolor, co ułatwia orientację w siatce. Dni należące do sąsiednich miesięcy pozostają szare, dzisiejszy dzień otoczony jest czerwoną ramką, a dzień pozbawiony świąt – po uwzględnieniu ustawionych filtrów – zamiast numeru pokazuje smutną ikonę. Jeżeli takich dni jest wyjątkowo dużo, sprawdź ustawienia opisane w pierwszym pytaniu."
           }
         }
       }
     },
-    "WRONG_DATE": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wrong date"
+    "faq-answer-data-freshness" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ferrio downloads the holidays every time it is launched and after the system language changes, so the calendar always reflects the current state of the base. The descriptions are not stored on the device, which means the app needs an internet connection; when the download fails, an alert appears with a **Retry** button and the reason for the failure. The widget is the only part that keeps anything – see the question about the widget."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Błędna data"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ferrio pobiera święta przy każdym uruchomieniu oraz po zmianie języka systemu, dzięki czemu kalendarz odzwierciedla bieżący stan bazy. Opisy nie są przechowywane na urządzeniu, co oznacza, że aplikacja wymaga połączenia z internetem; w razie niepowodzenia pobierania pojawia się komunikat z przyciskiem **Ponów** oraz przyczyną błędu. Jedynym elementem, który cokolwiek zapamiętuje, jest widget – patrz pytanie o widget."
           }
         }
       }
     },
-    "WRONG_DESCRIPTION": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wrong description"
+    "faq-answer-delete-account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An anonymous account is deleted automatically the moment you sign out and leaves no data behind. For a Google or GitHub account, please write to the address given in the privacy policy: [ferrio.app/en/privacy](https://ferrio.app/en/privacy)."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Błędny opis"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konto anonimowe usuwane jest automatycznie w chwili wylogowania i nie pozostawia żadnych danych. W przypadku konta Google lub GitHub prosimy o kontakt na adres wskazany w polityce prywatności: [ferrio.app/pl/privacy](https://ferrio.app/pl/privacy)."
           }
         }
       }
     },
-    "WRONG_NAME": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wrong name"
+    "faq-answer-hidden-holidays" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Two options in the system Settings app, under **Ferrio**, control what is displayed; both are off by default. **Show usual holidays** brings in widely known holidays, such as New Year's Eve. **Show adult content** reveals holidays marked as 18+ and should only be enabled by adults."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Błędna nazwa"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widoczność świąt zależy od dwóch opcji w Ustawieniach systemowych, w sekcji **Ferrio**; obie są domyślnie wyłączone. Opcja **Pokazuj święta typowe** włącza święta powszechnie znane, takie jak Sylwester. Opcja **Pokazuj treści dla dorosłych** odsłania święta oznaczone jako 18+ i powinna być włączana wyłącznie przez osoby pełnoletnie."
           }
         }
       }
     },
-    "about-calendar": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "About calendar"
+    "faq-answer-missing-holiday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The holiday base is moderated continuously and grows from user submissions and from holidays found by the moderators. If a specific holiday is missing, suggest it: the **Reports** tab » **Suggest a holiday**. Attaching a reliable source considerably speeds up the review."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "O kalendarzu"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baza świąt podlega stałej moderacji i jest rozbudowywana na podstawie zgłoszeń użytkowników oraz świąt wyszukiwanych przez moderatorów. Jeżeli brakuje konkretnego święta, zasugeruj je: zakładka **Zgłoszenia** » **Zasugeruj święto**. Dołączenie wiarygodnego źródła znacząco przyspiesza rozpatrzenie sugestii."
           }
         }
       }
     },
-    "about-holidays": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "All holidays - even those most unusual - are an opportunity to look in a different way at people, and appreciate phenomena we usually ignore."
+    "faq-answer-rejected" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every rejection carries a moderator note with the reason – open the entry in **My suggestions** and read the note. The most common reason is the lack of a reliable source confirming that the holiday exists."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wszystkie święta, nawet te najbardziej nietypowe, są okazją do spojrzenia na ludzi w inny sposób i docenienia na co dzień ignorowanych zjawisk."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Każde odrzucenie zawiera komentarz moderatora z uzasadnieniem – otwórz pozycję w **Moich sugestiach** i zapoznaj się z notatką. Najczęstszą przyczyną jest brak wiarygodnego źródła potwierdzającego istnienie święta."
           }
         }
       }
     },
-    "account": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Account"
+    "faq-answer-report-error" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open the holiday and choose **Report**. The report goes to a moderator and the decision is visible in the **Reports** tab » **My reports**. A review usually takes up to a week; for complex reports, or when a moderator is away, it can take up to a month. Simple errors are corrected by hand, more complex ones require the description to be generated again."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Konto"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otwórz święto i wybierz **Zgłoś**. Zgłoszenie trafia do moderatora, a jego decyzja widoczna jest w zakładce **Zgłoszenia** » **Moje zgłoszenia**. Rozpatrzenie zajmuje zwykle do tygodnia; w przypadku zgłoszeń złożonych lub nieobecności moderatora może potrwać do miesiąca. Proste błędy poprawiane są ręcznie, bardziej złożone wymagają ponownego wygenerowania opisu."
           }
         }
       }
     },
-    "account-exists-generic": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "An account already exists with this email. Sign in with your existing method first."
+    "faq-answer-statuses" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**Reported** means the submission is awaiting a moderator decision, and **On hold** that the moderator has withheld that decision. **Applied** means it was accepted and the holiday is already in the calendar; **Already exists** has the same effect, for holidays that were in the calendar beforehand. **Declined** means it was not accepted, and **Duplicate** that an identical submission arrived earlier. **Unknown** is a state the app does not recognize; if it appears, please report it as an error.\n\nEntries carrying a moderator note are marked with a comment icon, which opens the note."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Konto z tym adresem e-mail już istnieje. Najpierw zaloguj się za pomocą dotychczasowej metody."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status **Zgłoszone** oznacza, że pozycja oczekuje na decyzję moderatora, a **Wstrzymane**, że moderator wstrzymał tę decyzję. **Zastosowane** oznacza przyjęcie i obecność święta w kalendarzu; ten sam skutek ma **Już istnieje**, gdy święto znajdowało się w nim wcześniej. **Odrzucone** oznacza nieprzyjęcie, a **Duplikat**, że identyczne zgłoszenie wpłynęło wcześniej. **Nieznany** to stan nierozpoznany przez aplikację; jeżeli się pojawi, prosimy o zgłoszenie błędu.\n\nPozycje opatrzone notatką moderatora oznaczone są ikoną komentarza, która otwiera jej treść."
           }
         }
       }
     },
-    "account-exists-with-email-%@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "An account already exists with the email %@. Sign in with your existing method to link accounts."
+    "faq-answer-suggest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose the **Reports** tab » **Suggest a holiday**, then set the holiday type: **fixed** (always falls on the same day, for example 2 August) or **floating** (the date follows a rule, for example the second Tuesday of the month)."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Konto z adresem e-mail %@ już istnieje. Zaloguj się za pomocą dotychczasowej metody, aby powiązać konta."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz zakładkę **Zgłoszenia** » **Zasugeruj święto**, a następnie określ typ święta: **nieruchome** (przypada zawsze tego samego dnia, na przykład 2 sierpnia) albo **ruchome** (data wyznaczana regułą, na przykład drugi wtorek miesiąca)."
           }
         }
       }
     },
-    "account-linking-required": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Account Linking Required"
+    "faq-answer-who-writes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every description in Ferrio is generated by artificial intelligence from publicly available sources. They are under no editorial supervision and have no author, so treat them as a starting point rather than a source: the model can get a date, a name or a historical circumstance wrong while sounding just as confident as when it is right. Verify important facts elsewhere and report any mistakes you notice – they do get corrected.\n\nFormally: descriptions created by artificial intelligence carry the \"AI-generated\" label, in line with the transparency requirements of Regulation (EU) 2024/1689 (the AI Act)."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wymagane powiązanie konta"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opisy świąt w Ferrio są w całości generowane przez sztuczną inteligencję na podstawie ogólnodostępnych źródeł. Nie powstają pod nadzorem redakcyjnym ani nie mają autora, dlatego należy traktować je jako punkt wyjścia, a nie jako źródło: model może pomylić datę, nazwisko lub okoliczności historyczne, zachowując przy tym pozory pewności. Istotne informacje warto zweryfikować w innych źródłach, a zauważone błędy zgłosić – są one poprawiane.\n\nFormalnie: opisy tworzone przez sztuczną inteligencję są oznaczone etykietą \"Wygenerowane przez AI\", zgodnie z wymogami przejrzystości rozporządzenia (UE) 2024/1689 (AI Act)."
           }
         }
       }
     },
-    "application": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Application"
+    "faq-answer-widget" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The widget rebuilds itself at midnight and shares the settings of the app, so a change to the usual or adult holidays reaches it as well. It also requires a signed-in account: when you are signed out it shows no holidays.\n\nIf the widget cannot reach the server, it keeps showing the holidays it last managed to download for that same date, rather than an empty day, and tries again after about a quarter of an hour. Only when it has nothing at all to fall back on does it say the holidays could not be loaded. So a widget showing an empty day really is an empty day, not a connection problem.\n\nIf it keeps showing stale content, open the app, and should that not help, remove the widget from the screen and add it again – this is the most reliable way to force a rebuild."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aplikacja"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget odbudowuje się o północy i korzysta z ustawień aplikacji, więc zmiana świąt typowych lub treści dla dorosłych obejmuje również jego. Wymaga też zalogowanego konta: po wylogowaniu nie prezentuje świąt.\n\nJeżeli widget nie może połączyć się z serwerem, zamiast pustego dnia pokazuje święta, które ostatnio udało mu się pobrać dla tej samej daty, i ponawia próbę po kilkunastu minutach. Dopiero gdy nie ma czego pokazać, informuje o nieudanym wczytaniu. Pusty dzień na widgecie oznacza więc naprawdę pusty dzień, a nie problem z połączeniem.\n\nJeżeli uporczywie pokazuje nieaktualną zawartość, uruchom aplikację, a gdy to nie przyniesie skutku, usuń widget z ekranu i dodaj go ponownie – jest to najpewniejszy sposób wymuszenia odbudowy."
           }
         }
       }
     },
-    "back": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Back"
+    "faq-question-account-types" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is the difference between an anonymous account and a Google or GitHub account?"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wróć"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czym różni się konto anonimowe od konta Google lub GitHub?"
           }
         }
       }
     },
-    "calendar": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Calendar"
+    "faq-question-colorized-days" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What do the colours in the calendar mean?"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kalendarz"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Co oznaczają kolory w kalendarzu?"
           }
         }
       }
     },
-    "cancel": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cancel"
+    "faq-question-data-freshness" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How do I know my data is up to date?"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Anuluj"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skąd wiadomo, że mam aktualne dane?"
           }
         }
       }
     },
-    "check-it-yourself": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Check it yourself!"
+    "faq-question-delete-account" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Can I delete my account and data?"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sprawdź sam!"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Czy mogę usunąć konto i dane?"
           }
         }
       }
     },
-    "colorized-days": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Colorized days"
+    "faq-question-hidden-holidays" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Some holidays are missing from the calendar. Why?"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kolorowe dni"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie widzę części świąt. Dlaczego?"
           }
         }
       }
     },
-    "could-not-connect": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Could not connect to the server. Please try again later."
+    "faq-question-missing-holiday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Why is holiday X missing?"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nie można połączyć z serwerem. Proszę spróbować ponownie później."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dlaczego brakuje święta X?"
           }
         }
       }
     },
-    "country": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Country"
+    "faq-question-rejected" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Why was my suggestion declined?"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Kraj"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dlaczego moja sugestia została odrzucona?"
           }
         }
       }
     },
-    "date": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Date"
+    "faq-question-report-error" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I found an error in a description or a date. What should I do?"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Data"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Znalazłem błąd w opisie albo w dacie. Co zrobić?"
           }
         }
       }
     },
-    "day": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Day"
+    "faq-question-statuses" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What do the statuses of my reports and suggestions mean?"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dzień"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Co oznaczają statusy moich zgłoszeń i sugestii?"
           }
         }
       }
     },
-    "error": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Error"
+    "faq-question-suggest" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "How do I suggest a new holiday?"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Błąd"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jak zasugerować nowe święto?"
           }
         }
       }
     },
-    "error-loading": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Failed to load"
+    "faq-question-who-writes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Who writes the holiday descriptions?"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Błąd ładowania"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kto pisze opisy świąt?"
           }
         }
       }
     },
-    "errors": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Errors"
+    "faq-question-widget" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The widget is not showing today."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Błędy"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widget nie pokazuje dzisiejszego dnia."
+          }
+        }
+      }
+    },
+    "Ferrio" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ferrio"
+          }
+        }
+      }
+    },
+    "ferrio.app" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ferrio.app"
           }
         }
       }
     },
-    "ferrio.app": {
-      "localizations": {
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "ferrio.app"
+    "holiday-description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Holiday description"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opis święta"
           }
         }
       }
     },
-    "holiday-description": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Holiday description"
+    "holiday-floating" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Floating holiday"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opis święta"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Święto ruchome"
           }
         }
       }
     },
-    "holiday-fixed": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fixed holiday"
+    "holiday-name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Holiday name"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Święto niechome"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa święta"
           }
         }
       }
     },
-    "holiday-floating": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Floating holiday"
+    "holidays-fixed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fixed holidays"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Święto ruchome"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Święta niechome"
           }
         }
       }
     },
-    "holiday-name": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Holiday name"
+    "holidays-floating" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Floating holidays"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nazwa święta"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Święta ruchome"
           }
         }
       }
     },
-    "holidays-fixed": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fixed holidays"
+    "international" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "International"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Święta niechome"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Międzynarodowe"
           }
         }
       }
     },
-    "holidays-floating": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Floating holidays"
+    "invalid-data-format" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid data format"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Święta ruchome"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Niepoprawny format danych"
           }
         }
       }
     },
-    "include-usual": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Include usual holidays"
+    "invalid-url" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid URL. Please try again later."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dodaj święta typowe"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieprawidłowy adres URL. Proszę spróbować ponownie później."
           }
         }
       }
     },
-    "international": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "International"
+    "link-accounts-failed-%@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to link accounts: %@"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Międzynarodowe"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie udało się powiązać kont: %@"
           }
         }
       }
     },
-    "invalid-data-format": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Invalid data format"
+    "load-error" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to load holidays. We're working on fixing the issue. Sorry for the inconvenience."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Niepoprawny format danych"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie udało się załadować świąt. Pracujemy nad rozwiązaniem problemu. Przepraszamy za niedogodności."
           }
         }
       }
     },
-    "invalid-url": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Invalid URL. Please try again later."
+    "log-out" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log out"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nieprawidłowy adres URL. Proszę spróbować ponownie później."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyloguj"
           }
         }
       }
     },
-    "link-accounts-failed-%@": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Failed to link accounts: %@"
+    "logout-confirm" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to log out?"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nie udało się powiązać kont: %@"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Na pewno chcesz się wylogować?"
           }
         }
       }
     },
-    "load-error": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unable to load holidays. We're working on fixing the issue. Sorry for the inconvenience."
+    "moderator-comment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moderator comment"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nie udało się załadować świąt. Pracujemy nad rozwiązaniem problemu. Przepraszamy za niedogodności."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Komentarz moderatora"
           }
         }
       }
     },
-    "log-out": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Log out"
+    "month" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Month"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wyloguj"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Miesiąc"
           }
         }
       }
     },
-    "logout-confirm": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Are you sure you want to log out?"
+    "more" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "More"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Na pewno chcesz się wylogować?"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Więcej"
           }
         }
       }
     },
-    "moderator-comment": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Moderator comment"
+    "my-reports" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My reports"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Komentarz moderatora"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moje zgłoszenia"
           }
         }
       }
     },
-    "month": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Month"
+    "my-suggestions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My suggestions"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Miesiąc"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Moje sugestie"
           }
         }
       }
     },
-    "more": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "More"
+    "no-description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No description"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Więcej"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak opisu"
           }
         }
       }
     },
-    "my-reports": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "My reports"
+    "no-reports" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No reports"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Moje zgłoszenia"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak raportów"
           }
         }
       }
     },
-    "my-suggestions": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "My suggestions"
+    "no-results" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No results"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Moje sugestie"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak wyników"
           }
         }
       }
     },
-    "no-description": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No description"
+    "no-results-description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Can't find such a holiday. Try again."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Brak opisu"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nie można znaleźć żadnego święta. Spróbuj ponownie."
           }
         }
       }
     },
-    "no-reports": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No reports"
+    "no-suggestions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No suggestions"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Brak raportów"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak sugestii"
           }
         }
       }
     },
-    "no-results": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No results"
+    "no-unusual-holidays" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No unusual holidays."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Brak wyników"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak nietypowych świąt."
           }
         }
       }
     },
-    "no-results-description": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Can't find such a holiday. Try again."
+    "not-authenticated" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You must be signed in to perform this action."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Nie można znaleźć żadnego święta. Spróbuj ponownie."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Musisz być zalogowany, aby wykonać tę akcję."
           }
         }
       }
     },
-    "no-suggestions": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No suggestions"
+    "ok" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Brak sugestii"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         }
       }
     },
-    "no-unusual-holidays": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "No unusual holidays."
+    "ON_HOLD" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On hold"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Brak nietypowych świąt."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wstrzymane"
           }
         }
       }
     },
-    "not-authenticated": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "You must be signed in to perform this action."
+    "OTHER" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Musisz być zalogowany, aby wykonać tę akcję."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inne"
           }
         }
       }
     },
-    "ok": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "OK"
+    "random" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Random"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "OK"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Losowo"
           }
         }
       }
     },
-    "random": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Random"
+    "reason" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reason"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Losowo"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Powód"
           }
         }
       }
     },
-    "reason": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reason"
+    "report" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Report"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Powód"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zgłoś"
           }
         }
       }
     },
-    "report": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Report"
+    "report-description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zgłoś"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opis"
           }
         }
       }
     },
-    "report-description": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Description"
+    "report-description-placeholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Describe the issue..."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opis"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opisz problem..."
           }
         }
       }
     },
-    "report-description-placeholder": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Describe the issue..."
+    "report-details" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Details"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Opisz problem..."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szczegóły"
           }
         }
       }
     },
-    "report-details": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Details"
+    "report-holiday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Report holiday"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Szczegóły"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zgłoś święto"
           }
         }
       }
     },
-    "report-holiday": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Report holiday"
+    "report-holiday-subject" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reporting holiday"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zgłoś święto"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zgłaszane święto"
           }
         }
       }
     },
-    "report-holiday-subject": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reporting holiday"
+    "report-notice" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thanks for helping the calendar grow! Every submission is reviewed by hand, so please keep it meaningful - spam, submissions without substantive content, and duplicate or repeated submissions may be removed without prior notice. Thank you for your understanding and for making the app better!"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zgłaszane święto"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dziękujemy, że pomagasz rozwijać kalendarz! Każde zgłoszenie sprawdzamy ręcznie, dlatego prosimy o wartościowe treści - spam, zgłoszenia niemające merytorycznej treści oraz powtarzające się lub zduplikowane mogą zostać usunięte bez wcześniejszego ostrzeżenia. Dziękujemy za zrozumienie i pomoc w ulepszaniu aplikacji!"
           }
         }
       }
     },
-    "report-notice": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Thanks for helping the calendar grow! Every submission is reviewed by hand, so please keep it meaningful - spam, submissions without substantive content, and duplicate or repeated submissions may be removed without prior notice. Thank you for your understanding and for making the app better!"
+    "report-sent" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thank you!"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dziękujemy, że pomagasz rozwijać kalendarz! Każde zgłoszenie sprawdzamy ręcznie, dlatego prosimy o wartościowe treści - spam, zgłoszenia niemające merytorycznej treści oraz powtarzające się lub zduplikowane mogą zostać usunięte bez wcześniejszego ostrzeżenia. Dziękujemy za zrozumienie i pomoc w ulepszaniu aplikacji!"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dziękujemy!"
           }
         }
       }
     },
-    "report-sent": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Thank you!"
+    "report-sent-description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your report has been submitted. Our team will review it shortly."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dziękujemy!"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Twoje zgłoszenie zostało przesłane. Nasz zespół wkrótce je zweryfikuje."
           }
         }
       }
     },
-    "report-sent-description": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Your report has been submitted. Our team will review it shortly."
+    "REPORTED" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reported"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Twoje zgłoszenie zostało przesłane. Nasz zespół wkrótce je zweryfikuje."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zgłoszone"
           }
         }
       }
     },
-    "reports": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Reports"
+    "reports" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reports"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zgłoszenia"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zgłoszenia"
           }
         }
       }
     },
-    "retry": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Retry"
+    "retry" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retry"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ponów"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ponów"
           }
         }
       }
     },
-    "review": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Review"
+    "review" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Weryfikacja"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weryfikacja"
           }
         }
       }
     },
-    "search": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search"
+    "search" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wyszukaj"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyszukaj"
           }
         }
       }
     },
-    "search-across-%lld": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Search across %lld holidays..."
+    "search-across-%lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search across %lld holidays..."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Szukaj wśród %lld świąt..."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szukaj wśród %lld świąt..."
           }
         }
       }
     },
-    "select-missing-holidays-type": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Select missing holidays type"
+    "select-missing-holidays-type" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select missing holidays type"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wybierz typ brakujących świąt"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz typ brakujących świąt"
           }
         }
       }
     },
-    "select-reported-holidays-type": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Select reported holidays type"
+    "select-reported-holidays-type" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select reported holidays type"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wybierz typ zgłoszonych świąt"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wybierz typ zgłoszonych świąt"
           }
         }
       }
     },
-    "send": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Send"
+    "send" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wyślij"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wyślij"
           }
         }
       }
     },
-    "sending": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sending…"
+    "sending" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sending…"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wysyłanie…"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wysyłanie…"
           }
         }
       }
     },
-    "sent": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sent!"
+    "sent" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sent!"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wysłano."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wysłano."
           }
         }
       }
     },
-    "settings": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Settings"
+    "share" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ustawienia"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Udostępnij"
           }
         }
       }
     },
-    "share": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Share"
+    "signin-anonymous" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anonymous login"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Udostępnij"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anonimowe logowanie"
           }
         }
       }
     },
-    "signin-anonymous": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Anonymous login"
+    "signin-anonymous-alert" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By logging in anonymously, you won't be able to fully utilize the application's features, for instance, reporting mistakes."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Anonimowe logowanie"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Logując się anonimowo, nie będziesz w stanie w pełni wykorzystać funkcji aplikacji, przykładowo, zgłaszanie błędów."
           }
         }
       }
     },
-    "signin-anonymous-alert": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "By logging in anonymously, you won't be able to fully utilize the application's features, for instance, reporting mistakes."
+    "signin-github" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in with GitHub"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Logując się anonimowo, nie będziesz w stanie w pełni wykorzystać funkcji aplikacji, przykładowo, zgłaszanie błędów."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zaloguj się z GitHub"
           }
         }
       }
     },
-    "signin-github": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sign in with GitHub"
+    "signin-google" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign in with Google"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zaloguj się z GitHub"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zaloguj się z Google"
           }
         }
       }
     },
-    "signin-google": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sign in with Google"
+    "start-searching" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type something to start searching"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zaloguj się z Google"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wpisz swoje wyszukiwanie"
           }
         }
       }
     },
-    "start-searching": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Type something to start searching"
+    "status" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wpisz swoje wyszukiwanie"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
           }
         }
       }
     },
-    "status": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Status"
+    "submission" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Submission"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Status"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zgłoszenie"
           }
         }
       }
     },
-    "submission": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Submission"
+    "submission-guidelines" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Submission guidelines"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zgłoszenie"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zasady zgłaszania"
           }
         }
       }
     },
-    "submission-guidelines": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Submission guidelines"
+    "suggest-holiday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suggest a holiday"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zasady zgłaszania"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zasugeruj święto"
           }
         }
       }
     },
-    "submitted-at": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Submitted"
+    "suggestion-sent" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suggestion sent"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wysłano"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sugestia wysłana"
           }
         }
       }
     },
-    "suggest-holiday": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Suggest a holiday"
+    "suggestion-sent-description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thank you for your suggestion! Our team will review it and, if approved, it will appear in the calendar."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zasugeruj święto"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dziękujemy za sugestię! Nasz zespół ją zweryfikuje i, jeśli zostanie zatwierdzona, pojawi się w kalendarzu."
           }
         }
       }
     },
-    "suggestion-sent": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Suggestion sent"
+    "suggestions" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suggestions"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sugestia wysłana"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sugestie"
           }
         }
       }
     },
-    "suggestion-sent-description": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Thank you for your suggestion! Our team will review it and, if approved, it will appear in the calendar."
+    "today" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dziękujemy za sugestię! Nasz zespół ją zweryfikuje i, jeśli zostanie zatwierdzona, pojawi się w kalendarzu."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dzisiaj"
           }
         }
       }
     },
-    "suggestions": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Suggestions"
+    "UNKNOWN" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unknown"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sugestie"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nieznany"
           }
         }
       }
     },
-    "today": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Today"
+    "unsuccessful-request-%lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The request was unsuccessful. Please try again later. Response code: %lld."
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dzisiaj"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wysyłanie nieudane. Proszę spróbować ponownie później. Kod odpowiedzi: %lld."
           }
         }
       }
     },
-    "unsuccessful-request-%lld": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "The request was unsuccessful. Please try again later. Response code: %lld."
+    "view-holiday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View holiday"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Wysyłanie nieudane. Proszę spróbować ponownie później. Kod odpowiedzi: %lld."
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zobacz święto"
           }
         }
       }
     },
-    "view-holiday": {
-      "extractionState": "manual",
-      "localizations": {
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "View holiday"
+    "WRONG_DATE" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wrong date"
           }
         },
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zobacz święto"
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Błędna data"
           }
         }
       }
     },
-    "·": {
-      "localizations": {
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "·"
+    "WRONG_DESCRIPTION" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wrong description"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Błędny opis"
           }
         }
       }
     },
-    "• %@": {
-      "localizations": {
-        "pl": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "• %@"
+    "WRONG_NAME" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wrong name"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Błędna nazwa"
           }
         }
       }
     }
   },
-  "version": "1.0"
+  "version" : "1.0"
 }

@@ -6,6 +6,7 @@ import SwiftUI
 
 struct HolidayDetailView: View {
 	@State private var showReportSheet = false
+	@State private var showAiInfoAlert = false
 	let holiday: Holiday
 	let dateText: String
 
@@ -35,6 +36,12 @@ struct HolidayDetailView: View {
 		}
 		.safeAreaInset(edge: .bottom) {
 			VStack(spacing: 0) {
+				// Pinned above the divider rather than placed after the description: the AI
+				// disclosure has to stay visible without scrolling, and it describes the text
+				// above it, not the action buttons below.
+				if holiday.aiGenerated {
+					aiBadge
+				}
 				Divider()
 				HStack(spacing: 0) {
 					actionButton(label: "share", systemImage: "square.and.arrow.up") {
@@ -54,6 +61,30 @@ struct HolidayDetailView: View {
 		.sheet(isPresented: $showReportSheet) {
 			ReportHolidaySheetView(holiday: holiday)
 		}
+		.alert("ai-content-title", isPresented: $showAiInfoAlert) {
+			Button("ok", role: .cancel) {}
+		} message: {
+			Text("ai-content-message")
+		}
+	}
+
+	private var aiBadge: some View {
+		HStack(spacing: 6) {
+			Image(systemName: "sparkles")
+			Text("ai-content")
+			Button {
+				showAiInfoAlert = true
+			} label: {
+				Image(systemName: "questionmark.circle")
+			}
+			.buttonStyle(.plain)
+			.accessibilityLabel("ai-content-info")
+			Spacer(minLength: 0)
+		}
+		.font(.caption)
+		.foregroundStyle(.tertiary)
+		.padding(.horizontal)
+		.padding(.vertical, 8)
 	}
 
 	private var descriptionView: some View {
@@ -83,19 +114,9 @@ struct HolidayDetailView: View {
 		let card = HolidayShareCardView(
 			date: dateText,
 			holidayName: holiday.nameWithFlag,
-			holidayDescription: holiday.description.isEmpty ? nil : holiday.description
+			holidayDescription: holiday.description.isEmpty ? nil : holiday.description,
+			aiGenerated: holiday.aiGenerated
 		)
-		let renderer = ImageRenderer(content: card)
-		renderer.scale = 3.0
-		guard let image = renderer.uiImage else { return }
-		let activityVC = UIActivityViewController(activityItems: [image], applicationActivities: nil)
-		guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-			  let rootVC = windowScene.keyWindow?.rootViewController else { return }
-		var topVC = rootVC
-		while let presented = topVC.presentedViewController {
-			topVC = presented
-		}
-		activityVC.popoverPresentationController?.sourceView = topVC.view
-		topVC.present(activityVC, animated: true)
+		shareImage(renderCardToImage(card))
 	}
 }

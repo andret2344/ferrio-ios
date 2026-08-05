@@ -9,7 +9,14 @@ import SwiftUI
 class ContentViewModel: ObservableObject {
 	@Published var fetching: Bool = true
 	@Published var holidayDays = [HolidayDay]()
-	@Published var error: Bool = false
+	/// Holds the reason, not just the fact: `APIError` already carries a localized description
+	/// (status code, "not authenticated", …) and the alert used to throw it away.
+	@Published var errorMessage: String?
+
+	var hasError: Bool {
+		get { errorMessage != nil }
+		set { if !newValue { errorMessage = nil } }
+	}
 
 	private let repository = HolidayRepository()
 
@@ -21,14 +28,14 @@ class ContentViewModel: ObservableObject {
 		defer { fetching = false }
 		do {
 			fetching = true
-			error = false
+			errorMessage = nil
 
 			holidayDays = try await repository.fetchHolidays(
 				language: API.language,
 				includeMatureContent: ObservableConfig.shared.showAdultContent
 			)
 		} catch {
-			self.error = true
+			errorMessage = error.localizedDescription
 			holidayDays = []
 		}
 	}

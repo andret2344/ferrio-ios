@@ -83,7 +83,7 @@ struct ReportHolidaySheetView: View {
 								reportType: reportType,
 								description: description
 							)
-							let holidayType = holiday.isFloating ? "floating" : "fixed"
+							let holidayType = HolidayType(isFloating: holiday.isFloating)
 							await viewModel.sendReport(reportPayload: payload, holidayType: holidayType)
 						}
 					}

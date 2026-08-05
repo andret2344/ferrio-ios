@@ -1,174 +1,191 @@
 {
-  "sourceLanguage" : "en",
-  "strings" : {
-    "•" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "•"
+  "sourceLanguage": "en",
+  "strings": {
+    "Ferrio": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ferrio"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "•"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ferrio"
           }
         }
       }
     },
-    "Ferrio" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ferrio"
+    "no-unusual-holidays": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "No unusual holidays."
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ferrio"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Brak nietypowych świąt."
           }
         }
       }
     },
-    "no-unusual-holidays" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No unusual holidays."
+    "perfect-day": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Perfect day!"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Brak nietypowych świąt."
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Idealny dzień!"
           }
         }
       }
     },
-    "perfect-day" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Perfect day!"
+    "widget-colorized": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Colorized"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Idealny dzień!"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Kolorowe tło"
           }
         }
       }
     },
-    "widget-colorized" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Colorized"
+    "widget-configuration": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Configuration"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kolorowe tło"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konfiguracja"
           }
         }
       }
     },
-    "widget-configuration" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Configuration"
+    "widget-description": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Check what holidays are on a given date."
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Konfiguracja"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sprawdź, jakie święta są danego dnia."
           }
         }
       }
     },
-    "widget-description" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Check what holidays are on a given date."
+    "widget-load-failed": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Could not load holidays."
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sprawdź, jakie święta są danego dnia."
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nie udało się wczytać świąt."
           }
         }
       }
     },
-    "widget-login-required" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Log in to see holidays"
+    "widget-login-required": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Log in to see holidays"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zaloguj się, aby zobaczyć święta"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zaloguj się, aby zobaczyć święta"
           }
         }
       }
     },
-    "widget-plus-days" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plus days"
+    "widget-plus-days": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plus days"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Przesunięcie dni"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Przesunięcie dni"
           }
         }
       }
     },
-    "widget-show-weekday" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show weekday"
+    "widget-show-weekday": {
+      "extractionState": "manual",
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Show weekday"
           }
         },
-        "pl" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pokaż dzień tygodnia"
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pokaż dzień tygodnia"
+          }
+        }
+      }
+    },
+    "•": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "•"
+          }
+        },
+        "pl": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "•"
           }
         }
       }
     }
   },
-  "version" : "1.0"
+  "version": "1.0"
 }

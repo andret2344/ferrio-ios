@@ -32,17 +32,21 @@ struct Provider: AppIntentTimelineProvider {
 			description: "",
 			url: "",
 			countryCode: "",
-			matureContent: false
+			matureContent: false,
+			aiGenerated: false
 		)
-		return WidgetEntry(date: Date(), holidayDay: HolidayDay(day: 1, month: 1, holidays: [holiday]), dayOffset: 0, colorized: false, includeUsual: false, showAdult: false, showWeekday: false, isLoggedIn: true)
+		return WidgetEntry(date: Date(), holidayDay: HolidayDay(day: 1, month: 1, holidays: [holiday]), dayOffset: 0, colorized: false, includeUsual: false, showAdult: false, showWeekday: false, isLoggedIn: true, loadFailed: false)
 	}
 
 	func snapshot(for configuration: ConfigurationAppIntent, in context: Context) async -> WidgetEntry {
 		guard ObservableConfig.isRealUserLoggedIn else {
 			return WidgetEntry.loggedOut()
 		}
-		let holidayDay = await fetchHolidayDay(plusDays: 0)
-		return WidgetEntry(date: Date(), holidayDay: holidayDay, dayOffset: 0, colorized: false, includeUsual: ObservableConfig.shared.includeUsual, showAdult: ObservableConfig.shared.showAdultContent, showWeekday: configuration.showWeekday, isLoggedIn: true)
+		let result = await fetchHolidayDay(plusDays: 0)
+		// Colorization has to follow the configuration here too: while the widget is being edited
+		// the snapshot is rebuilt with the pending settings, and hardcoding `false` meant the
+		// preview never reflected the switch the user had just flipped.
+		return WidgetEntry(date: Date(), holidayDay: result.day, dayOffset: 0, colorized: configuration.colorized, includeUsual: ObservableConfig.shared.includeUsual, showAdult: ObservableConfig.shared.showAdultContent, showWeekday: configuration.showWeekday, isLoggedIn: true, loadFailed: result.failed)
 	}
 
 	func timeline(for configuration: ConfigurationAppIntent, in context: Context) async -> Timeline<WidgetEntry> {
@@ -52,19 +56,53 @@ struct Provider: AppIntentTimelineProvider {
 
 		guard ObservableConfig.isRealUserLoggedIn else {
 			let entry = WidgetEntry(date: now, holidayDay: nil, dayOffset: 0, colorized: false,
-				includeUsual: ObservableConfig.shared.includeUsual, showAdult: ObservableConfig.shared.showAdultContent, showWeekday: configuration.showWeekday, isLoggedIn: false)
+				includeUsual: ObservableConfig.shared.includeUsual, showAdult: ObservableConfig.shared.showAdultContent, showWeekday: configuration.showWeekday, isLoggedIn: false, loadFailed: false)
 			return Timeline(entries: [entry], policy: .after(nextMidnight))
 		}
 		let plusDays = configuration.plusDays
-		let holidayDay = await fetchHolidayDay(plusDays: plusDays)
-		let entry = WidgetEntry(date: now, holidayDay: holidayDay, dayOffset: plusDays, colorized: configuration.colorized, includeUsual: ObservableConfig.shared.includeUsual, showAdult: ObservableConfig.shared.showAdultContent, showWeekday: configuration.showWeekday, isLoggedIn: true)
-		return Timeline(entries: [entry], policy: .after(nextMidnight))
+		let result = await fetchHolidayDay(plusDays: plusDays)
+		let entry = WidgetEntry(date: now, holidayDay: result.day, dayOffset: plusDays, colorized: configuration.colorized, includeUsual: ObservableConfig.shared.includeUsual, showAdult: ObservableConfig.shared.showAdultContent, showWeekday: configuration.showWeekday, isLoggedIn: true, loadFailed: result.failed)
+		// Waiting until midnight after a failure would leave the widget broken all day.
+		let refresh = result.failed ? min(now.addingTimeInterval(15 * 60), nextMidnight) : nextMidnight
+		return Timeline(entries: [entry], policy: .after(refresh))
 	}
 
-	private func fetchHolidayDay(plusDays: Int) async -> HolidayDay? {
-		guard let url = getUrl(plusDays: plusDays) else { return nil }
-		guard let apiHolidays = try? await URLSession.shared.decode([HolidayDTO].self, from: url) else { return nil }
-		return HolidayRepository.groupIntoHolidayDays(apiHolidays).first
+	/// - Returns: the day to render, and whether the refresh failed with nothing to fall back on.
+	///   A cached hit is reported as a success: it is real data, just not fresh.
+	private func fetchHolidayDay(plusDays: Int) async -> (day: HolidayDay?, failed: Bool) {
+		guard let url = getUrl(plusDays: plusDays), let dayKey = Self.dayKey(plusDays: plusDays) else {
+			return (nil, true)
+		}
+		if let payload = await download(from: url) {
+			HolidayDayCache.store(payload, forDay: dayKey)
+			return (Self.holidayDay(from: payload), false)
+		}
+		// `try?` used to turn every timeout, 500 and offline state into `nil`, which renders
+		// exactly like a genuinely empty day. Fall back to the last successful response for this
+		// same date instead, and only admit failure when there is nothing cached.
+		if let cached = HolidayDayCache.payload(forDay: dayKey) {
+			return (Self.holidayDay(from: cached), false)
+		}
+		return (nil, true)
+	}
+
+	private func download(from url: URL) async -> Data? {
+		guard let (data, response) = try? await URLSession.shared.data(from: url),
+			  let http = response as? HTTPURLResponse,
+			  (200...299).contains(http.statusCode) else { return nil }
+		return data
+	}
+
+	private static func holidayDay(from payload: Data) -> HolidayDay? {
+		guard let dtos = try? JSONDecoder().decode([HolidayDTO].self, from: payload) else { return nil }
+		return HolidayRepository.groupIntoHolidayDays(dtos).first
+	}
+
+	private static func dayKey(plusDays: Int) -> String? {
+		guard let date = Calendar.current.date(byAdding: .day, value: plusDays, to: Date()) else { return nil }
+		let components = Calendar.current.dateComponents([.day, .month], from: date)
+		guard let month = components.month, let day = components.day else { return nil }
+		return String(format: "%02d-%02d", month, day)
 	}
 
 	func getUrl(plusDays: Int) -> URL? {
@@ -91,9 +129,12 @@ struct WidgetEntry: TimelineEntry {
 	let showAdult: Bool
 	let showWeekday: Bool
 	let isLoggedIn: Bool
+	/// The refresh failed and no cached day was available — distinct from "this day has no
+	/// unusual holidays", which used to look identical.
+	let loadFailed: Bool
 
 	static func loggedOut() -> WidgetEntry {
-		WidgetEntry(date: Date(), holidayDay: nil, dayOffset: 0, colorized: false, includeUsual: false, showAdult: false, showWeekday: false, isLoggedIn: false)
+		WidgetEntry(date: Date(), holidayDay: nil, dayOffset: 0, colorized: false, includeUsual: false, showAdult: false, showWeekday: false, isLoggedIn: false, loadFailed: false)
 	}
 }
 
@@ -204,7 +245,7 @@ struct FerrioAccessoryInlineView: View {
 		if let holiday = localHolidays.randomElement() ?? holidays.randomElement() {
 			return Text(holiday.nameWithFlag)
 		}
-		return Text("no-unusual-holidays")
+		return Text(entry.loadFailed ? "widget-load-failed" : "no-unusual-holidays")
 	}
 }
 
@@ -219,7 +260,7 @@ struct FerrioAccessoryRectangularView: View {
 			VStack(spacing: 4) {
 				if holidays.isEmpty {
 					VStack(spacing: 4) {
-						Text("no-unusual-holidays")
+						Text(entry.loadFailed ? "widget-load-failed" : "no-unusual-holidays")
 							.font(.caption)
 						Image("SadIcon")
 					}
@@ -267,7 +308,9 @@ struct FerrioRegularView: View {
 				.frame(maxWidth: .infinity)
 
 			if holidays.isEmpty {
-				Text("no-unusual-holidays").font(.body).multilineTextAlignment(.center)
+				Text(entry.loadFailed ? "widget-load-failed" : "no-unusual-holidays")
+					.font(.body)
+					.multilineTextAlignment(.center)
 				Image("SadIcon")
 			} else {
 				ForEach(Array(holidays.prefix(maxHolidays))) { holiday in

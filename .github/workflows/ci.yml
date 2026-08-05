@@ -1,0 +1,186 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    name: Build & test
+    runs-on: macos-15
+    timeout-minutes: 45
+
+    env:
+      SCHEME: Ferrio
+      DERIVED_DATA: ${{ github.workspace }}/DerivedData
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # The project needs the iOS 26 SDK. Runner images ship several Xcodes; pick the newest
+      # rather than trusting the image default, which lags behind.
+      - name: Select the newest Xcode
+        run: |
+          latest=$(ls -d /Applications/Xcode*.app | sort -V | tail -1)
+          echo "Using $latest"
+          sudo xcode-select -s "$latest/Contents/Developer"
+          xcodebuild -version
+
+      # Ferrio/Resources/GoogleService-Info.plist is not in the repository, but project.pbxproj
+      # references it and the app target copies it as a resource — the build cannot start without
+      # it. Store the output of `base64 -i GoogleService-Info.plist` as the
+      # GOOGLE_SERVICE_INFO_PLIST repository secret.
+      - name: Restore Firebase config
+        env:
+          PLIST: ${{ secrets.GOOGLE_SERVICE_INFO_PLIST }}
+        run: |
+          if [ -z "$PLIST" ]; then
+            echo "::error::GOOGLE_SERVICE_INFO_PLIST secret is not set; the build cannot run without it."
+            exit 1
+          fi
+          printf '%s' "$PLIST" | base64 --decode > Ferrio/Resources/GoogleService-Info.plist
+          plutil -lint Ferrio/Resources/GoogleService-Info.plist
+
+      - name: Validate the project file
+        run: plutil -lint Ferrio.xcodeproj/project.pbxproj
+
+      - name: Cache SwiftPM dependencies
+        uses: actions/cache@v4
+        with:
+          path: ${{ env.DERIVED_DATA }}/SourcePackages
+          key: spm-${{ runner.os }}-${{ hashFiles('Ferrio.xcodeproj/project.xcworkspace/xcshareddata/swiftpm/Package.resolved') }}
+          restore-keys: spm-${{ runner.os }}-
+
+      # Compile-only pass against the generic destination: it does not depend on which simulators
+      # the image happens to have, so a missing runtime surfaces in the test step with a clear
+      # message instead of failing the build with a confusing one.
+      - name: Build
+        run: |
+          xcodebuild build \
+            -scheme "$SCHEME" \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath "$DERIVED_DATA" \
+            CODE_SIGNING_ALLOWED=NO
+
+      # The test action needs a real simulator, so resolve one from what the image actually has
+      # instead of hardcoding a device name that changes between runner images.
+      - name: Pick a simulator
+        id: sim
+        run: |
+          udid=$(xcrun simctl list devices available -j | jq -r '
+            [ .devices
+              | to_entries[]
+              | select(.key | test("iOS"))
+              | .value[]
+              | select(.isAvailable and (.name | test("iPhone")))
+            ] | last | .udid // empty')
+          if [ -z "$udid" ]; then
+            echo "::error::No available iPhone simulator on this runner image."
+            xcrun simctl list devices available
+            exit 1
+          fi
+          echo "Using simulator $udid"
+          echo "udid=$udid" >> "$GITHUB_OUTPUT"
+
+      - name: Test
+        run: |
+          xcodebuild test \
+            -scheme "$SCHEME" \
+            -destination "id=${{ steps.sim.outputs.udid }}" \
+            -derivedDataPath "$DERIVED_DATA" \
+            -resultBundlePath "$DERIVED_DATA/TestResults.xcresult" \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: ${{ env.DERIVED_DATA }}/TestResults.xcresult
+          if-no-files-found: ignore
+          retention-days: 7
+
+  hygiene:
+    name: Repo hygiene
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # Every one of these has actually gone wrong in this repo, hence the guard rails.
+      - name: Nothing that belongs in .gitignore is tracked
+        run: |
+          status=0
+          fail() { echo "::error::$1"; status=1; }
+          git ls-files --error-unmatch Ferrio/Resources/GoogleService-Info.plist >/dev/null 2>&1 \
+            && fail 'Firebase config is tracked; it must stay out of the index'
+          git ls-files | grep -qE '(^|/)xcuserdata/' \
+            && fail 'xcuserdata is tracked; run git rm -r --cached on it'
+          git ls-files | grep -q '\.DS_Store' \
+            && fail '.DS_Store is tracked'
+          git ls-files | grep -qE '^Ferrio/.*/\.gitignore$' \
+            && fail "a nested .gitignore under Ferrio/ blocks Xcode's Convert to Folder"
+          exit $status
+
+      - name: String catalogs are consistent
+        run: |
+          python3 - <<'EOF'
+          import json, glob, sys
+
+          failed = False
+          for path in sorted(glob.glob('**/*.xcstrings', recursive=True)):
+              data = json.load(open(path))
+              for key, entry in sorted(data['strings'].items()):
+                  locs = entry.get('localizations', {})
+                  # A key with no localizations at all resolves to itself — intentional for
+                  # things like "Ferrio". Only an English entry without a Polish one is a gap.
+                  if 'en' in locs and 'pl' not in locs:
+                      print(f"::error file={path}::'{key}' has English but no Polish translation")
+                      failed = True
+                  for lang, loc in locs.items():
+                      state = loc.get('stringUnit', {}).get('state')
+                      if state and state != 'translated':
+                          print(f"::warning file={path}::'{key}' [{lang}] is '{state}', not 'translated'")
+              print(f"{path}: {len(data['strings'])} keys")
+          sys.exit(1 if failed else 0)
+          EOF
+
+      # The FAQ is shipped in the app rather than served, so a missing key is a blank
+      # DisclosureGroup at runtime with nothing failing at build time.
+      - name: Every FAQ entry has a question and an answer
+        run: |
+          python3 - <<'EOF'
+          import json, re, sys
+
+          ids = re.findall(r'FaqEntry\(id:\s*"([^"]+)"\)',
+                           open('Ferrio/Core/Services/FaqCatalog.swift').read())
+          keys = set(json.load(open('Ferrio/Resources/Localizable.xcstrings'))['strings'])
+
+          if not ids:
+              print('::error::no FaqEntry ids found — did FaqCatalog change shape?')
+              sys.exit(1)
+
+          failed = False
+          for entry_id in ids:
+              for kind in ('question', 'answer'):
+                  key = f'faq-{kind}-{entry_id}'
+                  if key not in keys:
+                      print(f"::error::FaqCatalog lists '{entry_id}' but '{key}' is missing")
+                      failed = True
+
+          orphans = {k for k in keys if k.startswith('faq-question-') or k.startswith('faq-answer-')}
+          expected = {f'faq-{kind}-{i}' for i in ids for kind in ('question', 'answer')}
+          for key in sorted(orphans - expected):
+              print(f"::error::'{key}' is not referenced by FaqCatalog")
+              failed = True
+
+          print(f'{len(ids)} FAQ entries, all keys present' if not failed else '')
+          sys.exit(1 if failed else 0)
+          EOF

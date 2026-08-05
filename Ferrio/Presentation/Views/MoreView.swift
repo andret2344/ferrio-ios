@@ -24,6 +24,11 @@ struct MoreView: View {
 				.alert("about-calendar", isPresented: $infoAlert, actions: {}, message: {
 					Text("about-holidays")
 				})
+				NavigationLink {
+					FaqScreenView()
+				} label: {
+					Label("faq", systemImage: "questionmark.circle")
+				}
 			}
 			Section(header: Text("account")) {
 				Button(action: {

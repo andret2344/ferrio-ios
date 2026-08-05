@@ -5,72 +5,62 @@
 import Foundation
 
 extension HolidayRepository {
-	private static let reportsURL = "\(API.baseURL)/users/reports"
+	private static let reportsPath = "\(API.baseURL)/users/reports"
 
-	func fetchReports() async throws -> (fixed: [HolidayReport], floating: [HolidayReport]) {
-		guard let fixedURL = URL(string: "\(Self.reportsURL)?reportType=error&holidayType=fixed"),
-			  let floatingURL = URL(string: "\(Self.reportsURL)?reportType=error&holidayType=floating") else {
+	private static func endpoint(_ category: ReportCategory, _ holidayType: HolidayType) throws -> URL {
+		guard let url = URL(string: "\(reportsPath)?reportType=\(category.rawValue)&holidayType=\(holidayType.rawValue)") else {
 			throw APIError.invalidURL
 		}
-		let fixed = try await URLSession.shared.authenticatedDecode(
+		return url
+	}
+
+	func fetchReports() async throws -> (fixed: [HolidayReport], floating: [HolidayReport]) {
+		let fixedURL = try Self.endpoint(.error, .fixed)
+		let floatingURL = try Self.endpoint(.error, .floating)
+		// The two calls are independent, so they run concurrently — serialising them doubled the
+		// time the Reports tab spends on its spinner for no reason.
+		async let fixed = URLSession.shared.authenticatedDecode(
 			[HolidayReport].self,
 			from: fixedURL,
 			keyDecodingStrategy: .convertFromSnakeCase
 		)
-		let floating = try await URLSession.shared.authenticatedDecode(
+		async let floating = URLSession.shared.authenticatedDecode(
 			[HolidayReport].self,
 			from: floatingURL,
 			keyDecodingStrategy: .convertFromSnakeCase
 		)
-		return (fixed, floating)
+		return try await (fixed, floating)
 	}
 
 	func fetchSuggestions() async throws -> (fixed: [MissingFixedHoliday], floating: [MissingFloatingHoliday]) {
-		guard let fixedURL = URL(string: "\(Self.reportsURL)?reportType=suggestion&holidayType=fixed"),
-			  let floatingURL = URL(string: "\(Self.reportsURL)?reportType=suggestion&holidayType=floating") else {
-			throw APIError.invalidURL
-		}
-		let fixed = try await URLSession.shared.authenticatedDecode(
+		let fixedURL = try Self.endpoint(.suggestion, .fixed)
+		let floatingURL = try Self.endpoint(.suggestion, .floating)
+		async let fixed = URLSession.shared.authenticatedDecode(
 			[MissingFixedHoliday].self,
 			from: fixedURL,
 			keyDecodingStrategy: .convertFromSnakeCase
 		)
-		let floating = try await URLSession.shared.authenticatedDecode(
+		async let floating = URLSession.shared.authenticatedDecode(
 			[MissingFloatingHoliday].self,
 			from: floatingURL,
 			keyDecodingStrategy: .convertFromSnakeCase
 		)
-		return (fixed, floating)
+		return try await (fixed, floating)
 	}
 
-	func fetchCountries() async throws -> [Locale.Region] {
-		guard let url = URL(string: "https://api.ferrio.app/v2/countries?format=code") else {
-			throw APIError.invalidURL
-		}
-		let codes = try await URLSession.shared.decode(
-			[String].self,
-			from: url
-		)
-		return codes.compactMap { Locale.Region($0) }
+	func sendReport(payload: HolidayReportPayload, holidayType: HolidayType) async throws {
+		try await post(payload, to: Self.endpoint(.error, holidayType))
 	}
 
-	func sendReport(payload: HolidayReportPayload, holidayType: String) async throws {
-		guard let url = URL(string: "\(Self.reportsURL)?reportType=error&holidayType=\(holidayType)") else {
-			throw APIError.invalidURL
-		}
+	// Generic rather than taking the existential: `MissingHolidayPayload` refines `Encodable`, but
+	// the existential itself does not conform, so `encode` needs the concrete type.
+	func sendMissingSuggestion<T: MissingHolidayPayload>(payload: T, holidayType: HolidayType) async throws {
+		try await post(payload, to: Self.endpoint(.suggestion, holidayType))
+	}
+
+	private func post<T: Encodable>(_ payload: T, to url: URL) async throws {
 		let encoder = JSONEncoder()
 		encoder.keyEncodingStrategy = .convertToSnakeCase
-		let jsonData = try encoder.encode(payload)
-		try await URLSession.shared.authenticatedPost(jsonData: jsonData, url: url)
-	}
-
-	func sendMissingSuggestion(payload: MissingHolidayPayload, holidayType: String) async throws {
-		guard let url = URL(string: "\(Self.reportsURL)?reportType=suggestion&holidayType=\(holidayType)") else {
-			throw APIError.invalidURL
-		}
-		let encoder = JSONEncoder()
-		encoder.keyEncodingStrategy = .convertToSnakeCase
-		let jsonData = try encoder.encode(payload)
-		try await URLSession.shared.authenticatedPost(jsonData: jsonData, url: url)
+		try await URLSession.shared.authenticatedPost(jsonData: encoder.encode(payload), url: url)
 	}
 }

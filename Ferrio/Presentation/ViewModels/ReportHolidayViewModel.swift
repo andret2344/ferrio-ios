@@ -14,7 +14,7 @@ class ReportHolidayViewModel: ObservableObject {
 
 	private let repository = HolidayRepository()
 
-	func sendReport(reportPayload: HolidayReportPayload, holidayType: String) async {
+	func sendReport(reportPayload: HolidayReportPayload, holidayType: HolidayType) async {
 		guard !isSending else { return }
 		isSending = true
 		defer { isSending = false }
@@ -24,15 +24,12 @@ class ReportHolidayViewModel: ObservableObject {
 			alertMessage = "report-sent-description".localized()
 			success = true
 		} catch let error as APIError {
-			print("[Report] APIError: \(error)")
 			alertTitle = "error".localized()
 			alertMessage = error.localizedDescription
-		} catch let error as EncodingError {
-			print("[Report] EncodingError: \(error)")
+		} catch is EncodingError {
 			alertTitle = "error".localized()
 			alertMessage = "invalid-data-format".localized()
 		} catch {
-			print("[Report] Error: \(error)")
 			alertTitle = "error".localized()
 			alertMessage = "could-not-connect".localized()
 		}

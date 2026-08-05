@@ -6,7 +6,6 @@ import Foundation
 
 @MainActor
 class SuggestHolidayViewModel: ObservableObject {
-	@Published var countries: [Locale.Region]? = nil
 	@Published var sortedCountries: [Locale.Region] = []
 	@Published var showAlert: Bool = false
 	@Published var alertTitle: String = ""
@@ -16,22 +15,20 @@ class SuggestHolidayViewModel: ObservableObject {
 
 	private let repository = HolidayRepository()
 
-	func fetchCountries() async {
-		do {
-			let fetched = try await repository.fetchCountries()
-			countries = fetched
-			sortedCountries = fetched.sorted { lhs, rhs in
-				let lName = Locale.current.localizedString(forRegionCode: lhs.identifier) ?? lhs.identifier
-				let rName = Locale.current.localizedString(forRegionCode: rhs.identifier) ?? rhs.identifier
-				return lName < rName
-			}
-		} catch {
-			countries = []
-			sortedCountries = []
-		}
+	/// The country list comes from the system's ISO 3166 table rather than from the API: it never
+	/// changes between releases, needs no network round trip, and works offline. It is a superset
+	/// of what `/v2/countries` used to return.
+	func loadCountries() {
+		sortedCountries = Locale.Region.isoRegions
+			.filter { $0.identifier.count == 2 && $0.subRegions.isEmpty }
+			.sorted { countryName($0) < countryName($1) }
 	}
 
-	func sendMissingSuggestion<T: MissingHolidayPayload>(payload: T, holidayType: String) async {
+	private func countryName(_ region: Locale.Region) -> String {
+		Locale.current.localizedString(forRegionCode: region.identifier) ?? region.identifier
+	}
+
+	func sendMissingSuggestion<T: MissingHolidayPayload>(payload: T, holidayType: HolidayType) async {
 		guard !isSending else { return }
 		isSending = true
 		defer { isSending = false }
@@ -41,15 +38,12 @@ class SuggestHolidayViewModel: ObservableObject {
 			alertMessage = "suggestion-sent-description".localized()
 			success = true
 		} catch let error as APIError {
-			print("[Suggestion] APIError: \(error)")
 			alertTitle = "error".localized()
 			alertMessage = error.localizedDescription
-		} catch let error as EncodingError {
-			print("[Suggestion] EncodingError: \(error)")
+		} catch is EncodingError {
 			alertTitle = "error".localized()
 			alertMessage = "invalid-data-format".localized()
 		} catch {
-			print("[Suggestion] Error: \(error)")
 			alertTitle = "error".localized()
 			alertMessage = "could-not-connect".localized()
 		}

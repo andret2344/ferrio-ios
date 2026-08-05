@@ -12,6 +12,7 @@ struct Holiday: Identifiable, Equatable {
 	let url: String
 	let countryCode: String?
 	let matureContent: Bool?
+	let aiGenerated: Bool
 
 	var numericId: Int {
 		Int(id.split(separator: "-").last.flatMap { String($0) } ?? "0") ?? 0
